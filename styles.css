@@ -464,3 +464,10 @@ body:before{display:none!important;background:none!important;content:none!import
  .footer-socials a{width:30px;height:30px}
  .footer-credit{font-size:9px;gap:7px}
 }
+
+
+/* Compact ITFM AI welcome section above the footer social links */
+.footer-welcome{width:min(100%,760px);margin:0 auto 14px;text-align:center;padding:0 12px}
+.footer-welcome h2{margin:0 0 6px;font-size:clamp(1rem,2.5vw,1.25rem);line-height:1.25;color:var(--text,inherit)}
+.footer-welcome p{margin:0;font-size:.86rem;line-height:1.55;color:var(--muted,inherit);text-wrap:pretty}
+@media(max-width:600px){.footer-welcome{margin-bottom:10px;padding:0 8px}.footer-welcome p{font-size:.8rem;line-height:1.45}}
