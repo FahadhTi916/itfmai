@@ -441,3 +441,13 @@ body:before,body:after{display:none!important}
   .topbar .top-search,.topbar .top-actions{display:none!important;}
   .topbar .hamb{display:grid;place-items:center;position:relative;z-index:2;}
 }
+
+/* Compact footer and remove decorative page-wide background. */
+body:before{display:none!important}
+.site-footer{padding:10px 16px!important;background:transparent!important;border-top:0!important;letter-spacing:normal!important;gap:10px!important}
+.footer-socials{gap:7px!important}
+.footer-socials a{min-width:46px;display:flex!important;flex-direction:column;gap:3px;padding:5px 8px!important;border:0!important;background:transparent!important;font-size:18px!important;letter-spacing:0!important}
+.footer-socials a small{font-size:9px;font-weight:700}
+.footer-credit{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;font-size:10px;color:var(--muted);text-align:center}
+.footer-credit b{color:var(--text);font-weight:750}
+@media(max-width:500px){.site-footer{padding:8px 8px!important;align-items:center!important}.footer-socials{width:100%;justify-content:space-around}.footer-credit{font-size:9px;gap:5px 10px}}
