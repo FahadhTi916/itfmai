@@ -515,3 +515,18 @@ body:before{display:none!important;content:none!important;background:none!import
   .topbar .theme-switch.is-dark .theme-dot{transform:translateX(37px);}
   .topbar .theme-switch .theme-label{height:24px;font-size:7px;}
 }
+
+/* ITFM AI dashboard and footer spacing refinement */
+.studios-heading{display:flex;align-items:center;gap:14px;margin:0 0 16px;padding:14px 16px;border:1px solid var(--line);background:var(--surface);}
+.studios-brand-mark{width:46px;height:46px;display:grid;place-items:center;flex:none;border:1px solid var(--line);background:var(--accent);color:var(--bg);font-size:14px;font-weight:950;letter-spacing:-.04em;}
+.studios-heading-copy h1{margin:0;font-size:clamp(24px,3vw,36px);line-height:1.05;letter-spacing:-.06em;color:var(--text);}
+.studios-heading-copy p{margin:5px 0 0;font-size:10px;font-weight:900;letter-spacing:2.4px;color:var(--accent);}
+.site-footer{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px!important;padding:14px 18px!important;}
+.footer-welcome{grid-column:1/-1;width:min(100%,900px)!important;margin:0 auto 2px!important;padding:0!important;text-align:center;}
+.footer-socials{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+.footer-socials a{display:inline-flex;align-items:center;gap:7px;width:auto!important;height:34px;padding:7px 10px!important;border:1px solid var(--line);border-radius:8px;background:var(--surface-2);color:var(--text);font-size:10px;font-weight:750;letter-spacing:0;text-decoration:none;}
+.footer-socials a svg{width:15px;height:15px;flex:none;}
+.footer-socials a span{display:inline;}
+.footer-credit{display:flex;justify-content:flex-end;align-items:center;gap:8px 14px;flex-wrap:wrap;font-size:10px;line-height:1.4;text-align:right;}
+@media(max-width:700px){.dashboard-tools{grid-template-columns:repeat(2,minmax(0,1fr));}.site-footer{grid-template-columns:1fr!important;justify-items:center;text-align:center;}.footer-socials{justify-content:center;}.footer-credit{justify-content:center;text-align:center;}.studios-heading{padding:12px;}}
+@media(max-width:420px){.dashboard-tools{grid-template-columns:1fr;}.footer-socials{gap:5px;}.footer-socials a{padding:7px 8px!important;}}
