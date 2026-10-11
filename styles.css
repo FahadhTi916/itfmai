@@ -530,3 +530,10 @@ body:before{display:none!important;content:none!important;background:none!import
 .footer-credit{display:flex;justify-content:flex-end;align-items:center;gap:8px 14px;flex-wrap:wrap;font-size:10px;line-height:1.4;text-align:right;}
 @media(max-width:700px){.dashboard-tools{grid-template-columns:repeat(2,minmax(0,1fr));}.site-footer{grid-template-columns:1fr!important;justify-items:center;text-align:center;}.footer-socials{justify-content:center;}.footer-credit{justify-content:center;text-align:center;}.studios-heading{padding:12px;}}
 @media(max-width:420px){.dashboard-tools{grid-template-columns:1fr;}.footer-socials{gap:5px;}.footer-socials a{padding:7px 8px!important;}}
+
+
+/* Welcome message replaces the old IM / ITFM AI / AI STUDIOS dashboard heading. */
+.welcome-hero{margin:0 0 16px;padding:20px 22px;border:1px solid var(--line);border-radius:16px;background:var(--surface);}
+.welcome-hero h1{margin:0 0 8px;color:var(--text);font-size:clamp(22px,3vw,32px);line-height:1.15;letter-spacing:-.035em;font-weight:850;}
+.welcome-hero p{margin:0;max-width:900px;color:var(--muted);font-size:14px;line-height:1.65;text-wrap:pretty;}
+@media(max-width:600px){.welcome-hero{margin-bottom:12px;padding:16px 14px;border-radius:12px}.welcome-hero h1{font-size:22px}.welcome-hero p{font-size:13px;line-height:1.55}}
