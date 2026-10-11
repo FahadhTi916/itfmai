@@ -549,9 +549,44 @@ body:before{display:none!important;content:none!important;background:none!import
 .sidebar .footer-credit{display:flex!important;flex-direction:column;justify-content:center!important;align-items:center!important;gap:6px!important;font-size:9px!important;line-height:1.4;text-align:center!important;}
 @media(max-width:820px){.sidebar .site-footer{margin-top:10px!important;}}
 
-/* Welcome message placed at the top of the dashboard */
-.welcome-intro{position:relative;overflow:hidden;margin:0 0 18px;padding:25px 27px;border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));border-radius:20px;background:linear-gradient(120deg,color-mix(in srgb,var(--surface) 84%,#7c3aed 16%),color-mix(in srgb,var(--surface) 88%,#0891b2 12%));box-shadow:var(--shadow)}
-.welcome-intro h1{margin:0 0 10px;font-size:clamp(24px,3vw,38px);line-height:1.15;letter-spacing:-.045em}
-.welcome-intro h1 span{color:transparent;background:var(--color-gradient);-webkit-background-clip:text;background-clip:text}
-.welcome-intro p{max-width:980px;margin:0;color:var(--muted);font-size:14px;line-height:1.75}
-@media(max-width:500px){.welcome-intro{padding:18px 16px;border-radius:16px;margin-bottom:14px}.welcome-intro h1{font-size:25px}.welcome-intro p{font-size:13px;line-height:1.65}}
+
+/* ITFM AI mobile navigation drawer: keep all menu items inside the left panel */
+@media (max-width: 820px) {
+  .layout { min-height: 100vh; }
+  .sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: auto !important;
+    width: min(300px, 84vw) !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    transform: translateX(-110%) !important;
+    transition: transform .24s ease !important;
+    z-index: 1002 !important;
+    padding: 22px 14px calc(24px + env(safe-area-inset-bottom)) !important;
+    box-sizing: border-box !important;
+    visibility: visible !important;
+  }
+  .sidebar.open { transform: translateX(0) !important; }
+  .sidebar .brand { flex: 0 0 auto; }
+  .sidebar .nav { flex: 0 0 auto; }
+  .sidebar .site-footer { flex: 0 0 auto; margin-top: 20px; }
+  .mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, .68);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 1001;
+  }
+  .mobile-overlay.show { display: block !important; }
+  .main { margin-left: 0 !important; min-width: 0; }
+  .topbar { position: sticky; top: 0; z-index: 1000; }
+  .hamb { position: relative; z-index: 1000; touch-action: manipulation; }
+}
