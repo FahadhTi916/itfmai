@@ -481,91 +481,37 @@ body:before{display:none!important;background:none!important;content:none!import
 .theme-switch .theme-label:before{content:none!important}
 @media(max-width:500px){.theme-switch{width:110px;min-width:110px;height:36px}.theme-switch .theme-dot{width:51px;height:28px}.theme-switch.is-dark .theme-dot{transform:translateX(52px)}.theme-switch .theme-label{height:28px;font-size:9px}}
 
-
-/* ITFM AI: remove decorative backgrounds and visual effects throughout the workspace */
-body:before,
-.dashboard-hero:before,
-.dashboard-hero:after,
-.hero-orb:after,
-.tool-tile:after,
-.tool-photo:after,
-.tool-tile:before,
-.auth-page:before,
-.auth-page:after,
-.auth-glow,
-.studio-icon:after,
-*::before,
-*::after { animation:none!important; }
-body:before,
-.dashboard-hero:before,
-.dashboard-hero:after,
-.hero-orb:after,
-.tool-tile:after,
-.tool-photo:after,
-.tool-tile:before,
-.auth-glow,
-.studio-icon:after { display:none!important; content:none!important; background-image:none!important; }
-html, body, #app, .layout, .main { background:var(--bg)!important; }
-.sidebar, .topbar, .content, .dashboard-hero, .tool-tile, .card, .studio-card,
-.studio-icon, .field input, .field textarea, .field select, .chat-input textarea,
-.upload, .notice, .file-row, .tile-arrow, .auth-page, .auth-card, .auth-tabs,
-.preview, .result-card, .project-card, .asset, .site-footer {
-  background:var(--surface)!important;
-  background-image:none!important;
-  box-shadow:none!important;
-  backdrop-filter:none!important;
-  -webkit-backdrop-filter:none!important;
+/* ITFM AI fresh background system: replace legacy decorative backgrounds with a clean theme-aware canvas. */
+html,body,#app{background-color:var(--bg)!important;}
+body{background-image:none!important;}
+body:before{display:none!important;content:none!important;background:none!important;}
+:root[data-theme="dark"] body{
+  background-image:radial-gradient(ellipse at 12% 0%,rgba(124,58,237,.18),transparent 36%),radial-gradient(ellipse at 92% 18%,rgba(6,182,212,.10),transparent 30%),linear-gradient(145deg,#0b0b14 0%,#10101b 48%,#0b1118 100%)!important;
+  background-attachment:fixed!important;
 }
-.topbar { background:var(--bg)!important; }
-.dashboard-hero { min-height:0!important; padding:24px!important; }
-.hero-orb { background:transparent!important; color:var(--text)!important; transform:none!important; }
-.tool-photo, .tool-photo img { display:none!important; background:none!important; background-image:none!important; }
-.tool-tile { min-height:0!important; padding:16px!important; justify-content:flex-start!important; }
-.tile-text { padding:0!important; }
-.tool-tile:hover, .card:hover, .studio-card:hover, .btn:hover, .icon-btn:hover { transform:none!important; box-shadow:none!important; }
-.auth-brand .brand-logo, .brand-mark, .owner-mark, .studio-icon, .theme-switch .theme-dot,
-.btn.primary, .nav button.active, .auth-tabs button.active {
-  background:var(--surface-2)!important;
-  background-image:none!important;
-  box-shadow:none!important;
+:root[data-theme="light"] body{
+  background-image:radial-gradient(ellipse at 8% 0%,rgba(124,58,237,.09),transparent 38%),radial-gradient(ellipse at 94% 18%,rgba(8,145,178,.08),transparent 32%),linear-gradient(145deg,#fbfaff 0%,#f5f7fb 52%,#f0f8f7 100%)!important;
+  background-attachment:fixed!important;
 }
-.brand-logo, .mobile-brand-mark, .auth-brand .brand-logo { background:var(--surface-2)!important; color:var(--text)!important; }
-.footer-socials a { background:transparent!important; box-shadow:none!important; }
-@media(max-width:820px){ .dashboard-hero{padding:20px!important;min-height:0!important} }
-
-/* Final request: remove all decorative and component background fills. Keep only the plain page canvas for readable Dark/Light themes. */
-*, *::before, *::after {
-  background-image: none !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+.main{background:transparent!important;}
+.topbar{background:color-mix(in srgb,var(--bg) 86%,transparent)!important;backdrop-filter:blur(16px);}
+.sidebar{background:color-mix(in srgb,var(--surface) 94%,transparent)!important;backdrop-filter:blur(18px);}
+.dashboard-hero{background:color-mix(in srgb,var(--surface) 90%,transparent)!important;backdrop-filter:blur(12px);}
+.card,.studio-card,.asset,.project-card,.tool-tile{background-color:color-mix(in srgb,var(--surface) 94%,transparent)!important;}
+:root[data-theme="light"] .card,:root[data-theme="light"] .studio-card,:root[data-theme="light"] .asset,:root[data-theme="light"] .project-card,:root[data-theme="light"] .tool-tile{box-shadow:0 8px 28px rgba(31,41,55,.045);}
+/* Keep the Dark / Light switch reachable on phones as well as desktop. */
+@media(max-width:820px){
+  .topbar .top-actions{display:flex!important;position:absolute;right:8px;top:50%;transform:translateY(-50%);margin:0;z-index:3;}
+  .topbar .top-actions>.icon-btn{display:none!important;}
+  .topbar .theme-switch{width:84px;min-width:84px;height:32px;padding:2px;}
+  .topbar .theme-switch .theme-dot{left:2px;top:2px;width:39px;height:26px;}
+  .topbar .theme-switch.is-dark .theme-dot{transform:translateX(40px);}
+  .topbar .theme-switch .theme-label{height:26px;font-size:8px;}
+  .topbar .mobile-brand{max-width:calc(100% - 140px);}
 }
-body::before, body::after,
-.dashboard-hero::before, .dashboard-hero::after,
-.hero-orb::before, .hero-orb::after,
-.tool-tile::before, .tool-tile::after,
-.tool-photo, .tool-photo img, .tool-photo::before, .tool-photo::after,
-.auth-glow, .studio-icon::before, .studio-icon::after {
-  display: none !important;
-  content: none !important;
-}
-.sidebar, .topbar, .content, .dashboard-hero, .hero-orb,
-.dashboard-tools, .tool-tile, .card, .studio-card, .studio-icon,
-.field input, .field textarea, .field select, .chat-input textarea,
-.upload, .notice, .file-row, .tile-arrow, .auth-page, .auth-card,
-.auth-tabs, .auth-tabs button, .preview, .result-card, .project-card,
-.asset, .site-footer, .footer-socials a, .top-search, .icon-btn, .btn,
-.theme-switch, .theme-switch .theme-dot, .brand-mark, .owner-mark,
-.nav button, .status-pill, .bubble, .upload.drag {
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-html, body, #app, .layout, .main, .auth-page {
-  background: var(--bg) !important;
-  background-image: none !important;
+@media(max-width:500px){
+  .topbar .theme-switch{width:78px;min-width:78px;height:30px;}
+  .topbar .theme-switch .theme-dot{width:36px;height:24px;}
+  .topbar .theme-switch.is-dark .theme-dot{transform:translateX(37px);}
+  .topbar .theme-switch .theme-label{height:24px;font-size:7px;}
 }
