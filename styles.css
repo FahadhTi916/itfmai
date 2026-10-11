@@ -569,3 +569,17 @@ body:before{display:none!important;content:none!important;background:none!import
 .sidebar{height:100dvh;min-height:0;overflow:hidden;}
 .sidebar .nav{flex:1 1 auto!important;min-height:0;overflow-y:auto!important;overscroll-behavior:contain;}
 .sidebar .site-footer{margin-top:auto!important;flex:0 0 auto!important;}
+
+
+/* Final sidebar footer placement: keep social links and credits at the bottom; scroll only the studio menu when needed. */
+.sidebar{height:100vh;height:100dvh;min-height:0;display:flex;flex-direction:column;overflow:hidden;}
+.sidebar>.brand{flex:0 0 auto;}
+.sidebar>.nav{flex:1 1 auto!important;min-height:0;overflow-y:auto!important;overscroll-behavior:contain;}
+.sidebar>.site-footer{flex:0 0 auto!important;margin-top:auto!important;margin-bottom:12px!important;}
+.sidebar .footer-socials{flex:0 0 auto;}
+.sidebar .footer-credit{flex:0 0 auto;}
+@media(max-width:820px){
+ .sidebar{height:100vh;height:100dvh;overflow:hidden!important;padding-bottom:max(10px,env(safe-area-inset-bottom));}
+ .sidebar>.nav{flex:1 1 auto!important;min-height:0;overflow-y:auto!important;}
+ .sidebar>.site-footer{margin-top:auto!important;margin-bottom:4px!important;padding-bottom:8px!important;}
+}
