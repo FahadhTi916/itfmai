@@ -1011,3 +1011,6 @@ input::placeholder,textarea::placeholder{color:#ded8ff!important}
 [style*="background" i]{background-color:transparent}
 [style*="#10b981" i],[style*="#22c55e" i],[style*="#14b8a6" i],[style*="#0d9488" i],[style*="teal" i],[style*="green" i]{border-color:#00d9ff!important}
 [style*="color: black" i],[style*="color:#000" i],[style*="color: #000" i]{color:#f8f5ff!important}
+
+/* Reference palette override */
+html,body,#app{background:linear-gradient(120deg,#0067f5 0%,#1529dc 35%,#6420ed 67%,#ed20d8 100%);background-attachment:fixed}
