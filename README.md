@@ -61,3 +61,9 @@ Create a local `.env` file from `.env.example` for local testing only. `.env` is
 - All movie cards now show a daily-changing image selection using available poster/backdrop artwork.
 - Every movie detail view displays cast portrait cards and attempts to load actor photos from Wikipedia page summaries; fallback avatars remain if a photo is unavailable.
 - Changes are applied to the embedded Movies page, so no separate page file is needed.
+
+
+## Real cast portraits on every movie
+- Movie details now request TMDB cast credits by movie title and render real actor profile photos and character names for every movie, including live search results.
+- If TMDB has no portrait for an actor, the UI uses a fallback avatar; if the TMDB key or network is unavailable, it falls back to Wikipedia thumbnails for the catalogue cast.
+- Configure `TMDB_API_KEY` in Vercel Environment Variables and redeploy for TMDB cast portraits.
