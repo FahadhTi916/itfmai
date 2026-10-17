@@ -2,6 +2,10 @@
 
 This project packages the uploaded `index.html` as the **ITFM AI** site and keeps its embedded pages and frontend code. The linked stylesheet has been extracted to `styles.css`.
 
+## Important deployment note
+
+**Deploy this project to Vercel, not GitHub Pages, for API Settings and AI endpoints.** GitHub Pages only serves static files and returns an HTML 404 page for `/api/vault-auth`; parsing that HTML as JSON causes the `Unexpected token '<'` error. The main stylesheet is now embedded in `index.html` as well, so the design remains visible even if `styles.css` is not served correctly.
+
 ## Important status
 
 - The frontend is included from the uploaded file.
