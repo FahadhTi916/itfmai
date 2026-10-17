@@ -1313,3 +1313,21 @@ hr { border-color: #e5e7eb !important; }
   color: #172033 !important;
   border: 1px solid #d0d5dd !important;
 }
+
+
+/* SITE-WIDE WHITE BACKGROUND: requested final adjustment */
+:root, :root[data-theme="dark"], :root[data-theme="light"] {
+  color-scheme: light !important;
+  --bg: #ffffff !important;
+  --surface: #ffffff !important;
+  --surface-2: #ffffff !important;
+  --surface-3: #ffffff !important;
+  --text: #172033 !important;
+  --muted: #667085 !important;
+  --line: #e5e7eb !important;
+  --shadow: 0 8px 24px rgba(16,24,40,.07) !important;
+}
+html, body, #app { background: #ffffff !important; background-image: none !important; color: #172033 !important; }
+body:before { display: none !important; background: none !important; }
+.layout, .main, .content, .page, .page-content, .main-content, .dashboard, .tools-page, .section { background-color: #ffffff !important; background-image: none !important; color: #172033; }
+.sidebar, .topbar, header, .mobile-header, .nav, .menu-panel { background-color: #ffffff !important; color: #172033 !important; }
