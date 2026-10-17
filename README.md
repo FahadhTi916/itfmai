@@ -67,3 +67,10 @@ Create a local `.env` file from `.env.example` for local testing only. `.env` is
 - Movie details now request TMDB cast credits by movie title and render real actor profile photos and character names for every movie, including live search results.
 - If TMDB has no portrait for an actor, the UI uses a fallback avatar; if the TMDB key or network is unavailable, it falls back to Wikipedia thumbnails for the catalogue cast.
 - Configure `TMDB_API_KEY` in Vercel Environment Variables and redeploy for TMDB cast portraits.
+
+
+## Live daily movie updates
+- The Movies page now requests live latest/now-playing, daily trending, and upcoming titles from TMDB whenever it opens, and refreshes when the local day changes.
+- Daily poster selection uses poster/backdrop artwork when both are available.
+- Add `TMDB_API_KEY` in Vercel Environment Variables and redeploy. If the key is missing or TMDB is unreachable, the built-in catalogue remains as a fallback.
+- Trailer buttons open YouTube official-trailer search; full-length films are not hosted by this project and must be watched through licensed providers.
