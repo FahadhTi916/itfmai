@@ -55,3 +55,9 @@ Create a local `.env` file from `.env.example` for local testing only. `.env` is
 ## Movies update
 - Added Jailer 2 (2026) to the Movies catalogue with the requested 7.9 rating, Malayalam display language, Mystery/Thriller genres, official-trailer search, legal-streaming search, and My List support.
 - The Jailer 2 poster rotates daily between a small set of public image sources. Cast portraits are loaded from Wikipedia page summaries when the detail panel opens; internet access is required.
+
+
+## Movie gallery improvements
+- All movie cards now show a daily-changing image selection using available poster/backdrop artwork.
+- Every movie detail view displays cast portrait cards and attempts to load actor photos from Wikipedia page summaries; fallback avatars remain if a photo is unavailable.
+- Changes are applied to the embedded Movies page, so no separate page file is needed.
