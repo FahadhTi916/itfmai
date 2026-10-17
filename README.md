@@ -50,3 +50,8 @@ npx vercel dev
 ```
 
 Create a local `.env` file from `.env.example` for local testing only. `.env` is ignored by Git.
+
+
+## Movies update
+- Added Jailer 2 (2026) to the Movies catalogue with the requested 7.9 rating, Malayalam display language, Mystery/Thriller genres, official-trailer search, legal-streaming search, and My List support.
+- The Jailer 2 poster rotates daily between a small set of public image sources. Cast portraits are loaded from Wikipedia page summaries when the detail panel opens; internet access is required.
