@@ -1,15 +1,8 @@
-// ITFM AI API route: /api/generate
-// Server-side provider integration must be implemented here.
-// Keep provider secrets in Vercel Environment Variables; never expose them to the browser.
+import { genericProxy } from "./_lib.js";
 export default async function handler(req, res) {
-  res.setHeader("Cache-Control", "no-store");
-  if (req.method === "OPTIONS") {
-    res.setHeader("Allow", "GET, POST, OPTIONS");
-    return res.status(204).end();
-  }
-  return res.status(501).json({
-    error: "This API integration is not configured yet.",
-    route: "/api/generate",
-    message: "Add and test the provider-specific server-side implementation before production use."
-  });
+  const provider = String(req.body?.provider || req.headers["x-itfmai-provider"] || "");
+  if (provider === "higgsfield" || provider === "higgsfield_genjutsu") return genericProxy(req, res, { keyEnv: "HIGGSFIELD_API_KEY", urlEnv: "HIGGSFIELD_API_URL", label: "Higgsfield / Genjutsu AI" });
+  if (provider === "getimg" || provider === "getimg_image") return genericProxy(req, res, { keyEnv: "GETIMG_API_KEY", urlEnv: "GETIMG_IMAGE_API_URL", label: "AI Image" });
+  if (provider === "getimg_video") return genericProxy(req, res, { keyEnv: "GETIMG_VIDEO_API_KEY", urlEnv: "GETIMG_VIDEO_API_URL", label: "AI Video" });
+  return res.status(400).json({ error: "Unknown generation provider. Configure a supported provider and endpoint." });
 }

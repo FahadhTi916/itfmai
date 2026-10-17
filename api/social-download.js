@@ -1,15 +1,7 @@
-// ITFM AI API route: /api/social-download
-// Server-side provider integration must be implemented here.
-// Keep provider secrets in Vercel Environment Variables; never expose them to the browser.
+import { genericProxy } from "./_lib.js";
+const mapping = { saverapi: ["SAVERAPI_API_KEY", "SAVERAPI_API_URL", "SaverAPI"], dlgram: ["DLGRAM_API_KEY", "DLGRAM_API_URL", "DLGram"], socialkit: ["SOCIALKIT_API_KEY", "SOCIALKIT_API_URL", "SocialKit"], revid: ["REVID_API_KEY", "REVID_API_URL", "Revid"], playterabox: ["PLAYTERABOX_API_KEY", "PLAYTERABOX_API_URL", "PlayTeraBox"] };
 export default async function handler(req, res) {
-  res.setHeader("Cache-Control", "no-store");
-  if (req.method === "OPTIONS") {
-    res.setHeader("Allow", "GET, POST, OPTIONS");
-    return res.status(204).end();
-  }
-  return res.status(501).json({
-    error: "This API integration is not configured yet.",
-    route: "/api/social-download",
-    message: "Add and test the provider-specific server-side implementation before production use."
-  });
+  const provider = String(req.body?.provider || req.query?.provider || ""); const config = mapping[provider];
+  if (!config) return res.status(400).json({ error: "Unknown downloader service. Choose a separately configured downloader provider." });
+  return genericProxy(req, res, { keyEnv: config[0], urlEnv: config[1], label: config[2], method: req.method === "GET" ? "GET" : "POST" });
 }

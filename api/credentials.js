@@ -1,15 +1,5 @@
-// ITFM AI API route: /api/credentials
-// Server-side provider integration must be implemented here.
-// Keep provider secrets in Vercel Environment Variables; never expose them to the browser.
+import { method, json } from "./_lib.js";
 export default async function handler(req, res) {
-  res.setHeader("Cache-Control", "no-store");
-  if (req.method === "OPTIONS") {
-    res.setHeader("Allow", "GET, POST, OPTIONS");
-    return res.status(204).end();
-  }
-  return res.status(501).json({
-    error: "This API integration is not configured yet.",
-    route: "/api/credentials",
-    message: "Add and test the provider-specific server-side implementation before production use."
-  });
+  if (!method(req, res, ["GET"])) return;
+  return json(res, 410, { error: "API keys are configured in Vercel Project → Settings → Environment Variables. Do not enter or store production keys in the browser. The legacy browser credential vault is disabled." });
 }
