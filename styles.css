@@ -1139,3 +1139,62 @@ label,.field label,.card p,.tool-tile p,.tile-text,.tool-description,.muted,.sta
 .upload{border:1px dashed #c9c4f8!important}
 hr{border-color:var(--line)!important}
 @media(prefers-color-scheme:dark){:root:not([data-theme="dark"]){color-scheme:light}}
+
+
+/* ITFM AI — pure white theme across the entire interface. Content and functionality unchanged. */
+:root, :root[data-theme="light"], :root[data-theme="dark"] {
+  color-scheme: light !important;
+  --bg: #ffffff !important;
+  --surface: #ffffff !important;
+  --surface-2: #ffffff !important;
+  --surface-3: #ffffff !important;
+  --text: #172033 !important;
+  --muted: #667085 !important;
+  --line: #e5e7eb !important;
+  --shadow: 0 6px 20px rgba(16,24,40,.045) !important;
+}
+html, body, #app, body:before, body:after,
+.sidebar, .main, .topbar, .mobile-nav, .bottom-nav, .content, .site-footer,
+.dashboard-hero, .tool-tile, .card, .panel, .tool-card, .feature-card,
+.movie-card, .stat-card, .settings-card, .section-card, .widget, .modal,
+.modal-card, .content-card, .dashboard-card, .studio-card, .asset-card,
+.movie-detail, .tool-panel, .tool-section, .result-card, .output-card,
+.history-item, .project-card, .settings-panel, .preview, .embedded-loading,
+.dropdown, .popover, .upload, .notice, .status-pill, .tile-arrow, .studio-icon,
+.language-toggle, .quality-toggle, .tab, .chip, .badge, .pill, .result-box,
+.code-box, .preview-box, .chat-message, .tool-output, .empty-state,
+.top-search, .search-box, .search-input, input, textarea, select, button,
+.btn, .icon-btn, .detail-close, .nav button, .language-choice, .quality-choice {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #172033;
+}
+html, body, #app { background: #ffffff !important; color: #172033 !important; }
+.dashboard-hero, .tool-tile, .card, .panel, .tool-card, .feature-card,
+.movie-card, .stat-card, .settings-card, .section-card, .widget, .modal-card,
+.content-card, .dashboard-card, .studio-card, .asset-card, .tool-panel,
+.tool-section, .result-card, .output-card, .history-item, .project-card,
+.settings-panel, .preview, .embedded-loading {
+  border-color: #e5e7eb !important;
+  box-shadow: 0 5px 18px rgba(16,24,40,.035) !important;
+}
+input, textarea, select, .top-search, .search-box, .search-input,
+.field input, .field textarea, .field select, .chat-input textarea {
+  background: #ffffff !important; color: #172033 !important; border-color: #d0d5dd !important;
+}
+input::placeholder, textarea::placeholder, .field input::placeholder,
+.field textarea::placeholder { color: #98a2b3 !important; opacity: 1 !important; }
+.brand b, .section-head h2, .dashboard-hero h1, .tool-tile h3,
+.card h2, .card h3, .panel h2, .panel h3, label, .field label { color: #172033 !important; }
+.card p, .tool-tile p, .tool-description, .muted, .status-pill,
+.nav button, .site-footer { color: #667085 !important; }
+.btn.primary, button.primary, .primary-button, .nav button.active,
+.tab.active, .chip.active, .language-choice.active, .quality-choice.active {
+  background: #ffffff !important; background-image: none !important;
+  color: #172033 !important; border: 1px solid #d0d5dd !important;
+  box-shadow: none !important;
+}
+.btn:hover, .icon-btn:hover, .tool-tile:hover, .studio-card:hover,
+.nav button:hover, button:hover { background: #f9fafb !important; }
+.dashboard-hero h1 em, .hero-kicker, .eyebrow { color: #475467 !important; }
+hr { border-color: #e5e7eb !important; }
