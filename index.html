@@ -1002,7 +1002,21 @@ html, body, #app {
 .fd-action-card{cursor:pointer}.fd-action-card:focus-visible{outline:2px solid var(--fd-cyan);outline-offset:3px}.fd-action-card:after{content:"Tap to explore →";margin-top:auto;padding-top:10px;color:var(--fd-cyan);font-size:.78rem;font-weight:800}.fd-action-card p{margin-bottom:4px}
 @media(prefers-reduced-motion:reduce){.fd-card,.fd-btn,.fd-links a{transition:none}.fd-card:hover,.fd-btn:hover{transform:none}}
 
-  </style>
+  
+/* ITFM AI — unified colorful theme across every page and component */
+:root{--bg:#080e35!important;--surface:rgba(25,34,104,.88)!important;--surface-2:rgba(43,42,142,.82)!important;--surface-3:rgba(83,35,158,.78)!important;--text:#f8f7ff!important;--muted:#d0d8ff!important;--line:rgba(111,153,255,.65)!important;--accent:#a855f7!important;--accent-2:#06d6f5!important;--shadow:0 14px 40px rgba(0,0,40,.38)!important}
+body{background-color:#080e35!important;background-image:radial-gradient(ellipse at 10% 5%,rgba(0,183,255,.34),transparent 35%),radial-gradient(ellipse at 90% 10%,rgba(190,35,255,.32),transparent 34%),radial-gradient(ellipse at 50% 85%,rgba(20,75,255,.25),transparent 40%)!important;color:var(--text)!important}
+.sidebar,.topbar,.panel,.card,.tool-card,.movie-card,.content-card,.section-card,.modal,.dropdown,.nav,.tabs,.search-box,.top-search,.form-card,.settings-card,.project-card,.asset-card,.history-row{background:linear-gradient(135deg,rgba(12,45,145,.88),rgba(68,25,137,.88),rgba(20,45,128,.88))!important;border-color:rgba(92,157,255,.65)!important;box-shadow:0 8px 28px rgba(0,0,70,.22),inset 0 1px 0 rgba(255,255,255,.08)!important}
+input,textarea,select,.top-search input,.search-input{background:linear-gradient(110deg,rgba(23,57,151,.94),rgba(75,39,143,.94))!important;color:#fff!important;border:1px solid rgba(113,158,255,.75)!important;border-radius:12px!important;caret-color:#22d3ee!important}
+input::placeholder,textarea::placeholder{color:#d1d7ff!important;opacity:1!important}
+button,.btn,.icon-btn,.nav button,.tab-button{background:linear-gradient(115deg,#00b8f4 0%,#5865ff 48%,#df25ef 100%)!important;color:#fff!important;border-color:rgba(159,143,255,.8)!important;box-shadow:0 5px 18px rgba(80,50,255,.2)!important}
+button:hover,.btn:hover,.icon-btn:hover{filter:brightness(1.12) saturate(1.15)!important}
+.brand-logo,.mobile-brand,.topbar .mobile-brand span,.page-title,.gradient-text,h1,h2{background:linear-gradient(90deg,#29d8ff,#8b5cf6 52%,#ff4dde)!important;background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important}
+.preview,.result-card,.empty,.code-block{background:linear-gradient(135deg,rgba(0,95,205,.72),rgba(75,35,155,.8),rgba(165,25,180,.48))!important;border-color:rgba(86,190,255,.6)!important}
+.badge,.status-pill,.chip,.tag{background:linear-gradient(100deg,rgba(0,191,255,.18),rgba(196,55,255,.25))!important;color:#e7e4ff!important;border-color:rgba(95,190,255,.7)!important}
+hr{border-color:rgba(117,148,255,.5)!important}
+
+</style>
 </head>
 <body>
   <div id="app"></div>
