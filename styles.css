@@ -1087,3 +1087,55 @@ button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-vis
 @media(max-width:500px){.topbar{height:60px}.dashboard-hero{min-height:260px;padding:22px 17px;border-radius:17px!important}.dashboard-hero h1{font-size:36px;max-width:100%}.dashboard-hero p{font-size:12px;line-height:1.65;max-width:95%}.hero-orb{opacity:.22;right:-45px;top:20px;width:125px;height:125px}.dashboard-tools{grid-template-columns:1fr;gap:10px}.tool-tile{min-height:125px}.tile-text{padding:16px}.asset-grid{grid-template-columns:1fr}.section-head h2{font-size:27px}.card,.panel,.tool-card,.feature-card,.movie-card,.stat-card,.settings-card,.section-card,.widget,.modal-card,.content-card,.dashboard-card{border-radius:14px!important;padding:14px}.btn{min-height:40px}.icon-btn{width:38px;height:38px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 
+
+/* ITFM AI — white interiors for every tool; keep all content and behavior intact */
+:root{
+  --bg:#f4f6fc;
+  --surface:#ffffff;
+  --surface-2:#ffffff;
+  --surface-3:#f8faff;
+  --text:#172033;
+  --muted:#667085;
+  --line:#e3e8f2;
+  --accent:#6554e8;
+  --accent-2:#0891b2;
+  --danger:#c43d5a;
+  --shadow:0 14px 38px rgba(28,39,75,.08);
+}
+:root[data-theme="light"]{
+  --bg:#f4f6fc;--surface:#fff;--surface-2:#fff;--surface-3:#f8faff;
+  --text:#172033;--muted:#667085;--line:#e3e8f2;
+  --accent:#6554e8;--accent-2:#0891b2;--danger:#c43d5a;
+  --shadow:0 14px 38px rgba(28,39,75,.08);
+}
+html,body,#app{background:radial-gradient(ellipse at 8% 0%,rgba(101,84,232,.07),transparent 34%),radial-gradient(ellipse at 100% 15%,rgba(8,145,178,.06),transparent 30%),var(--bg)!important;color:var(--text)!important}
+.sidebar,.topbar,.mobile-nav,.bottom-nav,.modal,.dropdown,.popover{background:#fff!important;color:var(--text)!important;border-color:var(--line)!important}
+.card,.panel,.tool-card,.feature-card,.movie-card,.stat-card,.settings-card,.section-card,.widget,.modal-card,.content-card,.dashboard-card,.tool-tile,.dashboard-hero,.preview,.embedded-loading,
+.studio-card,.asset-card,.movie-detail,.tool-panel,.tool-section,.result-card,.output-card,.history-item,.project-card,.settings-panel{
+  background:#fff!important;color:var(--text)!important;border-color:var(--line)!important;
+  box-shadow:0 8px 26px rgba(28,39,75,.055)!important;
+}
+.dashboard-hero{background:linear-gradient(135deg,#fff 0%,#fbfaff 72%,#f2fbff 100%)!important}
+.tool-tile:hover,.studio-card:hover,.card:hover{border-color:#c8c2fb!important}
+.tile-arrow,.studio-icon,.language-toggle,.quality-toggle,.upload,.notice,.status-pill,
+.tab,.chip,.badge,.pill,.result-box,.code-box,.preview-box,.chat-message,.tool-output,.empty-state{
+  background:#fff!important;color:var(--text)!important;border-color:var(--line)!important;
+}
+input,textarea,select,.top-search,.search-box,.search-input,.field input,.field textarea,.field select,.chat-input textarea,
+input[type="text"],input[type="url"],input[type="email"],input[type="password"],input[type="number"],input[type="search"]{
+  background:#fff!important;color:#172033!important;border-color:#dce2ee!important;box-shadow:none!important;
+}
+input::placeholder,textarea::placeholder,.field input::placeholder,.field textarea::placeholder{color:#8993a7!important;opacity:1!important}
+label,.field label,.card p,.tool-tile p,.tile-text,.tool-description,.muted,.status-pill{color:var(--muted)}
+.btn:not(.primary):not(.danger),button:not(.primary):not(.danger):not(.active),.icon-btn,.detail-close{
+  background:#fff!important;color:var(--text)!important;border-color:var(--line)!important;
+}
+.btn.primary,button.primary,.primary-button,.nav button.active,.tab.active,.chip.active,.language-choice.active,.quality-choice.active{
+  background:linear-gradient(110deg,#6554e8,#7968f2)!important;color:#fff!important;border-color:transparent!important;
+}
+.nav button{color:#475467!important}.nav button:hover{background:#f5f6ff!important;color:#322a79!important}.nav button.active{color:#fff!important}
+.brand b,.section-head h2,.dashboard-hero h1,.tool-tile h3,.card h2,.card h3,.panel h2,.panel h3{color:#172033!important}
+.dashboard-hero h1 em{color:#6554e8!important}.hero-kicker,.eyebrow{color:#6554e8!important}
+.upload{border:1px dashed #c9c4f8!important}
+hr{border-color:var(--line)!important}
+@media(prefers-color-scheme:dark){:root:not([data-theme="dark"]){color-scheme:light}}
