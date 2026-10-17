@@ -74,3 +74,7 @@ Create a local `.env` file from `.env.example` for local testing only. `.env` is
 - Daily poster selection uses poster/backdrop artwork when both are available.
 - Add `TMDB_API_KEY` in Vercel Environment Variables and redeploy. If the key is missing or TMDB is unreachable, the built-in catalogue remains as a fallback.
 - Trailer buttons open YouTube official-trailer search; full-length films are not hosted by this project and must be watched through licensed providers.
+
+
+## UI redesign update
+The UI stylesheet has been refreshed with a responsive, colorful design system for dark/light themes, dashboard tool cards, forms, previews, chat, media cards, and mobile layouts. Existing API routes and provider configuration are preserved. Provider-backed tools still require their documented environment variables and provider-specific adapters; see the API and Provider endpoint requirements above.
