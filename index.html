@@ -1108,7 +1108,105 @@ function renderEmbeddedPage(v,page){
   const bytes=Uint8Array.from(atob(EMBEDDED_PAGES[page]),c=>c.charCodeAt(0));
   let html=new TextDecoder().decode(bytes);
   html=html.replace(/<head>/i,'<head><base href="'+location.origin+'/">');
-  const embeddedPolish='<style id="itfm-clean-embedded-theme">:root{--m-bg:#f5f7fc!important;--m-surface:#fff!important;--m-surface2:#f8faff!important;--m-text:#17213b!important;--m-muted:#65718c!important;--m-line:#e2e7f2!important;--m-accent:#6557e8!important;--m-accent2:#0e9fb3!important;color-scheme:light}html,body{background:var(--m-bg)!important;background-image:radial-gradient(ellipse at 0 0,rgba(101,87,232,.07),transparent 35%)!important;color:var(--m-text)!important}body{font-family:Inter,Segoe UI,Roboto,system-ui,sans-serif!important}h1,h2,h3{color:var(--m-text)}.card,.filter-panel,.fd-card,.fd-result{background:#fff!important;color:var(--m-text)!important;border-color:var(--m-line)!important;box-shadow:0 10px 28px rgba(34,48,86,.06)!important;border-radius:16px!important}.lead,.hint,.note,.fd-sub,.fd-note,.fd-card p{color:var(--m-muted)!important}.btn,.button,.primary-btn,.fd-btn,.searchbar button{background:linear-gradient(110deg,#6557e8,#0e9fb3)!important;color:#fff!important;border:0!important;border-radius:10px!important}.searchbar,input,select,textarea,.platform-select{background:#f8faff!important;color:#17213b!important;border-color:#e2e7f2!important;border-radius:10px!important}.nav-chip,.theme-btn,.reset-btn{border-radius:999px!important}.movie-card:hover .poster-wrap img{filter:brightness(.96)}.fd-hero h1,.hero h1{color:#17213b!important}.fd-logo{color:#17213b!important}.fd-pill{background:#f0efff!important;color:#6557e8!important;border-color:#dfdcff!important}.fd-list{color:#46516a!important}</style>';
+  const embeddedPolish='<style id="itfm-clean-embedded-theme">:root{--m-bg:#f5f7fc!important;--m-surface:#fff!important;--m-surface2:#fff!important;--m-text:#17213b!important;--m-muted:#65718c!important;--m-line:#e2e7f2!important;--m-accent:#6557e8!important;--m-accent2:#0e9fb3!important;color-scheme:light}html,body{background:var(--m-bg)!important;background-image:radial-gradient(ellipse at 0 0,rgba(101,87,232,.07),transparent 35%)!important;color:var(--m-text)!important}body{font-family:Inter,Segoe UI,Roboto,system-ui,sans-serif!important}h1,h2,h3{color:var(--m-text)}.card,.filter-panel,.fd-card,.fd-result,.movie-card{background:#fff!important;color:var(--m-text)!important;border-color:var(--m-line)!important;box-shadow:0 10px 28px rgba(34,48,86,.06)!important;border-radius:16px!important}.lead,.hint,.note,.fd-sub,.fd-note,.fd-card p{color:var(--m-muted)!important}.btn,.button,.primary-btn,.fd-btn,.searchbar button{background:linear-gradient(110deg,#6557e8,#0e9fb3)!important;color:#fff!important;border:0!important;border-radius:10px!important}.searchbar,input,select,textarea,.platform-select{background:#fff!important;color:#17213b!important;border-color:#e2e7f2!important;border-radius:10px!important}.nav-chip,.theme-btn,.reset-btn{border-radius:999px!important}.movie-card:hover .poster-wrap img{filter:brightness(.96)}.fd-hero h1,.hero h1{color:#17213b!important}.fd-logo{color:#17213b!important}.fd-pill{background:#f0efff!important;color:#6557e8!important;border-color:#dfdcff!important}.fd-list{color:#46516a!important}
+
+/* FIXED: white interiors for every ITFM AI tool. Kept inside index.html so GitHub Pages/Vercel always loads it. */
+:root, :root[data-theme="light"], :root[data-theme="dark"] {
+  color-scheme: light !important;
+  --bg: #ffffff !important;
+  --surface: #ffffff !important;
+  --surface-2: #ffffff !important;
+  --surface-3: #ffffff !important;
+  --text: #172033 !important;
+  --muted: #667085 !important;
+  --line: #e5e7eb !important;
+  --shadow: 0 6px 20px rgba(16,24,40,.05) !important;
+}
+html, body, #app { background: #fff !important; color: #172033 !important; }
+/* Main tool workspace surfaces */
+#view .card, #view .panel, #view .tool-card, #view .tool-panel,
+#view .tool-section, #view .studio-card, #view .studio-layout,
+#view .form-card, #view .result-card, #view .output-card,
+#view .result-box, #view .preview-box, #view .tool-output,
+#view .settings-panel, #view .settings-card, #view .tab-content,
+#view .tab-pane, #view .tool-content, #view .tool-body,
+#view .tool-workspace, #view .workspace, #view .chat-panel,
+#view .history-item, #view .asset-card, #view .empty-state,
+#view .code-box, #view .file-list, #view .file-row,
+#view .social-supported, #view .social-download-result,
+#view .fd-card, #view .fd-result, #view .fd-section,
+#view .movie-detail, #view .movie-card, #view .filter-panel {
+  background: #fff !important;
+  background-color: #fff !important;
+  background-image: none !important;
+  color: #172033 !important;
+  border-color: #e5e7eb !important;
+  box-shadow: 0 5px 18px rgba(16,24,40,.04) !important;
+}
+/* Tool forms, upload areas, preview/result areas and nested controls */
+#view .field, #view .form, #view .row, #view .result-head,
+#view .notice, #view .upload, #view .dropzone, #view .drop-zone,
+#view .preview, #view .empty, #view .status-pill, #view .tool-badge,
+#view .language-toggle, #view .quality-toggle, #view .language-choice,
+#view .quality-choice, #view .tab, #view .chip, #view .badge,
+#view .pill, #view .file-preview, #view .file-row,
+#view .chat-input, #view .chat-message, #view .chat-empty,
+#view .social-item, #view .social-picker, #view .social-platform,
+#view .social-platform-note, #view .fd-result, #view .fd-pill {
+  background-color: #fff !important;
+  background-image: none !important;
+  color: #172033 !important;
+  border-color: #e5e7eb !important;
+}
+#view input, #view textarea, #view select, #view .form-control,
+#view .field input, #view .field textarea, #view .field select,
+#view .chat-input textarea, #view input[type="text"],
+#view input[type="url"], #view input[type="email"],
+#view input[type="password"], #view input[type="number"],
+#view input[type="search"] {
+  background: #fff !important;
+  background-color: #fff !important;
+  background-image: none !important;
+  color: #172033 !important;
+  border-color: #d0d5dd !important;
+  box-shadow: none !important;
+}
+#view input::placeholder, #view textarea::placeholder { color: #98a2b3 !important; opacity: 1 !important; }
+#view h1, #view h2, #view h3, #view h4, #view label,
+#view .field label, #view .result-head *, #view .file-row *,
+#view .social-supported *, #view .tool-description { color: #172033 !important; }
+#view p, #view small, #view .muted, #view .tool-description,
+#view .empty, #view .field label { color: #667085 !important; }
+#view button:not(.primary), #view .btn:not(.primary), #view .icon-btn,
+#view .language-choice, #view .quality-choice, #view .tab, #view .chip {
+  background: #fff !important;
+  background-color: #fff !important;
+  color: #172033 !important;
+  border-color: #d0d5dd !important;
+  box-shadow: none !important;
+}
+#view .btn.primary, #view button.primary, #view .primary-button,
+#view .auth-submit, #view [class*="generate"].primary {
+  background: #fff !important;
+  background-color: #fff !important;
+  background-image: none !important;
+  color: #172033 !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: none !important;
+}
+#view button:hover, #view .btn:hover { background-color: #f9fafb !important; }
+#view img, #view video, #view canvas, #view iframe, #view svg,
+#view audio, #view picture { background-color: transparent !important; }
+#view .local-preview-media, #view .local-preview-img,
+#view .local-preview-audio, #view .media-preview { background: transparent !important; }
+/* Preserve legibility and avoid accidental coloured interiors on nested tool widgets. */
+#view .card *, #view .panel *, #view .tool-panel *, #view .tool-section *,
+#view .form-card *, #view .result-card *, #view .settings-panel * { --text: #172033; }
+@media (prefers-reduced-motion: reduce) {
+  #view *, #view *::before, #view *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+</style>';
   html=html.replace(/<\/head>/i,embeddedPolish+'</head>');
   html=html.replace(/<option value="tiktok">TikTok<\/option>/gi,'');
   html=html.replace(/TikTok video\/share link or direct/gi,'video share link or direct');
