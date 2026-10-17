@@ -996,3 +996,18 @@ html, body, #app {
 .fd-detail-head strong{font-size:1.08rem;color:#f7f8ff;}
 .fd-detail-close{display:grid;place-items:center;flex:0 0 36px;width:36px;height:36px;border:1px solid var(--fd-line);border-radius:10px;background:rgba(255,255,255,.06);color:#fff;font-size:1.4rem;cursor:pointer;}
 .fd-result .fd-detail-cta{margin-top:4px;}
+
+
+/* ITFM AI unified colorful neon theme — applied consistently across all pages */
+:root,:root[data-theme="light"],:root[data-theme="dark"]{
+ color-scheme:dark!important;--bg:#07102d!important;--surface:rgba(16,25,72,.88)!important;--surface-2:rgba(32,30,104,.82)!important;--surface-3:rgba(54,42,132,.78)!important;--text:#f7f7ff!important;--muted:#c6d2ff!important;--line:rgba(113,145,255,.42)!important;--accent:#8b5cf6!important;--accent-2:#06d6ff!important;--accent-3:#f02bd5!important;--accent-4:#ff71c8!important;--color-gradient:linear-gradient(110deg,#00d5ff 0%,#5968ff 38%,#a72cff 70%,#f323c8 100%)!important;--color-gradient-soft:linear-gradient(135deg,rgba(0,213,255,.18),rgba(104,56,255,.2),rgba(243,35,200,.18))!important;--shadow:0 20px 55px rgba(0,0,0,.3)!important;
+}
+html,body,#app{background-color:#07102d!important;background-image:radial-gradient(ellipse at 8% 0%,rgba(0,213,255,.20),transparent 34%),radial-gradient(ellipse at 95% 12%,rgba(190,35,255,.25),transparent 36%),radial-gradient(ellipse at 55% 90%,rgba(243,35,200,.14),transparent 35%),linear-gradient(135deg,#06102b 0%,#11165a 45%,#28105a 75%,#07102d 100%)!important;background-attachment:fixed!important;color:#f7f7ff!important;}
+body:before{display:block!important;content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at 10% 20%,rgba(0,213,255,.12),transparent 28%),radial-gradient(circle at 90% 30%,rgba(243,35,200,.13),transparent 30%)!important}
+.main,.content,.page,.workspace{background:transparent!important}
+.topbar,.sidebar{background:rgba(5,10,37,.88)!important;border-color:rgba(105,130,255,.4)!important;backdrop-filter:blur(18px)}
+.brand b,.brand-text,.site-footer strong,.welcome-intro h1 span,.section-head h2,.tool-tile h3,.card h3{background:var(--color-gradient)!important;background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important}
+.card,.studio-card,.asset,.project-card,.tool-tile,.welcome-intro,.dashboard-hero,.section-head,.upload,.preview,.notice,.studio-icon,.project-art{background-image:var(--color-gradient-soft)!important;background-color:rgba(14,22,68,.78)!important;border-color:rgba(117,105,255,.55)!important;box-shadow:0 12px 35px rgba(0,0,0,.2),inset 0 1px rgba(255,255,255,.06)!important}
+.btn.primary,.nav button.active,.language-choice.active,.quality-choice.active{background:var(--color-gradient)!important;color:white!important;border-color:rgba(130,125,255,.85)!important;box-shadow:0 8px 26px rgba(125,55,255,.28)!important}
+.btn:not(.primary),.icon-btn,.field input,.field textarea,.field select,.chat-input textarea,.top-search{background:rgba(26,27,86,.78)!important;color:#f7f7ff!important;border-color:rgba(116,132,255,.48)!important}
+input,textarea,select{color:#f7f7ff!important}input::placeholder,textarea::placeholder{color:#c0c8ef!important;opacity:1!important}
