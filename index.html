@@ -1248,6 +1248,43 @@ html, body, #app { background: #fff !important; color: #172033 !important; }
   #view *, #view *::before, #view *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
+
+/* ITFM AI dark neon override for Movies + Downloader: remove white panels and controls */
+:root, :root[data-theme="light"], :root[data-theme="dark"]{
+ color-scheme:dark!important;--m-bg:#090714!important;--m-surface:#111831!important;
+ --m-surface2:#1b1b3b!important;--m-text:#f5f7ff!important;--m-muted:#b8c2df!important;
+ --m-line:rgba(139,92,246,.42)!important;--m-accent:#8b5cf6!important;--m-accent2:#06b6d4!important;
+ --bg:#090714!important;--surface:#111831!important;--surface-2:#1b1b3b!important;
+ --surface-3:#26204a!important;--text:#f5f7ff!important;--muted:#b8c2df!important;
+ --line:rgba(139,92,246,.42)!important;
+}
+html,body,#app{background:radial-gradient(ellipse at 5% 0%,rgba(34,211,238,.13),transparent 35%),radial-gradient(ellipse at 95% 10%,rgba(139,92,246,.18),transparent 40%),#090714!important;color:#f5f7ff!important}
+.card,.filter-panel,.fd-card,.fd-result,.movie-card,.movie-detail,.panel,.modal,.modal-content,
+.movie-modal,.movie-detail-modal,.dialog,.content,.container,.form-card,.result-card,.section,
+.fd-section,.fd-list,.movie-info,.movie-body,.movie-content,.details,.details-card{
+ background:linear-gradient(135deg,rgba(17,24,49,.98),rgba(34,27,65,.96))!important;
+ background-color:#111831!important;color:#f5f7ff!important;border-color:#463d70!important;
+ box-shadow:0 14px 40px rgba(0,0,0,.3)!important
+}
+.card *, .filter-panel *, .fd-card *, .fd-result *, .movie-card *, .movie-detail *,
+.movie-modal *, .movie-detail-modal *, .modal *, .modal-content *, .dialog *{color:inherit}
+h1,h2,h3,.fd-hero h1,.hero h1,.fd-logo{background:linear-gradient(110deg,#8b5cf6,#06b6d4 55%,#ec4899)!important;
+-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+p,.lead,.hint,.note,.fd-sub,.fd-note,.fd-card p,.muted,.description{color:#b8c2df!important}
+input,textarea,select,.input,.form-control,.platform-select,.searchbar,.searchbar input,
+#view input,#view textarea,#view select{
+ background:#0d0b1b!important;background-color:#0d0b1b!important;color:#f5f7ff!important;
+ border:1px solid #463d70!important;box-shadow:inset 0 1px 4px rgba(0,0,0,.22)!important
+}
+select option{background:#111831!important;color:#f5f7ff!important}
+.btn,.button,.primary-btn,.fd-btn,.searchbar button,button.primary,#view .btn,#view button.primary{
+ background:linear-gradient(110deg,#6950f5,#06b6d4 55%,#d946ef)!important;color:#fff!important;
+ border:1px solid transparent!important;box-shadow:0 7px 22px rgba(70,70,220,.2)!important
+}
+.nav-chip,.theme-btn,.reset-btn,.fd-pill,.tag,.chip,.pill,.badge{
+ background:rgba(139,92,246,.14)!important;color:#d7d8ff!important;border-color:#463d70!important
+}
+hr{border-color:rgba(139,92,246,.3)!important}
 </style>`;
   html=html.replace(/<\/head>/i,embeddedPolish+'</head>');
   html=html.replace(/<option value="tiktok">TikTok<\/option>/gi,'');
