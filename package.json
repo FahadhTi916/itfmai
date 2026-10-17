@@ -1,0 +1,13 @@
+{
+  "name": "itfm-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ITFM AI Studio website scaffold for Vercel",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel"
+  },
+  "devDependencies": {
+    "vercel": "^39.0.0"
+  }
+}
