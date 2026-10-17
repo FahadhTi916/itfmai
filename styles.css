@@ -1198,3 +1198,118 @@ input::placeholder, textarea::placeholder, .field input::placeholder,
 .nav button:hover, button:hover { background: #f9fafb !important; }
 .dashboard-hero h1 em, .hero-kicker, .eyebrow { color: #475467 !important; }
 hr { border-color: #e5e7eb !important; }
+
+/* FINAL OVERRIDE: every inner area of every tool stays white. Keep media previews intact. */
+:root, :root[data-theme="dark"], :root[data-theme="light"] {
+  color-scheme: light !important;
+  --bg: #fff !important;
+  --surface: #fff !important;
+  --surface-2: #fff !important;
+  --surface-3: #fff !important;
+  --tool-bg: #fff !important;
+}
+/* Tool workspaces and all nested controls/results/previews */
+.content .card,
+.content .panel,
+.content .tool-card,
+.content .tool-panel,
+.content .tool-section,
+.content .studio-card,
+.content .studio-layout,
+.content .result-card,
+.content .output-card,
+.content .result-box,
+.content .preview-box,
+.content .tool-output,
+.content .upload,
+.content .dropzone,
+.content .drop-zone,
+.content .field,
+.content .form-group,
+.content .settings-panel,
+.content .settings-card,
+.content .tab-content,
+.content .tab-pane,
+.content .tool-content,
+.content .tool-body,
+.content .tool-workspace,
+.content .workspace,
+.content .chat-panel,
+.content .chat-message,
+.content .chat-input,
+.content .history-item,
+.content .asset-card,
+.content .empty-state,
+.content .notice,
+.content .status-pill,
+.content .code-box,
+.content .form-control,
+.content input,
+.content textarea,
+.content select,
+.content button,
+.content .btn,
+.content [class*="tool-"],
+.content [class*="result"],
+.content [class*="output"],
+.content [class*="preview"],
+.content [class*="upload"],
+.content [class*="dropzone"],
+.content [class*="input"] {
+  background-color: #fff !important;
+  background-image: none !important;
+  color: #172033 !important;
+  border-color: #e5e7eb;
+}
+/* Ensure nested panels don't retain dark/coloured fills. Do not paint actual media. */
+.content .card *,
+.content .panel *,
+.content .tool-card *,
+.content .tool-panel *,
+.content .tool-section *,
+.content .studio-card *,
+.content .tool-content *,
+.content .tool-body *,
+.content .tool-workspace *,
+.content .workspace *,
+.content .tab-content *,
+.content .tab-pane * {
+  color: inherit;
+}
+.content .card,
+.content .panel,
+.content .tool-card,
+.content .tool-panel,
+.content .tool-section,
+.content .studio-card,
+.content .result-card,
+.content .output-card,
+.content .settings-panel,
+.content .settings-card,
+.content .asset-card,
+.content .history-item,
+.content .tool-content,
+.content .tool-body,
+.content .tool-workspace,
+.content .workspace {
+  box-shadow: 0 4px 16px rgba(16,24,40,.04) !important;
+  border: 1px solid #e5e7eb;
+}
+.content button:hover,
+.content .btn:hover,
+.content input:focus,
+.content textarea:focus,
+.content select:focus { background-color: #f9fafb !important; }
+.content img,
+.content video,
+.content canvas,
+.content iframe,
+.content svg { background-color: transparent !important; }
+.content .btn.primary,
+.content button.primary,
+.content .primary-button,
+.content [class*="generate"].primary {
+  background: #fff !important;
+  color: #172033 !important;
+  border: 1px solid #d0d5dd !important;
+}
