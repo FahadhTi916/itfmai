@@ -1331,3 +1331,32 @@ html, body, #app { background: #ffffff !important; background-image: none !impor
 body:before { display: none !important; background: none !important; }
 .layout, .main, .content, .page, .page-content, .main-content, .dashboard, .tools-page, .section { background-color: #ffffff !important; background-image: none !important; color: #172033; }
 .sidebar, .topbar, header, .mobile-header, .nav, .menu-panel { background-color: #ffffff !important; color: #172033 !important; }
+
+/* Movies + Downloader colorful dark UI fix: remove leftover white panels */
+#view .movie-card, #view .movie-detail, #view .filter-panel,
+#view .fd-card, #view .fd-result, #view .fd-section,
+#view .card:has(.movie-poster), #view .card:has(.platform-select) {
+  background: linear-gradient(145deg, rgba(31,25,72,.98), rgba(8,28,52,.98)) !important;
+  background-color: #111a39 !important; background-image: linear-gradient(145deg, rgba(31,25,72,.98), rgba(8,28,52,.98)) !important;
+  color: #f4f7ff !important; border: 1px solid rgba(125,151,255,.28) !important;
+  box-shadow: 0 10px 28px rgba(3,8,30,.24) !important; border-radius: 16px !important;
+}
+#view .movie-card *, #view .movie-detail *, #view .filter-panel *,
+#view .fd-card *, #view .fd-result *, #view .fd-section * { color: inherit; }
+#view .movie-card h1, #view .movie-card h2, #view .movie-card h3,
+#view .movie-detail h1, #view .movie-detail h2, #view .movie-detail h3,
+#view .fd-card h1, #view .fd-card h2, #view .fd-card h3 { color:#fff !important; }
+#view .searchbar, #view .platform-select, #view input, #view select, #view textarea {
+  background: rgba(8,15,39,.92) !important; color:#f7f8ff !important;
+  border-color: rgba(139,125,255,.42) !important;
+}
+#view .btn:not(.primary), #view .icon-btn, #view .tab, #view .chip,
+#view .nav-chip, #view .quality-choice, #view .language-choice {
+  background: linear-gradient(135deg,rgba(79,70,229,.24),rgba(6,182,212,.16)) !important;
+  color:#f6f7ff !important; border-color:rgba(129,140,248,.38) !important;
+}
+#view .btn.primary, #view button.primary, #view .primary-button,
+#view .auth-submit, #view [class*="download"].primary {
+  background:linear-gradient(110deg,#2563eb,#7c3aed 55%,#db2777) !important;
+  color:#fff !important; border:0 !important; box-shadow:0 8px 22px rgba(99,102,241,.25) !important;
+}
