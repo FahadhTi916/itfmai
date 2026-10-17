@@ -5,9 +5,11 @@
   "description": "ITFM AI Studio website scaffold for Vercel",
   "scripts": {
     "dev": "vercel dev",
-    "deploy": "vercel"
+    "deploy": "vercel --prod",
+    "check": "node --check api/chat.js && node --check api/generate.js && node --check api/domain-search.js"
   },
   "devDependencies": {
     "vercel": "^39.0.0"
-  }
+  },
+  "type": "module"
 }

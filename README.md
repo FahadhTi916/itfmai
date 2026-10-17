@@ -1,54 +1,52 @@
-# ITFM AI Studio — Vercel starter
+# ITFM AI — GitHub + Vercel deployment
 
-This project packages the uploaded `index.html` as the **ITFM AI** site and keeps its embedded pages and frontend code. The linked stylesheet has been extracted to `styles.css`.
+This repository contains the ITFM AI frontend, Vercel serverless API routes, and a Vercel Environment Variable checklist. It is designed to be pushed to GitHub and imported into Vercel.
 
-## Important deployment note
+## Deploy
 
-**Deploy this project to Vercel, not GitHub Pages, for API Settings and AI endpoints.** GitHub Pages only serves static files and returns an HTML 404 page for `/api/vault-auth`; parsing that HTML as JSON causes the `Unexpected token '<'` error. The main stylesheet is now embedded in `index.html` as well, so the design remains visible even if `styles.css` is not served correctly.
+1. Extract this ZIP. Keep `index.html`, `styles.css`, `api/`, `package.json`, `vercel.json`, and `.env.example` in the repository root.
+2. Create a GitHub repository and upload/commit the project files. `.gitignore` excludes `.env` files and deployment artifacts.
+3. In Vercel, choose **Add New → Project**, import the GitHub repository, and deploy. No frontend build command is required.
+4. In Vercel → Project → Settings → Environment Variables, add the variables from `.env.example` with your own API keys. Do not commit real keys to GitHub.
+5. Redeploy after changing environment variables.
+6. Open **API Settings** in ITFM AI to see whether the server can detect each key.
 
-## Important status
+## Implemented server routes
 
-- The frontend is included from the uploaded file.
-- The API endpoints in `api/` are **safe placeholders returning HTTP 501**. They are not live AI integrations yet.
-- Adding an API key to Vercel does not automatically connect a provider. Each endpoint must be implemented for that provider's API, request format, authentication, and response format.
-- The original frontend calls endpoints such as `/api/generate`, `/api/chat`, `/api/music`, `/api/cover`, `/api/tts`, `/api/transcribe`, `/api/background-remove`, `/api/karaoke-remove`, `/api/social-download`, `/api/media`, `/api/status`, `/api/test-connection`, `/api/credentials`, and `/api/vault-auth`.
+- `POST /api/chat` — real Gemini `generateContent` integration (`GEMINI_API_KEY`, optional `GEMINI_MODEL`).
+- `GET /api/movies?category=trending|popular` or `GET /api/movies?category=search&query=...` — TMDB API (`TMDB_API_KEY`).
+- `GET /api/domain-search?domain=example.com` — WhoisJSON lookup (`WHOISJSON_API_KEY`, optional `WHOISJSON_API_URL`). WHOIS lookup data is not a guarantee of live registration availability.
+- `GET /api/config-status` — returns configured/missing flags only, never secrets.
+- `POST /api/test-connection` — real auth tests for Gemini and TMDB; for some providers, verifies key/endpoint configuration but not a complete provider job.
+- `POST /api/tts` — ElevenLabs text-to-speech (`ELEVENLABS_API_KEY`).
+- Other generation/removal/download routes are secure server-side proxy scaffolds using distinct environment keys and endpoint variables. Their request/response adapters must match each provider's official API contract.
 
-## Deploy to GitHub and Vercel
+## Provider endpoint requirements
 
-1. Extract this ZIP.
-2. Create a new repository on GitHub, for example `itfm-ai`.
-3. Upload/commit the files in this folder to the repository root (including `api/`, `index.html`, `styles.css`, `vercel.json`, and `package.json`).
-4. In Vercel, choose **Add New → Project**, import the GitHub repository, and deploy. This is a static frontend plus Vercel serverless-function scaffold; no build command is required.
-5. In Vercel → Project → Settings → Environment Variables, add the real provider keys. Redeploy after changing environment variables.
+An API key is not sufficient for every integration. Get the correct API endpoint, authentication scheme, request format, job-status URL and response format from each provider's official dashboard/docs. Configure the corresponding `*_API_URL` variables. The generic proxy currently assumes Bearer auth and JSON payloads; providers that use custom headers, multipart uploads, async jobs, or a different schema need a provider-specific adapter before production use.
 
-## Environment variable names
+- AI Image: `GETIMG_API_KEY`, `GETIMG_IMAGE_API_URL`
+- AI Video: `GETIMG_VIDEO_API_KEY`, `GETIMG_VIDEO_API_URL`
+- Audio & Voice: `ELEVENLABS_API_KEY`
+- AI Music: `MUSIC_API_KEY`, `MUSIC_API_URL`
+- AI Cover / Karaoke: `ACEMUSIC_API_KEY`, `ACEMUSIC_API_URL`
+- Genjutsu AI: `HIGGSFIELD_API_KEY`, `HIGGSFIELD_API_URL`, optional `HIGGSFIELD_STATUS_API_URL`
+- Movies: `TMDB_API_KEY`
+- Free Domain: `WHOISJSON_API_KEY`, optional `WHOISJSON_API_URL`
+- Downloader: each service has its own `*_API_KEY` and `*_API_URL` pair.
 
-Use `.env.example` as a checklist. Suggested names:
-- `GETIMG_API_KEY` — image/video provider (confirm your provider plan/API access)
-- `ELEVENLABS_API_KEY` — audio/voice (music support depends on the provider's current API/product access)
-- `ACEMUSIC_API_KEY` — cover/karaoke provider
-- `GEMINI_API_KEY` — Gemini chat
-- `HIGGSFIELD_API_KEY` — Higgsfield/Genjutsu
-- `TMDB_API_KEY` — movie metadata
-- `SAVERAPI_API_KEY`, `DLGRAM_API_KEY`, `SOCIALKIT_API_KEY`, `REVID_API_KEY`, `PLAYTERABOX_API_KEY` — only for downloader services you are authorized to use
-- `WHOISJSON_API_KEY` — only if using an authenticated WhoisJSON plan; check its current API requirements
-- `ITFMAI_ADMIN_PASSWORD` and `ITFMAI_ENCRYPTION_KEY` — only after the credential-vault backend is implemented
+## Security
 
-## Security checklist
-
-- **Never** paste real keys into `index.html`, `styles.css`, GitHub, or a public chat.
-- Keep keys as Vercel Environment Variables and read them only in server-side `/api` functions.
-- Use provider official documentation to implement each API route and validate inputs, handle rate limits, and avoid logging secrets.
-- Do not assume downloader integrations work without provider-specific authorization and compliant use.
-- Before production, replace all placeholder handlers and test every feature in the deployed site.
+- Never paste API keys into `index.html`, `styles.css`, client-side JavaScript, GitHub, or chat messages.
+- Use Vercel Environment Variables for secrets. Frontend code only calls same-origin `/api/...` endpoints.
+- Add rate limiting, abuse controls, provider-specific request validation and quotas before making generation endpoints public.
+- The old browser credential-vault UI is disabled; configure secrets in Vercel instead.
 
 ## Local development
-
-Install Node.js, then run:
 
 ```bash
 npm install
 npx vercel dev
 ```
 
-The placeholder API routes intentionally return 501 until implemented.
+Create a local `.env` file from `.env.example` for local testing only. `.env` is ignored by Git.
