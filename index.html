@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b16">
+<title>ITFM AI — Creative AI Studio</title>
+<style>
+:root{--bg:#080b16;--panel:#101629;--panel2:#151d34;--line:#26304c;--text:#f4f6ff;--muted:#9ba7c5;--purple:#8b5cf6;--cyan:#22d3ee;--pink:#ec4899;--green:#34d399}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 70% -10%,#25204c 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}.sidebar{border-right:1px solid var(--line);background:#090d1aee;padding:24px 16px;position:sticky;top:0;height:100vh;overflow:auto}.brand{display:flex;align-items:center;gap:12px;padding:0 10px 28px}.logo{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),var(--cyan));font-weight:900;color:#fff;box-shadow:0 8px 28px #8b5cf655}.brand strong{font-size:18px;letter-spacing:.5px}.brand small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.nav-label{font-size:10px;letter-spacing:1.8px;color:#73809f;font-weight:800;padding:14px 12px 8px}.nav{display:flex;flex-direction:column;gap:5px}.nav button{border:1px solid transparent;background:transparent;color:#aeb9d5;text-align:left;padding:11px 12px;border-radius:11px;display:flex;gap:11px;align-items:center;font-size:13px}.nav button:hover,.nav button.active{background:linear-gradient(90deg,#8b5cf622,#22d3ee0b);border-color:#8b5cf644;color:white}.nav .ico{width:20px;text-align:center;font-size:16px}.sidebar-bottom{margin-top:28px;padding:15px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(140deg,#151b31,#101426)}.sidebar-bottom strong{font-size:12px}.sidebar-bottom p{font-size:11px;color:var(--muted);line-height:1.6}.main{min-width:0}.topbar{height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:sticky;top:0;z-index:5;background:#080b16dd;backdrop-filter:blur(18px)}.crumb{font-size:13px;color:var(--muted)}.crumb b{color:white}.top-right{display:flex;align-items:center;gap:12px}.status{font-size:11px;color:#fbbf24;border:1px solid #92400e;border-radius:99px;padding:7px 10px;background:#78350f22}.avatar{width:35px;height:35px;border-radius:12px;background:#252b45;display:grid;place-items:center;font-weight:800}.content{max-width:1440px;margin:auto;padding:30px 32px 56px}.view{display:none}.view.active{display:block}.hero{display:flex;align-items:center;justify-content:space-between;gap:25px;margin:8px 0 28px}.eyebrow{color:#a78bfa;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(30px,4vw,46px);letter-spacing:-1.5px;line-height:1.1;margin:10px 0}.gradient{background:linear-gradient(90deg,#c4b5fd,#67e8f9 65%,#f0abfc);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);font-size:14px;line-height:1.7;max-width:650px;margin:0}.hero-chip{border:1px solid #3b3168;background:#1b1538;padding:18px;border-radius:18px;min-width:160px;text-align:center}.hero-chip b{font-size:22px}.hero-chip small{display:block;color:var(--muted);margin-top:4px}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-bottom:28px}.feature{border:1px solid var(--line);border-radius:18px;padding:20px;background:linear-gradient(145deg,#151c32,#0f1425);min-height:155px;cursor:pointer;transition:.2s}.feature:hover{transform:translateY(-3px);border-color:#7160c7}.feature .symbol{font-size:23px;width:44px;height:44px;display:grid;place-items:center;border-radius:13px;background:#8b5cf622;margin-bottom:14px}.feature h3{font-size:15px;margin:0 0 7px}.feature p{font-size:12px;line-height:1.6;color:var(--muted);margin:0}.section-head{display:flex;align-items:center;justify-content:space-between;margin:28px 0 15px}.section-head h2{font-size:18px;margin:0}.section-head span{font-size:12px;color:var(--muted)}.tool-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:18px}.panel{border:1px solid var(--line);border-radius:18px;background:linear-gradient(160deg,#12192d,#0e1323);padding:22px;min-width:0}.panel h2,.panel h3{margin:0 0 6px}.panel-sub{color:var(--muted);font-size:12px;margin:0 0 22px;line-height:1.6}.provider-note{display:flex;gap:10px;align-items:flex-start;border:1px solid #7c5a1b;background:#5b42171c;color:#f7d58a;padding:12px;border-radius:12px;font-size:12px;line-height:1.55;margin-bottom:20px}.provider-note b{display:block;margin-bottom:2px}.field{margin-bottom:17px}.field label{display:block;font-size:12px;font-weight:700;margin-bottom:8px;color:#dbe3fa}.field input[type=text],.field input[type=search],.field select,.field textarea,.searchbox{width:100%;background:#090e1d;border:1px solid #2b3654;border-radius:10px;padding:12px;color:white;outline:none}.field textarea{min-height:115px;resize:vertical;line-height:1.5}.field input:focus,.field textarea:focus,.field select:focus{border-color:#8b5cf6}.choices{display:flex;flex-wrap:wrap;gap:8px}.choice{border:1px solid #303a59;background:#0b1120;color:#b7c3df;border-radius:9px;padding:9px 12px;font-size:12px}.choice.selected{background:#8b5cf622;border-color:#8b5cf6;color:white}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.upload{border:1px dashed #3b4769;background:#0b1020;border-radius:13px;padding:20px;text-align:center;color:var(--muted);font-size:12px}.upload input{display:block;width:100%;margin-top:12px;font-size:11px}.upload strong{display:block;color:#e7eaff;font-size:13px;margin-bottom:5px}.btnrow{display:flex;gap:10px;flex-wrap:wrap}.btn{border:1px solid #37415f;background:#171f36;color:white;border-radius:10px;padding:11px 15px;font-size:12px;font-weight:800}.btn.primary{border:0;background:linear-gradient(100deg,#7c3aed,#0891b2);box-shadow:0 7px 22px #4f46e533}.btn:hover{filter:brightness(1.12)}.btn:disabled{opacity:.55;cursor:not-allowed}.preview{min-height:330px;display:flex;flex-direction:column}.preview-box{flex:1;min-height:245px;border:1px dashed #303b5b;border-radius:14px;background:radial-gradient(ellipse at center,#20234455,transparent 70%),#0a0f1e;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;overflow:hidden}.preview-box img,.preview-box video,.preview-box audio{max-width:100%;max-height:330px;border-radius:10px}.empty-icon{font-size:34px;margin-bottom:12px}.preview-box strong{display:block;font-size:13px}.preview-box p{font-size:12px;color:var(--muted);line-height:1.6;max-width:280px}.micro{font-size:11px;color:var(--muted);line-height:1.6;margin-top:12px}.notice{padding:12px;border-radius:10px;background:#111a2d;border:1px solid var(--line);font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px}.tool-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}.tool-tabs button{border:1px solid var(--line);background:#10172a;color:#b7c3df;padding:9px 11px;border-radius:9px;font-size:11px}.tool-tabs button.active{background:#8b5cf622;border-color:#8b5cf6;color:#fff}.movies-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.movies-toolbar input{flex:1;min-width:200px}.movie-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}.movie{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#11172a}.poster{height:160px;background:linear-gradient(135deg,#29204c,#123047);display:grid;place-items:center;font-size:34px;position:relative}.poster:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#080b16bb,transparent 75%)}.poster span{z-index:1;font-weight:900;letter-spacing:2px;color:#e0e7ff}.movie-info{padding:12px}.movie-info b{font-size:12px;display:block}.movie-info small{font-size:10px;color:var(--muted);display:block;margin-top:5px}.tag{font-size:9px;color:#67e8f9;border:1px solid #164e63;padding:4px 6px;border-radius:6px;display:inline-block;margin-top:9px}.tv-layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px}.channel-list{max-height:650px;overflow:auto}.channel{width:100%;display:flex;align-items:center;gap:10px;text-align:left;background:#0b1020;border:1px solid var(--line);color:white;border-radius:10px;padding:11px;margin:7px 0}.channel:hover,.channel.active{border-color:#8b5cf6;background:#8b5cf615}.channel .tv-icon{width:34px;height:34px;border-radius:9px;background:#1d2945;display:grid;place-items:center}.channel small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.player{min-height:380px;background:#03060d;border:1px solid var(--line);border-radius:15px;display:grid;place-items:center;padding:20px;text-align:center}.player video{width:100%;max-height:420px}.player .empty-icon{font-size:40px}.chat-window{height:300px;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:14px;background:#090e1c;margin-bottom:12px}.bubble{padding:10px 12px;border-radius:12px;max-width:85%;font-size:12px;line-height:1.6;margin:8px 0}.bubble.user{background:#34236b;margin-left:auto}.bubble.assistant{background:#18223a;color:#d5def7}.chat-send{display:flex;gap:8px}.chat-send input{flex:1;min-width:0;background:#090e1d;border:1px solid #2b3654;border-radius:10px;padding:12px;color:white}.footer{border-top:1px solid var(--line);padding:22px 32px;color:#7885a4;font-size:11px;line-height:1.7}.mobile-menu{display:none}.hidden{display:none!important}
+@media(max-width:1100px){.cards{grid-template-columns:repeat(2,1fr)}.movie-grid{grid-template-columns:repeat(4,1fr)}.tool-layout{grid-template-columns:1fr}.preview{min-height:280px}}
+@media(max-width:760px){.app{display:block}.sidebar{position:fixed;left:-270px;z-index:20;width:250px;transition:left .2s;box-shadow:10px 0 40px #0008}.sidebar.open{left:0}.topbar{padding:0 16px;height:65px}.mobile-menu{display:inline-block;background:transparent;border:1px solid var(--line);color:white;padding:8px 10px;border-radius:9px;margin-right:10px}.content{padding:22px 15px 40px}.hero{align-items:flex-start}.hero-chip{display:none}.cards{grid-template-columns:1fr 1fr;gap:10px}.feature{padding:14px;min-height:140px}.tool-layout{grid-template-columns:1fr}.panel{padding:16px}.grid2{grid-template-columns:1fr}.movie-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.poster{height:145px}.tv-layout{grid-template-columns:1fr}.channel-list{max-height:300px}.player{min-height:240px}.status{display:none}.footer{padding:20px 16px}.top-right{gap:8px}}
+@media(max-width:390px){.cards{grid-template-columns:1fr}.hero h1{font-size:30px}}
+
+/* ===== ITFM AI: polished responsive redesign ===== */
+:root{
+ --bg:#070b1b;--panel:#101a38;--panel2:#17244b;--line:#2b3c70;
+ --text:#f5f7ff;--muted:#c1cbe6;--purple:#8c5cff;--cyan:#18d8ef;
+ --pink:#ff38bd;--green:#49e5b2;
+}
+html{scroll-padding-top:88px}
+body{
+ background:radial-gradient(ellipse at 95% 18%,rgba(0,191,222,.15),transparent 35%),
+ radial-gradient(ellipse at 0% 38%,rgba(112,61,255,.15),transparent 42%),#070b1b;
+}
+.app{grid-template-columns:260px minmax(0,1fr)}
+.sidebar{background:rgba(7,11,28,.96);border-right-color:#26345d}
+.logo{background:linear-gradient(135deg,#397bff,#9a47ff,#f04abf);box-shadow:0 8px 25px #754dff44}
+.brand strong{letter-spacing:.4px}
+.nav button{padding:12px;border-radius:12px}
+.nav button.active{background:linear-gradient(100deg,#5434a944,#163c5d66);border-color:#6853c766;color:#fff}
+.topbar{background:rgba(7,11,28,.92);border-bottom-color:#27345d}
+.mobile-brand{display:none}
+.content{max-width:1380px;padding:30px 32px 56px}
+.hero{
+ border:1px solid #3a4c91;border-radius:27px;padding:34px;
+ background:linear-gradient(120deg,rgba(43,33,113,.98),rgba(30,63,145,.95) 58%,rgba(0,133,166,.92));
+ box-shadow:inset 0 1px 0 #ffffff12,0 18px 42px #0002;
+ min-height:190px;
+}
+#view-home .hero{min-height:330px;align-items:center}
+#view-home .hero h1{font-size:clamp(38px,5vw,64px);letter-spacing:-2px}
+#view-home .hero p{font-size:clamp(15px,1.5vw,19px);max-width:690px;color:#e2eaff}
+.eyebrow{color:#57e5f4;letter-spacing:2.5px}
+.gradient{background:linear-gradient(95deg,#c8f7ff,#f4b9ff 70%,#ffdbf5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-chip{border-color:#ffffff35;background:#ffffff12;backdrop-filter:blur(10px)}
+.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-bottom:32px}
+.feature{
+ min-height:265px;padding:25px;border-radius:24px;position:relative;overflow:hidden;
+ display:grid;grid-template-columns:116px minmax(0,1fr);grid-template-rows:1fr auto;
+ column-gap:20px;align-items:start;
+ border:1px solid #304574;
+ background:linear-gradient(135deg,rgba(20,34,72,.98),rgba(17,28,60,.98));
+ box-shadow:0 12px 30px #0002;transition:transform .22s,border-color .22s,box-shadow .22s;
+}
+.feature:before{
+ content:"";position:absolute;width:210px;height:210px;left:60px;top:-155px;
+ border:8px solid rgba(141,91,255,.95);border-right-color:transparent;border-bottom-color:transparent;
+ border-radius:50%;transform:rotate(18deg);opacity:.9;pointer-events:none
+}
+.feature:after{
+ content:"";position:absolute;inset:auto -35px -105px auto;width:210px;height:210px;
+ background:radial-gradient(circle,#1c9ed733,transparent 70%);pointer-events:none
+}
+.feature:hover{transform:translateY(-4px);border-color:#6e75e8;box-shadow:0 18px 42px #0003}
+.feature .symbol{
+ width:100px;height:100px;border-radius:23px;grid-column:1;grid-row:1;
+ display:grid;place-items:center;font-size:43px;margin:3px 0 0;
+ background:linear-gradient(145deg,#ff2db8,#d00091);border:1px solid #ff82dc;
+ box-shadow:0 10px 25px #e000a533;position:relative;z-index:1
+}
+.feature-video .symbol{background:linear-gradient(145deg,#08c7ed,#1263ff);border-color:#51dcff}
+.feature-audio .symbol{background:linear-gradient(145deg,#8d55ff,#4e36da);border-color:#b49bff}
+.feature-music .symbol{background:linear-gradient(145deg,#ff9a35,#f04487);border-color:#ffc17b}
+.feature-chat .symbol{background:linear-gradient(145deg,#11caa5,#0875bd);border-color:#63f4d4}
+.feature-studio .symbol{background:linear-gradient(145deg,#f45a9e,#7b43e8);border-color:#f6a6dc}
+.feature-copy{grid-column:2;grid-row:1;position:relative;z-index:1;padding-top:16px}
+.feature h3{font-size:23px;margin:0 0 12px;letter-spacing:-.4px}
+.feature p{font-size:15px;line-height:1.65;color:#c6d2f0;margin:0}
+.feature-open{
+ grid-column:1/-1;grid-row:2;z-index:2;width:100%;margin-top:23px;
+ border:0;border-radius:999px;padding:15px 18px;color:white;font-size:15px;font-weight:800;
+ background:linear-gradient(100deg,#087fff,#4057ff 55%,#852cff);
+ box-shadow:0 8px 20px #305cff30;display:flex;justify-content:center;align-items:center;gap:12px
+}
+.feature-open span{font-size:20px;line-height:12px}
+.section-head{margin-top:30px}
+.panel{border-color:#2c3b67;background:linear-gradient(150deg,#111c3b,#0d1630);border-radius:20px}
+.provider-note{background:#1b2a57;border-color:#405b9c;color:#dce7ff}
+.field input[type=text],.field input[type=search],.field select,.field textarea,.searchbox,.chat-send input{
+ background:#111e42;border-color:#394b80;border-radius:13px
+}
+.upload{background:#111e42;border-color:#5a65a3;border-radius:18px}
+.btn.primary{background:linear-gradient(100deg,#087fff,#4057ff 55%,#852cff);box-shadow:0 8px 20px #305cff30}
+.preview-box{background:radial-gradient(ellipse at center,#26356a55,transparent 70%),#0b1430;border-color:#354675;border-radius:16px}
+.movie{border-color:#2b3b67;background:#111c39}
+.poster{background:linear-gradient(135deg,#38256c,#145b80)}
+.channel{background:#0d1732}
+.footer{border-top-color:#26345d}
+@media(max-width:1000px){
+ .app{grid-template-columns:230px minmax(0,1fr)}
+ .content{padding:24px 22px 44px}
+ .feature{grid-template-columns:82px minmax(0,1fr);gap:15px;padding:20px;min-height:240px}
+ .feature .symbol{width:78px;height:78px;font-size:34px;border-radius:19px}
+ .feature h3{font-size:19px}
+ .feature p{font-size:13px}
+}
+@media(max-width:760px){
+ .app{display:block}
+ .sidebar{position:fixed;left:-275px;top:0;z-index:30;width:260px;height:100dvh;transition:left .22s}
+ .sidebar.open{left:0}
+ .topbar{height:70px;position:sticky;top:0;z-index:15;justify-content:space-between;padding:0 15px}
+ .topbar-left{display:flex;align-items:center}
+ .mobile-menu{display:inline-block;margin:0;background:#0d1732;border:1px solid #304574;border-radius:15px;width:52px;height:52px;font-size:20px}
+ .crumb{display:none}
+ .mobile-brand{display:block;position:absolute;left:50%;transform:translateX(-50%);font-weight:900;font-size:22px;letter-spacing:-.8px;background:linear-gradient(90deg,#6288ff,#3dd9f0,#f18bdd);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+ .top-right{gap:7px}
+ .avatar{display:none}
+ .status{display:none}
+ .content{padding:22px 14px 36px}
+ .hero{padding:25px 20px;border-radius:23px;margin:0 0 24px}
+ #view-home .hero{min-height:300px;align-items:flex-start}
+ #view-home .hero h1{font-size:clamp(36px,9vw,52px);letter-spacing:-1.6px}
+ #view-home .hero p{font-size:16px;line-height:1.7}
+ .hero-chip{display:none}
+ .cards{grid-template-columns:1fr;gap:16px}
+ .feature{min-height:255px;grid-template-columns:100px minmax(0,1fr);gap:16px;padding:23px 20px;border-radius:23px}
+ .feature .symbol{width:100px;height:100px;font-size:42px;border-radius:22px}
+ .feature-copy{padding-top:15px}
+ .feature h3{font-size:22px;margin-bottom:10px}
+ .feature p{font-size:15px;line-height:1.65}
+ .feature-open{margin-top:24px;padding:15px;font-size:15px}
+ .panel{padding:18px;border-radius:19px}
+ .tool-layout,.tv-layout{grid-template-columns:minmax(0,1fr)}
+ .grid2{grid-template-columns:1fr}
+ .movie-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+ .poster{height:145px}
+ .footer{padding:20px 15px}
+}
+@media(max-width:390px){
+ .feature{grid-template-columns:76px minmax(0,1fr);padding:17px;min-height:225px;gap:13px}
+ .feature .symbol{width:74px;height:74px;font-size:32px;border-radius:18px}
+ .feature-copy{padding-top:8px}
+ .feature h3{font-size:18px}
+ .feature p{font-size:13px}
+ .feature-open{padding:13px}
+ .hero{padding:22px 17px}
+ #view-home .hero h1{font-size:35px}
+}
+
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="logo">I</div><div><strong>ITFM AI</strong><small>CREATE WITHOUT LIMITS</small></div></div>
+  <div class="nav-label">WORKSPACE</div>
+  <nav class="nav">
+    <button class="active" data-view="home"><span class="ico">⌂</span>Overview</button>
+    <button data-view="image"><span class="ico">✦</span>AI Image Generator</button>
+    <button data-view="video"><span class="ico">▶</span>AI Video Generator</button>
+    <button data-view="audio"><span class="ico">🎙</span>AI Audio & Voice</button>
+    <button data-view="music"><span class="ico">♫</span>AI Music</button>
+    <button data-view="cover"><span class="ico">🎧</span>AI Cover / Karaoke</button>
+    <button data-view="stem"><span class="ico">≋</span>Stem Grab</button>
+    <button data-view="chat"><span class="ico">◉</span>AI Chat</button>
+    <button data-view="studio"><span class="ico">✧</span>ITFM AI Studio</button>
+  </nav>
+  <div class="nav-label">ENTERTAINMENT</div>
+  <nav class="nav">
+    <button data-view="movies"><span class="ico">▣</span>Movies Flix</button>
+    <button data-view="tv"><span class="ico">▤</span>TV Live Channels</button>
+  </nav>
+  <div class="sidebar-bottom"><strong>✦ Your creative space</strong><p>Draft prompts locally. Connect an AI provider to enable real generation.</p><button class="btn" style="width:100%" onclick="showView('image')">Start creating →</button></div>
+</aside>
+<main class="main">
+<header class="topbar"><div class="topbar-left"><button class="mobile-menu" aria-label="Open navigation" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button><span class="crumb">Workspace / <b id="crumb">Overview</b></span></div><div class="mobile-brand">ITFM <span>AI</span></div><div class="top-right"><span class="status">● LOCAL PREVIEW</span><div class="avatar">I</div></div></header>
+<div class="content">
+<section class="view active" id="view-home">
+  <div class="hero"><div><div class="eyebrow">WELCOME TO YOUR STUDIO</div><h1>Make something <span class="gradient">extraordinary.</span></h1><p>One creative workspace for AI images, video, voice, music and chat — built around your brand, ITFM AI.</p></div><div class="hero-chip"><b>ITFM ✦ AI</b><small>Your ideas, amplified.</small></div></div>
+  <div class="cards">
+    <div class="feature feature-image" onclick="showView('image')"><div class="symbol">🎨</div><div class="feature-copy"><h3>AI Image</h3><p>Create, edit, enhance and upscale images</p></div><button class="feature-open" type="button" onclick="event.stopPropagation();showView('image')">Open Tools <span>→</span></button></div>
+    <div class="feature feature-video" onclick="showView('video')"><div class="symbol">🎬</div><div class="feature-copy"><h3>AI Video</h3><p>Text-to-video, image-to-video and video workflows</p></div><button class="feature-open" type="button" onclick="event.stopPropagation();showView('video')">Open Tools <span>→</span></button></div>
+    <div class="feature feature-audio" onclick="showView('audio')"><div class="symbol">🎙️</div><div class="feature-copy"><h3>Audio &amp; Voice</h3><p>Speech-to-text, text-to-speech and voice tools</p></div><button class="feature-open" type="button" onclick="event.stopPropagation();showView('audio')">Open Tools <span>→</span></button></div>
+    <div class="feature feature-music" onclick="showView('music')"><div class="symbol">🎵</div><div class="feature-copy"><h3>AI Music</h3><p>Create song, instrumental and soundtrack concepts</p></div><button class="feature-open" type="button" onclick="event.stopPropagation();showView('music')">Open Tools <span>→</span></button></div>
+    <div class="feature feature-chat" onclick="showView('chat')"><div class="symbol">💬</div><div class="feature-copy"><h3>AI Chat</h3><p>Ask questions and work with reference files</p></div><button class="feature-open" type="button" onclick="event.stopPropagation();showView('chat')">Open Tools <span>→</span></button></div>
+    <div class="feature feature-studio" onclick="showView('studio')"><div class="symbol">✨</div><div class="feature-copy"><h3>ITFM AI Studio</h3><p>Build cinematic scenes with character and motion references</p></div><button class="feature-open" type="button" onclick="event.stopPropagation();showView('studio')">Open Tools <span>→</span></button></div>
+  </div>
+  <div class="section-head"><h2>Quick start</h2><span>Drafts stay in this browser</span></div>
+  <div class="panel"><h3>Bring an idea to life</h3><p class="panel-sub">Choose a tool, describe your idea, then save a local draft. Real AI generation becomes available after secure server-side provider setup.</p><div class="btnrow"><button class="btn primary" onclick="showView('image')">Create an image ✦</button><button class="btn" onclick="showView('chat')">Open AI Chat</button><button class="btn" onclick="showView('movies')">Explore Movies Flix</button></div></div>
+</section>
+
+<section class="view" id="view-image">
+  <div class="hero"><div><div class="eyebrow">IMAGE LAB</div><h1>AI Image <span class="gradient">Generator</span></h1><p>Create, edit, enhance and upscale images with your own prompt and reference files.</p></div></div>
+  <div class="tool-layout"><div class="panel"><h2>Image settings</h2><p class="panel-sub">Write your prompt and configure the output.</p><div class="provider-note"><span>⚙</span><div><b>AI provider setup required</b>Connect a supported image provider with server-side API credentials to generate real images. This preview will never fake a generated result.</div></div>
+  <div class="field"><label>Prompt / Instructions</label><textarea id="image-prompt" placeholder="Describe what you want to create or edit..."></textarea></div><div class="field"><label>Upload reference / source files</label><div class="upload"><strong>＋ Add reference files</strong>JPG, PNG, WEBP, GIF or other supported documents<input id="image-file" type="file" accept="image/*,.pdf,.docx,.txt,.csv,.xlsx,.pptx,.md,.json"></div></div>
+  <div class="grid2"><div class="field"><label>Aspect ratio</label><select id="image-ratio"><option>9:16</option><option>16:9</option><option>1:1</option><option>4:3</option><option>3:2</option></select></div><div class="field"><label>Quality</label><select id="image-quality"><option>High</option><option>Standard</option><option>Ultra</option></select></div></div>
+  <div class="btnrow"><button class="btn primary" onclick="generateUnavailable('image')">Generate with AI ✦</button><button class="btn" onclick="saveDraft('image')">Save Draft</button><button class="btn" onclick="clearForm('image')">Clear</button></div><div class="notice hidden" id="image-msg"></div></div>
+  <div class="panel preview"><h3>ITFM AI Preview</h3><p class="panel-sub">Local preview · selected input only</p><div class="preview-box" id="image-preview"><div><div class="empty-icon">▧</div><strong>Your input preview will appear here</strong><p>Upload a reference or save a prompt draft to keep working on your idea.</p></div></div><p class="micro">Your selected files remain in your browser until you explicitly connect a server-side integration.</p></div></div>
+</section>
+
+<section class="view" id="view-video">
+  <div class="hero"><div><div class="eyebrow">MOTION LAB</div><h1>AI Video <span class="gradient">Generator</span></h1><p>Design text-to-video and image-to-video workflows with language, voice and duration controls.</p></div></div>
+  <div class="tool-layout"><div class="panel"><h2>Video settings</h2><p class="panel-sub">Prepare a prompt and reference assets.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>A supported video model and secure server-side API credentials are required for real generation.</div></div><div class="field"><label>Prompt / Instructions</label><textarea id="video-prompt" placeholder="Describe the scene, movement, camera, lighting and style..."></textarea></div><div class="field"><label>Upload reference / source files</label><div class="upload"><strong>＋ Add reference files</strong>Image, video, audio or document<input id="video-file" type="file" accept="image/*,video/*,audio/*,.pdf,.docx,.txt,.csv,.xlsx,.pptx,.md,.json"></div></div><div class="grid2"><div class="field"><label>Aspect ratio</label><select id="video-ratio"><option>9:16</option><option>16:9</option><option>1:1</option><option>4:3</option><option>3:2</option></select></div><div class="field"><label>Quality</label><select id="video-quality"><option>High</option><option>Standard</option><option>Ultra</option></select></div><div class="field"><label>Language</label><select id="video-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Voice</label><select id="video-voice"><option>Female</option><option>Male</option><option>None</option></select></div></div><div class="field"><label>Duration</label><div class="choices" data-group="video-duration"><button class="choice selected">5 seconds</button><button class="choice">8 seconds</button><button class="choice">15 seconds</button><button class="choice">30 seconds</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('video')">Generate with AI ▶</button><button class="btn" onclick="saveDraft('video')">Save Draft</button><button class="btn" onclick="clearForm('video')">Clear</button></div><div class="notice hidden" id="video-msg"></div></div><div class="panel preview"><h3>ITFM AI Preview</h3><p class="panel-sub">Source-file preview · no generated output</p><div class="preview-box" id="video-preview"><div><div class="empty-icon">▶</div><strong>Your video concept preview</strong><p>Choose a reference file or save your prompt draft.</p></div></div></div></div>
+</section>
+
+<section class="view" id="view-audio">
+  <div class="hero"><div><div class="eyebrow">VOICE LAB</div><h1>AI Audio <span class="gradient">& Voice</span></h1><p>Prepare speech-to-text and text-to-speech tasks in your preferred language.</p></div></div>
+  <div class="tool-layout"><div class="panel"><h2>Audio workspace</h2><p class="panel-sub">Choose a task and configure your voice.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>Connect a speech provider on the server to process audio or synthesize speech.</div></div><div class="field"><label>Prompt / text</label><textarea id="audio-prompt" placeholder="Enter text to speak, or instructions for your audio task..."></textarea></div><div class="field"><label>Upload audio or reference file</label><div class="upload"><strong>＋ Select a file</strong>Audio, video, image or document<input id="audio-file" type="file" accept="audio/*,video/*,image/*,.pdf,.docx,.txt,.csv,.xlsx,.pptx,.md,.json"></div></div><div class="grid2"><div class="field"><label>Language</label><select id="audio-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Voice</label><select id="audio-voice"><option>Female</option><option>Male</option></select></div></div><div class="field"><label>Audio action</label><div class="choices" data-group="audio-action"><button class="choice selected">Speech → Text</button><button class="choice">Text → Speech</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('audio')">Process with AI</button><button class="btn" onclick="saveDraft('audio')">Save Draft</button><button class="btn" onclick="clearForm('audio')">Clear</button></div><div class="notice hidden" id="audio-msg"></div></div><div class="panel preview"><h3>Audio Preview</h3><p class="panel-sub">Local source preview</p><div class="preview-box" id="audio-preview"><div><div class="empty-icon">🎙</div><strong>No audio selected</strong><p>Upload an audio file to see a local preview.</p></div></div></div></div>
+</section>
+
+<section class="view" id="view-music">
+  <div class="hero"><div><div class="eyebrow">MUSIC LAB</div><h1>AI <span class="gradient">Music</span></h1><p>Shape a song, instrumental or soundtrack concept with lyrics and language settings.</p></div></div>
+  <div class="tool-layout"><div class="panel"><h2>Music creation</h2><p class="panel-sub">Describe the sound you have in mind.</p><div class="provider-note">⚙ <div><b>Music model setup required</b>Real music generation needs a supported provider configured securely on the server.</div></div><div class="field"><label>Prompt / style / mood</label><textarea id="music-prompt" placeholder="Example: cinematic Malayalam melody, gentle strings, hopeful mood..."></textarea></div><div class="field"><label>Optional lyrics</label><textarea id="music-lyrics" placeholder="Write your original lyrics here..." style="min-height:85px"></textarea></div><div class="grid2"><div class="field"><label>Language</label><select id="music-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Type</label><select id="music-type"><option>Song with vocals</option><option>Instrumental</option><option>Soundtrack</option></select></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('music')">Generate music ♫</button><button class="btn" onclick="saveDraft('music')">Save Draft</button><button class="btn" onclick="clearForm('music')">Clear</button></div><div class="notice hidden" id="music-msg"></div></div><div class="panel preview"><h3>Music Preview</h3><p class="panel-sub">Prompt preview · no audio generated</p><div class="preview-box" id="music-preview"><div><div class="empty-icon">♫</div><strong>Your soundtrack starts with an idea</strong><p>Save your music prompt or connect a supported provider.</p></div></div></div></div>
+</section>
+
+<section class="view" id="view-cover">
+  <div class="hero"><div><div class="eyebrow">COVER & KARAOKE</div><h1>AI Cover <span class="gradient">Studio</span></h1><p>Prepare an authorized reference track and lyrics for a supported cover-generation service.</p></div></div>
+  <div class="tool-layout"><div class="panel"><h2>Cover settings</h2><p class="panel-sub">Only upload audio you own or have permission to process.</p><div class="provider-note">⚙ <div><b>Cover provider setup required</b>A compatible external music model must be configured on the server. Voice cloning should only be used with consent.</div></div><div class="field"><label>Upload karaoke / reference audio</label><div class="upload"><strong>＋ Choose audio</strong>MP3, WAV, M4A, OGG and more<input id="cover-file" type="file" accept="audio/*"></div></div><div class="field"><label>Lyrics (optional)</label><textarea id="cover-lyrics" placeholder="Enter lyrics you have rights to use..."></textarea></div><div class="grid2"><div class="field"><label>Language</label><select id="cover-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Vocal gender</label><select id="cover-voice"><option>Female</option><option>Male</option></select></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('cover')">Generate Cover</button><button class="btn" onclick="saveDraft('cover')">Save Draft</button></div><div class="notice hidden" id="cover-msg"></div></div><div class="panel preview"><h3>Cover Preview</h3><p class="panel-sub">Local audio preview</p><div class="preview-box" id="cover-preview"><div><div class="empty-icon">🎧</div><strong>No audio selected</strong><p>Upload a reference or karaoke audio file.</p></div></div></div></div>
+</section>
+
+<section class="view" id="view-stem">
+ <div class="hero"><div><div class="eyebrow">AUDIO UTILITIES</div><h1>Stem <span class="gradient">Grab</span></h1><p>Prepare a track for vocal removal, stem separation and karaoke workflows.</p></div></div>
+ <div class="tool-layout"><div class="panel"><h2>Upload your track</h2><p class="panel-sub">Maximum suggested upload size: 80 MB. Provider limits may apply.</p><div class="provider-note">⚙ <div><b>StemSplit API required</b>Set STEMSPLIT_API_KEY securely on your server. This page does not upload or process audio by itself.</div></div><div class="field"><div class="upload"><strong>☁ Drop your audio track here</strong>or browse · MP3, WAV, FLAC, M4A, OGG, AAC<input id="stem-file" type="file" accept="audio/*"></div></div><div class="field"><label>What do you want to do?</label><div class="choices" data-group="stem-action"><button class="choice selected">Six-stem separation</button><button class="choice">Vocals + instrumental</button><button class="choice">Karaoke backing track</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('stem')">Process track</button><button class="btn" onclick="clearForm('stem')">Clear</button></div><div class="notice hidden" id="stem-msg"></div></div><div class="panel"><h3>All audio tools</h3><p class="panel-sub">Choose a workflow to prepare.</p><div class="tool-tabs" id="stem-tabs"><button class="active">Stem splitter</button><button>Vocal remover</button><button>Karaoke maker</button><button>Key & BPM finder</button><button>Pitch changer</button><button>Video → MP3</button><button>Cutter</button><button>Joiner</button><button>Recorder</button><button>Silence remover</button></div><div class="preview-box" id="stem-preview" style="min-height:180px"><div><div class="empty-icon">≋</div><strong>Audio workspace ready</strong><p>Choose a file and processing mode to prepare your job.</p></div></div><p class="micro">The current adapter would need to be implemented for the selected provider capability. Do not send files without permission.</p></div></div>
+</section>
+
+<section class="view" id="view-chat">
+ <div class="hero"><div><div class="eyebrow">YOUR AI ASSISTANT</div><h1>AI <span class="gradient">Chat</span></h1><p>Prepare a conversation and attach reference files for a configured multimodal provider.</p></div></div>
+ <div class="tool-layout"><div class="panel"><h2>Conversation</h2><p class="panel-sub">A real assistant reply requires a configured server-side provider.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>Messages and files stay local in this demo. No message is sent to an AI provider from this preview.</div></div><div class="chat-window" id="chat-window"><div class="bubble assistant">Hi! I'm the ITFM AI local preview. Connect an AI provider to enable real answers.</div></div><div class="field"><label>Attach files (optional)</label><input id="chat-file" type="file" multiple style="color:var(--muted);font-size:12px"></div><div class="chat-send"><input id="chat-input" placeholder="Message ITFM AI…" onkeydown="if(event.key==='Enter')sendChat()"><button class="btn primary" onclick="sendChat()">Send ↑</button></div><p class="micro" id="chat-attach-note">Files selected locally in your browser.</p></div><div class="panel"><h3>Conversation details</h3><p class="panel-sub">LOCAL PREVIEW</p><div class="preview-box" style="min-height:220px"><div><div class="empty-icon">💬</div><strong>Ready to chat</strong><p>Your messages appear in this local preview. AI responses are not simulated.</p></div></div></div></div>
+</section>
+
+<section class="view" id="view-studio">
+ <div class="hero"><div><div class="eyebrow">ITFM AI STUDIO</div><h1>Genjutsu <span class="gradient">AI</span></h1><p>Create image-to-video concepts with motion references, characters, products and detailed settings.</p></div></div>
+ <div class="tool-layout"><div class="panel"><h2>Scene builder</h2><p class="panel-sub">Set up reference assets and generation instructions.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>Generation requires a supported provider and server-side credentials.</div></div><div class="field"><label>Reference video (4–60 seconds)</label><div class="upload"><strong>▶ Add a reference video</strong>MP4, MOV, WEBM<input id="studio-video" type="file" accept="video/mp4,video/quicktime,video/webm"></div></div><div class="field"><label>Characters, products or clothes (up to 60 images)</label><div class="upload"><strong>＋ Add reference images</strong>JPG, PNG, WEBP<input id="studio-images" type="file" accept="image/jpeg,image/png,image/webp" multiple></div><div class="micro" id="studio-count">0 / 60 images selected</div></div><div class="field"><label>Motion preset</label><select id="studio-motion"><option>None</option><option>Cinematic tracking</option><option>Slow motion</option><option>Handheld documentary</option><option>Orbit camera</option><option>Product reveal</option></select></div><div class="field"><label>Prompt</label><textarea id="studio-prompt" placeholder="Describe scene, subject, movement, camera, lighting and visual style..."></textarea></div><div class="field"><label>Negative prompt</label><textarea id="studio-negative" placeholder="Optional: unwanted objects, artifacts, styles or visual defects..." style="min-height:70px"></textarea></div><div class="grid2"><div class="field"><label>Aspect ratio</label><select id="studio-ratio"><option>9:16</option><option>16:9</option><option>1:1</option><option>4:3</option><option>3:2</option></select></div><div class="field"><label>Quality</label><select id="studio-quality"><option>High</option><option>Standard</option><option>Ultra</option></select></div><div class="field"><label>Language</label><select id="studio-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Voice</label><select id="studio-voice"><option>Female</option><option>Male</option><option>None</option></select></div></div><div class="field"><label>Duration</label><div class="choices" data-group="studio-duration"><button class="choice selected">5 seconds</button><button class="choice">8 seconds</button><button class="choice">15 seconds</button><button class="choice">30 seconds</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('studio')">Generate Video</button><button class="btn" onclick="saveDraft('studio')">Save Draft</button></div><div class="notice hidden" id="studio-msg"></div></div><div class="panel preview"><h3>Generation Preview</h3><p class="panel-sub">Local source preview</p><div class="preview-box" id="studio-preview"><div><div class="empty-icon">✧</div><strong>Add a reference video or images</strong><p>This preview shows selected source files only; it does not generate AI output.</p></div></div></div></div>
+</section>
+
+<section class="view" id="view-movies">
+ <div class="hero"><div><div class="eyebrow">ENTERTAINMENT DISCOVERY</div><h1>Movies <span class="gradient">Flix</span></h1><p>Discover movie titles by language and year. This demo uses sample catalogue entries and does not host or provide unauthorized movie streams or downloads.</p></div></div>
+ <div class="panel"><div class="movies-toolbar"><input class="searchbox" id="movie-search" placeholder="Search movies..." oninput="filterMovies()"><select class="searchbox" id="movie-language" onchange="filterMovies()" style="max-width:170px"><option value="">All languages</option><option>Malayalam</option><option>Tamil</option><option>Telugu</option><option>Hindi</option><option>Hollywood</option></select><select class="searchbox" id="movie-year" onchange="filterMovies()" style="max-width:130px"><option value="">All years</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option></select></div><div class="section-head"><h2 id="movie-count">Featured titles</h2><span>Sample catalogue · add licensed metadata to launch</span></div><div class="movie-grid" id="movie-grid"></div><div class="notice">For a public launch, use licensed artwork and metadata, and link to official or authorized streaming services. No copyrighted video files are hosted by this prototype.</div></div>
+</section>
+
+<section class="view" id="view-tv">
+ <div class="hero"><div><div class="eyebrow">LIVE TV DIRECTORY</div><h1>TV Live <span class="gradient">Channels</span></h1><p>Browse a small demo directory of channels. Playback depends on official public streams, regional availability and broadcasting rights.</p></div></div>
+ <div class="tv-layout"><div class="panel"><h3>Channel directory</h3><p class="panel-sub">Choose a listed channel</p><input class="searchbox" id="channel-search" placeholder="Search channels..." oninput="filterChannels()"><div class="tool-tabs" id="channel-cats"><button class="active" data-cat="All">All</button><button data-cat="News">News</button><button data-cat="Music">Music</button><button data-cat="General">General</button></div><div class="channel-list" id="channel-list"></div></div><div class="panel"><h3 id="channel-title">Select a channel</h3><p class="panel-sub">Official stream playback</p><div class="player" id="tv-player"><div><div class="empty-icon">📺</div><strong>Select a channel to inspect its stream</strong><p class="micro">This demo has no stream URLs configured. Only add streams you are authorized to distribute.</p></div></div><div class="notice" id="tv-notice">READY · Stream playback is not enabled until a verified official stream URL is configured.</div></div></div>
+</section>
+</div>
+<footer class="footer">© <span id="year"></span> ITFM AI · Creative tools and entertainment discovery. <br>Local preview build: AI generation, audio processing, chat responses and live playback require real provider integrations and secure server-side credentials. Never expose API keys in browser code.</footer>
+</main>
+</div>
+<script>
+const titles={
+home:"Overview",image:"AI Image Generator",video:"AI Video Generator",audio:"AI Audio & Voice",music:"AI Music",cover:"AI Cover / Karaoke",stem:"Stem Grab",chat:"AI Chat",studio:"ITFM AI Studio",movies:"Movies Flix",tv:"TV Live Channels"
+};
+function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-'+name).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===name));document.getElementById('crumb').textContent=titles[name]||name;document.getElementById('sidebar').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+document.querySelectorAll('.choices').forEach(group=>group.querySelectorAll('.choice').forEach(btn=>btn.addEventListener('click',()=>{group.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected')})));
+function msg(id,text){const el=document.getElementById(id+'-msg');if(el){el.textContent=text;el.classList.remove('hidden')}}
+function generateUnavailable(id){msg(id,'Generation unavailable in local preview. Configure a supported AI provider and secure server-side API credentials to enable this action. No fake result was created.')}
+function getSelected(group){const g=document.querySelector('[data-group="'+group+'"]');return g?.querySelector('.selected')?.textContent||''}
+function saveDraft(id){let keys=[];document.querySelectorAll('#view-'+id+' textarea, #view-'+id+' input[type=text], #view-'+id+' select').forEach(el=>{if(el.id)keys.push([el.id,el.value])});const data={tool:id,fields:keys,selected:new Date().toISOString()};localStorage.setItem('itfm-draft-'+id,JSON.stringify(data));msg(id,'Draft saved in this browser. No files or prompts were sent to a provider.')}
+function clearForm(id){document.querySelectorAll('#view-'+id+' textarea, #view-'+id+' input[type=text]').forEach(el=>el.value='');document.querySelectorAll('#view-'+id+' input[type=file]').forEach(el=>el.value='');const m=document.getElementById(id+'-msg');if(m)m.classList.add('hidden');const p=document.getElementById(id+'-preview');if(p)p.innerHTML='<div><div class="empty-icon">▧</div><strong>Preview cleared</strong><p>Choose a source file or save a draft to continue.</p></div>'}
+function previewFile(inputId,previewId){const input=document.getElementById(inputId);if(!input)return;input.addEventListener('change',()=>{const file=input.files?.[0];if(!file)return;const box=document.getElementById(previewId);if(!box)return;box.innerHTML='';const url=URL.createObjectURL(file);let media;if(file.type.startsWith('image/')){media=document.createElement('img');media.src=url;media.alt='Selected local reference image'}else if(file.type.startsWith('video/')){media=document.createElement('video');media.src=url;media.controls=true}else if(file.type.startsWith('audio/')){media=document.createElement('audio');media.src=url;media.controls=true}else{box.innerHTML='<div><div class="empty-icon">📄</div><strong>'+escapeHtml(file.name)+'</strong><p>Selected locally. File preview is not available for this format.</p></div>';return}box.appendChild(media);const label=document.createElement('p');label.className='micro';label.textContent=file.name+' · '+(file.size/1024/1024).toFixed(2)+' MB · local only';box.appendChild(label)})}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+[['image-file','image-preview'],['video-file','video-preview'],['audio-file','audio-preview'],['cover-file','cover-preview'],['stem-file','stem-preview'],['studio-video','studio-preview']].forEach(x=>previewFile(...x));
+document.getElementById('studio-images').addEventListener('change',e=>{const files=Array.from(e.target.files||[]).slice(0,60);document.getElementById('studio-count').textContent=files.length+' / 60 images selected';const box=document.getElementById('studio-preview');box.innerHTML='';if(!files.length){box.textContent='No images selected';return}files.slice(0,6).forEach(f=>{const img=document.createElement('img');img.src=URL.createObjectURL(f);img.alt='Local reference';img.style.cssText='width:72px;height:72px;object-fit:cover;margin:5px;border-radius:9px';box.appendChild(img)});const p=document.createElement('p');p.className='micro';p.textContent=files.length+' reference image(s) selected locally';box.appendChild(p)});
+const movies=[
+['Aasha',2026,'Malayalam'],['It’s A Medical Miracle',2026,'Malayalam'],['Pradhama Drishtiya Kuttakkar',2026,'Malayalam'],['Khalifa',2026,'Malayalam'],['Bethlehem Kudumba Unit',2026,'Malayalam'],['Abhirami',2025,'Malayalam'],['Agadha',2026,'Malayalam'],['Ramba Oorvasi Menaka',2026,'Malayalam'],['Hi',2026,'Malayalam'],['Idi Mazha Kaattu',2025,'Malayalam'],['Thudakkam',2026,'Malayalam'],['Jailer 2',2026,'Tamil'],['Meesaya Murukku 2',2026,'Tamil'],['Ranabaali',2026,'Telugu'],['Aasha',2026,'Telugu'],['Example Hindi Title',2025,'Hindi'],['Example Film',2024,'Hollywood'],['Sample Drama',2023,'Tamil'],['Sample Action',2022,'Telugu'],['Sample Story',2025,'Hindi']
+];
+function renderMovies(list){const grid=document.getElementById('movie-grid');grid.innerHTML='';list.forEach((m,i)=>{const card=document.createElement('div');card.className='movie';card.innerHTML='<div class="poster"><span>'+escapeHtml(m[0].slice(0,2).toUpperCase())+'</span></div><div class="movie-info"><b>'+escapeHtml(m[0])+'</b><small>('+m[1]+') · '+escapeHtml(m[2])+'</small><span class="tag">CATALOGUE ENTRY</span></div>';grid.appendChild(card)});document.getElementById('movie-count').textContent=list.length+' catalogue titles'}
+function filterMovies(){const q=document.getElementById('movie-search').value.toLowerCase(),lang=document.getElementById('movie-language').value,year=document.getElementById('movie-year').value;renderMovies(movies.filter(m=>m[0].toLowerCase().includes(q)&&(!lang||m[2]===lang)&&(!year||String(m[1])===year)))}
+renderMovies(movies);
+const channels=[['Asianet News','News'],['Manorama News','News'],['24 News','News'],['Doordarshan National','General'],['Kairali TV','General'],['Flowers TV','General'],['Asianet','General'],['Surya TV','General'],['Mazhavil Manorama','General'],['Raj News Tamil','News'],['Sun Music','Music'],['India Today','News'],['NDTV 24x7','News'],['Al Jazeera English','News'],['ABC News','News'],['Music Mix','Music'],['World Documentary','General'],['Public Information Channel','General']];
+let activeCat='All';
+function renderChannels(){const q=document.getElementById('channel-search').value.toLowerCase();const list=channels.filter(c=>(activeCat==='All'||c[1]===activeCat)&&c[0].toLowerCase().includes(q));const box=document.getElementById('channel-list');box.innerHTML='';list.forEach(c=>{const b=document.createElement('button');b.className='channel';b.innerHTML='<span class="tv-icon">📺</span><span><b>'+escapeHtml(c[0])+'</b><small>'+escapeHtml(c[1])+' · stream not configured</small></span>';b.onclick=()=>selectChannel(c,b);box.appendChild(b)})}
+function filterChannels(){renderChannels()}
+function selectChannel(c,btn){document.querySelectorAll('.channel').forEach(x=>x.classList.remove('active'));btn.classList.add('active');document.getElementById('channel-title').textContent=c[0];document.getElementById('tv-player').innerHTML='<div><div class="empty-icon">📡</div><strong>'+escapeHtml(c[0])+'</strong><p class="micro">No verified stream URL is configured for this channel.</p></div>';document.getElementById('tv-notice').textContent='Playback unavailable in this demo. Add an official, authorized stream URL in the server configuration.'}
+document.querySelectorAll('#channel-cats button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#channel-cats button').forEach(x=>x.classList.remove('active'));b.classList.add('active');activeCat=b.dataset.cat;renderChannels()});renderChannels();
+function sendChat(){const input=document.getElementById('chat-input'),text=input.value.trim();if(!text)return;const win=document.getElementById('chat-window');const bubble=document.createElement('div');bubble.className='bubble user';bubble.textContent=text;win.appendChild(bubble);const note=document.createElement('div');note.className='bubble assistant';note.textContent='Message saved in this local preview. A real AI reply requires a configured server-side provider.';win.appendChild(note);input.value='';win.scrollTop=win.scrollHeight}
+document.getElementById('chat-file').addEventListener('change',e=>{document.getElementById('chat-attach-note').textContent=Array.from(e.target.files||[]).map(f=>f.name).join(', ')||'Files selected locally in your browser.'});
+document.getElementById('stem-tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#stem-tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('stem-preview').innerHTML='<div><div class="empty-icon">≋</div><strong>'+escapeHtml(b.textContent)+'</strong><p>Processing requires a supported audio API integration.</p></div>'});
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body></html>
