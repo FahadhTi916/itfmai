@@ -178,16 +178,18 @@ body{
 <div class="content">
 <section class="view active" id="view-home">
 <div class="hero"><div><div class="eyebrow">WELCOME TO YOUR STUDIO</div><h1>Make something <span class="gradient">extraordinary.</span></h1><p>One creative workspace for AI images, video, voice, music and chat — built around your brand, ITFM AI.</p></div><div class="hero-chip"><b>ITFM ✦ AI</b><small>Your ideas, amplified.</small></div></div>
-<div class="cards">
-<div class="feature feature-image" onclick="showView('image')"><div class="symbol">🎨</div><div class="feature-copy"><h3>AI Image</h3><p>Create, edit, enhance and upscale images</p></div><button class="feature-open" onclick="event.stopPropagation();showView('image')" type="button">Open Tools <span>→</span></button></div>
-<div class="feature feature-video" onclick="showView('video')"><div class="symbol">🎬</div><div class="feature-copy"><h3>AI Video</h3><p>Text-to-video, image-to-video and video workflows</p></div><button class="feature-open" onclick="event.stopPropagation();showView('video')" type="button">Open Tools <span>→</span></button></div>
-<div class="feature feature-audio" onclick="showView('audio')"><div class="symbol">🎙️</div><div class="feature-copy"><h3>Audio &amp; Voice</h3><p>Speech-to-text, text-to-speech and voice tools</p></div><button class="feature-open" onclick="event.stopPropagation();showView('audio')" type="button">Open Tools <span>→</span></button></div>
-<div class="feature feature-music" onclick="showView('music')"><div class="symbol">🎵</div><div class="feature-copy"><h3>AI Music</h3><p>Create song, instrumental and soundtrack concepts</p></div><button class="feature-open" onclick="event.stopPropagation();showView('music')" type="button">Open Tools <span>→</span></button></div>
-<div class="feature feature-chat" onclick="showView('chat')"><div class="symbol">💬</div><div class="feature-copy"><h3>AI Chat</h3><p>Ask questions and work with reference files</p></div><button class="feature-open" onclick="event.stopPropagation();showView('chat')" type="button">Open Tools <span>→</span></button></div>
-<div class="feature feature-studio" onclick="showView('studio')"><div class="symbol">✨</div><div class="feature-copy"><h3>ITFM AI Studio</h3><p>Build cinematic scenes with character and motion references</p></div><button class="feature-open" onclick="event.stopPropagation();showView('studio')" type="button">Open Tools <span>→</span></button></div>
+<div class="cards itfm-all-tools-grid">
+<div class="feature" onclick="showView('image')"><div class="symbol">🎨</div><div class="feature-copy"><h3>AI Image</h3></div><button class="feature-open" onclick="event.stopPropagation();showView('image')" type="button">Open Tools <span>→</span></button></div>
+<div class="feature" onclick="showView('video')"><div class="symbol">🎬</div><div class="feature-copy"><h3>AI Video</h3></div><button class="feature-open" onclick="event.stopPropagation();showView('video')" type="button">Open Tools <span>→</span></button></div>
+<div class="feature" onclick="showView('audio')"><div class="symbol">🎙️</div><div class="feature-copy"><h3>Audio &amp; Voice</h3></div><button class="feature-open" onclick="event.stopPropagation();showView('audio')" type="button">Open Tools <span>→</span></button></div>
+<div class="feature" onclick="showView('music')"><div class="symbol">🎵</div><div class="feature-copy"><h3>AI Music</h3></div><button class="feature-open" onclick="event.stopPropagation();showView('music')" type="button">Open Tools <span>→</span></button></div>
+<div class="feature" onclick="showView('cover')"><div class="symbol">🎧</div><div class="feature-copy"><h3>AI Cover / Karaoke</h3></div><button class="feature-open" onclick="event.stopPropagation();showView('cover')" type="button">Open Tools <span>→</span></button></div>
+<div class="feature" onclick="showView('stem')"><div class="symbol">≋</div><div class="feature-copy"><h3>STEM GRAB</h3></div><button class="feature-open" onclick="event.stopPropagation();showView('stem')" type="button">Open Tools <span>→</span></button></div>
+<div class="feature" onclick="showView('chat')"><div class="symbol">💬</div><div class="feature-copy"><h3>AI Chat</h3></div><button class="feature-open" onclick="event.stopPropagation();showView('chat')" type="button">Open Tools <span>→</span></button></div>
+<div class="feature" onclick="showView('studio')"><div class="symbol">✨</div><div class="feature-copy"><h3>Genjutsu AI</h3></div><button class="feature-open" onclick="event.stopPropagation();showView('studio')" type="button">Open Tools <span>→</span></button></div>
+<div class="feature" onclick="showView('movies')"><div class="symbol">🎞️</div><div class="feature-copy"><h3>Movies</h3></div><button class="feature-open" onclick="event.stopPropagation();showView('movies')" type="button">Open Tools <span>→</span></button></div>
+<div class="feature" onclick="showView('tv')"><div class="symbol">📺</div><div class="feature-copy"><h3>TV Live Channels</h3></div><button class="feature-open" onclick="event.stopPropagation();showView('tv')" type="button">Open Tools <span>→</span></button></div>
 </div>
-
-
 </section>
 <section class="view" id="view-image">
 <div class="hero"><div><div class="eyebrow">IMAGE LAB</div><h1>AI Image <span class="gradient">Generator</span></h1><p>Create, edit, enhance and upscale images with your own prompt and reference files.</p></div></div>
@@ -888,6 +890,17 @@ button,.btn{font-family:inherit!important;cursor:pointer}
   .itfm-entertainment-card h3, .itfm-entertainment-card p { grid-column: 2; }
   .itfm-entertainment-card button { grid-column: 1 / -1; }
 }
+</style>
+
+
+<style id="itfm-ten-tool-cards">
+.itfm-all-tools-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;margin-top:18px}
+.itfm-all-tools-grid .feature{display:grid!important;grid-template-columns:44px minmax(0,1fr)!important;align-items:center!important;column-gap:12px!important;row-gap:13px!important;min-width:0;padding:15px!important;border-radius:17px!important}
+.itfm-all-tools-grid .symbol{grid-row:1;width:44px!important;height:44px!important;min-width:44px!important;font-size:21px!important}
+.itfm-all-tools-grid .feature-copy{min-width:0;padding:0!important}
+.itfm-all-tools-grid .feature h3{margin:0!important;font-size:14px!important;line-height:1.35!important;overflow-wrap:anywhere}
+.itfm-all-tools-grid .feature-open{grid-column:1/-1;width:100%;min-height:36px;padding:9px 11px!important;border-radius:10px!important;font-size:12px!important;margin-top:0!important}
+@media(max-width:760px){.itfm-all-tools-grid{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}.itfm-all-tools-grid .feature{padding:12px!important;grid-template-columns:40px minmax(0,1fr)!important}.itfm-all-tools-grid .symbol{width:40px!important;height:40px!important;min-width:40px!important;font-size:19px!important}}
 </style>
 
 </body></html>

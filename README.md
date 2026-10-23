@@ -1,13 +1,8 @@
-# ITFM AI — Polished Project
+# ITFM AI — Tools Grid Update
 
-Responsive static website for GitHub and Vercel.
+The dashboard tools grid contains 10 cards, each with an **Open Tools** button:
+AI Image, AI Video, Audio & Voice, AI Music, AI Cover / Karaoke, STEM GRAB, AI Chat, Genjutsu AI, Movies, and TV Live Channels.
 
-- Consistent dark-gradient styling for tool cards and forms.
-- Cleaner spacing, typography, borders, and responsive card layouts.
-- Adds visible Movies and TV Live Channels cards to the dashboard.
-- Keeps existing navigation and front-end behavior.
+Responsive static HTML project for GitHub and Vercel. Upload `index.html`, `vercel.json`, and `README.md` to your repository and deploy with Vercel using the **Other** framework preset.
 
-## Deploy
-Upload `index.html`, `vercel.json`, and `README.md` to the GitHub repository, then import/deploy in Vercel using the **Other** framework preset.
-
-Real AI generation and live TV playback require working provider integrations, backend credentials, and authorized stream sources.
+Actual AI generation and live playback require provider/backend configuration and authorized streams.
