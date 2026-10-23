@@ -189,8 +189,8 @@ body{
     <div class="feature feature-chat" onclick="showView('chat')"><div class="symbol">💬</div><div class="feature-copy"><h3>AI Chat</h3><p>Ask questions and work with reference files</p></div><button class="feature-open" type="button" onclick="event.stopPropagation();showView('chat')">Open Tools <span>→</span></button></div>
     <div class="feature feature-studio" onclick="showView('studio')"><div class="symbol">✨</div><div class="feature-copy"><h3>ITFM AI Studio</h3><p>Build cinematic scenes with character and motion references</p></div><button class="feature-open" type="button" onclick="event.stopPropagation();showView('studio')">Open Tools <span>→</span></button></div>
   </div>
-  <div class="section-head"><h2>Quick start</h2><span>Drafts stay in this browser</span></div>
-  <div class="panel"><h3>Bring an idea to life</h3><p class="panel-sub">Choose a tool, describe your idea, then save a local draft. Real AI generation becomes available after secure server-side provider setup.</p><div class="btnrow"><button class="btn primary" onclick="showView('image')">Create an image ✦</button><button class="btn" onclick="showView('chat')">Open AI Chat</button><button class="btn" onclick="showView('movies')">Explore Movies Flix</button></div></div>
+  <div class="section-head"><h2></h2><span></span></div>
+  <div class="panel"><h3></h3><p class="panel-sub"></p><div class="btnrow"><button class="btn primary" onclick="showView('image')"></button><button class="btn" onclick="showView('chat')"></button><button class="btn" onclick="showView('movies')"></button></div></div>
 </section>
 
 <section class="view" id="view-image">
@@ -546,6 +546,27 @@ input,textarea,select{max-width:100%;box-sizing:border-box;border-radius:11px!im
 .topbar .top-right { margin-left: auto; }
 @media (max-width: 760px) {
   .topbar .mobile-brand { font-size: 21px !important; }
+}
+</style>
+
+
+<style id="itfm-hero-slightly-larger">
+.hero .eyebrow {
+  font-size: 12px !important;
+  letter-spacing: .19em !important;
+}
+.hero h1 {
+  font-size: clamp(32px, 4.5vw, 51px) !important;
+  line-height: 1.14 !important;
+}
+.hero p {
+  font-size: clamp(14px, 1.55vw, 17px) !important;
+  line-height: 1.72 !important;
+}
+@media (max-width: 760px) {
+  .hero .eyebrow { font-size: 11px !important; }
+  .hero h1 { font-size: clamp(32px, 8.5vw, 42px) !important; }
+  .hero p { font-size: 14px !important; }
 }
 </style>
 
