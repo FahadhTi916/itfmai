@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080b16">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#080b16" name="theme-color"/>
 <title>ITFM AI — Creative AI Studio</title>
 <style>
 :root{--bg:#080b16;--panel:#101629;--panel2:#151d34;--line:#26304c;--text:#f4f6ff;--muted:#9ba7c5;--purple:#8b5cf6;--cyan:#22d3ee;--pink:#ec4899;--green:#34d399}
@@ -149,112 +149,99 @@ body{
 }
 
 </style>
-
-
-
 </head>
 <body>
 <div class="app">
 <aside class="sidebar" id="sidebar">
-  <div class="brand"><div class="logo">I</div><div><strong>ITFM AI</strong><small>CREATE WITHOUT LIMITS</small></div></div>
-  <div class="nav-label">WORKSPACE</div>
-  <nav class="nav">
-    <button class="active" data-view="home"><span class="ico">⌂</span>Overview</button>
-    <button data-view="image"><span class="ico">✦</span>AI Image Generator</button>
-    <button data-view="video"><span class="ico">▶</span>AI Video Generator</button>
-    <button data-view="audio"><span class="ico">🎙</span>AI Audio & Voice</button>
-    <button data-view="music"><span class="ico">♫</span>AI Music</button>
-    <button data-view="cover"><span class="ico">🎧</span>AI Cover / Karaoke</button>
-    <button data-view="stem"><span class="ico">≋</span>Stem Grab</button>
-    <button data-view="chat"><span class="ico">◉</span>AI Chat</button>
-    <button data-view="studio"><span class="ico">✧</span>ITFM AI Studio</button>
-  </nav>
-  <div class="nav-label">ENTERTAINMENT</div>
-  <nav class="nav">
-    <button data-view="movies"><span class="ico">▣</span>Movies Flix</button>
-    <button data-view="tv"><span class="ico">▤</span>TV Live Channels</button>
-  </nav>
-  <div class="sidebar-bottom"><strong>✦ Your creative space</strong><p>Draft prompts locally. Connect an AI provider to enable real generation.</p><button class="btn" style="width:100%" onclick="showView('image')">Start creating →</button></div>
+<div class="brand"><div class="logo">I</div><div><strong>ITFM AI</strong><small>CREATE WITHOUT LIMITS</small></div></div>
+<div class="nav-label">WORKSPACE</div>
+<nav class="nav">
+<button class="active" data-view="home"><span class="ico">⌂</span>Overview</button>
+<button data-view="image"><span class="ico">✦</span>AI Image Generator</button>
+<button data-view="video"><span class="ico">▶</span>AI Video Generator</button>
+<button data-view="audio"><span class="ico">🎙</span>AI Audio &amp; Voice</button>
+<button data-view="music"><span class="ico">♫</span>AI Music</button>
+<button data-view="cover"><span class="ico">🎧</span>AI Cover / Karaoke</button>
+<button data-view="stem"><span class="ico">≋</span>Stem Grab</button>
+<button data-view="chat"><span class="ico">◉</span>AI Chat</button>
+<button data-view="studio"><span class="ico">✧</span>ITFM AI Studio</button>
+</nav>
+<div class="nav-label">ENTERTAINMENT</div>
+<nav class="nav">
+<button data-view="movies"><span class="ico">▣</span>Movies Flix</button>
+<button data-view="tv"><span class="ico">▤</span>TV Live Channels</button>
+</nav>
+<div class="sidebar-bottom"><strong>✦ Your creative space</strong><p>Draft prompts locally. Connect an AI provider to enable real generation.</p><button class="btn" onclick="showView('image')" style="width:100%">Start creating →</button></div>
 </aside>
 <main class="main">
-<header class="topbar"><div class="topbar-left"><button class="mobile-menu" type="button" aria-label="Menu" onclick="document.getElementById('sidebar').classList.toggle('open')">☰ Menu</button></div><div class="mobile-brand">ITFM <span>AI</span></div><div class="top-right"><div class="avatar">I</div></div></header>
+<header class="topbar"><div class="topbar-left"><button aria-label="Menu" class="mobile-menu" onclick="document.getElementById('sidebar').classList.toggle('open')" type="button">☰ Menu</button></div><div class="mobile-brand">ITFM <span>AI</span></div><div class="top-right"><div class="avatar">I</div></div></header>
 <div class="content">
 <section class="view active" id="view-home">
-  <div class="hero"><div><div class="eyebrow">WELCOME TO YOUR STUDIO</div><h1>Make something <span class="gradient">extraordinary.</span></h1><p>One creative workspace for AI images, video, voice, music and chat — built around your brand, ITFM AI.</p></div><div class="hero-chip"><b>ITFM ✦ AI</b><small>Your ideas, amplified.</small></div></div>
-  <div class="cards">
-    <div class="feature feature-image" onclick="showView('image')"><div class="symbol">🎨</div><div class="feature-copy"><h3>AI Image</h3><p>Create, edit, enhance and upscale images</p></div><button class="feature-open" type="button" onclick="event.stopPropagation();showView('image')">Open Tools <span>→</span></button></div>
-    <div class="feature feature-video" onclick="showView('video')"><div class="symbol">🎬</div><div class="feature-copy"><h3>AI Video</h3><p>Text-to-video, image-to-video and video workflows</p></div><button class="feature-open" type="button" onclick="event.stopPropagation();showView('video')">Open Tools <span>→</span></button></div>
-    <div class="feature feature-audio" onclick="showView('audio')"><div class="symbol">🎙️</div><div class="feature-copy"><h3>Audio &amp; Voice</h3><p>Speech-to-text, text-to-speech and voice tools</p></div><button class="feature-open" type="button" onclick="event.stopPropagation();showView('audio')">Open Tools <span>→</span></button></div>
-    <div class="feature feature-music" onclick="showView('music')"><div class="symbol">🎵</div><div class="feature-copy"><h3>AI Music</h3><p>Create song, instrumental and soundtrack concepts</p></div><button class="feature-open" type="button" onclick="event.stopPropagation();showView('music')">Open Tools <span>→</span></button></div>
-    <div class="feature feature-chat" onclick="showView('chat')"><div class="symbol">💬</div><div class="feature-copy"><h3>AI Chat</h3><p>Ask questions and work with reference files</p></div><button class="feature-open" type="button" onclick="event.stopPropagation();showView('chat')">Open Tools <span>→</span></button></div>
-    <div class="feature feature-studio" onclick="showView('studio')"><div class="symbol">✨</div><div class="feature-copy"><h3>ITFM AI Studio</h3><p>Build cinematic scenes with character and motion references</p></div><button class="feature-open" type="button" onclick="event.stopPropagation();showView('studio')">Open Tools <span>→</span></button></div>
-  </div>
-  <div class="section-head"><h2></h2><span></span></div>
-  <div class="panel"><h3></h3><p class="panel-sub"></p><div class="btnrow"><button class="btn primary" onclick="showView('image')"></button><button class="btn" onclick="showView('chat')"></button><button class="btn" onclick="showView('movies')"></button></div></div>
-</section>
+<div class="hero"><div><div class="eyebrow">WELCOME TO YOUR STUDIO</div><h1>Make something <span class="gradient">extraordinary.</span></h1><p>One creative workspace for AI images, video, voice, music and chat — built around your brand, ITFM AI.</p></div><div class="hero-chip"><b>ITFM ✦ AI</b><small>Your ideas, amplified.</small></div></div>
+<div class="cards">
+<div class="feature feature-image" onclick="showView('image')"><div class="symbol">🎨</div><div class="feature-copy"><h3>AI Image</h3><p>Create, edit, enhance and upscale images</p></div><button class="feature-open" onclick="event.stopPropagation();showView('image')" type="button">Open Tools <span>→</span></button></div>
+<div class="feature feature-video" onclick="showView('video')"><div class="symbol">🎬</div><div class="feature-copy"><h3>AI Video</h3><p>Text-to-video, image-to-video and video workflows</p></div><button class="feature-open" onclick="event.stopPropagation();showView('video')" type="button">Open Tools <span>→</span></button></div>
+<div class="feature feature-audio" onclick="showView('audio')"><div class="symbol">🎙️</div><div class="feature-copy"><h3>Audio &amp; Voice</h3><p>Speech-to-text, text-to-speech and voice tools</p></div><button class="feature-open" onclick="event.stopPropagation();showView('audio')" type="button">Open Tools <span>→</span></button></div>
+<div class="feature feature-music" onclick="showView('music')"><div class="symbol">🎵</div><div class="feature-copy"><h3>AI Music</h3><p>Create song, instrumental and soundtrack concepts</p></div><button class="feature-open" onclick="event.stopPropagation();showView('music')" type="button">Open Tools <span>→</span></button></div>
+<div class="feature feature-chat" onclick="showView('chat')"><div class="symbol">💬</div><div class="feature-copy"><h3>AI Chat</h3><p>Ask questions and work with reference files</p></div><button class="feature-open" onclick="event.stopPropagation();showView('chat')" type="button">Open Tools <span>→</span></button></div>
+<div class="feature feature-studio" onclick="showView('studio')"><div class="symbol">✨</div><div class="feature-copy"><h3>ITFM AI Studio</h3><p>Build cinematic scenes with character and motion references</p></div><button class="feature-open" onclick="event.stopPropagation();showView('studio')" type="button">Open Tools <span>→</span></button></div>
+</div>
 
+
+</section>
 <section class="view" id="view-image">
-  <div class="hero"><div><div class="eyebrow">IMAGE LAB</div><h1>AI Image <span class="gradient">Generator</span></h1><p>Create, edit, enhance and upscale images with your own prompt and reference files.</p></div></div>
-  <div class="tool-layout"><div class="panel"><h2>Image settings</h2><p class="panel-sub">Write your prompt and configure the output.</p><div class="provider-note"><span>⚙</span><div><b>AI provider setup required</b>Connect a supported image provider with server-side API credentials to generate real images. This preview will never fake a generated result.</div></div>
-  <div class="field"><label>Prompt / Instructions</label><textarea id="image-prompt" placeholder="Describe what you want to create or edit..."></textarea></div><div class="field"><label>Upload reference / source files</label><div class="upload"><strong>＋ Add reference files</strong>JPG, PNG, WEBP, GIF or other supported documents<input id="image-file" type="file" accept="image/*,.pdf,.docx,.txt,.csv,.xlsx,.pptx,.md,.json"></div></div>
-  <div class="grid2"><div class="field"><label>Aspect ratio</label><select id="image-ratio"><option>9:16</option><option>16:9</option><option>1:1</option><option>4:3</option><option>3:2</option></select></div><div class="field"><label>Quality</label><select id="image-quality"><option>High</option><option>Standard</option><option>Ultra</option></select></div></div>
-  <div class="btnrow"><button class="btn primary" onclick="generateUnavailable('image')">Generate with AI ✦</button><button class="btn" onclick="saveDraft('image')">Save Draft</button><button class="btn" onclick="clearForm('image')">Clear</button></div><div class="notice hidden" id="image-msg"></div></div>
-  <div class="panel preview"><h3>ITFM AI Preview</h3><p class="panel-sub">Local preview · selected input only</p><div class="preview-box" id="image-preview"><div><div class="empty-icon">▧</div><strong>Your input preview will appear here</strong><p>Upload a reference or save a prompt draft to keep working on your idea.</p></div></div><p class="micro">Your selected files remain in your browser until you explicitly connect a server-side integration.</p></div></div>
+<div class="hero"><div><div class="eyebrow">IMAGE LAB</div><h1>AI Image <span class="gradient">Generator</span></h1><p>Create, edit, enhance and upscale images with your own prompt and reference files.</p></div></div>
+<div class="tool-layout"><div class="panel"><h2>Image settings</h2><p class="panel-sub">Write your prompt and configure the output.</p><div class="provider-note"><span>⚙</span><div><b>AI provider setup required</b>Connect a supported image provider with server-side API credentials to generate real images. This preview will never fake a generated result.</div></div>
+<div class="field"><label>Prompt / Instructions</label><textarea id="image-prompt" placeholder="Describe what you want to create or edit..."></textarea></div><div class="field"><label>Upload reference / source files</label><div class="upload"><strong>＋ Add reference files</strong>JPG, PNG, WEBP, GIF or other supported documents<input accept="image/*,.pdf,.docx,.txt,.csv,.xlsx,.pptx,.md,.json" id="image-file" type="file"/></div></div>
+<div class="grid2"><div class="field"><label>Aspect ratio</label><select id="image-ratio"><option>9:16</option><option>16:9</option><option>1:1</option><option>4:3</option><option>3:2</option></select></div><div class="field"><label>Quality</label><select id="image-quality"><option>High</option><option>Standard</option><option>Ultra</option></select></div></div>
+<div class="btnrow"><button class="btn primary" onclick="generateUnavailable('image')">Generate with AI ✦</button><button class="btn" onclick="saveDraft('image')">Save Draft</button><button class="btn" onclick="clearForm('image')">Clear</button></div><div class="notice hidden" id="image-msg"></div></div>
+<div class="panel preview"><h3>ITFM AI Preview</h3><p class="panel-sub">Local preview · selected input only</p><div class="preview-box" id="image-preview"><div><div class="empty-icon">▧</div><strong>Your input preview will appear here</strong><p>Upload a reference or save a prompt draft to keep working on your idea.</p></div></div><p class="micro">Your selected files remain in your browser until you explicitly connect a server-side integration.</p></div></div>
 </section>
-
 <section class="view" id="view-video">
-  <div class="hero"><div><div class="eyebrow">MOTION LAB</div><h1>AI Video <span class="gradient">Generator</span></h1><p>Design text-to-video and image-to-video workflows with language, voice and duration controls.</p></div></div>
-  <div class="tool-layout"><div class="panel"><h2>Video settings</h2><p class="panel-sub">Prepare a prompt and reference assets.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>A supported video model and secure server-side API credentials are required for real generation.</div></div><div class="field"><label>Prompt / Instructions</label><textarea id="video-prompt" placeholder="Describe the scene, movement, camera, lighting and style..."></textarea></div><div class="field"><label>Upload reference / source files</label><div class="upload"><strong>＋ Add reference files</strong>Image, video, audio or document<input id="video-file" type="file" accept="image/*,video/*,audio/*,.pdf,.docx,.txt,.csv,.xlsx,.pptx,.md,.json"></div></div><div class="grid2"><div class="field"><label>Aspect ratio</label><select id="video-ratio"><option>9:16</option><option>16:9</option><option>1:1</option><option>4:3</option><option>3:2</option></select></div><div class="field"><label>Quality</label><select id="video-quality"><option>High</option><option>Standard</option><option>Ultra</option></select></div><div class="field"><label>Language</label><select id="video-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Voice</label><select id="video-voice"><option>Female</option><option>Male</option><option>None</option></select></div></div><div class="field"><label>Duration</label><div class="choices" data-group="video-duration"><button class="choice selected">5 seconds</button><button class="choice">8 seconds</button><button class="choice">15 seconds</button><button class="choice">30 seconds</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('video')">Generate with AI ▶</button><button class="btn" onclick="saveDraft('video')">Save Draft</button><button class="btn" onclick="clearForm('video')">Clear</button></div><div class="notice hidden" id="video-msg"></div></div><div class="panel preview"><h3>ITFM AI Preview</h3><p class="panel-sub">Source-file preview · no generated output</p><div class="preview-box" id="video-preview"><div><div class="empty-icon">▶</div><strong>Your video concept preview</strong><p>Choose a reference file or save your prompt draft.</p></div></div></div></div>
+<div class="hero"><div><div class="eyebrow">MOTION LAB</div><h1>AI Video <span class="gradient">Generator</span></h1><p>Design text-to-video and image-to-video workflows with language, voice and duration controls.</p></div></div>
+<div class="tool-layout"><div class="panel"><h2>Video settings</h2><p class="panel-sub">Prepare a prompt and reference assets.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>A supported video model and secure server-side API credentials are required for real generation.</div></div><div class="field"><label>Prompt / Instructions</label><textarea id="video-prompt" placeholder="Describe the scene, movement, camera, lighting and style..."></textarea></div><div class="field"><label>Upload reference / source files</label><div class="upload"><strong>＋ Add reference files</strong>Image, video, audio or document<input accept="image/*,video/*,audio/*,.pdf,.docx,.txt,.csv,.xlsx,.pptx,.md,.json" id="video-file" type="file"/></div></div><div class="grid2"><div class="field"><label>Aspect ratio</label><select id="video-ratio"><option>9:16</option><option>16:9</option><option>1:1</option><option>4:3</option><option>3:2</option></select></div><div class="field"><label>Quality</label><select id="video-quality"><option>High</option><option>Standard</option><option>Ultra</option></select></div><div class="field"><label>Language</label><select id="video-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Voice</label><select id="video-voice"><option>Female</option><option>Male</option><option>None</option></select></div></div><div class="field"><label>Duration</label><div class="choices" data-group="video-duration"><button class="choice selected">5 seconds</button><button class="choice">8 seconds</button><button class="choice">15 seconds</button><button class="choice">30 seconds</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('video')">Generate with AI ▶</button><button class="btn" onclick="saveDraft('video')">Save Draft</button><button class="btn" onclick="clearForm('video')">Clear</button></div><div class="notice hidden" id="video-msg"></div></div><div class="panel preview"><h3>ITFM AI Preview</h3><p class="panel-sub">Source-file preview · no generated output</p><div class="preview-box" id="video-preview"><div><div class="empty-icon">▶</div><strong>Your video concept preview</strong><p>Choose a reference file or save your prompt draft.</p></div></div></div></div>
 </section>
-
 <section class="view" id="view-audio">
-  <div class="hero"><div><div class="eyebrow">VOICE LAB</div><h1>AI Audio <span class="gradient">& Voice</span></h1><p>Prepare speech-to-text and text-to-speech tasks in your preferred language.</p></div></div>
-  <div class="tool-layout"><div class="panel"><h2>Audio workspace</h2><p class="panel-sub">Choose a task and configure your voice.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>Connect a speech provider on the server to process audio or synthesize speech.</div></div><div class="field"><label>Prompt / text</label><textarea id="audio-prompt" placeholder="Enter text to speak, or instructions for your audio task..."></textarea></div><div class="field"><label>Upload audio or reference file</label><div class="upload"><strong>＋ Select a file</strong>Audio, video, image or document<input id="audio-file" type="file" accept="audio/*,video/*,image/*,.pdf,.docx,.txt,.csv,.xlsx,.pptx,.md,.json"></div></div><div class="grid2"><div class="field"><label>Language</label><select id="audio-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Voice</label><select id="audio-voice"><option>Female</option><option>Male</option></select></div></div><div class="field"><label>Audio action</label><div class="choices" data-group="audio-action"><button class="choice selected">Speech → Text</button><button class="choice">Text → Speech</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('audio')">Process with AI</button><button class="btn" onclick="saveDraft('audio')">Save Draft</button><button class="btn" onclick="clearForm('audio')">Clear</button></div><div class="notice hidden" id="audio-msg"></div></div><div class="panel preview"><h3>Audio Preview</h3><p class="panel-sub">Local source preview</p><div class="preview-box" id="audio-preview"><div><div class="empty-icon">🎙</div><strong>No audio selected</strong><p>Upload an audio file to see a local preview.</p></div></div></div></div>
+<div class="hero"><div><div class="eyebrow">VOICE LAB</div><h1>AI Audio <span class="gradient">&amp; Voice</span></h1><p>Prepare speech-to-text and text-to-speech tasks in your preferred language.</p></div></div>
+<div class="tool-layout"><div class="panel"><h2>Audio workspace</h2><p class="panel-sub">Choose a task and configure your voice.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>Connect a speech provider on the server to process audio or synthesize speech.</div></div><div class="field"><label>Prompt / text</label><textarea id="audio-prompt" placeholder="Enter text to speak, or instructions for your audio task..."></textarea></div><div class="field"><label>Upload audio or reference file</label><div class="upload"><strong>＋ Select a file</strong>Audio, video, image or document<input accept="audio/*,video/*,image/*,.pdf,.docx,.txt,.csv,.xlsx,.pptx,.md,.json" id="audio-file" type="file"/></div></div><div class="grid2"><div class="field"><label>Language</label><select id="audio-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Voice</label><select id="audio-voice"><option>Female</option><option>Male</option></select></div></div><div class="field"><label>Audio action</label><div class="choices" data-group="audio-action"><button class="choice selected">Speech → Text</button><button class="choice">Text → Speech</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('audio')">Process with AI</button><button class="btn" onclick="saveDraft('audio')">Save Draft</button><button class="btn" onclick="clearForm('audio')">Clear</button></div><div class="notice hidden" id="audio-msg"></div></div><div class="panel preview"><h3>Audio Preview</h3><p class="panel-sub">Local source preview</p><div class="preview-box" id="audio-preview"><div><div class="empty-icon">🎙</div><strong>No audio selected</strong><p>Upload an audio file to see a local preview.</p></div></div></div></div>
 </section>
-
 <section class="view" id="view-music">
-  <div class="hero"><div><div class="eyebrow">MUSIC LAB</div><h1>AI <span class="gradient">Music</span></h1><p>Shape a song, instrumental or soundtrack concept with lyrics and language settings.</p></div></div>
-  <div class="tool-layout"><div class="panel"><h2>Music creation</h2><p class="panel-sub">Describe the sound you have in mind.</p><div class="provider-note">⚙ <div><b>Music model setup required</b>Real music generation needs a supported provider configured securely on the server.</div></div><div class="field"><label>Prompt / style / mood</label><textarea id="music-prompt" placeholder="Example: cinematic Malayalam melody, gentle strings, hopeful mood..."></textarea></div><div class="field"><label>Optional lyrics</label><textarea id="music-lyrics" placeholder="Write your original lyrics here..." style="min-height:85px"></textarea></div><div class="grid2"><div class="field"><label>Language</label><select id="music-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Type</label><select id="music-type"><option>Song with vocals</option><option>Instrumental</option><option>Soundtrack</option></select></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('music')">Generate music ♫</button><button class="btn" onclick="saveDraft('music')">Save Draft</button><button class="btn" onclick="clearForm('music')">Clear</button></div><div class="notice hidden" id="music-msg"></div></div><div class="panel preview"><h3>Music Preview</h3><p class="panel-sub">Prompt preview · no audio generated</p><div class="preview-box" id="music-preview"><div><div class="empty-icon">♫</div><strong>Your soundtrack starts with an idea</strong><p>Save your music prompt or connect a supported provider.</p></div></div></div></div>
+<div class="hero"><div><div class="eyebrow">MUSIC LAB</div><h1>AI <span class="gradient">Music</span></h1><p>Shape a song, instrumental or soundtrack concept with lyrics and language settings.</p></div></div>
+<div class="tool-layout"><div class="panel"><h2>Music creation</h2><p class="panel-sub">Describe the sound you have in mind.</p><div class="provider-note">⚙ <div><b>Music model setup required</b>Real music generation needs a supported provider configured securely on the server.</div></div><div class="field"><label>Prompt / style / mood</label><textarea id="music-prompt" placeholder="Example: cinematic Malayalam melody, gentle strings, hopeful mood..."></textarea></div><div class="field"><label>Optional lyrics</label><textarea id="music-lyrics" placeholder="Write your original lyrics here..." style="min-height:85px"></textarea></div><div class="grid2"><div class="field"><label>Language</label><select id="music-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Type</label><select id="music-type"><option>Song with vocals</option><option>Instrumental</option><option>Soundtrack</option></select></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('music')">Generate music ♫</button><button class="btn" onclick="saveDraft('music')">Save Draft</button><button class="btn" onclick="clearForm('music')">Clear</button></div><div class="notice hidden" id="music-msg"></div></div><div class="panel preview"><h3>Music Preview</h3><p class="panel-sub">Prompt preview · no audio generated</p><div class="preview-box" id="music-preview"><div><div class="empty-icon">♫</div><strong>Your soundtrack starts with an idea</strong><p>Save your music prompt or connect a supported provider.</p></div></div></div></div>
 </section>
-
 <section class="view" id="view-cover">
-  <div class="hero"><div><div class="eyebrow">COVER & KARAOKE</div><h1>AI Cover <span class="gradient">Studio</span></h1><p>Prepare an authorized reference track and lyrics for a supported cover-generation service.</p></div></div>
-  <div class="tool-layout"><div class="panel"><h2>Cover settings</h2><p class="panel-sub">Only upload audio you own or have permission to process.</p><div class="provider-note">⚙ <div><b>Cover provider setup required</b>A compatible external music model must be configured on the server. Voice cloning should only be used with consent.</div></div><div class="field"><label>Upload karaoke / reference audio</label><div class="upload"><strong>＋ Choose audio</strong>MP3, WAV, M4A, OGG and more<input id="cover-file" type="file" accept="audio/*"></div></div><div class="field"><label>Lyrics (optional)</label><textarea id="cover-lyrics" placeholder="Enter lyrics you have rights to use..."></textarea></div><div class="grid2"><div class="field"><label>Language</label><select id="cover-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Vocal gender</label><select id="cover-voice"><option>Female</option><option>Male</option></select></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('cover')">Generate Cover</button><button class="btn" onclick="saveDraft('cover')">Save Draft</button></div><div class="notice hidden" id="cover-msg"></div></div><div class="panel preview"><h3>Cover Preview</h3><p class="panel-sub">Local audio preview</p><div class="preview-box" id="cover-preview"><div><div class="empty-icon">🎧</div><strong>No audio selected</strong><p>Upload a reference or karaoke audio file.</p></div></div></div></div>
+<div class="hero"><div><div class="eyebrow">COVER &amp; KARAOKE</div><h1>AI Cover <span class="gradient">Studio</span></h1><p>Prepare an authorized reference track and lyrics for a supported cover-generation service.</p></div></div>
+<div class="tool-layout"><div class="panel"><h2>Cover settings</h2><p class="panel-sub">Only upload audio you own or have permission to process.</p><div class="provider-note">⚙ <div><b>Cover provider setup required</b>A compatible external music model must be configured on the server. Voice cloning should only be used with consent.</div></div><div class="field"><label>Upload karaoke / reference audio</label><div class="upload"><strong>＋ Choose audio</strong>MP3, WAV, M4A, OGG and more<input accept="audio/*" id="cover-file" type="file"/></div></div><div class="field"><label>Lyrics (optional)</label><textarea id="cover-lyrics" placeholder="Enter lyrics you have rights to use..."></textarea></div><div class="grid2"><div class="field"><label>Language</label><select id="cover-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Vocal gender</label><select id="cover-voice"><option>Female</option><option>Male</option></select></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('cover')">Generate Cover</button><button class="btn" onclick="saveDraft('cover')">Save Draft</button></div><div class="notice hidden" id="cover-msg"></div></div><div class="panel preview"><h3>Cover Preview</h3><p class="panel-sub">Local audio preview</p><div class="preview-box" id="cover-preview"><div><div class="empty-icon">🎧</div><strong>No audio selected</strong><p>Upload a reference or karaoke audio file.</p></div></div></div></div>
 </section>
-
 <section class="view" id="view-stem">
- <div class="hero"><div><div class="eyebrow">AUDIO UTILITIES</div><h1>Stem <span class="gradient">Grab</span></h1><p>Prepare a track for vocal removal, stem separation and karaoke workflows.</p></div></div>
- <div class="tool-layout"><div class="panel"><h2>Upload your track</h2><p class="panel-sub">Maximum suggested upload size: 80 MB. Provider limits may apply.</p><div class="provider-note">⚙ <div><b>StemSplit API required</b>Set STEMSPLIT_API_KEY securely on your server. This page does not upload or process audio by itself.</div></div><div class="field"><div class="upload"><strong>☁ Drop your audio track here</strong>or browse · MP3, WAV, FLAC, M4A, OGG, AAC<input id="stem-file" type="file" accept="audio/*"></div></div><div class="field"><label>What do you want to do?</label><div class="choices" data-group="stem-action"><button class="choice selected">Six-stem separation</button><button class="choice">Vocals + instrumental</button><button class="choice">Karaoke backing track</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('stem')">Process track</button><button class="btn" onclick="clearForm('stem')">Clear</button></div><div class="notice hidden" id="stem-msg"></div></div><div class="panel"><h3>All audio tools</h3><p class="panel-sub">Choose a workflow to prepare.</p><div class="tool-tabs" id="stem-tabs"><button class="active">Stem splitter</button><button>Vocal remover</button><button>Karaoke maker</button><button>Key & BPM finder</button><button>Pitch changer</button><button>Video → MP3</button><button>Cutter</button><button>Joiner</button><button>Recorder</button><button>Silence remover</button></div><div class="preview-box" id="stem-preview" style="min-height:180px"><div><div class="empty-icon">≋</div><strong>Audio workspace ready</strong><p>Choose a file and processing mode to prepare your job.</p></div></div><p class="micro">The current adapter would need to be implemented for the selected provider capability. Do not send files without permission.</p></div></div>
+<div class="hero"><div><div class="eyebrow">AUDIO UTILITIES</div><h1>Stem <span class="gradient">Grab</span></h1><p>Prepare a track for vocal removal, stem separation and karaoke workflows.</p></div></div>
+<div class="tool-layout"><div class="panel"><h2>Upload your track</h2><p class="panel-sub">Maximum suggested upload size: 80 MB. Provider limits may apply.</p><div class="provider-note">⚙ <div><b>StemSplit API required</b>Set STEMSPLIT_API_KEY securely on your server. This page does not upload or process audio by itself.</div></div><div class="field"><div class="upload"><strong>☁ Drop your audio track here</strong>or browse · MP3, WAV, FLAC, M4A, OGG, AAC<input accept="audio/*" id="stem-file" type="file"/></div></div><div class="field"><label>What do you want to do?</label><div class="choices" data-group="stem-action"><button class="choice selected">Six-stem separation</button><button class="choice">Vocals + instrumental</button><button class="choice">Karaoke backing track</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('stem')">Process track</button><button class="btn" onclick="clearForm('stem')">Clear</button></div><div class="notice hidden" id="stem-msg"></div></div><div class="panel"><h3>All audio tools</h3><p class="panel-sub">Choose a workflow to prepare.</p><div class="tool-tabs" id="stem-tabs"><button class="active">Stem splitter</button><button>Vocal remover</button><button>Karaoke maker</button><button>Key &amp; BPM finder</button><button>Pitch changer</button><button>Video → MP3</button><button>Cutter</button><button>Joiner</button><button>Recorder</button><button>Silence remover</button></div><div class="preview-box" id="stem-preview" style="min-height:180px"><div><div class="empty-icon">≋</div><strong>Audio workspace ready</strong><p>Choose a file and processing mode to prepare your job.</p></div></div><p class="micro">The current adapter would need to be implemented for the selected provider capability. Do not send files without permission.</p></div></div>
 </section>
-
 <section class="view" id="view-chat">
- <div class="hero"><div><div class="eyebrow">YOUR AI ASSISTANT</div><h1>AI <span class="gradient">Chat</span></h1><p>Prepare a conversation and attach reference files for a configured multimodal provider.</p></div></div>
- <div class="tool-layout"><div class="panel"><h2>Conversation</h2><p class="panel-sub">A real assistant reply requires a configured server-side provider.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>Messages and files stay local in this demo. No message is sent to an AI provider from this preview.</div></div><div class="chat-window" id="chat-window"><div class="bubble assistant">Hi! I'm the ITFM AI local preview. Connect an AI provider to enable real answers.</div></div><div class="field"><label>Attach files (optional)</label><input id="chat-file" type="file" multiple style="color:var(--muted);font-size:12px"></div><div class="chat-send"><input id="chat-input" placeholder="Message ITFM AI…" onkeydown="if(event.key==='Enter')sendChat()"><button class="btn primary" onclick="sendChat()">Send ↑</button></div><p class="micro" id="chat-attach-note">Files selected locally in your browser.</p></div><div class="panel"><h3>Conversation details</h3><p class="panel-sub">LOCAL PREVIEW</p><div class="preview-box" style="min-height:220px"><div><div class="empty-icon">💬</div><strong>Ready to chat</strong><p>Your messages appear in this local preview. AI responses are not simulated.</p></div></div></div></div>
+<div class="hero"><div><div class="eyebrow">YOUR AI ASSISTANT</div><h1>AI <span class="gradient">Chat</span></h1><p>Prepare a conversation and attach reference files for a configured multimodal provider.</p></div></div>
+<div class="tool-layout"><div class="panel"><h2>Conversation</h2><p class="panel-sub">A real assistant reply requires a configured server-side provider.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>Messages and files stay local in this demo. No message is sent to an AI provider from this preview.</div></div><div class="chat-window" id="chat-window"><div class="bubble assistant">Hi! I'm the ITFM AI local preview. Connect an AI provider to enable real answers.</div></div><div class="field"><label>Attach files (optional)</label><input id="chat-file" multiple="" style="color:var(--muted);font-size:12px" type="file"/></div><div class="chat-send"><input id="chat-input" onkeydown="if(event.key==='Enter')sendChat()" placeholder="Message ITFM AI…"/><button class="btn primary" onclick="sendChat()">Send ↑</button></div><p class="micro" id="chat-attach-note">Files selected locally in your browser.</p></div><div class="panel"><h3>Conversation details</h3><p class="panel-sub">LOCAL PREVIEW</p><div class="preview-box" style="min-height:220px"><div><div class="empty-icon">💬</div><strong>Ready to chat</strong><p>Your messages appear in this local preview. AI responses are not simulated.</p></div></div></div></div>
 </section>
-
 <section class="view" id="view-studio">
- <div class="hero"><div><div class="eyebrow">ITFM AI STUDIO</div><h1>Genjutsu <span class="gradient">AI</span></h1><p>Create image-to-video concepts with motion references, characters, products and detailed settings.</p></div></div>
- <div class="tool-layout"><div class="panel"><h2>Scene builder</h2><p class="panel-sub">Set up reference assets and generation instructions.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>Generation requires a supported provider and server-side credentials.</div></div><div class="field"><label>Reference video (4–60 seconds)</label><div class="upload"><strong>▶ Add a reference video</strong>MP4, MOV, WEBM<input id="studio-video" type="file" accept="video/mp4,video/quicktime,video/webm"></div></div><div class="field"><label>Characters, products or clothes (up to 60 images)</label><div class="upload"><strong>＋ Add reference images</strong>JPG, PNG, WEBP<input id="studio-images" type="file" accept="image/jpeg,image/png,image/webp" multiple></div><div class="micro" id="studio-count">0 / 60 images selected</div></div><div class="field"><label>Motion preset</label><select id="studio-motion"><option>None</option><option>Cinematic tracking</option><option>Slow motion</option><option>Handheld documentary</option><option>Orbit camera</option><option>Product reveal</option></select></div><div class="field"><label>Prompt</label><textarea id="studio-prompt" placeholder="Describe scene, subject, movement, camera, lighting and visual style..."></textarea></div><div class="field"><label>Negative prompt</label><textarea id="studio-negative" placeholder="Optional: unwanted objects, artifacts, styles or visual defects..." style="min-height:70px"></textarea></div><div class="grid2"><div class="field"><label>Aspect ratio</label><select id="studio-ratio"><option>9:16</option><option>16:9</option><option>1:1</option><option>4:3</option><option>3:2</option></select></div><div class="field"><label>Quality</label><select id="studio-quality"><option>High</option><option>Standard</option><option>Ultra</option></select></div><div class="field"><label>Language</label><select id="studio-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Voice</label><select id="studio-voice"><option>Female</option><option>Male</option><option>None</option></select></div></div><div class="field"><label>Duration</label><div class="choices" data-group="studio-duration"><button class="choice selected">5 seconds</button><button class="choice">8 seconds</button><button class="choice">15 seconds</button><button class="choice">30 seconds</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('studio')">Generate Video</button><button class="btn" onclick="saveDraft('studio')">Save Draft</button></div><div class="notice hidden" id="studio-msg"></div></div><div class="panel preview"><h3>Generation Preview</h3><p class="panel-sub">Local source preview</p><div class="preview-box" id="studio-preview"><div><div class="empty-icon">✧</div><strong>Add a reference video or images</strong><p>This preview shows selected source files only; it does not generate AI output.</p></div></div></div></div>
+<div class="hero"><div><div class="eyebrow">ITFM AI STUDIO</div><h1>Genjutsu <span class="gradient">AI</span></h1><p>Create image-to-video concepts with motion references, characters, products and detailed settings.</p></div></div>
+<div class="tool-layout"><div class="panel"><h2>Scene builder</h2><p class="panel-sub">Set up reference assets and generation instructions.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>Generation requires a supported provider and server-side credentials.</div></div><div class="field"><label>Reference video (4–60 seconds)</label><div class="upload"><strong>▶ Add a reference video</strong>MP4, MOV, WEBM<input accept="video/mp4,video/quicktime,video/webm" id="studio-video" type="file"/></div></div><div class="field"><label>Characters, products or clothes (up to 60 images)</label><div class="upload"><strong>＋ Add reference images</strong>JPG, PNG, WEBP<input accept="image/jpeg,image/png,image/webp" id="studio-images" multiple="" type="file"/></div><div class="micro" id="studio-count">0 / 60 images selected</div></div><div class="field"><label>Motion preset</label><select id="studio-motion"><option>None</option><option>Cinematic tracking</option><option>Slow motion</option><option>Handheld documentary</option><option>Orbit camera</option><option>Product reveal</option></select></div><div class="field"><label>Prompt</label><textarea id="studio-prompt" placeholder="Describe scene, subject, movement, camera, lighting and visual style..."></textarea></div><div class="field"><label>Negative prompt</label><textarea id="studio-negative" placeholder="Optional: unwanted objects, artifacts, styles or visual defects..." style="min-height:70px"></textarea></div><div class="grid2"><div class="field"><label>Aspect ratio</label><select id="studio-ratio"><option>9:16</option><option>16:9</option><option>1:1</option><option>4:3</option><option>3:2</option></select></div><div class="field"><label>Quality</label><select id="studio-quality"><option>High</option><option>Standard</option><option>Ultra</option></select></div><div class="field"><label>Language</label><select id="studio-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Voice</label><select id="studio-voice"><option>Female</option><option>Male</option><option>None</option></select></div></div><div class="field"><label>Duration</label><div class="choices" data-group="studio-duration"><button class="choice selected">5 seconds</button><button class="choice">8 seconds</button><button class="choice">15 seconds</button><button class="choice">30 seconds</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('studio')">Generate Video</button><button class="btn" onclick="saveDraft('studio')">Save Draft</button></div><div class="notice hidden" id="studio-msg"></div></div><div class="panel preview"><h3>Generation Preview</h3><p class="panel-sub">Local source preview</p><div class="preview-box" id="studio-preview"><div><div class="empty-icon">✧</div><strong>Add a reference video or images</strong><p>This preview shows selected source files only; it does not generate AI output.</p></div></div></div></div>
 </section>
-
 <section class="view" id="view-movies">
- <div class="hero"><div><div class="eyebrow">ENTERTAINMENT DISCOVERY</div><h1>Movies <span class="gradient">Flix</span></h1><p>Discover movie titles by language and year. This demo uses sample catalogue entries and does not host or provide unauthorized movie streams or downloads.</p></div></div>
- <div class="panel"><div class="movies-toolbar"><input class="searchbox" id="movie-search" placeholder="Search movies..." oninput="filterMovies()"><select class="searchbox" id="movie-language" onchange="filterMovies()" style="max-width:170px"><option value="">All languages</option><option>Malayalam</option><option>Tamil</option><option>Telugu</option><option>Hindi</option><option>Hollywood</option></select><select class="searchbox" id="movie-year" onchange="filterMovies()" style="max-width:130px"><option value="">All years</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option></select></div><div class="section-head"><h2 id="movie-count">Featured titles</h2><span>Sample catalogue · add licensed metadata to launch</span></div><div class="movie-grid" id="movie-grid"></div><div class="notice">For a public launch, use licensed artwork and metadata, and link to official or authorized streaming services. No copyrighted video files are hosted by this prototype.</div></div>
+<div class="hero"><div><div class="eyebrow">ENTERTAINMENT DISCOVERY</div><h1>Movies <span class="gradient">Flix</span></h1><p>Discover movie titles by language and year. This demo uses sample catalogue entries and does not host or provide unauthorized movie streams or downloads.</p></div></div>
+<div class="panel"><div class="movies-toolbar"><input class="searchbox" id="movie-search" oninput="filterMovies()" placeholder="Search movies..."/><select class="searchbox" id="movie-language" onchange="filterMovies()" style="max-width:170px"><option value="">All languages</option><option>Malayalam</option><option>Tamil</option><option>Telugu</option><option>Hindi</option><option>Hollywood</option></select><select class="searchbox" id="movie-year" onchange="filterMovies()" style="max-width:130px"><option value="">All years</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option></select></div><div class="section-head"><h2 id="movie-count">Featured titles</h2><span>Sample catalogue · add licensed metadata to launch</span></div><div class="movie-grid" id="movie-grid"></div><div class="notice">For a public launch, use licensed artwork and metadata, and link to official or authorized streaming services. No copyrighted video files are hosted by this prototype.</div></div>
 </section>
-
 <section class="view" id="view-tv">
- <div class="hero"><div><div class="eyebrow">LIVE TV DIRECTORY</div><h1>TV Live <span class="gradient">Channels</span></h1><p>Browse a small demo directory of channels. Playback depends on official public streams, regional availability and broadcasting rights.</p></div></div>
- <div class="tv-layout"><div class="panel"><h3>Channel directory</h3><p class="panel-sub">Choose a listed channel</p><input class="searchbox" id="channel-search" placeholder="Search channels..." oninput="filterChannels()"><div class="tool-tabs" id="channel-cats"><button class="active" data-cat="All">All</button><button data-cat="News">News</button><button data-cat="Music">Music</button><button data-cat="General">General</button></div><div class="channel-list" id="channel-list"></div></div><div class="panel"><h3 id="channel-title">Select a channel</h3><p class="panel-sub">Official stream playback</p><div class="player" id="tv-player"><div><div class="empty-icon">📺</div><strong>Select a channel to inspect its stream</strong><p class="micro">This demo has no stream URLs configured. Only add streams you are authorized to distribute.</p></div></div><div class="notice" id="tv-notice">READY · Stream playback is not enabled until a verified official stream URL is configured.</div></div></div>
+<div class="hero"><div><div class="eyebrow">LIVE TV DIRECTORY</div><h1>TV Live <span class="gradient">Channels</span></h1><p>Browse a small demo directory of channels. Playback depends on official public streams, regional availability and broadcasting rights.</p></div></div>
+<div class="tv-layout"><div class="panel"><h3>Channel directory</h3><p class="panel-sub">Choose a listed channel</p><input class="searchbox" id="channel-search" oninput="filterChannels()" placeholder="Search channels..."/><div class="tool-tabs" id="channel-cats"><button class="active" data-cat="All">All</button><button data-cat="News">News</button><button data-cat="Music">Music</button><button data-cat="General">General</button></div><div class="channel-list" id="channel-list"></div></div><div class="panel"><h3 id="channel-title">Select a channel</h3><p class="panel-sub">Official stream playback</p><div class="player" id="tv-player"><div><div class="empty-icon">📺</div><strong>Select a channel to inspect its stream</strong><p class="micro">This demo has no stream URLs configured. Only add streams you are authorized to distribute.</p></div></div><div class="notice" id="tv-notice">READY · Stream playback is not enabled until a verified official stream URL is configured.</div></div></div>
 </section>
 </div>
-<footer class="footer">© <span id="year"></span> ITFM AI · Creative tools and entertainment discovery. <br></footer>
+
 </main>
 </div>
 <script>
 const titles={
 home:"Overview",image:"AI Image Generator",video:"AI Video Generator",audio:"AI Audio & Voice",music:"AI Music",cover:"AI Cover / Karaoke",stem:"Stem Grab",chat:"AI Chat",studio:"ITFM AI Studio",movies:"Movies Flix",tv:"TV Live Channels"
 };
-function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-'+name).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===name));document.getElementById('crumb').textContent=titles[name]||name;document.getElementById('sidebar').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'})}
+function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById('view-'+name).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===name));const crumb=document.getElementById('crumb');if(crumb)crumb.textContent=titles[name]||name;document.getElementById('sidebar').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
 document.querySelectorAll('.choices').forEach(group=>group.querySelectorAll('.choice').forEach(btn=>btn.addEventListener('click',()=>{group.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected')})));
 function msg(id,text){const el=document.getElementById(id+'-msg');if(el){el.textContent=text;el.classList.remove('hidden')}}
@@ -283,10 +270,6 @@ document.getElementById('chat-file').addEventListener('change',e=>{document.getE
 document.getElementById('stem-tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#stem-tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('stem-preview').innerHTML='<div><div class="empty-icon">≋</div><strong>'+escapeHtml(b.textContent)+'</strong><p>Processing requires a supported audio API integration.</p></div>'});
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
-
-
-
-
 <style>
 /* Polished, consistent backgrounds for all AI and entertainment tool cards */
 #view-home .features,
@@ -362,8 +345,6 @@ document.getElementById('year').textContent=new Date().getFullYear();
   }
 }
 </style>
-
-
 <style>
 /* Compact all tool cards and their text/icons without changing the content */
 .feature,
@@ -440,12 +421,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
   }
 }
 </style>
-
-
-
-
-
-<footer class="itfm-custom-footer" aria-label="ITFM AI social links and copyright">
+<footer aria-label="ITFM AI social links and copyright" class="itfm-custom-footer">
 <style>
 .itfm-custom-footer{box-sizing:border-box;width:100%;margin:30px auto 0;padding:25px 14px 22px;background:#03050a;color:#f8fafc;border-top:1px solid rgba(148,163,184,.2);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;font-family:inherit}
 .itfm-custom-footer .itfm-social-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 22px;margin:0}
@@ -458,18 +434,16 @@ document.getElementById('year').textContent=new Date().getFullYear();
 .itfm-custom-footer .itfm-copyright{margin:0;color:#94a3b8;font-size:12px}
 @media(max-width:480px){.itfm-custom-footer{padding:22px 10px 18px;gap:12px}.itfm-custom-footer .itfm-social-links{gap:12px 16px}.itfm-custom-footer a{font-size:13px}}
 </style>
-<nav class="itfm-social-links" aria-label="Social links">
-<a href="https://youtube.com/@itfmai" target="_blank" rel="noopener noreferrer"><svg class="itfm-footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg><span>YouTube</span></a>
-<a href="https://facebook.com/itfmai" target="_blank" rel="noopener noreferrer"><svg class="itfm-footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M24 12.1C24 5.4 18.6 0 12 0S0 5.4 0 12.1C0 18.1 4.4 23 10.1 24v-8.4H7.1v-3.5h3V8.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.6.2 2.6.2v2.9h-1.5c-1.5 0-2 .9-2 1.9v2.3h3.4l-.5 3.5h-2.9V24C19.6 23 24 18.1 24 12.1Z"/></svg><span>Facebook</span></a>
-<a href="https://instagram.com/itfmai" target="_blank" rel="noopener noreferrer"><svg class="itfm-footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7ZM12 6.7a5.3 5.3 0 1 1 0 10.6 5.3 5.3 0 0 1 0-10.6Zm0 2.2a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Zm5.5-3.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z"/></svg><span>Instagram</span></a>
+<nav aria-label="Social links" class="itfm-social-links">
+<a href="https://youtube.com/@itfmai" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="itfm-footer-icon" viewbox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" fill="currentColor"></path></svg><span>YouTube</span></a>
+<a href="https://facebook.com/itfmai" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="itfm-footer-icon" viewbox="0 0 24 24"><path d="M24 12.1C24 5.4 18.6 0 12 0S0 5.4 0 12.1C0 18.1 4.4 23 10.1 24v-8.4H7.1v-3.5h3V8.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.6.2 2.6.2v2.9h-1.5c-1.5 0-2 .9-2 1.9v2.3h3.4l-.5 3.5h-2.9V24C19.6 23 24 18.1 24 12.1Z" fill="currentColor"></path></svg><span>Facebook</span></a>
+<a href="https://instagram.com/itfmai" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="itfm-footer-icon" viewbox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7ZM12 6.7a5.3 5.3 0 1 1 0 10.6 5.3 5.3 0 0 1 0-10.6Zm0 2.2a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Zm5.5-3.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z" fill="currentColor"></path></svg><span>Instagram</span></a>
 </nav>
-<a class="itfm-brand-link" href="https://itfmai.in" target="_blank" rel="noopener noreferrer"><svg class="itfm-footer-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 2 7l10 5 8-4v6h2V7L12 2Zm-6 9.2V16l6 3 6-3v-4.8l-6 3-6-3Z"/></svg><span>ITFM AI</span></a>
+<a class="itfm-brand-link" href="https://itfmai.in" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="itfm-footer-icon" viewbox="0 0 24 24"><path d="M12 2 2 7l10 5 8-4v6h2V7L12 2Zm-6 9.2V16l6 3 6-3v-4.8l-6 3-6-3Z" fill="currentColor"></path></svg><span>ITFM AI</span></a>
 <p class="itfm-powered">⚡ Powered by ITFM AI</p>
 <p class="itfm-admin">👨‍💻 Admin By MEHAJIB SHA</p>
 <p class="itfm-copyright">Copyright © 2027 ITFM AI. All rights reserved</p>
 </footer>
-
-
 <style id="itfm-full-site-polish">
 body{background:radial-gradient(ellipse at 8% 0%,rgba(85,55,190,.13),transparent 34rem),radial-gradient(ellipse at 100% 28%,rgba(0,157,196,.10),transparent 32rem),#080b16!important;color:#f4f6ff}
 .app{min-height:100vh;background:transparent!important}
@@ -517,8 +491,6 @@ input,textarea,select{max-width:100%;box-sizing:border-box;border-radius:11px!im
 }
 @media(max-width:380px){.content{padding:11px!important}.hero{padding:19px 15px!important}.feature{padding:11px!important}}
 </style>
-
-
 <style id="itfm-header-brand-fix">
 .topbar { position: sticky; }
 .topbar .mobile-brand {
@@ -548,8 +520,6 @@ input,textarea,select{max-width:100%;box-sizing:border-box;border-radius:11px!im
   .topbar .mobile-brand { font-size: 21px !important; }
 }
 </style>
-
-
 <style id="itfm-hero-slightly-larger">
 .hero .eyebrow {
   font-size: 12px !important;
@@ -567,6 +537,55 @@ input,textarea,select{max-width:100%;box-sizing:border-box;border-radius:11px!im
   .hero .eyebrow { font-size: 11px !important; }
   .hero h1 { font-size: clamp(32px, 8.5vw, 42px) !important; }
   .hero p { font-size: 14px !important; }
+}
+</style>
+
+<style id="itfm-final-layout-fixes">
+/* Final responsive polish: remove unused chrome and prevent empty dashboard blocks. */
+.topbar .avatar { display:none !important; }
+.topbar { justify-content:flex-start !important; }
+.topbar .mobile-brand {
+  position:absolute !important; left:50% !important; top:50% !important;
+  transform:translate(-50%,-50%) !important; pointer-events:none;
+  white-space:nowrap; font-weight:850; font-size:22px; letter-spacing:-.04em;
+}
+.topbar .mobile-brand span {
+  background:linear-gradient(90deg,#62b7ff,#d58cff);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.topbar .top-right { margin-left:auto; }
+#view-home .section-head:empty { display:none !important; }
+#view-home .cards { margin-bottom:26px !important; }
+#view-home .feature {
+  min-height:0 !important; grid-template-columns:64px minmax(0,1fr) !important;
+  grid-template-rows:auto auto !important; column-gap:14px !important;
+  padding:16px !important; border-radius:19px !important;
+}
+#view-home .feature .symbol {
+  width:54px !important; height:54px !important; min-width:54px !important;
+  font-size:25px !important; border-radius:15px !important; margin:0 !important;
+}
+#view-home .feature-copy { padding-top:4px !important; }
+#view-home .feature h3 { font-size:16px !important; margin:0 0 6px !important; }
+#view-home .feature p { font-size:12px !important; line-height:1.55 !important; }
+#view-home .feature-open { margin-top:14px !important; padding:11px 14px !important; min-height:40px !important; }
+.itfm-custom-footer { position:relative; z-index:1; }
+@media(max-width:760px) {
+  .topbar { min-height:64px !important; padding:8px 14px !important; }
+  .topbar .mobile-brand { font-size:21px !important; }
+  #view-home .hero { min-height:0 !important; align-items:flex-start !important; margin-top:6px !important; margin-bottom:18px !important; }
+  #view-home .hero h1 { font-size:clamp(32px,8vw,42px) !important; }
+  #view-home .hero p { font-size:14px !important; line-height:1.65 !important; }
+  #view-home .cards { grid-template-columns:minmax(0,1fr) !important; gap:12px !important; }
+  #view-home .feature { display:grid !important; grid-template-columns:46px minmax(0,1fr) !important; column-gap:12px !important; padding:13px !important; }
+  #view-home .feature .symbol { grid-column:1; grid-row:1; width:44px !important; height:44px !important; min-width:44px !important; font-size:21px !important; }
+  #view-home .feature-copy { grid-column:2; grid-row:1; padding-top:2px !important; }
+  #view-home .feature-open { grid-column:1/-1; grid-row:2; margin-top:3px !important; }
+  .itfm-custom-footer .itfm-social-links { gap:12px 16px !important; }
+}
+@media(max-width:380px) {
+  .topbar .mobile-brand { font-size:19px !important; }
+  #view-home .feature h3 { font-size:14px !important; }
 }
 </style>
 
