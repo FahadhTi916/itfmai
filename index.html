@@ -244,7 +244,7 @@ body{
  <div class="tv-layout"><div class="panel"><h3>Channel directory</h3><p class="panel-sub">Choose a listed channel</p><input class="searchbox" id="channel-search" placeholder="Search channels..." oninput="filterChannels()"><div class="tool-tabs" id="channel-cats"><button class="active" data-cat="All">All</button><button data-cat="News">News</button><button data-cat="Music">Music</button><button data-cat="General">General</button></div><div class="channel-list" id="channel-list"></div></div><div class="panel"><h3 id="channel-title">Select a channel</h3><p class="panel-sub">Official stream playback</p><div class="player" id="tv-player"><div><div class="empty-icon">📺</div><strong>Select a channel to inspect its stream</strong><p class="micro">This demo has no stream URLs configured. Only add streams you are authorized to distribute.</p></div></div><div class="notice" id="tv-notice">READY · Stream playback is not enabled until a verified official stream URL is configured.</div></div></div>
 </section>
 </div>
-<footer class="footer">© <span id="year"></span> ITFM AI · Creative tools and entertainment discovery. <br>Local preview build: AI generation, audio processing, chat responses and live playback require real provider integrations and secure server-side credentials. Never expose API keys in browser code.</footer>
+<footer class="footer">© <span id="year"></span> ITFM AI · Creative tools and entertainment discovery. <br></footer>
 </main>
 </div>
 <script>
@@ -280,4 +280,59 @@ document.getElementById('chat-file').addEventListener('change',e=>{document.getE
 document.getElementById('stem-tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#stem-tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('stem-preview').innerHTML='<div><div class="empty-icon">≋</div><strong>'+escapeHtml(b.textContent)+'</strong><p>Processing requires a supported audio API integration.</p></div>'});
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
+
+<footer class="itfm-custom-footer" aria-label="ITFM AI links and copyright">
+  <style>
+    .itfm-custom-footer {
+      width: 100%;
+      box-sizing: border-box;
+      margin: 36px auto 0;
+      padding: 28px 16px 24px;
+      background: #05070d;
+      color: #f5f7ff;
+      border-top: 1px solid rgba(148, 163, 184, .18);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-family: inherit;
+    }
+    .itfm-custom-footer .itfm-social-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px 22px;
+      margin: 0;
+    }
+    .itfm-custom-footer a {
+      color: #c4b5fd;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+    .itfm-custom-footer a:hover,
+    .itfm-custom-footer a:focus-visible { color: #fff; text-decoration: underline; }
+    .itfm-custom-footer .itfm-brand-link { color: #fff; font-size: 1.08rem; letter-spacing: .04em; }
+    .itfm-custom-footer .itfm-powered { margin: 2px 0 0; font-weight: 700; }
+    .itfm-custom-footer .itfm-admin { margin: 0; color: #cbd5e1; }
+    .itfm-custom-footer .itfm-copyright { margin: 0; color: #94a3b8; font-size: .9rem; }
+    @media (max-width: 480px) {
+      .itfm-custom-footer { padding: 24px 12px 20px; gap: 13px; }
+      .itfm-custom-footer .itfm-social-links { gap: 12px 18px; }
+    }
+  </style>
+  <nav class="itfm-social-links" aria-label="Social links">
+    <a href="https://youtube.com/@itfmai" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://facebook.com/itfmai" target="_blank" rel="noopener noreferrer">Facebook</a>
+    <a href="https://instagram.com/itfmai" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </nav>
+  <a class="itfm-brand-link" href="https://itfmai.in" target="_blank" rel="noopener noreferrer">ITFM AI</a>
+  <p class="itfm-powered">⚡ Powered by ITFM AI</p>
+  <p class="itfm-admin">👨‍💻 Admin By MEHAJIB SHA</p>
+  <p class="itfm-copyright">Copyright © 2027 ITFM AI. All rights reserved</p>
+</footer>
+
 </body></html>
