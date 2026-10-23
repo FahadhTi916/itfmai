@@ -1,19 +1,7 @@
-# ITFM AI — Responsive Creative AI Studio
+# ITFM AI — 10 Tools with Back Navigation
 
-A mobile-friendly, dark-gradient AI tools dashboard with 10 tool views and back navigation.
+Responsive HTML project for GitHub and Vercel. Each tool view includes a **← Back to Dashboard** button.
 
-## Files
-- `index.html` — complete website and styling
-- `check.js` — interaction checks / helper script
-- `vercel.json` — Vercel configuration
+Tools: AI Image, AI Video, Audio & Voice, AI Music, AI Cover / Karaoke, STEM GRAB, AI Chat, Genjutsu AI, Movies, and TV Live Channels.
 
-## Run locally
-Open `index.html` in a browser, or serve this folder with any static web server.
-
-## Deploy to Vercel
-1. Upload the files to a GitHub repository.
-2. Import the repository in Vercel.
-3. Select the **Other** framework preset and deploy.
-
-## Important
-The interface is front-end only. Real AI generation/chat requires server-side API routes and securely stored provider credentials. Do not put API keys in browser JavaScript. Some media/live-channel tools may also require authorized providers and content sources.
+Deploy by uploading `index.html`, `vercel.json`, and `README.md` to GitHub and deploying with Vercel using the **Other** framework preset.
