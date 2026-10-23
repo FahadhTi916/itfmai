@@ -1,8 +1,7 @@
-# ITFM AI — Tools Grid Update
+# ITFM AI — 10 Tools with Back Navigation
 
-The dashboard tools grid contains 10 cards, each with an **Open Tools** button:
-AI Image, AI Video, Audio & Voice, AI Music, AI Cover / Karaoke, STEM GRAB, AI Chat, Genjutsu AI, Movies, and TV Live Channels.
+Responsive HTML project for GitHub and Vercel. Each tool view includes a **← Back to Dashboard** button.
 
-Responsive static HTML project for GitHub and Vercel. Upload `index.html`, `vercel.json`, and `README.md` to your repository and deploy with Vercel using the **Other** framework preset.
+Tools: AI Image, AI Video, Audio & Voice, AI Music, AI Cover / Karaoke, STEM GRAB, AI Chat, Genjutsu AI, Movies, and TV Live Channels.
 
-Actual AI generation and live playback require provider/backend configuration and authorized streams.
+Deploy by uploading `index.html`, `vercel.json`, and `README.md` to GitHub and deploying with Vercel using the **Other** framework preset.
