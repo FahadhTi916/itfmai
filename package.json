@@ -2,12 +2,8 @@
   "name": "itfm-ai",
   "version": "1.0.0",
   "private": true,
-  "description": "ITFM AI creative tools with server-side API integrations",
+  "type": "module",
   "engines": {
-    "node": ">=18"
-  },
-  "scripts": {
-    "check": "node --check api/chat.js && node --check api/generate.js && node --check api/movies.js && node --check api/channels.js && node --check api/stem.js && node --check api/health.js"
-  },
-  "type": "module"
+    "node": ">=20"
+  }
 }
