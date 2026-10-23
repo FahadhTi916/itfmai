@@ -1,10 +1,8 @@
-# ITFM AI Website
+# ITFM AI — Complete UI Refresh
 
-Static HTML website for GitHub and Vercel.
-
-- Includes a compact ☰ Menu button to open the sidebar.
-- Navigation includes AI Image, AI Video, Audio & Voice, AI Music, AI Cover / Karaoke, STEM GRAB, AI Chat, ITFM AI Studio, Movies, and TV Live Channels.
-- Centered black footer contains YouTube, Facebook, Instagram, and ITFM AI links with icons, plus Powered By, admin, and 2027 copyright.
+Responsive static HTML website for GitHub and Vercel. Refines the overall dark theme, navigation, hero, tool cards, forms and footer while preserving existing sections and front-end interactions.
 
 ## Deploy
-Upload `index.html`, `vercel.json`, and `README.md` to GitHub, import the repository in Vercel, choose **Other** as framework preset, and deploy.
+Upload `index.html`, `vercel.json`, and `README.md` to GitHub. Import the repository in Vercel, choose **Other** as framework preset, and deploy.
+
+AI generation/audio/live playback requires provider and backend integrations if not already configured.
