@@ -1,8 +1,10 @@
 # ITFM AI Website
 
-Static HTML site prepared for GitHub and Vercel.
+Static HTML website for GitHub and Vercel.
+
+- Includes a compact ☰ Menu button to open the sidebar.
+- Navigation includes AI Image, AI Video, Audio & Voice, AI Music, AI Cover / Karaoke, STEM GRAB, AI Chat, ITFM AI Studio, Movies, and TV Live Channels.
+- Centered black footer contains YouTube, Facebook, Instagram, and ITFM AI links with icons, plus Powered By, admin, and 2027 copyright.
 
 ## Deploy
-Upload `index.html`, `vercel.json`, and `README.md` to the GitHub repository. Import the repository in Vercel, select **Other** as the framework preset, and deploy.
-
-The footer contains centered YouTube, Facebook, Instagram, and ITFM AI links with icons on a black background, plus the requested Powered By, admin, and 2027 copyright lines.
+Upload `index.html`, `vercel.json`, and `README.md` to GitHub, import the repository in Vercel, choose **Other** as framework preset, and deploy.

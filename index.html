@@ -150,17 +150,7 @@ body{
 
 </style>
 
-<style>
-/* Requested: remove the hamburger (☰) control from the header */
-button[aria-label*="menu" i],
-button[aria-label*="navigation" i],
-.hamburger,
-.menu-toggle,
-.mobile-menu-toggle,
-button.hamburger-button {
-  display: none !important;
-}
-</style>
+
 
 </head>
 <body>
@@ -187,7 +177,7 @@ button.hamburger-button {
   <div class="sidebar-bottom"><strong>✦ Your creative space</strong><p>Draft prompts locally. Connect an AI provider to enable real generation.</p><button class="btn" style="width:100%" onclick="showView('image')">Start creating →</button></div>
 </aside>
 <main class="main">
-<header class="topbar"><div class="topbar-left"><span class="crumb">Workspace / <b id="crumb">Overview</b></span></div><div class="mobile-brand">ITFM <span>AI</span></div><div class="top-right"><span class="status">● LOCAL PREVIEW</span><div class="avatar">I</div></div></header>
+<header class="topbar"><div class="topbar-left"><button class="mobile-menu" type="button" aria-label="Menu" onclick="document.getElementById('sidebar').classList.toggle('open')">☰ Menu</button><span class="crumb">Workspace / <b id="crumb">Overview</b></span></div><div class="mobile-brand">ITFM <span>AI</span></div><div class="top-right"><span class="status">● LOCAL PREVIEW</span><div class="avatar">I</div></div></header>
 <div class="content">
 <section class="view active" id="view-home">
   <div class="hero"><div><div class="eyebrow">WELCOME TO YOUR STUDIO</div><h1>Make something <span class="gradient">extraordinary.</span></h1><p>One creative workspace for AI images, video, voice, music and chat — built around your brand, ITFM AI.</p></div><div class="hero-chip"><b>ITFM ✦ AI</b><small>Your ideas, amplified.</small></div></div>
@@ -452,11 +442,14 @@ document.getElementById('year').textContent=new Date().getFullYear();
 </style>
 
 
+
+
+
 <footer class="itfm-custom-footer" aria-label="ITFM AI social links and copyright">
 <style>
 .itfm-custom-footer{box-sizing:border-box;width:100%;margin:30px auto 0;padding:25px 14px 22px;background:#03050a;color:#f8fafc;border-top:1px solid rgba(148,163,184,.2);text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;font-family:inherit}
 .itfm-custom-footer .itfm-social-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 22px;margin:0}
-.itfm-custom-footer a{display:inline-flex;align-items:center;justify-content:center;gap:7px;color:#d6ccff;text-decoration:none;font-size:14px;font-weight:650;transition:color .2s ease}
+.itfm-custom-footer a{display:inline-flex;align-items:center;justify-content:center;gap:7px;color:#d6ccff;text-decoration:none;font-size:14px;font-weight:650}
 .itfm-custom-footer a:hover,.itfm-custom-footer a:focus-visible{color:#fff;text-decoration:underline}
 .itfm-custom-footer .itfm-footer-icon{width:19px;height:19px;flex:0 0 19px;display:inline-block}
 .itfm-custom-footer .itfm-brand-link{color:#fff;font-size:16px;letter-spacing:.04em}
