@@ -1,14 +1,13 @@
-# ITFM AI — Professional Responsive Website
+# ITFM AI — Polished Project
 
-## Files
-- `index.html` — complete single-page website with all current tool views and front-end interactions
-- `vercel.json` — static Vercel deployment configuration
+Responsive static website for GitHub and Vercel.
 
-## Deploy to Vercel
-1. Upload `index.html` and `vercel.json` to the root of your GitHub repository.
-2. Import the repository into Vercel.
-3. Select **Other** as the framework preset.
-4. Leave build command empty and deploy.
+- Consistent dark-gradient styling for tool cards and forms.
+- Cleaner spacing, typography, borders, and responsive card layouts.
+- Adds visible Movies and TV Live Channels cards to the dashboard.
+- Keeps existing navigation and front-end behavior.
 
-## Notes
-The existing UI sections and local front-end interactions are retained. Actual AI image/video/audio generation, live AI responses, and TV playback require supported provider integrations, server-side credentials, and authorized stream URLs. Do not place secret API keys in browser code.
+## Deploy
+Upload `index.html`, `vercel.json`, and `README.md` to the GitHub repository, then import/deploy in Vercel using the **Other** framework preset.
+
+Real AI generation and live TV playback require working provider integrations, backend credentials, and authorized stream sources.
