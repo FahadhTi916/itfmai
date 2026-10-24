@@ -1,9 +1,13 @@
 {
-  "name": "itfm-ai",
+  "name": "itfm-ai-platform",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
+  "description": "ITFM AI free-tier API integration starter",
   "engines": {
-    "node": ">=20"
+    "node": ">=18"
+  },
+  "scripts": {
+    "check": "node --check api/index.js && node --check \"api/[...path].js\"",
+    "test": "npm run check"
   }
 }
