@@ -214,7 +214,7 @@ body { padding-bottom: 0 !important; }
 
 <div class="hero"><div><div class="eyebrow">IMAGE LAB</div><h1>AI Image Generator <span class="gradient">Generator</span></h1><p>Create, edit, enhance and upscale images with your own prompt and reference files.</p></div></div>
 <div class="tool-layout"><div class="panel"><h2>Image settings</h2><p class="panel-sub">Write your prompt and configure the output.</p><div class="provider-note"><span>⚙</span><div><b>AI provider setup required</b>Connect a supported image provider with server-side API credentials to generate real images. This preview will never fake a generated result.</div></div>
-<div class="field"><label>Prompt / Instructions</label><textarea id="image-prompt" placeholder="Describe what you want to create or edit..."></textarea></div><div class="field"><label>Upload reference / source files</label><div class="upload"><strong>＋ Add reference files</strong>JPG, PNG, WEBP, GIF or other supported documents<input accept="image/*,.pdf,.docx,.txt,.csv,.xlsx,.pptx,.md,.json" id="image-file" type="file"/></div></div>
+<div class="field"><label>Prompt / Instructions</label><textarea id="image-prompt" placeholder="Describe what you want to create or edit..."></textarea></div><div class="field"><label>Upload reference / source files</label><div class="upload"><strong>＋ Add reference files</strong>JPG, PNG, WEBP, GIF or other supported documents<input accept="image/*" id="image-file" type="file"/></div></div>
 <div class="grid2"><div class="field"><label>Aspect ratio</label><select id="image-ratio"><option>9:16</option><option>16:9</option><option>1:1</option><option>4:3</option><option>3:2</option></select></div><div class="field"><label>Quality</label><select id="image-quality"><option>High</option><option>Standard</option><option>Ultra</option></select></div></div>
 <div class="btnrow"><button class="btn primary" onclick="generateUnavailable('image')">Generate with AI ✦</button><button class="btn" onclick="saveDraft('image')">Save Draft</button><button class="btn" onclick="clearForm('image')">Clear</button></div><div class="notice hidden" id="image-msg"></div></div>
 <div class="panel preview"><h3>Genjutsu AI</h3><p class="panel-sub">Local preview · selected input only</p><div class="preview-box" id="image-preview"><div><div class="empty-icon">▧</div><strong>Your input preview will appear here</strong><p>Upload a reference or save a prompt draft to keep working on your idea.</p></div></div><p class="micro">Your selected files remain in your browser until you explicitly connect a server-side integration.</p></div></div>
@@ -229,7 +229,7 @@ body { padding-bottom: 0 !important; }
 <div class="itfm-back-wrap" data-itfm-back="audio"><button type="button" class="itfm-back-button" onclick="showView(&quot;home&quot;)"><span aria-hidden="true"></span>Back</button></div>
 
 <div class="hero"><div><div class="eyebrow">VOICE LAB</div><h1>AI Audio <span class="gradient">&amp; Voice</span></h1><p>Prepare speech-to-text and text-to-speech tasks in your preferred language.</p></div></div>
-<div class="tool-layout"><div class="panel"><h2>Audio workspace</h2><p class="panel-sub">Choose a task and configure your voice.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>Connect a speech provider on the server to process audio or synthesize speech.</div></div><div class="field"><label>Prompt / text</label><textarea id="audio-prompt" placeholder="Enter text to speak, or instructions for your audio task..."></textarea></div><div class="grid2"><div class="field"><label>Language</label><select id="audio-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Voice</label><select id="audio-voice"><option>Female</option><option>Male</option></select></div></div><div class="field"><label>Audio action</label><div class="choices" data-group="audio-action"><button class="choice selected">Speech → Text</button><button class="choice">Text → Speech</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('audio')">Process with AI</button><button class="btn" onclick="saveDraft('audio')">Save Draft</button><button class="btn" onclick="clearForm('audio')">Clear</button></div><div class="notice hidden" id="audio-msg"></div></div><div class="panel preview"><h3>Audio Preview</h3><p class="panel-sub">Local source preview</p><div class="preview-box" id="audio-preview"><div><div class="empty-icon">🎙</div><strong>No audio selected</strong><p>Upload an audio file to see a local preview.</p></div></div></div></div>
+<div class="tool-layout"><div class="panel"><h2>Audio workspace</h2><p class="panel-sub">Choose a task and configure your voice.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>Connect a speech provider on the server to process audio or synthesize speech.</div></div><div class="field"><label>Prompt / text</label><textarea id="audio-prompt" placeholder="Enter text to speak, or instructions for your audio task..."></textarea></div><div class="field"><label>Audio file (required for Speech → Text)</label><div class="upload"><strong>＋ Choose audio</strong>MP3, WAV, M4A, OGG<input accept="audio/*" id="audio-file" type="file"/></div></div><div class="grid2"><div class="field"><label>Language</label><select id="audio-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Voice</label><select id="audio-voice"><option>Female</option><option>Male</option></select></div></div><div class="field"><label>Audio action</label><div class="choices" data-group="audio-action"><button class="choice selected">Speech → Text</button><button class="choice">Text → Speech</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('audio')">Process with AI</button><button class="btn" onclick="saveDraft('audio')">Save Draft</button><button class="btn" onclick="clearForm('audio')">Clear</button></div><div class="notice hidden" id="audio-msg"></div></div><div class="panel preview"><h3>Audio Preview</h3><p class="panel-sub">Local source preview</p><div class="preview-box" id="audio-preview"><div><div class="empty-icon">🎙</div><strong>No audio selected</strong><p>Upload an audio file to see a local preview.</p></div></div></div></div>
 </section>
 <section class="view" id="view-music">
 <div class="itfm-back-wrap" data-itfm-back="music"><button type="button" class="itfm-back-button" onclick="showView(&quot;home&quot;)"><span aria-hidden="true"></span>Back</button></div>
@@ -241,13 +241,13 @@ body { padding-bottom: 0 !important; }
 <div class="itfm-back-wrap" data-itfm-back="cover"><button type="button" class="itfm-back-button" onclick="showView(&quot;home&quot;)"><span aria-hidden="true"></span>Back</button></div>
 
 <div class="hero"><div><div class="eyebrow">COVER &amp; KARAOKE</div><h1>AI Cover <span class="gradient">Studio</span></h1><p>Prepare an authorized reference track and lyrics for a supported cover-generation service.</p></div></div>
-<div class="tool-layout"><div class="panel"><h2>Cover settings</h2><p class="panel-sub">Only upload audio you own or have permission to process.</p><div class="provider-note">⚙ <div><b>Cover provider setup required</b>A compatible external music model must be configured on the server. Voice cloning should only be used with consent.</div></div><div class="field"><label>Upload karaoke / reference audio</label><div class="upload"><strong>＋ Choose audio</strong>MP3, WAV, M4A, OGG and more<input accept="audio/*" id="cover-file" type="file"/></div></div><div class="field"><label>Lyrics (optional)</label><textarea id="cover-lyrics" placeholder="Enter lyrics you have rights to use..."></textarea></div><div class="grid2"><div class="field"><label>Language</label><select id="cover-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Vocal gender</label><select id="cover-voice"><option>Female</option><option>Male</option></select></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('cover')">Generate Cover</button><button class="btn" onclick="saveDraft('cover')">Save Draft</button></div><div class="notice hidden" id="cover-msg"></div></div><div class="panel preview"><h3>Cover Preview</h3><p class="panel-sub">Local audio preview</p><div class="preview-box" id="cover-preview"><div><div class="empty-icon">🎧</div><strong>No audio selected</strong><p>Upload a reference or karaoke audio file.</p></div></div></div></div>
+<div class="tool-layout"><div class="panel"><h2>Cover settings</h2><p class="panel-sub">Only upload audio you own or have permission to process.</p><div class="provider-note">⚙ <div><b>Cover provider setup required</b>A compatible external music model must be configured on the server. Voice cloning should only be used with consent.</div></div><div class="field"><label>Upload karaoke / reference audio</label><div class="upload"><strong>＋ Choose audio</strong>MP3, WAV, M4A, OGG and more<input accept="audio/*" id="cover-file" type="file"/></div></div><div class="field"><label>Lyrics (optional)</label><textarea id="cover-lyrics" placeholder="Enter lyrics you have rights to use..."></textarea></div><div class="field"><label>Mode</label><select id="cover-mode"><option value="cover">AI Cover (requires configured RVC adapter)</option><option value="karaoke">Karaoke / vocal separation</option></select></div><div class="field"><label>Authorized RVC voice model ID (as configured on your worker)</label><input id="cover-voice-model" type="text" placeholder="e.g. your-own-model-id"/></div><div class="grid2"><div class="field"><label>Language</label><select id="cover-language"><option>Malayalam</option><option>Hindi</option><option>Tamil</option><option>English</option></select></div><div class="field"><label>Vocal gender</label><select id="cover-voice"><option>Female</option><option>Male</option></select></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('cover')">Generate Cover</button><button class="btn" onclick="saveDraft('cover')">Save Draft</button></div><div class="notice hidden" id="cover-msg"></div></div><div class="panel preview"><h3>Cover Preview</h3><p class="panel-sub">Local audio preview</p><div class="preview-box" id="cover-preview"><div><div class="empty-icon">🎧</div><strong>No audio selected</strong><p>Upload a reference or karaoke audio file.</p></div></div></div></div>
 </section>
 <section class="view" id="view-stem">
 <div class="itfm-back-wrap" data-itfm-back="stem"><button type="button" class="itfm-back-button" onclick="showView(&quot;home&quot;)"><span aria-hidden="true"></span>Back</button></div>
 
 <div class="hero"><div><div class="eyebrow">AUDIO UTILITIES</div><h1>Stem <span class="gradient">Grab</span></h1><p>Prepare a track for vocal removal, stem separation and karaoke workflows.</p></div></div>
-<div class="tool-layout"><div class="panel"><h2>Upload your track</h2><p class="panel-sub">Maximum suggested upload size: 80 MB. Provider limits may apply.</p><div class="provider-note">⚙ <div><b>StemSplit API required</b>Set STEMSPLIT_API_KEY securely on your server. This page does not upload or process audio by itself.</div></div><div class="field"><div class="upload"><strong>☁ Drop your audio track here</strong>or browse · MP3, WAV, FLAC, M4A, OGG, AAC<input accept="audio/*" id="stem-file" type="file"/></div></div><div class="field"><label>What do you want to do?</label><div class="choices" data-group="stem-action"><button class="choice selected">Six-stem separation</button><button class="choice">Vocals + instrumental</button><button class="choice">Karaoke backing track</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('stem')">Process track</button><button class="btn" onclick="clearForm('stem')">Clear</button></div><div class="notice hidden" id="stem-msg"></div></div><div class="panel"><h3>All audio tools</h3><p class="panel-sub">Choose a workflow to prepare.</p><div class="tool-tabs" id="stem-tabs"><button class="active">Stem splitter</button><button>Vocal remover</button><button>Karaoke maker</button><button>Key &amp; BPM finder</button><button>Pitch changer</button><button>Video → MP3</button><button>Cutter</button><button>Joiner</button><button>Recorder</button><button>Silence remover</button></div><div class="preview-box" id="stem-preview" style="min-height:180px"><div><div class="empty-icon">≋</div><strong>Audio workspace ready</strong><p>Choose a file and processing mode to prepare your job.</p></div></div><p class="micro">The current adapter would need to be implemented for the selected provider capability. Do not send files without permission.</p></div></div>
+<div class="tool-layout"><div class="panel"><h2>Upload your track</h2><p class="panel-sub">Maximum suggested upload size: 80 MB. Provider limits may apply.</p><div class="provider-note">⚙ <div><b>Local Demucs worker required</b>Deploy the Python worker and configure ITFM_MEDIA_WORKER_URL in Supabase. Processing happens server-side; this page does not fake results.</div></div><div class="field"><div class="upload"><strong>☁ Drop your audio track here</strong>or browse · MP3, WAV, FLAC, M4A, OGG, AAC<input accept="audio/*" id="stem-file" type="file"/></div></div><div class="field"><label>What do you want to do?</label><div class="choices" data-group="stem-action"><button class="choice selected">Stem separation (model-supported stems)</button><button class="choice">Vocals + instrumental</button><button class="choice">Karaoke backing track</button></div></div><div class="btnrow"><button class="btn primary" onclick="generateUnavailable('stem')">Process track</button><button class="btn" onclick="clearForm('stem')">Clear</button></div><div class="notice hidden" id="stem-msg"></div></div><div class="panel"><h3>All audio tools</h3><p class="panel-sub">Choose a workflow to prepare.</p><div class="tool-tabs" id="stem-tabs"><button class="active">Stem splitter</button><button>Vocal remover</button><button>Karaoke maker</button><button>Key &amp; BPM finder</button><button>Pitch changer</button><button>Video → MP3</button><button>Cutter</button><button>Joiner</button><button>Recorder</button><button>Silence remover</button></div><div class="preview-box" id="stem-preview" style="min-height:180px"><div><div class="empty-icon">≋</div><strong>Audio workspace ready</strong><p>Choose a file and processing mode to prepare your job.</p></div></div><p class="micro">Demucs runs on your deployed Python worker. Supported outputs depend on the selected Demucs model. Do not send files without permission.</p></div></div>
 </section>
 <section class="view" id="view-chat">
 <div class="itfm-back-wrap" data-itfm-back="chat"><button type="button" class="itfm-back-button" onclick="showView(&quot;home&quot;)"><span aria-hidden="true"></span>Back</button></div>
@@ -265,7 +265,7 @@ body { padding-bottom: 0 !important; }
 <div class="itfm-back-wrap" data-itfm-back="movies"><button type="button" class="itfm-back-button" onclick="showView(&quot;home&quot;)"><span aria-hidden="true"></span>Back</button></div>
 
 <div class="hero"><div><div class="eyebrow">ENTERTAINMENT DISCOVERY</div><h1>Movies <span class="gradient">Flix</span></h1><p>Discover movie titles by language and year. This demo uses sample catalogue entries and does not host or provide unauthorized movie streams or downloads.</p></div></div>
-<div class="panel"><div class="movies-toolbar"><input class="searchbox" id="movie-search" oninput="filterMovies()" placeholder="Search movies..."/><select class="searchbox" id="movie-language" onchange="filterMovies()" style="max-width:170px"><option value="">All languages</option><option>Malayalam</option><option>Tamil</option><option>Telugu</option><option>Hindi</option><option>Hollywood</option></select><select class="searchbox" id="movie-year" onchange="filterMovies()" style="max-width:130px"><option value="">All years</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option></select></div><div class="section-head"><h2 id="movie-count">Featured titles</h2><span>Sample catalogue · add licensed metadata to launch</span></div><div class="movie-grid" id="movie-grid"></div><div class="notice">For a public launch, use licensed artwork and metadata, and link to official or authorized streaming services. No copyrighted video files are hosted by this prototype.</div></div>
+<div class="panel"><div class="movies-toolbar"><input class="searchbox" id="movie-search" oninput="filterMovies()" placeholder="Search movies or TV shows..."/><select class="searchbox" id="media-kind" onchange="filterMovies()" style="max-width:140px"><option value="movie">Movies</option><option value="tv">TV Shows</option></select><select class="searchbox" id="movie-language" onchange="filterMovies()" style="max-width:170px"><option value="">All languages</option><option>Malayalam</option><option>Tamil</option><option>Telugu</option><option>Hindi</option><option>Hollywood</option></select><select class="searchbox" id="movie-year" onchange="filterMovies()" style="max-width:130px"><option value="">All years</option><option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option></select></div><div class="section-head"><h2 id="movie-count">Featured titles</h2><span>TMDB metadata</span></div><div class="movie-grid" id="movie-grid"></div><div class="notice">For a public launch, use licensed artwork and metadata, and link to official or authorized streaming services. No copyrighted video files are hosted by this prototype.</div></div>
 </section>
 <section class="view" id="view-tv">
 <div class="itfm-back-wrap" data-itfm-back="tv"><button type="button" class="itfm-back-button" onclick="showView(&quot;home&quot;)"><span aria-hidden="true"></span>Back</button></div>
@@ -277,6 +277,9 @@ body { padding-bottom: 0 !important; }
 
 </main>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./config.js"></script>
+<script src="./itfm-api.js"></script>
 <script>
 const titles={
 home:"Overview",image:"AI Image Generator",video:"AI Video Generator ",audio:"AI Audio & Voice",music:"AI Music",cover:"AI Cover / Karaoke",stem:"Stem Grab",chat:"AI Chat",studio:"ITFM AI Studio",movies:"Movies Flix",tv:"TV Live Channels"
@@ -285,7 +288,62 @@ function showView(name){document.querySelectorAll('.view').forEach(v=>v.classLis
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
 document.querySelectorAll('.choices').forEach(group=>group.querySelectorAll('.choice').forEach(btn=>btn.addEventListener('click',()=>{group.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected')})));
 function msg(id,text){const el=document.getElementById(id+'-msg');if(el){el.textContent=text;el.classList.remove('hidden')}}
-function generateUnavailable(id){msg(id,'ITFM AI generation needs a compatible provider endpoint and server-side credentials. Set the provider configuration first; this demo will not create fake results or expose API keys in the browser.')}
+async function generateUnavailable(id){
+  if (id === 'stem' || id === 'cover') {
+    msg(id, 'Uploading audio and starting secure processing…');
+    try {
+      const task = id === 'stem' ? 'stem' : (document.getElementById('cover-mode')?.value || 'cover');
+      const result = await window.itfmApi.runMedia(task);
+      msg(id, result.status === 'succeeded' ? 'Processing complete. Use the download link in the preview.' : JSON.stringify(result));
+    } catch (e) { msg(id, e.message || 'Processing failed. Check Supabase and worker configuration.'); }
+    return;
+  }
+  const feature = id === 'studio' ? 'genjutsu' : id;
+  const promptId = ({image:'image-prompt', video:'video-prompt', audio:'audio-prompt', music:'music-prompt', studio:'studio-prompt', genjutsu:'genjutsu-prompt'})[id];
+  const prompt = promptId ? document.getElementById(promptId)?.value?.trim() : '';
+  const audioAction = id === 'audio' ? getSelected('audio-action') : '';
+  const audioFile = id === 'audio' ? document.getElementById('audio-file')?.files?.[0] : null;
+  if (id === 'audio' && audioAction.toLowerCase().includes('speech → text') && !audioFile) { msg(id, 'Choose an audio file for Speech → Text.'); return; }
+  if (!prompt && !(id === 'audio' && audioAction.toLowerCase().includes('speech → text') && audioFile)) { msg(id, 'Enter a prompt before generating.'); return; }
+  msg(id, 'Sending request to your configured AI provider…');
+  try {
+    let options = {};
+    if (id === 'image') options = { aspect_ratio: document.getElementById('image-ratio')?.value, quality: document.getElementById('image-quality')?.value };
+    if (id === 'video' || id === 'studio') options = { aspect_ratio: document.getElementById(id+'-ratio')?.value, quality: document.getElementById(id+'-quality')?.value, language: document.getElementById(id+'-language')?.value, voice: document.getElementById(id+'-voice')?.value, duration: getSelected(id+'-duration'), negative_prompt: document.getElementById('studio-negative')?.value || '' , motion: document.getElementById('studio-motion')?.value || '' };
+    if (id === 'audio') options = { action: audioAction, language: document.getElementById('audio-language')?.value, voice: document.getElementById('audio-voice')?.value };
+    if (id === 'music') options = { lyrics: document.getElementById('music-lyrics')?.value, language: document.getElementById('music-language')?.value, type: document.getElementById('music-type')?.value };
+    if (id === 'audio' && audioFile) {
+      if (audioFile.size > 100 * 1024 * 1024) throw new Error('Audio file must be 100 MB or smaller.');
+      const path = await window.itfmApi.uploadInput(audioFile);
+      options.input_url = await window.itfmApi.inputSignedUrl(path);
+      options.file_name = audioFile.name;
+    }
+    const refInput = id === 'image' ? document.getElementById('image-file') : id === 'video' ? document.getElementById('video-file') : id === 'studio' ? document.getElementById('studio-video') : null;
+    const refFile = refInput?.files?.[0];
+    if (refFile) {
+      if (refFile.size > 100 * 1024 * 1024) throw new Error('Reference file must be 100 MB or smaller.');
+      const path = await window.itfmApi.uploadInput(refFile);
+      options.reference_url = await window.itfmApi.inputSignedUrl(path);
+      options.reference_file_name = refFile.name;
+    }
+    const result = await window.itfmApi.generate(feature, prompt || 'Transcribe the supplied audio.', options);
+    const box = document.getElementById(id+'-preview');
+    if (box) renderProviderResult(box, result.result ?? result);
+    msg(id, 'Provider response received. If output is asynchronous, check the provider job status or configure its adapter.');
+  } catch (e) { msg(id, e.message || 'Generation failed.'); }
+}
+function renderProviderResult(box, payload){
+  box.innerHTML = '';
+  const p = payload && typeof payload === 'object' ? payload : { output: payload };
+  const candidates = [p.url,p.output_url,p.image_url,p.video_url,p.audio_url,p.result_url,p?.data?.url,p?.data?.[0]?.url,p?.images?.[0]?.url,p?.videos?.[0]?.url,p?.audio?.url];
+  const url = candidates.find(v => typeof v === 'string' && /^https?:\/\//i.test(v));
+  const type = String(p.mime_type || p.content_type || p.type || '').toLowerCase();
+  if (url && (type.includes('image') || /image|photo|images/i.test(url))) { const img=document.createElement('img'); img.src=url; img.alt='AI generated image'; img.style.cssText='max-width:100%;border-radius:12px'; box.appendChild(img); }
+  else if (url && (type.includes('video') || /\.(mp4|webm|mov)(\?|$)/i.test(url))) { const v=document.createElement('video'); v.src=url; v.controls=true; v.playsInline=true; v.style.cssText='width:100%;max-height:420px'; box.appendChild(v); }
+  else if (url && (type.includes('audio') || /\.(mp3|wav|ogg|m4a)(\?|$)/i.test(url))) { const a=document.createElement('audio'); a.src=url; a.controls=true; a.style.width='100%'; box.appendChild(a); }
+  if (url) { const a=document.createElement('a'); a.href=url; a.target='_blank'; a.rel='noopener noreferrer'; a.textContent='Open / download provider result'; a.className='btn primary'; a.style.display='inline-block'; a.style.marginTop='12px'; box.appendChild(a); }
+  const pre=document.createElement('pre'); pre.style.cssText='white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;margin-top:12px'; pre.textContent=JSON.stringify(p,null,2); box.appendChild(pre);
+}
 function getSelected(group){const g=document.querySelector('[data-group="'+group+'"]');return g?.querySelector('.selected')?.textContent||''}
 function saveDraft(id){let keys=[];document.querySelectorAll('#view-'+id+' textarea, #view-'+id+' input[type=text], #view-'+id+' select').forEach(el=>{if(el.id)keys.push([el.id,el.value])});const data={tool:id,fields:keys,selected:new Date().toISOString()};localStorage.setItem('itfm-draft-'+id,JSON.stringify(data));msg(id,'Draft saved in this browser. No files or prompts were sent to a provider.')}
 function clearForm(id){document.querySelectorAll('#view-'+id+' textarea, #view-'+id+' input[type=text]').forEach(el=>el.value='');document.querySelectorAll('#view-'+id+' input[type=file]').forEach(el=>el.value='');const m=document.getElementById(id+'-msg');if(m)m.classList.add('hidden');const p=document.getElementById(id+'-preview');if(p)p.innerHTML='<div><div class="empty-icon">▧</div><strong>Preview cleared</strong><p>Choose a source file or save a draft to continue.</p></div>'}
@@ -293,18 +351,47 @@ function previewFile(inputId,previewId){const input=document.getElementById(inpu
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 [['image-file','image-preview'],['video-file','video-preview'],['audio-file','audio-preview'],['cover-file','cover-preview'],['stem-file','stem-preview'],['studio-video','studio-preview']].forEach(x=>previewFile(...x));
 document.getElementById('studio-images').addEventListener('change',e=>{const files=Array.from(e.target.files||[]).slice(0,60);document.getElementById('studio-count').textContent=files.length+' / 60 images selected';const box=document.getElementById('studio-preview');box.innerHTML='';if(!files.length){box.textContent='No images selected';return}files.slice(0,6).forEach(f=>{const img=document.createElement('img');img.src=URL.createObjectURL(f);img.alt='Local reference';img.style.cssText='width:72px;height:72px;object-fit:cover;margin:5px;border-radius:9px';box.appendChild(img)});const p=document.createElement('p');p.className='micro';p.textContent=files.length+' reference image(s) selected locally';box.appendChild(p)});
-let movies=[];
-async function loadMovies(){const q=document.getElementById('movie-search')?.value||'';const lang=document.getElementById('movie-language')?.value||'';const year=document.getElementById('movie-year')?.value||'';const grid=document.getElementById('movie-grid');if(!grid)return;grid.innerHTML='<div class="notice">Loading real movie data from TMDB…</div>';try{const r=await fetch('/api/movies?query='+encodeURIComponent(q));const d=await r.json();if(!r.ok)throw new Error(d.error||'TMDB request failed');movies=(d.results||[]).map(m=>[m.title,Number((m.release_date||'').slice(0,4))||'',m.media_type==='tv'?'TV':'Movie',m.poster_path,m.overview]);let list=movies.filter(m=>(!year||String(m[1])===year));renderMovies(list);const note=document.createElement('p');note.className='micro';note.textContent='Movie data provided by TMDB. Not endorsed or certified by TMDB.';grid.after(note);}catch(e){grid.innerHTML='<div class="notice">TMDB is not configured yet. Add TMDB_API_KEY to the server environment. '+escapeHtml(e.message)+'</div>';document.getElementById('movie-count').textContent='API setup required';}}
-function renderMovies(list){const grid=document.getElementById('movie-grid');grid.innerHTML='';list.forEach((m)=>{const card=document.createElement('div');card.className='movie';const poster=m[3]?'<img src="'+escapeHtml(m[3])+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover">':'<span>'+escapeHtml(String(m[0]).slice(0,2).toUpperCase())+'</span>';card.innerHTML='<div class="poster">'+poster+'</div><div class="movie-info"><b>'+escapeHtml(m[0])+'</b><small>'+escapeHtml(String(m[1]||'Year unknown'))+' · '+escapeHtml(m[2])+'</small><span class="tag">TMDB</span></div>';grid.appendChild(card)});document.getElementById('movie-count').textContent=list.length+' results';}
-function filterMovies(){loadMovies()}
-loadMovies();
+const movies=[];
+function renderMovies(list){const grid=document.getElementById('movie-grid');grid.innerHTML='';list.forEach((m)=>{const card=document.createElement('div');card.className='movie';const poster=m[3]?'<img alt="" style="width:100%;height:100%;object-fit:cover" src="'+escapeHtml(m[3])+'">':'<span>'+escapeHtml(m[0].slice(0,2).toUpperCase())+'</span>';card.innerHTML='<div class="poster">'+poster+'</div><div class="movie-info"><b>'+escapeHtml(m[0])+'</b><small>'+escapeHtml(String(m[1]||'Year unknown'))+' · '+escapeHtml(m[2]||'TMDB')+'</small><span class="tag">TMDB</span></div>';grid.appendChild(card)});document.getElementById('movie-count').textContent=list.length+' TMDB results'}
+let movieSearchTimer;
+async function filterMovies(){
+ clearTimeout(movieSearchTimer);
+ movieSearchTimer=setTimeout(async()=>{
+  const q=document.getElementById('movie-search').value.trim();
+  const year=document.getElementById('movie-year').value;
+  const lang=document.getElementById('movie-language').value;
+  try{
+   const kind=document.getElementById('media-kind')?.value||'movie';
+   const path=q?`search/${kind}`:`trending/${kind}/day`;
+   const params={}; if(q)params.query=q; if(year)params.year=year;
+   const data=await window.itfmApi.tmdb(path,params);
+   const list=(data.results||[]).filter(m=>!lang||({'ml':'Malayalam','ta':'Tamil','te':'Telugu','hi':'Hindi','en':'Hollywood'}[m.original_language]===lang)).map(m=>[m.title||m.name,m.release_date?.slice(0,4)||m.first_air_date?.slice(0,4)||'Year unknown',m.original_language||'TMDB',m.poster_path?(window.ITFM_CONFIG.tmdbImageBaseUrl+m.poster_path):'']);
+   renderMovies(list);
+  }catch(e){renderMovies([]);document.getElementById('movie-count').textContent=e.message||'TMDB is not configured';}
+ },250);
+}
+filterMovies();
 let channels=[];
+async function loadIptvCatalog(){
+ try{
+  const [channelRes,streamRes]=await Promise.all([
+   fetch('https://iptv-org.github.io/api/channels.json'),
+   fetch('https://iptv-org.github.io/api/streams.json')
+  ]);
+  if(!channelRes.ok||!streamRes.ok)throw new Error('IPTV-org catalogue unavailable');
+  const [allChannels,allStreams]=await Promise.all([channelRes.json(),streamRes.json()]);
+  const streamMap=new Map();
+  allStreams.forEach(s=>{if(s.channel&&!streamMap.has(s.channel)&&s.url)streamMap.set(s.channel,s.url)});
+  channels=allChannels.filter(c=>Array.isArray(c.countries)&&c.countries.includes('IN')&&streamMap.has(c.id))
+   .map(c=>[c.name||c.id,(c.categories||[]).includes('news')?'News':(c.categories||[]).includes('music')?'Music':'General',streamMap.get(c.id)])
+   .slice(0,1000);
+  renderChannels();
+ }catch(e){channels=[];renderChannels();document.getElementById('tv-notice').textContent='Could not load IPTV-org catalogue. Check network access.';}
+}
 let activeCat='All';
-async function loadChannels(){try{const r=await fetch('/api/tv');const d=await r.json();if(!r.ok)throw new Error(d.error||'Playlist unavailable');channels=(d.channels||[]).map(c=>[c.name,c.group,c.url,c.logo]);renderChannels();}catch(e){const box=document.getElementById('channel-list');if(box)box.innerHTML='<div class="notice">Live channel list could not be loaded: '+escapeHtml(e.message)+'. Deploy the API route and check network access.</div>';}}
-
-function renderChannels(){const q=document.getElementById('channel-search').value.toLowerCase();const list=channels.filter(c=>(activeCat==='All'||c[1]===activeCat)&&c[0].toLowerCase().includes(q));const box=document.getElementById('channel-list');box.innerHTML='';list.forEach(c=>{const b=document.createElement('button');b.className='channel';b.innerHTML='<span class="tv-icon">📺</span><span><b>'+escapeHtml(c[0])+'</b><small>'+escapeHtml(c[1])+' · stream listed</small></span>';b.onclick=()=>selectChannel(c,b);box.appendChild(b)})}
+function renderChannels(){const q=document.getElementById('channel-search').value.toLowerCase();const list=channels.filter(c=>(activeCat==='All'||c[1]===activeCat)&&c[0].toLowerCase().includes(q));const box=document.getElementById('channel-list');box.innerHTML='';list.forEach(c=>{const b=document.createElement('button');b.className='channel';b.innerHTML='<span class="tv-icon">📺</span><span><b>'+escapeHtml(c[0])+'</b><small>'+escapeHtml(c[1])+' · IPTV-org listing</small></span>';b.onclick=()=>selectChannel(c,b);box.appendChild(b)})}
 function filterChannels(){renderChannels()}
-function selectChannel(c,btn){document.querySelectorAll('.channel').forEach(x=>x.classList.remove('active'));btn.classList.add('active');document.getElementById('channel-title').textContent=c[0];const player=document.getElementById('tv-player');if(c[2]){player.innerHTML='';const video=document.createElement('video');video.controls=true;video.playsInline=true;video.style.maxWidth='100%';video.style.maxHeight='100%';video.src=c[2];player.appendChild(video);document.getElementById('tv-notice').textContent='Stream availability varies. Some HLS streams may require a compatible player; use only authorized streams.';}else{player.innerHTML='<div><div class="empty-icon">📡</div><strong>'+escapeHtml(c[0])+'</strong><p class="micro">No stream URL supplied.</p></div>'; }}
+function selectChannel(c,btn){document.querySelectorAll('.channel').forEach(x=>x.classList.remove('active'));btn.classList.add('active');document.getElementById('channel-title').textContent=c[0];const box=document.getElementById('tv-player');box.innerHTML='';const video=document.createElement('video');video.controls=true;video.playsInline=true;video.style.cssText='width:100%;max-height:420px;background:#000';video.src=c[2];box.appendChild(video);document.getElementById('tv-notice').textContent='Stream availability and rights are controlled by the source provider. Some streams may not play in every browser.'}
 document.querySelectorAll('#channel-cats button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#channel-cats button').forEach(x=>x.classList.remove('active'));b.classList.add('active');activeCat=b.dataset.cat;renderChannels()});renderChannels();
 let chatRecognition=null,chatListening=false;
 function toggleVoiceInput(){
@@ -320,9 +407,21 @@ function toggleVoiceInput(){
  try{chatRecognition.start()}catch(e){status.textContent='Could not start the microphone. Please try again.'}
 }
 function speakChatText(text){if(!('speechSynthesis' in window)){return}window.speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.lang=/[\u0D00-\u0D7F]/.test(text)?'ml-IN':'en-IN';utterance.rate=1;window.speechSynthesis.speak(utterance)}
-async function sendChat(){const input=document.getElementById('chat-input'),text=input.value.trim();if(!text)return;const win=document.getElementById('chat-window');const bubble=document.createElement('div');bubble.className='bubble user';bubble.textContent=text;win.appendChild(bubble);const note=document.createElement('div');note.className='bubble assistant';note.textContent='Connecting to ITFM AI…';win.appendChild(note);input.value='';win.scrollTop=win.scrollHeight;try{const response=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text})});const data=await response.json();note.textContent=response.ok?(data.reply||'No reply returned.'):('ITFM AI setup: '+(data.error||'Request failed.'));}catch(e){note.textContent='Cannot reach ITFM AI backend. Deploy this project with the included API route, then configure environment variables.'}const speak=document.createElement('button');speak.type='button';speak.className='btn';speak.style.margin='0 0 8px';speak.textContent='🔊 Read aloud';speak.onclick=()=>speakChatText(note.textContent);win.appendChild(speak);win.scrollTop=win.scrollHeight}
+async function sendChat(){
+ const input=document.getElementById('chat-input'),text=input.value.trim(); if(!text)return;
+ const win=document.getElementById('chat-window');
+ const bubble=document.createElement('div');bubble.className='bubble user';bubble.textContent=text;win.appendChild(bubble);input.value='';
+ const pending=document.createElement('div');pending.className='bubble assistant';pending.textContent='Thinking…';win.appendChild(pending);win.scrollTop=win.scrollHeight;
+ try {
+   const messages=Array.from(win.querySelectorAll('.bubble')).filter(b=>b!==pending).slice(-30).map(b=>({role:b.classList.contains('user')?'user':'assistant',content:b.textContent}));
+   const result=await window.itfmApi.chat(messages);
+   pending.textContent=result.choices?.[0]?.message?.content || JSON.stringify(result);
+ } catch(e) { pending.textContent=e.message || 'Chat request failed.'; }
+ const speak=document.createElement('button');speak.type='button';speak.className='btn';speak.style.margin='0 0 8px';speak.textContent='🔊 Read aloud';speak.onclick=()=>speakChatText(pending.textContent);win.appendChild(speak);
+ win.scrollTop=win.scrollHeight;
+}
 document.getElementById('chat-file').addEventListener('change',e=>{document.getElementById('chat-attach-note').textContent=Array.from(e.target.files||[]).map(f=>f.name).join(', ')||'Files selected locally in your browser.'});
-document.getElementById('stem-tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#stem-tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('stem-preview').innerHTML='<div><div class="empty-icon">≋</div><strong>'+escapeHtml(b.textContent)+'</strong><p>Processing requires a supported audio API integration.</p></div>'});
+document.getElementById('stem-tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#stem-tabs button').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById('stem-preview').innerHTML='<div><div class="empty-icon">≋</div><strong>'+escapeHtml(b.textContent)+'</strong><p>Select an audio file and use Process track to run the configured Demucs worker.</p></div>'});
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 <style>
@@ -1053,9 +1152,4 @@ button{transition:filter .18s ease,transform .18s ease}button:hover{filter:brigh
 @media(max-width:760px){.topbar{border-radius:18px!important}.feature:hover{transform:none}}
 </style>
 
-
-<div id="itfm-api-status" role="status" aria-live="polite" style="position:fixed;right:12px;bottom:12px;z-index:9999;max-width:min(360px,calc(100vw - 24px));padding:10px 13px;border:1px solid #8798ff;border-radius:12px;background:#111641;color:#fff;font:12px/1.5 system-ui;box-shadow:0 8px 24px #0005">ITFM AI API: checking configuration…</div>
-<script>
-(async()=>{const box=document.getElementById('itfm-api-status');try{const r=await fetch('/api/health');const d=await r.json();box.textContent='ITFM AI API · '+(d.status||'status unknown')+' | Chat: '+(d.configured?.chat?'configured':'needs setup')+' | TMDB: '+(d.configured?.tmdb?'configured':'needs setup')+' | IPTV: public playlist';}catch(e){box.textContent='ITFM AI API: deploy backend routes to enable integrations.'}})();
-</script>
 </body></html>

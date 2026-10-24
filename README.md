@@ -1,70 +1,109 @@
-# ITFM AI — Free-tier API platform starter
+# ITFM AI API
 
-This ZIP updates the supplied ITFM AI front-end and adds a server-side API router. It keeps secrets on the server and does not invent API keys or fake generation results.
+> **Local no-key mode:** See [`LOCAL_MODE.md`](LOCAL_MODE.md) and run `start-local.bat` (Windows) or `python3 local_server.py` (macOS/Linux). This adds a local Ollama chat backend; it does not make every image/video/music feature work automatically without its own local runtime.
 
-## Included
-- Existing responsive ITFM AI interface (`index.html`)
-- Vercel serverless API router (`api/index.js`)
-- `GET /api/health` — reports which environment settings exist
-- `POST /api/chat` — OpenAI Chat Completions-compatible provider proxy
-- `GET /api/movies?query=...` — real TMDB search/trending results
-- `GET /api/tv` — reads a public IPTV-org M3U playlist and parses channel URLs
-- `POST /api/generate` — clearly reports that feature-specific generation endpoints still need provider-specific integration
-- `.env.example` — environment variable template
+Responsive ITFM AI dashboard for GitHub + Vercel, with Supabase Authentication, Edge Functions, private Storage, TMDB proxy, IPTV-org channel catalog, and an audio worker scaffold.
 
-## Important: what is and isn't ready
-The project cannot create ITFM AI API keys by itself. ITFM AI is your brand; keys must be issued by each upstream provider or your own hosted backend. No provider documentation or credentials were supplied for an “ITFM AI API”, so image/video/audio/music/cover/stem/Genjutsu generation is not falsely represented as live. Each of those services can have a different API URL, authentication scheme, request format, limits and licensing. Add provider-specific adapters after choosing a provider.
+## What is connected
 
-“100% free” cannot be guaranteed for every feature. Free tiers may have quotas, require billing verification, change terms, or exclude commercial use. Open-source models may need a computer/server with suitable resources. IPTV stream availability and viewing rights vary; use only streams you are authorized to access.
+- Supabase email/password sign-up and sign-in UI.
+- AI Chat through a server-side OpenAI-compatible Chat Completions endpoint.
+- AI Image, Video, Audio, Music, and Genjutsu use the single ITFM_AI_API_KEY credential. Provider endpoint paths and default model IDs are code constants, not separate AI secrets; unsupported provider modalities require updating the adapter code.
+- TMDB movie search/trending through a Supabase Edge Function; TV search is supported by the function (`path=search/tv`).
+- IPTV-org public India channel/stream catalogue loaded at runtime.
+- STEM GRAB worker using Demucs, with private Supabase Storage result upload.
+- Karaoke can use the STEM GRAB separation flow once worker is deployed.
+- AI Cover pipeline separates vocals with Demucs, calls a configured RVC inference adapter, then mixes the converted vocal with the instrumental. It requires the separately deployed adapter and an authorized voice model.
 
-## Deploy to Vercel
-1. Upload these files to a GitHub repository.
-2. Import the repository in Vercel.
-3. In Vercel → Project → Settings → Environment Variables, add:
-   - `ITFM_AI_API_KEY` and `ITFM_AI_BASE_URL` for a compatible chat provider; `ITFM_AI_MODEL` if required by that provider.
-   - `TMDB_API_KEY` for movie search.
-   - `IPTV_M3U_URL` is optional; the default is the public IPTV-org playlist.
-4. Redeploy after setting variables.
-5. Test `/api/health`, then `/api/movies`, `/api/tv`, and the Chat tool.
+## Security model
 
-For local development, use Node.js 18+ and Vercel CLI (`vercel dev`) because the API router uses Vercel serverless routing. `npm start` is not a local web server in this starter.
+- `ITFM_AI_API_KEY` is a server-side Supabase secret; never put it in `config.js`, `index.html`, GitHub, or client-side environment variables.
+- `config.js` contains only the Supabase project URL and anon/publishable key. The anon key is intended for the browser and must be protected by RLS.
+- The Supabase service-role key and `ITFM_MEDIA_WORKER_SECRET` belong only in the Python worker's server environment.
+- Do not commit `.env` files or real credentials.
+- `ITFM_AI_API_KEY` is the only AI-provider API key. The default adapter points to Venice AI; endpoint paths and model IDs are constants in the Edge Function code. The provider must support each modality for it to work. Supabase connection settings, the TMDB key, and media-worker connection settings are infrastructure/non-AI settings, not additional AI provider keys.
 
-## Security
-- Never put secrets into `index.html`, JavaScript shipped to the browser, screenshots, or a public repository.
-- Do not upload a populated `.env` file. Use `.env.example` as a template.
-- Rotate any key that has already been exposed.
-- Add rate limiting and abuse protection before allowing public access to your own API.
+## 1. Configure Supabase
 
-## TMDB attribution
-This product uses the TMDB API but is not endorsed or certified by TMDB. Follow TMDB's current API terms and attribution requirements.
+1. Create your own project at https://supabase.com.
+2. In `config.js`, replace `YOUR_PROJECT` and `YOUR_SUPABASE_ANON_KEY` with your project URL and anon/publishable key.
+3. Apply `supabase/migrations/202610240001_itfm_initial.sql` in the Supabase SQL Editor or via Supabase CLI.
+4. Set Edge Function secrets in your own project:
+   ```sh
+   supabase secrets set ITFM_AI_API_KEY='your-own-provider-key'
+   supabase secrets set TMDB_API_KEY='your-own-tmdb-key'
+   supabase secrets set ITFM_MEDIA_WORKER_URL='https://your-worker.example'
+   supabase secrets set ITFM_MEDIA_WORKER_SECRET='a-long-random-secret'
+   ```
+   Only set endpoints for features supported by your provider. These endpoint names are configuration examples, not public service URLs.
+5. Deploy functions:
+   ```sh
+   supabase functions deploy ai-chat
+   supabase functions deploy ai-generate
+   supabase functions deploy tmdb
+   supabase functions deploy media-proxy
+   ```
+6. Enable email/password Authentication in Supabase. For production, configure email confirmation and allowed redirect URLs.
 
-## IPTV
-IPTV-org aggregates publicly listed channel stream links; it does not guarantee availability or rights in every location. Channel URLs may stop working. Use legal/authorized streams only.
+## 2. Deploy the frontend
 
-## ITFM AI API key management (new)
-- Open `/keys.html` to sign up/sign in and create/revoke up to 10 active ITFM AI keys per account.
-- Create a Supabase project and enable Email Auth.
-- Run `supabase/schema.sql` in the Supabase SQL Editor.
-- Configure `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY` as server environment variables in Vercel. Never expose the service-role key in browser code or commit it to Git.
-- Redeploy, then open `/keys.html`. The browser needs only the Supabase project URL and anon/publishable key.
-- Newly created keys have the format `itfm_live_<random-secret>`. The full key is shown once; the database stores only a SHA-256 hash. Revocation is supported.
-- `GET /api/key/verify` checks a key supplied via `X-ITFM-API-Key` and updates its last-used timestamp. This is a validation endpoint, not yet a universal gateway: add the same validation middleware to each protected AI endpoint before treating keys as authorization for chat/generation calls.
-- Supabase Auth email confirmation may need to be completed before sign-in. Configure email/SMTP settings according to your Supabase plan.
+1. Upload this folder to your own GitHub repository.
+2. Import the repository in Vercel. Use the **Other** preset; no build command is required for the static HTML app.
+3. Deploy and open the Vercel URL.
+4. Sign up or sign in using the dashboard auth panel.
 
-### Key API routes
-- `GET /api/keys` — list the signed-in user's active keys (metadata only)
-- `POST /api/keys` with `{ "name": "My app" }` — create a key; full secret returned once
-- `DELETE /api/keys` with `{ "id": "<key UUID>" }` — revoke one of your own keys
-- `GET /api/key/verify` with `X-ITFM-API-Key: itfm_live_...` — validate a key
+## 3. Deploy the Demucs worker
 
-A key branded as ITFM AI is an application-issued credential, not an upstream provider key. Provider API keys remain server-side and are needed for the actual AI features. Add rate limits, usage metering, abuse monitoring and quotas before public launch.
+The worker is a separate Python service. It is not hosted by Vercel or Supabase Edge Functions. It needs enough RAM/disk and may benefit from a GPU. Model weights download on first use.
 
-## Deployment verification checklist
-1. Deploy the repository root (the folder containing `index.html`, `api/`, `vercel.json`, and `package.json`).
-2. Confirm `GET /api/health` returns JSON. A healthy response only confirms the router is online and environment variables are present; it does not prove every provider works.
-3. Configure Supabase Auth and run the SQL schema before testing `/keys.html`.
-4. Sign up with an email/password, confirm the email if required, sign in, create a test key, copy it, then revoke it.
-5. Test key validation with `GET /api/key/verify` and the header `X-ITFM-API-Key: <your-key>`.
-6. Run `npm test` locally to check JavaScript syntax. Provider integrations require separate end-to-end tests with real credentials.
+Required worker environment variables:
+- `ITFM_MEDIA_WORKER_SECRET` — same value as the Supabase Edge Function secret.
+- `SUPABASE_URL` — your project URL.
+- `SUPABASE_ANON_KEY` — your project's anon/publishable key (worker uses it to validate the signed-in user JWT).
+- `SUPABASE_SERVICE_ROLE_KEY` — secret, worker-only; grants storage upload rights.
+- Optional `ITFM_MEDIA_BUCKET=media-results`.
+- For AI Cover, `RVC_INFERENCE_URL` must point to your authenticated RVC-compatible inference service; optional `RVC_INFERENCE_TOKEN` and `RVC_DEFAULT_VOICE_MODEL` are configured on the worker host.
 
-The Vercel catch-all route (`api/[...path].js`) forwards nested `/api/*` paths to the shared router. Deploy the contents of this folder as the repository root, not the parent folder.
+Build and run:
+```sh
+cd worker
+docker build -t itfm-media-worker .
+docker run --rm -p 8080:8080 \
+  -e ITFM_MEDIA_WORKER_SECRET='same-long-random-secret' \
+  -e SUPABASE_URL='https://YOUR_PROJECT.supabase.co' \
+  -e SUPABASE_ANON_KEY='your-anon-key' \
+  -e SUPABASE_SERVICE_ROLE_KEY='your-service-role-key' \
+  itfm-media-worker
+```
+Set `ITFM_MEDIA_WORKER_URL` in Supabase to the publicly reachable HTTPS URL of this worker. Do not expose the worker secret to the browser.
+
+The worker accepts an authenticated job with a short-lived private Supabase Storage signed URL. STEM processing is limited to 100 MB and can take several minutes. Resource limits depend on the host. `/health` checks worker availability.
+
+## 4. AI Cover / Karaoke status
+
+- Karaoke/stem separation: uses Demucs via the worker and returns a ZIP of separated tracks.
+- AI Cover: this project intentionally does not invent a fake result. To enable it, deploy/configure an RVC inference service with the request/response contract in `worker/RVC_ADAPTER.md`; set `RVC_INFERENCE_URL` and, if needed, `RVC_INFERENCE_TOKEN` on the worker host. Use only voice models and source audio you have permission to process. Do not use a real person's voice without authorization.
+
+## 5. Provider compatibility
+
+The `ai-chat` and `ai-generate` functions use only `ITFM_AI_API_KEY` for AI-provider authentication. Their default provider URLs and models are code constants. Check `PROVIDER_ADAPTERS.md`: a single key does not guarantee that the provider supports image, video, audio, music, and chat on one account. Update the code adapter if the provider uses different endpoints or schemas.
+
+## 6. Free-tier expectations
+
+- Supabase and Vercel have free plans with quotas and restrictions that may change.
+- TMDB requires your own API key and is subject to TMDB terms and attribution requirements.
+- IPTV-org provides a public catalogue, but streams can be unavailable, geo-restricted, removed, or subject to third-party rights.
+- Demucs and RVC code may be open source, but compute, bandwidth, storage, and model licences still matter.
+- No claim is made that all AI generation is unlimited or 100% free.
+
+## 7. Smoke-test checklist
+
+- [ ] Frontend Supabase URL/anon key configured.
+- [ ] Sign up, confirm email if enabled, and sign in.
+- [ ] `ai-chat` returns a real provider response.
+- [ ] Each configured generation endpoint returns the expected output schema.
+- [ ] TMDB trending and search return results.
+- [ ] IPTV-org catalogue loads and selected stream plays where available.
+- [ ] Worker `/health` responds.
+- [ ] STEM GRAB uploads an audio file, produces a ZIP, and a signed download URL works.
+- [ ] AI Cover remains disabled until the RVC adapter and authorized model are installed.
