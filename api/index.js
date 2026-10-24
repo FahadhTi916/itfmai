@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
       const crypto = require("crypto");
       const hash = crypto.createHash("sha256").update(rawKey).digest("hex");
       const dbHeaders = { apikey: serviceKey, Authorization: `Bearer ${serviceKey}`, "Content-Type": "application/json" };
-      const tableUrl = `${supabaseUrl}/rest/v1/itfm_api_keys`;
+      const tableUrl = `${supabaseUrl}/rest/v1/itfm_ai_api_keys`;
       const r = await fetch(`${tableUrl}?key_hash=eq.${hash}&revoked_at=is.null&select=id,name,user_id`, { headers: dbHeaders });
       const rows = await r.json().catch(() => []);
       if (!r.ok) return reply(res, 502, { error: "Could not validate key. Check the database schema." });
@@ -46,7 +46,7 @@ module.exports = async (req, res) => {
       const user = await userResp.json().catch(() => ({}));
       if (!userResp.ok || !user.id) return reply(res, 401, { error: "Your session is invalid or expired. Please sign in again." });
       const dbHeaders = { apikey: serviceKey, Authorization: `Bearer ${serviceKey}`, "Content-Type": "application/json" };
-      const tableUrl = `${supabaseUrl}/rest/v1/itfm_api_keys`;
+      const tableUrl = `${supabaseUrl}/rest/v1/itfm_ai_api_keys`;
       if (req.method === "GET") {
         const r = await fetch(`${tableUrl}?user_id=eq.${encodeURIComponent(user.id)}&revoked_at=is.null&select=id,name,key_prefix,created_at,last_used_at&order=created_at.desc`, { headers: dbHeaders });
         const rows = await r.json().catch(() => []);
