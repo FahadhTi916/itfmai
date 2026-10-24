@@ -9,10 +9,5 @@
   "scripts": {
     "check": "node --check api/index.js && node --check \"api/[...path].js\"",
     "test": "npm run check"
-  },
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2",
-    "pg": "^8.13.1"
   }
 }
