@@ -82,7 +82,7 @@ module.exports = async (req, res) => {
       return reply(res, 200, { name: "ITFM AI API", status: "ok", configured: {
         chat: Boolean(process.env.ITFM_AI_API_KEY && process.env.ITFM_AI_BASE_URL),
         tmdb: Boolean(process.env.TMDB_API_KEY),
-        iptv: true,
+        iptv: Boolean(process.env.IPTV_M3U_URL || true),
         generation: Boolean(process.env.ITFM_AI_API_KEY && process.env.ITFM_AI_BASE_URL)
       }, note: "Status indicates configuration only; provider connectivity is verified on request." });
     }
