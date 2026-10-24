@@ -44,7 +44,7 @@ IPTV-org aggregates publicly listed channel stream links; it does not guarantee 
 ## ITFM AI API key management (new)
 - Open `/keys.html` to sign up/sign in and create/revoke up to 10 active ITFM AI keys per account.
 - Create a Supabase project and enable Email Auth.
-- Run `supabase/schema.sql` in the Supabase SQL Editor.
+- Run `neon/schema.sql` in the Supabase SQL Editor.
 - Configure `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY` as server environment variables in Vercel. Never expose the service-role key in browser code or commit it to Git.
 - Redeploy, then open `/keys.html`. The browser needs only the Supabase project URL and anon/publishable key.
 - Newly created keys have the format `itfm_live_<random-secret>`. The full key is shown once; the database stores only a SHA-256 hash. Revocation is supported.
@@ -68,3 +68,6 @@ A key branded as ITFM AI is an application-issued credential, not an upstream pr
 6. Run `npm test` locally to check JavaScript syntax. Provider integrations require separate end-to-end tests with real credentials.
 
 The Vercel catch-all route (`api/[...path].js`) forwards nested `/api/*` paths to the shared router. Deploy the contents of this folder as the repository root, not the parent folder.
+
+## Neon database setup
+Use `neon/schema.sql` in the Neon SQL Editor. Set `DATABASE_URL` and `JWT_SECRET` in Vercel Environment Variables. User signup/login is handled by the app API; passwords are bcrypt-hashed and sessions use signed JWTs.

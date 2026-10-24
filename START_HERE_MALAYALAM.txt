@@ -1,51 +1,19 @@
-ITFM AI — ആദ്യം ഇത് വായിക്കുക
-============================
+ITFM AI — NEON DATABASE SETUP (മലയാളം)
+======================================
 
-ഈ ZIP-ൽ വെബ്സൈറ്റ്, API backend, API key management page, Supabase SQL schema, Vercel ക്രമീകരണം എന്നിവ ഉൾപ്പെടുന്നു.
+1) Neon-ൽ https://neon.tech/ തുറന്ന് അക്കൗണ്ട് സൃഷ്ടിച്ച് ഒരു PostgreSQL project ഉണ്ടാക്കുക.
+2) Neon Dashboard → SQL Editor തുറക്കുക. ZIP-ലുള്ള neon/schema.sql ഉള്ളടക്കം paste ചെയ്ത് Run ചെയ്യുക.
+3) Neon Dashboard-ൽ Connect എന്നതിൽ നിന്ന് connection string എടുക്കുക. അതിൽ username/password ഉണ്ട്; രഹസ്യമായി സൂക്ഷിക്കുക.
+4) Vercel → നിങ്ങളുടെ project → Settings → Environment Variables എന്നതിൽ ചേർക്കുക:
+   DATABASE_URL = Neon connection string (sslmode=require ഉണ്ടായിരിക്കണം)
+   JWT_SECRET = നീളമുള്ള random secret (കുറഞ്ഞത് 32 bytes)
+   ITFM_AI_API_KEY / ITFM_AI_BASE_URL = AI Chat provider ഉണ്ടെങ്കിൽ മാത്രം
+   TMDB_API_KEY = TMDB key ഉണ്ടെങ്കിൽ മാത്രം
+5) Save ചെയ്ത് Redeploy ചെയ്യുക.
+6) /api/health തുറന്ന് API status നോക്കുക. /keys.html തുറന്ന് Create account → Create API key പരീക്ഷിക്കുക.
 
-പ്രധാന സത്യാവസ്ഥ:
-- ഫയലുകൾ തയ്യാറാക്കിയിട്ടുണ്ട്; പക്ഷേ നിങ്ങളുടെ Supabase/Vercel അക്കൗണ്ടിൽ നിന്ന് ഇവിടെ Deploy ചെയ്യാൻ കഴിയില്ല.
-- യഥാർത്ഥ Supabase credentials, AI provider API key, TMDB API key എന്നിവ ചേർക്കുന്നതുവരെ ബന്ധപ്പെട്ട സേവനങ്ങൾ live ആയി പ്രവർത്തിക്കില്ല.
-- ITFM AI കീ എന്നത് നിങ്ങളുടെ സ്വന്തം പ്ലാറ്റ്ഫോം നൽകുന്ന access key ആണ്. അത് AI provider-ന്റെ API key-ന് പകരമല്ല.
-- എല്ലാ AI image/video/music സേവനങ്ങളും പരിധിയില്ലാതെ 100% സൗജന്യമാണെന്ന് ഉറപ്പില്ല.
-
-ചെയ്യേണ്ടത് (ഒരിക്കൽ മാത്രം):
-1. ZIP extract ചെയ്യുക.
-2. https://supabase.com ൽ project ഉണ്ടാക്കുക.
-3. Supabase → Authentication → Providers-ൽ Email provider പ്രവർത്തനക്ഷമമാക്കുക.
-4. Supabase → SQL Editor തുറന്ന് supabase/schema.sql ഉള്ളടക്കം paste ചെയ്ത് Run ചെയ്യുക.
-5. Supabase → Project Settings → API ൽ നിന്ന് Project URL, anon/publishable key എടുക്കുക.
-6. https://github.com ൽ repository ഉണ്ടാക്കി ഈ ZIP-ലെ ഫയലുകൾ upload ചെയ്യുക. .env യഥാർത്ഥ രഹസ്യങ്ങളോടെ ഒരിക്കലും upload ചെയ്യരുത്.
-7. https://vercel.com ൽ GitHub repository Import ചെയ്ത് Deploy ചെയ്യുക.
-8. Vercel → Project → Settings → Environment Variables-ൽ താഴെയുള്ളവ ചേർക്കുക:
-   SUPABASE_URL
-   SUPABASE_ANON_KEY
-   SUPABASE_SERVICE_ROLE_KEY  (SERVER ONLY; പൊതുവായി പങ്കിടരുത്)
-   TMDB_API_KEY              (സിനിമാ സേവനം വേണമെങ്കിൽ)
-   ITFM_AI_BASE_URL           (OpenAI Chat Completions format പിന്തുണയ്ക്കുന്ന provider)
-   ITFM_AI_API_KEY            (provider key; server only)
-   ITFM_AI_MODEL              (provider ആവശ്യപ്പെടുന്ന model name)
-   IPTV_M3U_URL               (ഐച്ഛികം; default IPTV-org playlist ഉപയോഗിക്കും)
-9. Environment Variables ചേർത്തശേഷം Redeploy ചെയ്യുക.
-10. https://your-deployment/keys.html തുറക്കുക. Supabase URL + anon/publishable key നൽകുക; account create/sign in ചെയ്യുക; Create API Key അമർത്തുക.
-11. പുതിയ key ഒരിക്കൽ മാത്രം കാണിക്കും. സുരക്ഷിതമായി സൂക്ഷിക്കുക. നഷ്ടപ്പെട്ടാൽ പുതിയ key ഉണ്ടാക്കുക.
-12. /api/health പരിശോധിക്കുക.
-
-ഇപ്പോൾ ഉൾപ്പെടുത്തിയ API:
-- GET  /api/health
-- GET  /api/keys (Supabase access token ആവശ്യമാണ്)
-- POST /api/keys (Supabase access token ആവശ്യമാണ്; JSON {"name":"My app"})
-- DELETE /api/keys (Supabase access token ആവശ്യമാണ്; JSON {"id":"key UUID"})
-- GET  /api/key/verify (X-ITFM-API-Key header ആവശ്യമാണ്)
-- POST /api/chat (OpenAI Chat Completions-compatible provider config ആവശ്യമാണ്)
-- GET  /api/movies?query=... (TMDB_API_KEY ആവശ്യമാണ്)
-- GET  /api/tv (പൊതുവായ IPTV-org playlist ഉപയോഗിക്കുന്നു)
-- POST /api/generate (ഇപ്പോൾ provider-specific adapter ആവശ്യമാണ്; fabricated result നൽകില്ല)
-
-AI Image/Video/Audio/Music/Cover/STEM/Genjutsu:
-ഈ സേവനങ്ങൾക്ക് ഓരോ provider-ന്റെയും യഥാർത്ഥ API documentation, endpoint, request format, credentials എന്നിവ ആവശ്യമാണ്. അവ നൽകാതെ യഥാർത്ഥ generation പ്രവർത്തിക്കുന്നു എന്ന് അവകാശപ്പെടുന്നില്ല. നിലവിലെ /api/generate route ആവശ്യമായ provider adapter ചേർക്കുന്നതുവരെ വ്യക്തമായ error നൽകും.
-
-സുരക്ഷ:
-- SUPABASE_SERVICE_ROLE_KEY, provider API keys എന്നിവ frontend-ലോ GitHub-ലോ ഇടരുത്.
-- Public launch-ന് മുമ്പ് rate limiting, usage quotas, monitoring, abuse protection, billing policy എന്നിവ കൂടി ചേർക്കണം.
-- ഈ project-ൽ npm test അടിസ്ഥാന JavaScript syntax പരിശോധനയാണ്; യഥാർത്ഥ Supabase/AI provider end-to-end test അല്ല.
+സുരക്ഷാ குறிப்பുകൾ:
+- DATABASE_URL, JWT_SECRET, provider API keys എന്നിവကို HTML/JavaScript-ൽ ഇടരുത്. Vercel server-side Environment Variables-ൽ മാത്രം ഇടുക.
+- API key പൂർണ്ണമായി ഒരിക്കൽ മാത്രം കാണിക്കും; സുരക്ഷിതമായി copy ചെയ്യുക.
+- Neon database-ലേക്ക് യഥാർത്ഥ connection string നൽകിയിട്ടില്ലാത്തതിനാൽ ഈ ZIP-ൽ നിന്ന് ഇവിടെനിന്ന് live connection/Deployment നടത്താൻ കഴിഞ്ഞിട്ടില്ല.
+- AI Image/Video/Music/Audio/Cover/STEM/Genjutsu provider integration-കൾക്ക് വേറിട്ട യഥാർത്ഥ providers/endpoints ആവശ്യമുണ്ട്.
