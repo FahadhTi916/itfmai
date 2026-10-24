@@ -11,73 +11,55 @@ async function readBody(req) {
   for await (const chunk of req) { raw += chunk; if (raw.length > 1_000_000) throw new Error("Request too large (max 1 MB)."); }
   return raw ? JSON.parse(raw) : {};
 }
+async function getDb() {
+  if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is not configured. Add your Neon connection string in Vercel Environment Variables.");
+  const { Pool } = require("pg");
+  if (!global.itfmNeonPool) global.itfmNeonPool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }, max: 3 });
+  return global.itfmNeonPool;
+}
+function getUserId(req) {
+  const auth = String(req.headers.authorization || "");
+  const token = auth.startsWith("Bearer ") ? auth.slice(7) : "";
+  if (!token || !process.env.JWT_SECRET) return null;
+  try { return require("jsonwebtoken").verify(token, process.env.JWT_SECRET).sub; } catch { return null; }
+}
 module.exports = async (req, res) => {
   const path = new URL(req.url, "http://localhost").pathname.replace(/^\/api\/?/, "");
   try {
-    // Validate a client-owned ITFM AI key (for testing and future API gateway middleware).
-    if (req.method === "GET" && path === "key/verify") {
-      const supabaseUrl = (process.env.SUPABASE_URL || "").replace(/\/+$/, "");
-      const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
-      const rawKey = String(req.headers["x-itfm-api-key"] || "");
-      if (!supabaseUrl || !serviceKey) return reply(res, 503, { error: "Key validation is not configured on the server." });
-      if (!/^itfm_live_[a-f0-9]{64}$/.test(rawKey)) return reply(res, 401, { valid: false, error: "Provide a valid ITFM AI key using the X-ITFM-API-Key header." });
-      const crypto = require("crypto");
-      const hash = crypto.createHash("sha256").update(rawKey).digest("hex");
-      const dbHeaders = { apikey: serviceKey, Authorization: `Bearer ${serviceKey}`, "Content-Type": "application/json" };
-      const tableUrl = `${supabaseUrl}/rest/v1/itfm_api_keys`;
-      const r = await fetch(`${tableUrl}?key_hash=eq.${hash}&revoked_at=is.null&select=id,name,user_id`, { headers: dbHeaders });
-      const rows = await r.json().catch(() => []);
-      if (!r.ok) return reply(res, 502, { error: "Could not validate key. Check the database schema." });
-      if (!rows.length) return reply(res, 401, { valid: false, error: "Key is invalid or revoked." });
-      await fetch(`${tableUrl}?id=eq.${encodeURIComponent(rows[0].id)}`, { method: "PATCH", headers: { ...dbHeaders, Prefer: "return=minimal" }, body: JSON.stringify({ last_used_at: new Date().toISOString() }) }).catch(() => {});
-      return reply(res, 200, { valid: true, name: rows[0].name, key_id: rows[0].id });
+    const pool = await getDb().catch(() => null);
+    if (path === "auth/signup" && req.method === "POST") {
+      if (!pool) return reply(res, 503, { error: "Neon is not configured. Set DATABASE_URL and run neon/schema.sql." });
+      const body = await readBody(req); const email = String(body.email || "").trim().toLowerCase(); const password = String(body.password || "");
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || password.length < 8) return reply(res, 400, { error: "Enter a valid email and password of at least 8 characters." });
+      const hash = await require("bcryptjs").hash(password, 12);
+      try { const r = await pool.query("INSERT INTO itfm_users(email,password_hash) VALUES($1,$2) RETURNING id,email", [email,hash]); const user = r.rows[0]; const token = require("jsonwebtoken").sign({sub:user.id,email:user.email}, process.env.JWT_SECRET, {expiresIn:"7d"}); return reply(res, 201, {token,user}); }
+      catch (e) { if (e.code === "23505") return reply(res, 409, {error:"An account with this email already exists."}); throw e; }
     }
-
-    // User-owned ITFM AI keys. Requires Supabase Auth + database configuration.
-    if (path === "keys" && ["GET", "POST", "DELETE"].includes(req.method)) {
-      const supabaseUrl = (process.env.SUPABASE_URL || "").replace(/\/+$/, "");
-      const anonKey = process.env.SUPABASE_ANON_KEY || "";
-      const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
-      if (!supabaseUrl || !anonKey || !serviceKey) return reply(res, 503, { error: "API key management is not configured. Set SUPABASE_URL, SUPABASE_ANON_KEY, and SUPABASE_SERVICE_ROLE_KEY on the server, then run supabase/schema.sql." });
-      const auth = String(req.headers.authorization || "");
-      const token = auth.startsWith("Bearer ") ? auth.slice(7) : "";
-      if (!token) return reply(res, 401, { error: "Sign in first. A Supabase access token is required." });
-      const userResp = await fetch(`${supabaseUrl}/auth/v1/user`, { headers: { apikey: anonKey, Authorization: `Bearer ${token}` } });
-      const user = await userResp.json().catch(() => ({}));
-      if (!userResp.ok || !user.id) return reply(res, 401, { error: "Your session is invalid or expired. Please sign in again." });
-      const dbHeaders = { apikey: serviceKey, Authorization: `Bearer ${serviceKey}`, "Content-Type": "application/json" };
-      const tableUrl = `${supabaseUrl}/rest/v1/itfm_api_keys`;
-      if (req.method === "GET") {
-        const r = await fetch(`${tableUrl}?user_id=eq.${encodeURIComponent(user.id)}&revoked_at=is.null&select=id,name,key_prefix,created_at,last_used_at&order=created_at.desc`, { headers: dbHeaders });
-        const rows = await r.json().catch(() => []);
-        if (!r.ok) return reply(res, 502, { error: "Could not load keys. Check the database schema and Supabase configuration." });
-        return reply(res, 200, { keys: rows });
-      }
+    if (path === "auth/login" && req.method === "POST") {
+      if (!pool) return reply(res, 503, { error: "Neon is not configured. Set DATABASE_URL and run neon/schema.sql." });
+      const body = await readBody(req); const email = String(body.email || "").trim().toLowerCase(); const password = String(body.password || "");
+      const r = await pool.query("SELECT id,email,password_hash FROM itfm_users WHERE email=$1", [email]); const user = r.rows[0];
+      if (!user || !(await require("bcryptjs").compare(password,user.password_hash))) return reply(res, 401, {error:"Email or password is incorrect."});
+      const token = require("jsonwebtoken").sign({sub:user.id,email:user.email}, process.env.JWT_SECRET, {expiresIn:"7d"}); return reply(res, 200, {token,user:{id:user.id,email:user.email}});
+    }
+    if (path === "keys" && ["GET","POST","DELETE"].includes(req.method)) {
+      if (!pool) return reply(res, 503, {error:"Neon database is not configured. Set DATABASE_URL and run neon/schema.sql."});
+      if (!process.env.JWT_SECRET) return reply(res, 503, {error:"JWT_SECRET is missing from server environment variables."});
+      const userId = getUserId(req); if (!userId) return reply(res, 401, {error:"Please sign in again."});
+      if (req.method === "GET") { const r=await pool.query("SELECT id,name,key_prefix,created_at,last_used_at FROM itfm_api_keys WHERE user_id=$1 AND revoked_at IS NULL ORDER BY created_at DESC",[userId]); return reply(res,200,{keys:r.rows}); }
       if (req.method === "POST") {
-        const body = await readBody(req);
-        const name = typeof body.name === "string" ? body.name.trim().slice(0, 60) : "";
-        if (!name) return reply(res, 400, { error: "Provide a name for this API key." });
-        const existingResp = await fetch(`${tableUrl}?user_id=eq.${encodeURIComponent(user.id)}&revoked_at=is.null&select=id`, { headers: dbHeaders });
-        const existing = await existingResp.json().catch(() => []);
-        if (!existingResp.ok) return reply(res, 502, { error: "Could not check API key quota. Verify the database schema." });
-        if (existing.length >= 10) return reply(res, 429, { error: "Maximum 10 active API keys per account." });
-        const crypto = require("crypto");
-        const rawKey = `itfm_live_${crypto.randomBytes(32).toString("hex")}`;
-        const keyHash = crypto.createHash("sha256").update(rawKey).digest("hex");
-        const keyPrefix = rawKey.slice(0, 18);
-        const r = await fetch(`${tableUrl}?select=id,name,key_prefix,created_at`, { method: "POST", headers: { ...dbHeaders, Prefer: "return=representation" }, body: JSON.stringify({ user_id: user.id, name, key_hash: keyHash, key_prefix: keyPrefix }) });
-        const rows = await r.json().catch(() => []);
-        if (!r.ok) return reply(res, 502, { error: "Could not save API key. Check that supabase/schema.sql has been applied." });
-        return reply(res, 201, { key: rawKey, record: rows[0], warning: "Copy this key now. It is shown only once; only its hash is stored." });
+        const body=await readBody(req); const name=typeof body.name === "string" ? body.name.trim().slice(0,60) : ""; if(!name) return reply(res,400,{error:"Provide a name for this API key."});
+        const count=await pool.query("SELECT count(*)::int AS n FROM itfm_api_keys WHERE user_id=$1 AND revoked_at IS NULL",[userId]); if(count.rows[0].n>=10) return reply(res,429,{error:"Maximum 10 active API keys per account."});
+        const crypto=require("crypto"); const rawKey=`itfm_live_${crypto.randomBytes(32).toString("hex")}`; const keyHash=crypto.createHash("sha256").update(rawKey).digest("hex"); const keyPrefix=rawKey.slice(0,18);
+        const r=await pool.query("INSERT INTO itfm_api_keys(user_id,name,key_hash,key_prefix) VALUES($1,$2,$3,$4) RETURNING id,name,key_prefix,created_at",[userId,name,keyHash,keyPrefix]); return reply(res,201,{key:rawKey,record:r.rows[0],warning:"Copy this key now. It is shown only once; only its hash is stored."});
       }
-      const body = await readBody(req);
-      const id = typeof body.id === "string" ? body.id : new URL(req.url, "http://localhost").searchParams.get("id");
-      if (!id || !/^[0-9a-f-]{36}$/i.test(id)) return reply(res, 400, { error: "A valid API key id is required." });
-      const r = await fetch(`${tableUrl}?id=eq.${encodeURIComponent(id)}&user_id=eq.${encodeURIComponent(user.id)}&revoked_at=is.null`, { method: "PATCH", headers: { ...dbHeaders, Prefer: "return=minimal" }, body: JSON.stringify({ revoked_at: new Date().toISOString() }) });
-      if (!r.ok) return reply(res, 502, { error: "Could not revoke API key." });
-      return reply(res, 200, { revoked: true });
+      const body=await readBody(req); const id=String(body.id || new URL(req.url,"http://localhost").searchParams.get("id") || ""); if(!/^[0-9a-f-]{36}$/i.test(id)) return reply(res,400,{error:"A valid API key id is required."});
+      const r=await pool.query("UPDATE itfm_api_keys SET revoked_at=NOW() WHERE id=$1 AND user_id=$2 AND revoked_at IS NULL RETURNING id",[id,userId]); if(!r.rowCount) return reply(res,404,{error:"API key not found or already revoked."}); return reply(res,200,{revoked:true});
     }
-
+    if (req.method === "GET" && path === "key/verify") {
+      if (!pool) return reply(res,503,{error:"Neon database is not configured."}); const rawKey=String(req.headers["x-itfm-api-key"]||""); if(!/^itfm_live_[a-f0-9]{64}$/.test(rawKey)) return reply(res,401,{valid:false,error:"Provide a valid ITFM AI key using X-ITFM-API-Key."});
+      const hash=require("crypto").createHash("sha256").update(rawKey).digest("hex"); const r=await pool.query("UPDATE itfm_api_keys SET last_used_at=NOW() WHERE key_hash=$1 AND revoked_at IS NULL RETURNING id,name",[hash]); if(!r.rowCount) return reply(res,401,{valid:false,error:"Key is invalid or revoked."}); return reply(res,200,{valid:true,key_id:r.rows[0].id,name:r.rows[0].name});
+    }
     if (req.method === "GET" && path === "health") {
       return reply(res, 200, { name: "ITFM AI API", status: "ok", configured: {
         chat: Boolean(process.env.ITFM_AI_API_KEY && process.env.ITFM_AI_BASE_URL),
