@@ -1,51 +1,36 @@
-ITFM AI — ആദ്യം ഇത് വായിക്കുക
-============================
+ITFM AI — ആദ്യം വായിക്കുക
+========================
 
-ഈ ZIP-ൽ വെബ്സൈറ്റ്, API backend, API key management page, Supabase SQL schema, Vercel ക്രമീകരണം എന്നിവ ഉൾപ്പെടുന്നു.
+ഈ ZIP-ൽ ITFM AI പ്രോജക്റ്റിന്റെ ഫയലുകൾ ഒരുമിച്ച് നൽകിയിരിക്കുന്നു.
 
-പ്രധാന സത്യാവസ്ഥ:
-- ഫയലുകൾ തയ്യാറാക്കിയിട്ടുണ്ട്; പക്ഷേ നിങ്ങളുടെ Supabase/Vercel അക്കൗണ്ടിൽ നിന്ന് ഇവിടെ Deploy ചെയ്യാൻ കഴിയില്ല.
-- യഥാർത്ഥ Supabase credentials, AI provider API key, TMDB API key എന്നിവ ചേർക്കുന്നതുവരെ ബന്ധപ്പെട്ട സേവനങ്ങൾ live ആയി പ്രവർത്തിക്കില്ല.
-- ITFM AI കീ എന്നത് നിങ്ങളുടെ സ്വന്തം പ്ലാറ്റ്ഫോം നൽകുന്ന access key ആണ്. അത് AI provider-ന്റെ API key-ന് പകരമല്ല.
-- എല്ലാ AI image/video/music സേവനങ്ങളും പരിധിയില്ലാതെ 100% സൗജന്യമാണെന്ന് ഉറപ്പില്ല.
+പ്രധാനമായി അറിയുക:
+- ഇത് പൂർണ്ണമായി deploy ചെയ്ത live website അല്ല.
+- API keys സൃഷ്ടിക്കുന്ന ഫീച്ചർ പ്രവർത്തിക്കാൻ Supabase project, Auth, SQL schema, server environment variables എന്നിവ സജ്ജമാക്കണം.
+- AI Image/Video/Audio/Music/Cover/STEM/Genjutsu എന്നിവയ്ക്ക് provider-specific API അല്ലെങ്കിൽ സ്വന്തം server-ൽ പ്രവർത്തിക്കുന്ന model വേണം. ഇവ ഈ ZIP-ൽ എല്ലാം live ആയി ബന്ധിപ്പിച്ചിട്ടില്ല.
+- ITFM AI key എന്നത് നിങ്ങളുടെ platform-ൽ ഉപയോക്താക്കൾക്ക് നൽകുന്ന key ആണ്; അത് പുറത്തുള്ള AI provider-ന്റെ key-ന് പകരമല്ല.
 
-ചെയ്യേണ്ടത് (ഒരിക്കൽ മാത്രം):
+ഫയലുകൾ:
+- index.html                 പ്രധാന വെബ് UI
+- keys.html                  API key management UI
+- api/index.js               backend API routes
+- api/[...path].js           Vercel route handler
+- supabase/schema.sql        database schema
+- .env.example               environment variables മാതൃക
+- vercel.json                Vercel config
+- README.md                  വിശദമായ setup നിർദേശങ്ങൾ
+
+ആരംഭിക്കാൻ:
 1. ZIP extract ചെയ്യുക.
-2. https://supabase.com ൽ project ഉണ്ടാക്കുക.
-3. Supabase → Authentication → Providers-ൽ Email provider പ്രവർത്തനക്ഷമമാക്കുക.
-4. Supabase → SQL Editor തുറന്ന് supabase/schema.sql ഉള്ളടക്കം paste ചെയ്ത് Run ചെയ്യുക.
-5. Supabase → Project Settings → API ൽ നിന്ന് Project URL, anon/publishable key എടുക്കുക.
-6. https://github.com ൽ repository ഉണ്ടാക്കി ഈ ZIP-ലെ ഫയലുകൾ upload ചെയ്യുക. .env യഥാർത്ഥ രഹസ്യങ്ങളോടെ ഒരിക്കലും upload ചെയ്യരുത്.
-7. https://vercel.com ൽ GitHub repository Import ചെയ്ത് Deploy ചെയ്യുക.
-8. Vercel → Project → Settings → Environment Variables-ൽ താഴെയുള്ളവ ചേർക്കുക:
-   SUPABASE_URL
-   SUPABASE_ANON_KEY
-   SUPABASE_SERVICE_ROLE_KEY  (SERVER ONLY; പൊതുവായി പങ്കിടരുത്)
-   TMDB_API_KEY              (സിനിമാ സേവനം വേണമെങ്കിൽ)
-   ITFM_AI_BASE_URL           (OpenAI Chat Completions format പിന്തുണയ്ക്കുന്ന provider)
-   ITFM_AI_API_KEY            (provider key; server only)
-   ITFM_AI_MODEL              (provider ആവശ്യപ്പെടുന്ന model name)
-   IPTV_M3U_URL               (ഐച്ഛികം; default IPTV-org playlist ഉപയോഗിക്കും)
-9. Environment Variables ചേർത്തശേഷം Redeploy ചെയ്യുക.
-10. https://your-deployment/keys.html തുറക്കുക. Supabase URL + anon/publishable key നൽകുക; account create/sign in ചെയ്യുക; Create API Key അമർത്തുക.
-11. പുതിയ key ഒരിക്കൽ മാത്രം കാണിക്കും. സുരക്ഷിതമായി സൂക്ഷിക്കുക. നഷ്ടപ്പെട്ടാൽ പുതിയ key ഉണ്ടാക്കുക.
-12. /api/health പരിശോധിക്കുക.
-
-ഇപ്പോൾ ഉൾപ്പെടുത്തിയ API:
-- GET  /api/health
-- GET  /api/keys (Supabase access token ആവശ്യമാണ്)
-- POST /api/keys (Supabase access token ആവശ്യമാണ്; JSON {"name":"My app"})
-- DELETE /api/keys (Supabase access token ആവശ്യമാണ്; JSON {"id":"key UUID"})
-- GET  /api/key/verify (X-ITFM-API-Key header ആവശ്യമാണ്)
-- POST /api/chat (OpenAI Chat Completions-compatible provider config ആവശ്യമാണ്)
-- GET  /api/movies?query=... (TMDB_API_KEY ആവശ്യമാണ്)
-- GET  /api/tv (പൊതുവായ IPTV-org playlist ഉപയോഗിക്കുന്നു)
-- POST /api/generate (ഇപ്പോൾ provider-specific adapter ആവശ്യമാണ്; fabricated result നൽകില്ല)
-
-AI Image/Video/Audio/Music/Cover/STEM/Genjutsu:
-ഈ സേവനങ്ങൾക്ക് ഓരോ provider-ന്റെയും യഥാർത്ഥ API documentation, endpoint, request format, credentials എന്നിവ ആവശ്യമാണ്. അവ നൽകാതെ യഥാർത്ഥ generation പ്രവർത്തിക്കുന്നു എന്ന് അവകാശപ്പെടുന്നില്ല. നിലവിലെ /api/generate route ആവശ്യമായ provider adapter ചേർക്കുന്നതുവരെ വ്യക്തമായ error നൽകും.
+2. GitHub repository-ലേക്ക് ഉള്ളടക്കം upload ചെയ്യുക.
+3. Supabase project സൃഷ്ടിച്ച് Email Auth enable ചെയ്യുക.
+4. supabase/schema.sql SQL Editor-ൽ run ചെയ്യുക.
+5. Vercel-ൽ repository import ചെയ്ത് deploy ചെയ്യുക.
+6. README.md അനുസരിച്ച് Environment Variables ചേർക്കുക.
+7. /api/health, /keys.html എന്നിവ പരിശോധിക്കുക.
 
 സുരക്ഷ:
-- SUPABASE_SERVICE_ROLE_KEY, provider API keys എന്നിവ frontend-ലോ GitHub-ലോ ഇടരുത്.
-- Public launch-ന് മുമ്പ് rate limiting, usage quotas, monitoring, abuse protection, billing policy എന്നിവ കൂടി ചേർക്കണം.
-- ഈ project-ൽ npm test അടിസ്ഥാന JavaScript syntax പരിശോധനയാണ്; യഥാർത്ഥ Supabase/AI provider end-to-end test അല്ല.
+- SUPABASE_SERVICE_ROLE_KEY browser code-ലോ public repository-ലോ ചേർക്കരുത്.
+- യഥാർത്ഥ provider keys-നെ .env.example-ൽ ചേർക്കരുത്.
+- Deploy ചെയ്തശേഷം rate limits, usage quotas, abuse protection എന്നിവ ചേർക്കണം.
+
+100% സൗജന്യവും പരിധിയില്ലാത്തതുമായ എല്ലാ AI സേവനങ്ങളും ഉറപ്പാക്കാൻ കഴിയില്ല; ഓരോ provider-ന്റെയും free tier-നും നിബന്ധനകൾക്കും വിധേയമാണ്.
