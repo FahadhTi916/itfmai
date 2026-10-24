@@ -159,6 +159,19 @@ body{
 .field input[type=file]{max-width:100%;}
 @media(max-width:600px){.upload{padding:18px 12px!important}.upload input[type=file]{font-size:11px}.upload input[type=file]::file-selector-button{padding:8px 10px;margin-right:6px}}
 
+
+/* AI Chat attachment uploader styled to match the reference-file uploader */
+#view-chat .chat-attach-field{margin-top:4px!important}
+#view-chat .chat-attach-zone{width:100%;min-width:0;box-sizing:border-box;padding:22px 18px 16px;border:2px dashed #9eaaff;border-radius:24px;background:linear-gradient(135deg,rgba(28,47,117,.9),rgba(78,37,139,.72));text-align:center;overflow:hidden}
+#view-chat .chat-attach-heading{font-size:16px;font-weight:800;line-height:1.45;color:#fff;margin:0 0 10px}
+#view-chat .chat-attach-zone>p{margin:0 auto 16px;max-width:340px;font-size:13px;line-height:1.65;color:#e1e8ff}
+#view-chat .chat-file-control{width:100%;min-width:0;box-sizing:border-box;padding:10px 12px;border:1px solid #303b5b;border-radius:17px;background:#090f20;text-align:left}
+#view-chat .chat-file-control input[type=file]{display:block;width:100%;max-width:100%;min-width:0;box-sizing:border-box;margin:0;color:#c8d3f0!important;font-size:12px!important}
+#view-chat .chat-file-control input[type=file]::file-selector-button{border:0;border-radius:12px;padding:10px 14px;margin-right:10px;background:linear-gradient(105deg,#7c3aed,#168cff,#0891b2);color:#fff;font-weight:800;cursor:pointer}
+#view-chat .chat-file-control input[type=file]::-webkit-file-upload-button{border:0;border-radius:12px;padding:10px 14px;margin-right:10px;background:linear-gradient(105deg,#7c3aed,#168cff,#0891b2);color:#fff;font-weight:800;cursor:pointer}
+#view-chat .chat-file-hint{font-size:11px;color:#cbd6ff;line-height:1.5;margin-top:10px;overflow-wrap:anywhere}
+@media(max-width:480px){#view-chat .chat-attach-zone{padding:20px 12px 14px;border-radius:20px}#view-chat .chat-file-control{padding:9px 8px}#view-chat .chat-file-control input[type=file]{font-size:11px!important}#view-chat .chat-file-control input[type=file]::file-selector-button{padding:9px 10px;margin-right:6px}}
+
 </style>
 </head>
 <body>
@@ -226,7 +239,7 @@ body{
 <div class="itfm-back-wrap" data-itfm-back="chat"><button type="button" class="itfm-back-button" onclick="showView(&quot;home&quot;)"><span aria-hidden="true"></span>Back</button></div>
 
 <div class="hero"><div><div class="eyebrow">YOUR AI ASSISTANT</div><h1>AI <span class="gradient">Chat</span></h1><p>Prepare a conversation and attach reference files for a configured multimodal provider.</p></div></div>
-<div class="tool-layout"><div class="panel"><h2>Conversation</h2><p class="panel-sub">A real assistant reply requires a configured server-side provider.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>Messages and files stay local in this demo. No message is sent to an AI provider from this preview.</div></div><div class="chat-window" id="chat-window"><div class="bubble assistant">Hi! I'm the ITFM AI local preview. Connect an AI provider to enable real answers.</div></div><div class="field"><label>Attach files (optional)</label><input id="chat-file" multiple="" style="color:var(--muted);font-size:12px" type="file"/></div><div class="chat-send"><input id="chat-input" onkeydown="if(event.key==='Enter')sendChat()" placeholder="Message ITFM AI…"/><button class="btn primary" onclick="sendChat()">Send ↑</button></div><p class="micro" id="chat-attach-note">Files selected locally in your browser.</p></div><div class="panel"><h3>Conversation details</h3><p class="panel-sub">LOCAL PREVIEW</p><div class="preview-box" style="min-height:220px"><div><div class="empty-icon">💬</div><strong>Ready to chat</strong><p>Your messages appear in this local preview. AI responses are not simulated.</p></div></div></div></div>
+<div class="tool-layout"><div class="panel"><h2>Conversation</h2><p class="panel-sub">A real assistant reply requires a configured server-side provider.</p><div class="provider-note">⚙ <div><b>AI provider setup required</b>Messages and files stay local in this demo. No message is sent to an AI provider from this preview.</div></div><div class="chat-window" id="chat-window"><div class="bubble assistant">Hi! I'm the ITFM AI local preview. Connect an AI provider to enable real answers.</div></div><div class="field chat-attach-field"><label>Upload reference / source files</label><div class="chat-attach-zone"><div class="chat-attach-heading">＋ Add reference files</div><p>Images, PDFs, documents or other supported files</p><div class="chat-file-control"><input id="chat-file" multiple accept="image/*,.pdf,.doc,.docx,.txt,.csv,.xlsx,.pptx,.md,.json,audio/*,video/*" type="file" aria-label="Choose reference files"/></div><div class="chat-file-hint" id="chat-file-hint">You can select multiple files</div></div></div><div class="chat-send"><input id="chat-input" onkeydown="if(event.key==='Enter')sendChat()" placeholder="Message ITFM AI…"/><button class="btn primary" onclick="sendChat()">Send ↑</button></div><p class="micro" id="chat-attach-note">Files selected locally in your browser.</p></div><div class="panel"><h3>Conversation details</h3><p class="panel-sub">LOCAL PREVIEW</p><div class="preview-box" style="min-height:220px"><div><div class="empty-icon">💬</div><strong>Ready to chat</strong><p>Your messages appear in this local preview. AI responses are not simulated.</p></div></div></div></div>
 </section>
 <section class="view" id="view-studio">
 <div class="itfm-back-wrap" data-itfm-back="studio"><button type="button" class="itfm-back-button" onclick="showView(&quot;home&quot;)"><span aria-hidden="true"></span>Back</button></div>
@@ -977,4 +990,6 @@ button:hover{filter:brightness(1.1) saturate(1.08)}
 @media(max-width:760px){body{background-attachment:scroll!important}.hero{padding:23px!important;border-radius:22px!important}.itfm-all-tools-grid .feature{background:linear-gradient(120deg,rgba(255,68,184,.18),rgba(18,35,112,.82),rgba(0,192,222,.14))!important}.panel{padding:16px!important}.feature-open{min-height:42px!important}}
 </style>
 
+
+(function(){const input=document.getElementById('chat-file');const hint=document.getElementById('chat-file-hint');if(input&&hint){input.addEventListener('change',function(){const files=Array.from(input.files||[]);hint.textContent=files.length?files.map(f=>f.name).join(' · '):'You can select multiple files';});}})();
 </body></html>
