@@ -3,220 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090b13">
-<meta name="description" content="ITFM AI — your creative AI studio for images, video, music, voice, avatars, effects and more.">
-<meta property="og:title" content="ITFM AI — Your Creative AI Studio">
-<meta property="og:description" content="Create images, videos, music, voices and more with ITFM AI.">
-<meta property="og:type" content="website">
-<title>ITFM AI — Your Creative AI Studio</title>
+<meta name="description" content="ITFM AI — one creative studio for AI images, video, music, voice, apps and entertainment.">
+<meta property="og:title" content="ITFM AI — Creative Studio">
+<meta property="og:description" content="Create images, videos, music, voices and more with 31 creative tools.">
+<meta name="theme-color" content="#090b18">
+<title>ITFM AI — Creative Studio</title>
 <style>
-:root{--bg:#090b13;--panel:#111522;--panel2:#171d2d;--line:#252d40;--text:#f5f7ff;--muted:#9aa5bb;--purple:#9b7bff;--cyan:#5ee7df;--pink:#ff72b6;--radius:18px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% -10%,#29204c 0,transparent 34%),var(--bg);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}
-aside{height:100vh;position:sticky;top:0;overflow:auto;border-right:1px solid var(--line);padding:22px 15px;background:#0c0f19ed;backdrop-filter:blur(18px);z-index:5}
-.brand{display:flex;align-items:center;gap:11px;padding:2px 9px 24px;font-size:21px;font-weight:850;letter-spacing:-.8px}.brand-mark{width:37px;height:37px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--purple),var(--cyan));color:#080b14;font-weight:950;box-shadow:0 5px 25px #9b7bff55}.brand span:last-child{color:var(--cyan)}
-.nav-label{font-size:10px;letter-spacing:1.5px;color:#738099;font-weight:800;padding:15px 10px 7px}.nav{display:grid;gap:4px}.nav button{width:100%;border:0;background:transparent;color:#aeb8ca;text-align:left;padding:9px 11px;border-radius:10px;display:flex;align-items:center;gap:11px;font-size:13px}.nav button:hover,.nav button.active{background:#22243a;color:#fff}.nav button.active{box-shadow:inset 2px 0 var(--cyan)}.ico{width:20px;text-align:center;font-size:16px}.side-note{margin:22px 5px 5px;padding:14px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#1c1b35,#111522);font-size:12px;color:var(--muted)}.side-note b{display:block;color:#fff;margin-bottom:4px}
-main{min-width:0;padding:22px clamp(16px,3vw,42px) 60px;max-width:1600px;width:100%;margin:auto}.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:28px}.mobile-brand{display:none}.top-actions{display:flex;align-items:center;gap:10px;margin-left:auto}.pill{border:1px solid var(--line);background:#111522;color:#d9e0ef;padding:9px 13px;border-radius:999px;font-size:12px}.avatar{width:35px;height:35px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#a77bff,#5ee7df);color:#080b14;font-weight:900}
-.hero{border:1px solid #373052;border-radius:24px;padding:clamp(22px,4vw,42px);background:radial-gradient(circle at 85% 20%,#6040a955,transparent 30%),linear-gradient(120deg,#17172b,#111827 70%);position:relative;overflow:hidden}.eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase}.hero h1{font-size:clamp(32px,5vw,56px);line-height:1.05;letter-spacing:-2px;margin:12px 0;max-width:700px}.gradient{background:linear-gradient(90deg,#b49aff,#65e8e0);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:#b4bfd1;max-width:620px;margin:0 0 22px}.search{display:flex;gap:9px;max-width:650px;background:#0c1020;border:1px solid #343c54;border-radius:13px;padding:7px}.search input{min-width:0;flex:1;background:transparent;border:0;outline:0;color:white;padding:7px}.btn{border:0;border-radius:11px;padding:11px 17px;font-weight:750;background:linear-gradient(100deg,var(--purple),var(--cyan));color:#080b14}.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn.secondary{background:#222a3d;color:#e8edfa;border:1px solid #39445b}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:32px 0 15px}.section-head h2{margin:0;font-size:21px;letter-spacing:-.5px}.section-head p{margin:4px 0 0;color:var(--muted);font-size:13px}.text-btn{border:0;background:transparent;color:var(--cyan);font-size:12px;font-weight:750}
-.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.feature{border:1px solid var(--line);background:linear-gradient(145deg,#171d2d,#101521);border-radius:16px;padding:17px;min-height:145px;cursor:pointer;transition:.2s}.feature:hover,.tool-card:hover{border-color:#7561bd;transform:translateY(-2px)}.feature .symbol{font-size:25px}.feature h3{font-size:15px;margin:10px 0 4px}.feature p{font-size:12px;color:var(--muted);margin:0}
-.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}.filter{border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:#111522;color:#aeb8ca;font-size:12px}.filter.active{background:#282343;color:#fff;border-color:#7660bd}
-.tools-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}.tool-card{border:1px solid var(--line);border-radius:15px;padding:15px;background:#111622;cursor:pointer;transition:.2s;min-width:0}.tool-card .tool-top{display:flex;align-items:center;justify-content:space-between}.tool-card .symbol{font-size:22px}.badge{font-size:9px;text-transform:uppercase;letter-spacing:.7px;color:#9b8bff;background:#282343;padding:4px 7px;border-radius:99px}.tool-card h3{font-size:13px;margin:10px 0 3px}.tool-card p{font-size:11px;color:var(--muted);margin:0;min-height:34px}
-.workspace{margin-top:32px;border:1px solid var(--line);border-radius:19px;background:#111622;padding:20px;display:grid;grid-template-columns:1.1fr .9fr;gap:20px}.workspace h2{margin:0 0 5px;font-size:19px}.workspace .muted{color:var(--muted);font-size:12px;margin:0 0 17px}.field{display:grid;gap:7px;margin-bottom:13px}.field label{font-size:12px;color:#c6cede;font-weight:650}.field input,.field textarea,.field select{width:100%;background:#0b101b;border:1px solid #30394d;border-radius:10px;color:#fff;padding:11px;outline:none}.field textarea{min-height:100px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--purple)}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.upload{border:1px dashed #59627a;border-radius:12px;min-height:90px;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:12px;padding:14px;cursor:pointer}.upload input{display:none}.preview{min-height:280px;border:1px dashed #3a4359;border-radius:14px;background:radial-gradient(circle at 50% 30%,#28264a,#0c111c 65%);display:grid;place-items:center;text-align:center;padding:20px;color:#9ba7bd}.preview .big{font-size:48px;margin-bottom:10px}.preview img,.preview video{max-width:100%;max-height:330px;border-radius:10px}.preview-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.notice{font-size:11px;color:#8f9bb1;margin-top:13px;line-height:1.5}.catalog{display:none}.catalog.show{display:block}.empty{padding:25px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px}
-footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0;color:#8490a6;font-size:12px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
-.modal-backdrop{display:none;position:fixed;inset:0;background:#050711c9;z-index:20;place-items:center;padding:18px}.modal-backdrop.open{display:grid}.modal{width:min(520px,100%);background:#151b2b;border:1px solid #424b65;border-radius:18px;padding:22px;box-shadow:0 25px 90px #0009}.modal h2{margin:0 0 8px}.modal p{color:var(--muted);font-size:13px}.modal .close{float:right;background:#252c40;color:white;border:0;border-radius:8px;padding:6px 10px}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#e4fff9;color:#08151a;padding:11px 17px;border-radius:12px;font-weight:700;font-size:13px;z-index:40;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:1100px){.tools-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:760px){.shell{display:block}aside{position:fixed;left:-270px;width:250px;transition:left .25s;box-shadow:20px 0 50px #0008}aside.open{left:0}.mobile-brand{display:flex;align-items:center;gap:8px;font-weight:850}.mobile-brand .brand-mark{width:31px;height:31px}.topbar{margin-bottom:18px}.hero{border-radius:18px}.workspace{grid-template-columns:1fr}.tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.feature-grid{grid-template-columns:1fr 1fr}.top-actions .pill{display:none}}
-@media(max-width:430px){main{padding:15px 13px 40px}.tools-grid{grid-template-columns:1fr 1fr;gap:8px}.tool-card{padding:12px}.feature-grid{grid-template-columns:1fr}.hero h1{letter-spacing:-1px}.search{flex-wrap:wrap}.search input{flex-basis:100%}.search .btn{width:100%}.field-row{grid-template-columns:1fr}}
+:root{--bg:#090b18;--panel:#11152a;--panel2:#171c35;--line:#282e4c;--text:#f5f6ff;--muted:#a5acc8;--purple:#8b5cf6;--blue:#4f8cff;--cyan:#55d6e8;--radius:20px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#30205b 0,transparent 36%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{width:min(1200px,calc(100% - 36px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:#090b18dd;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff12}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:11px;font-weight:850;font-size:1.18rem;letter-spacing:.04em}.logo{width:39px;height:39px;border-radius:13px;background:linear-gradient(135deg,var(--purple),var(--blue));display:grid;place-items:center;box-shadow:0 8px 28px #754df555}.logo span{font-size:1.1rem}.navlinks{display:flex;gap:23px;color:var(--muted);font-size:.9rem}.navlinks a{color:inherit;text-decoration:none}.navlinks a:hover{color:white}.navright{display:flex;align-items:center;gap:10px}.pill{border:1px solid var(--line);background:#ffffff08;color:#e9eaff;border-radius:999px;padding:9px 14px;font-size:.84rem}
+.hero{padding:66px 0 38px;text-align:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 13px;border:1px solid #8b5cf655;background:#8b5cf618;border-radius:999px;color:#cbb9ff;font-size:.8rem;font-weight:700}.hero h1{font-size:clamp(2.6rem,7vw,5.1rem);line-height:1.03;letter-spacing:-.055em;margin:22px auto 16px;max-width:850px}.gradient{background:linear-gradient(100deg,#c4a7ff,#70a8ff 55%,#69e4e5);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);max-width:670px;margin:0 auto 27px;font-size:1.05rem}.heroactions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.btn{border:0;border-radius:13px;padding:12px 18px;font-weight:750;color:white;background:linear-gradient(110deg,var(--purple),var(--blue));box-shadow:0 9px 25px #6546c444}.btn.secondary{background:#ffffff0b;border:1px solid var(--line);box-shadow:none}.stats{display:flex;justify-content:center;gap:35px;flex-wrap:wrap;margin-top:34px;color:var(--muted);font-size:.85rem}.stats strong{display:block;color:white;font-size:1.2rem}
+.toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:24px 0 18px}.search{flex:1;min-width:220px;position:relative}.search input{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:14px;color:white;padding:14px 16px 14px 44px;outline:none}.search input:focus{border-color:#9874ff}.search:before{content:"⌕";position:absolute;left:16px;top:7px;font-size:1.5rem;color:var(--muted)}.filters{display:flex;gap:8px;overflow:auto;padding:2px 0 8px}.filter{white-space:nowrap;border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:999px;padding:9px 14px;font-size:.84rem}.filter.active,.filter:hover{background:#8b5cf626;border-color:#8b5cf6;color:#e5d9ff}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:36px 0 16px}.sectionhead h2{font-size:1.55rem;margin:0;letter-spacing:-.03em}.sectionhead p{color:var(--muted);margin:4px 0 0;font-size:.9rem}.count{color:var(--muted);font-size:.85rem}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card{position:relative;text-align:left;padding:18px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(145deg,#151a32,#101427);color:var(--text);min-height:174px;transition:.2s;overflow:hidden}.card:hover{transform:translateY(-4px);border-color:#8b5cf6aa;box-shadow:0 14px 35px #0005}.card:after{content:"";position:absolute;width:100px;height:100px;border-radius:50%;right:-50px;top:-50px;background:#8b5cf61a;filter:blur(3px)}.icon{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#8b5cf633,#4f8cff33);font-size:1.35rem;margin-bottom:13px}.card h3{font-size:1rem;margin:0 0 5px}.card p{font-size:.81rem;color:var(--muted);margin:0;max-width:95%}.card .open{position:absolute;right:15px;bottom:15px;color:#bda8ff;font-size:.8rem;font-weight:700}
+.empty{display:none;text-align:center;padding:45px;color:var(--muted);border:1px dashed var(--line);border-radius:18px}
+.banner{margin:55px 0 30px;padding:28px;border:1px solid #8b5cf644;border-radius:24px;background:linear-gradient(110deg,#281c4c,#15264b);display:flex;justify-content:space-between;align-items:center;gap:20px}.banner h2{margin:0 0 5px}.banner p{margin:0;color:#c1c6df;font-size:.9rem}
+footer{border-top:1px solid var(--line);padding:28px 0 36px;color:var(--muted);font-size:.85rem}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.foot strong{color:white}
+.modal{display:none;position:fixed;inset:0;background:#03040bdc;z-index:30;padding:18px;overflow:auto;align-items:center;justify-content:center}.modal.show{display:flex}.dialog{width:min(650px,100%);background:#11162c;border:1px solid #343b60;border-radius:22px;padding:24px;box-shadow:0 25px 80px #0009;position:relative}.close{position:absolute;right:17px;top:15px;border:1px solid var(--line);background:#ffffff0b;color:white;border-radius:10px;width:36px;height:36px;font-size:1.2rem}.dialog h2{margin:5px 45px 5px 0}.dialog .sub{color:var(--muted);font-size:.9rem;margin:0 0 20px}.formrow{margin:14px 0}.formrow label{display:block;font-size:.86rem;font-weight:700;margin-bottom:7px}.formrow input,.formrow textarea,.formrow select{width:100%;background:#090d1e;border:1px solid var(--line);border-radius:12px;padding:12px;color:white;outline:none}.formrow textarea{min-height:100px;resize:vertical}.formrow input[type=file]{padding:10px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.notice{margin-top:14px;padding:12px;border-radius:12px;background:#55d6e811;border:1px solid #55d6e833;color:#bdeff4;font-size:.82rem}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#222a47;border:1px solid #59648d;padding:12px 18px;border-radius:12px;z-index:50;display:none;box-shadow:0 8px 30px #0008}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.navlinks{display:none}}
+@media(max-width:650px){.shell{width:min(100% - 24px,1200px)}.nav{height:66px}.hero{padding:48px 0 25px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{padding:14px;min-height:170px}.banner{display:block}.banner .btn{margin-top:16px}.formgrid{grid-template-columns:1fr}.stats{gap:20px}}
+@media(max-width:390px){.grid{grid-template-columns:1fr}.card{min-height:145px}}
 </style>
 </head>
 <body>
-<div class="shell">
-<aside id="sidebar">
-  <div class="brand"><div class="brand-mark">I</div><div>ITFM <span>AI</span></div></div>
-  <div class="nav-label">WORKSPACE</div>
-  <nav class="nav" aria-label="Main navigation">
-    <button class="active" data-target="home"><span class="ico">⌂</span>Home</button>
-    <button data-target="all-tools"><span class="ico">✧</span>Explore all tools</button>
-    <button data-target="workspace"><span class="ico">▣</span>AI Studio</button>
-  </nav>
-  <div class="nav-label">CREATE WITH AI</div>
-  <nav class="nav">
-    <button data-category="image"><span class="ico">▧</span>Image tools</button>
-    <button data-category="video"><span class="ico">▶</span>Video tools</button>
-    <button data-category="audio"><span class="ico">♫</span>Music & voice</button>
-    <button data-category="avatar"><span class="ico">☺</span>Avatar & effects</button>
-    <button data-category="builder"><span class="ico">⌘</span>AI builders</button>
-  </nav>
-  <div class="nav-label">ENTERTAINMENT</div>
-  <nav class="nav">
-    <button data-target="tv"><span class="ico">▣</span>TV Channels</button>
-    <button data-target="moviehub"><span class="ico">🎬</span>MovieHub</button>
-  </nav>
-  <div class="side-note"><b>✨ Your creative space</b>One place to explore image, video, audio and AI creation tools.</div>
-</aside>
-<main>
-  <header class="topbar">
-    <div class="mobile-brand"><button class="pill" id="menuBtn" aria-label="Open menu">☰</button><div class="brand-mark">I</div>ITFM <span style="color:var(--cyan)">AI</span></div>
-    <div class="top-actions"><span class="pill">✦ AI Creative Studio</span><span class="pill">Guest workspace</span><div class="avatar">I</div></div>
-  </header>
-
-  <section class="hero" id="home">
-    <div class="eyebrow">WELCOME TO ITFM AI</div>
-    <h1>Your ideas. Your creativity.<br><span class="gradient">Powered by AI.</span></h1>
-    <p>Discover creative tools for images, videos, music, voice, avatars and more — all together in one simple studio.</p>
-    <div class="search"><input id="searchInput" type="search" placeholder="Search 30+ AI tools..." aria-label="Search AI tools"><button class="btn" id="searchBtn">Explore tools →</button></div>
-  </section>
-
-  <section>
-    <div class="section-head"><div><h2>Quick start</h2><p>Jump straight into your next creation.</p></div></div>
-    <div class="feature-grid">
-      <article class="feature" data-open="AI Image Generator"><div class="symbol">🎨</div><h3>Generate an image</h3><p>Turn a text idea into a visual concept.</p></article>
-      <article class="feature" data-open="AI Video Generator"><div class="symbol">🎞️</div><h3>Create a video</h3><p>Bring your story and scenes to life.</p></article>
-      <article class="feature" data-open="AI Music Generator"><div class="symbol">🎵</div><h3>Make music</h3><p>Explore original music and sound ideas.</p></article>
-    </div>
-  </section>
-
-  <section id="all-tools">
-    <div class="section-head"><div><h2>Explore AI tools</h2><p>Choose a tool to open its creative workspace.</p></div><button class="text-btn" id="clearSearch">Clear search ↗</button></div>
-    <div class="filters" id="filters">
-      <button class="filter active" data-filter="all">All tools</button>
-      <button class="filter" data-filter="image">Images</button><button class="filter" data-filter="video">Video</button>
-      <button class="filter" data-filter="audio">Music & voice</button><button class="filter" data-filter="avatar">Avatars & effects</button>
-      <button class="filter" data-filter="builder">AI builders</button>
-    </div>
-    <div class="tools-grid" id="toolsGrid"></div>
-    <div class="empty" id="noResults" hidden>No tools found. Try another search.</div>
-  </section>
-
-  <section class="workspace" id="workspace">
-    <div>
-      <div class="eyebrow">CREATIVE WORKSPACE</div><h2 id="workspaceTitle">AI Image Generator</h2>
-      <p class="muted" id="workspaceDesc">Describe what you want to create. Connect an AI provider to enable real generation.</p>
-      <div class="field"><label for="prompt">Your prompt / instructions</label><textarea id="prompt" placeholder="Describe your idea in detail..."></textarea></div>
-      <div class="field-row">
-        <div class="field"><label for="style">Style</label><select id="style"><option>Realistic</option><option>Cinematic</option><option>Anime</option><option>3D</option><option>Minimal</option><option>Creative</option></select></div>
-        <div class="field"><label for="quality">Quality</label><select id="quality"><option>Standard</option><option>HD</option><option>Ultra</option></select></div>
-      </div>
-      <div class="field"><label>Upload a reference file (optional)</label><label class="upload" for="fileInput">＋ Click to upload an image, audio or video<input id="fileInput" type="file" accept="image/*,video/*,audio/*"></label></div>
-      <button class="btn" id="generateBtn">✦ Prepare creation</button>
-      <p class="notice">This starter interface is ready for integration. Real AI generation requires a secure server/API connection. Never put private API keys in this HTML file.</p>
-    </div>
-    <div>
-      <div class="section-head" style="margin:0 0 12px"><div><h2 style="font-size:15px">Preview area</h2><p>Output will appear here when connected.</p></div></div>
-      <div class="preview" id="preview"><div><div class="big">✧</div><b>Your creation will appear here</b><br><span style="font-size:12px">Select a tool and add your prompt to begin.</span></div></div>
-      <div class="preview-actions"><button class="btn secondary" id="downloadBtn">↓ Download output</button><button class="btn secondary" id="resetBtn">Reset</button></div>
-    </div>
-  </section>
-
-  <section id="tv" class="catalog">
-    <div class="section-head"><div><h2>📺 TV Channels</h2><p>Add official, licensed channel streams or connect your TV provider.</p></div></div>
-    <div class="feature-grid">
-      <article class="feature"><div class="symbol">📡</div><h3>Live channels</h3><p>Official broadcaster streams can be added here.</p></article>
-      <article class="feature"><div class="symbol">🌍</div><h3>Browse by language</h3><p>Organize licensed channels by language and region.</p></article>
-    </div>
-    <p class="notice">No channels are streamed by this starter page. Add only streams you own or are authorized to distribute.</p>
-  </section>
-  <section id="moviehub" class="catalog">
-    <div class="section-head"><div><h2>🎬 MovieHub</h2><p>Your organized movie discovery space.</p></div></div>
-    <div class="feature-grid">
-      <article class="feature"><div class="symbol">🍿</div><h3>Discover movies</h3><p>Connect a licensed movie metadata/catalogue API.</p></article>
-      <article class="feature"><div class="symbol">⭐</div><h3>Watchlist</h3><p>Save titles and build your personal watchlist.</p></article>
-    </div>
-    <p class="notice">Movie playback is not included. Use licensed streaming providers and authorized content only.</p>
-  </section>
-
-  <footer><span>© <span id="year"></span> ITFM AI. All rights reserved.</span><span>Made for imagination ✦ <a href="#home" style="color:var(--cyan);text-decoration:none">Back to top ↑</a></span></footer>
+<header><div class="shell nav">
+ <a class="brand" href="#" style="color:inherit;text-decoration:none"><span class="logo"><span>✦</span></span> ITFM <span class="gradient">AI</span></a>
+ <nav class="navlinks"><a href="#tools">Explore Tools</a><a href="#studios">Studios</a><a href="#about">About</a></nav>
+ <div class="navright"><span class="pill">✦ Creative Studio</span></div>
+</div></header>
+<main class="shell">
+<section class="hero" id="about">
+ <span class="eyebrow">✦ YOUR ALL-IN-ONE AI CREATIVE PLATFORM</span>
+ <h1>Create more.<br><span class="gradient">Imagine without limits.</span></h1>
+ <p>One place for AI images, videos, music, voice, animation, app building and entertainment. Choose a tool and bring your idea to life.</p>
+ <div class="heroactions"><a class="btn" href="#tools" style="text-decoration:none">Explore all 31 tools ↗</a><button class="btn secondary" onclick="showToast('Choose any tool card below to get started.')">How it works</button></div>
+ <div class="stats"><div><strong>31</strong>Creative tools</div><div><strong>06</strong>Tool categories</div><div><strong>∞</strong>Ideas to explore</div></div>
+</section>
+<section id="tools">
+ <div class="sectionhead"><div><h2>Explore the tools</h2><p>Pick a tool to view its workspace and options.</p></div><span class="count" id="count">31 tools</span></div>
+ <div class="toolbar"><div class="search"><input id="search" type="search" placeholder="Search tools..." aria-label="Search tools"></div></div>
+ <div class="filters" id="filters"></div>
+ <div class="grid" id="grid"></div><div class="empty" id="empty">No tools found. Try another search.</div>
+</section>
+<section class="banner" id="studios"><div><h2>Your ideas deserve a bigger canvas.</h2><p>Start with a prompt, an image, a video or an audio file. Your creative workflow begins here.</p></div><a class="btn" href="#tools" style="text-decoration:none;white-space:nowrap">Start creating →</a></section>
 </main>
+<footer><div class="shell foot"><div><strong>ITFM AI</strong><br>One studio. 31 ways to create.</div><div>© <span id="year"></span> ITFM AI. All rights reserved.</div><div>Made for creators ✦</div></div></footer>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div class="dialog"><button class="close" onclick="closeModal()" aria-label="Close">×</button><div class="icon" id="modalIcon">✦</div><h2 id="modalTitle">Tool</h2><p class="sub" id="modalDesc"></p>
+ <div class="formrow"><label for="prompt">Describe what you want to create</label><textarea id="prompt" placeholder="Write your idea or instructions here..."></textarea></div>
+ <div class="formrow"><label for="upload">Upload a file (optional)</label><input id="upload" type="file" accept="image/*,video/*,audio/*"></div>
+ <div class="formgrid"><div class="formrow"><label for="style">Style / Preset</label><select id="style"><option>Auto</option><option>Realistic</option><option>Cinematic</option><option>3D</option><option>Anime</option><option>Minimal</option><option>Professional</option></select></div><div class="formrow"><label for="ratio">Format / Aspect ratio</label><select id="ratio"><option>Auto</option><option>1:1 Square</option><option>16:9 Landscape</option><option>9:16 Portrait</option><option>4:5 Portrait</option><option>Audio</option><option>Video</option></select></div></div>
+ <button class="btn" style="width:100%" onclick="runDemo()">Create / Continue →</button>
+ <div class="notice">Workspace preview: connect an AI model/API and backend processing to enable real generation, editing and downloads. This HTML demo does not upload files to a server.</div>
+ </div>
 </div>
-<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><button class="close" id="modalClose" aria-label="Close">✕</button><h2 id="modalTitle">Connect this AI tool</h2><p id="modalText">To enable live generation, connect a secure backend endpoint for this tool.</p><p><b>Developer setup:</b> create a server route for this tool, send the prompt and uploaded file to your chosen AI provider from the server, then return the generated result URL. Keep provider API keys on the server, never in index.html.</p><button class="btn" id="modalOk">Got it</button></div></div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="toast" id="toast" role="status"></div>
 <script>
-const toolData = [
-["AI Image Generator","image","🎨","Create images from detailed text prompts."],
-["AI Image Remover","image","🪄","Remove unwanted objects or backgrounds from images."],
-["AI Logo Maker","image","✳️","Explore logo concepts for your brand."],
-["AI Video Caption","video","💬","Generate subtitles and captions for videos."],
-["AI Video Remover","video","🧹","Remove selected objects from video scenes."],
-["AI Video Generator","video","🎞️","Create video clips from text or images."],
-["AI Cartoon Generator","image","🧸","Turn ideas or portraits into cartoon styles."],
-["AI Avatar Generator","avatar","🧑‍🚀","Generate a digital character or profile avatar."],
-["AI Avatar Maker","avatar","☺️","Customize an avatar's look and style."],
-["AI Visual Effects","avatar","✨","Create visual effects for creative projects."],
-["AI Video Effects","video","🎆","Apply cinematic effects to video."],
-["AI Face Swap","avatar","🎭","Create consent-based face-swap edits."],
-["AI Animation","video","🌀","Animate scenes, characters and objects."],
-["AI Character Sheet","image","🗂️","Build consistent character reference sheets."],
-["AI Cinematic Camera","video","🎥","Design camera moves and cinematic shots."],
-["AI Animation & 3D","video","🧊","Explore 3D scenes and animation concepts."],
-["AI Karaoke & Cover","audio","🎤","Create karaoke and cover-song workflows."],
-["AI Music Generator","audio","🎼","Generate original music from a description."],
-["AI Voice Generator","audio","🗣️","Create speech from text with a chosen voice."],
-["AI Karaoke Generator","audio","🎙️","Prepare karaoke versions and lyric timing."],
-["AI Song Generator","audio","🎧","Turn a musical idea into a song concept."],
-["AI Vocal Remover","audio","🎚️","Separate vocals from an audio track."],
-["AI Karaoke Remover","audio","🎵","Remove karaoke backing or vocal tracks."],
-["AI Voice Remover","audio","🔇","Process audio to isolate or remove voices."],
-["AI Watermark Remover","image","🧽","Edit images you own or are authorized to modify."],
-["AI Motion Studio","video","🏃","Create motion-focused visual sequences."],
-["AI Chat","builder","🤖","Chat with an AI assistant."],
-["AI Mini-App Builder","builder","🧩","Prototype a small app from a prompt."],
-["AI Mini-Website Builder","builder","🌐","Create a mini website from a description."],
-["TV Channels","builder","📺","Browse authorized live channel sources."],
-["MovieHub","builder","🍿","Discover films through licensed catalogues."]
+const categories=["All Tools","Image Studio","Video Studio","Face & 3D","Music & Audio","Apps & Websites","Entertainment"];
+const tools=[
+["AI Image Generator","Image Studio","🎨","Create images from text or reference images. Includes styles, aspect ratios, quality and multiple outputs."],
+["AI Image Remover","Image Studio","🪄","Remove backgrounds, unwanted objects, people or text from images and clean up the result."],
+["AI Logo Maker","Image Studio","✳️","Design brand, business, gaming, minimal and 3D logos with editable colors, fonts and icons."],
+["AI Video Caption","Video Studio","💬","Transcribe speech, generate timed subtitles, translate captions and export SRT or captioned video."],
+["AI Video Remover","Video Studio","🎞️","Remove or replace video backgrounds and clean unwanted objects across frames."],
+["AI Video Generator","Video Studio","🎬","Generate videos from text or images with scene, style, duration and aspect-ratio controls."],
+["AI Cartoon Generator","Image Studio","🧸","Turn photos or prompts into cartoon, comic, anime-inspired and 3D character artwork."],
+["AI Avatar Generator","Image Studio","👤","Generate realistic, professional, gaming, 3D and illustrated profile avatars."],
+["AI Avatar Maker","Image Studio","🧑‍🎨","Customize avatar faces, hairstyles, outfits, accessories, expressions and backgrounds."],
+["AI Visual Effects","Image Studio","✨","Apply glow, neon, smoke, fire, lighting, cinematic filters and creative image effects."],
+["AI Video Effects","Video Studio","🌈","Add transitions, slow motion, glitch, zoom, blur, color grading and cinematic video effects."],
+["AI Face Swap","Face & 3D","🔁","Create consent-based photo or video face swaps with detection, alignment and blending."],
+["AI Animation","Face & 3D","🕺","Create 2D, 3D, character, logo and motion-graphics animations."],
+["AI Character Sheet","Face & 3D","🧩","Create consistent character front, side and back views, poses, expressions and outfits."],
+["AI Cinematic Camera","Video Studio","🎥","Plan camera moves such as pan, tilt, zoom, dolly, orbit and tracking shots."],
+["AI Animation & 3D","Face & 3D","🧊","Build 3D models, characters, scenes, materials, lighting and rendered animations."],
+["AI Karaoke & Cover","Music & Audio","🎤","Prepare authorized song covers, vocal-style experiments and instrumental arrangements."],
+["AI Music Generator","Music & Audio","🎹","Generate background, cinematic, relaxing and genre-based instrumental music."],
+["AI Voice Generator","Music & Audio","🗣️","Convert text to natural speech with language, voice, speed, pitch and style controls."],
+["AI Karaoke Generator","Music & Audio","🎼","Create karaoke versions with instrumental tracks, synchronized lyrics and video output."],
+["AI Song Generator","Music & Audio","🎵","Create original songs from prompts or lyrics with genre, mood, melody and vocal options."],
+["AI Vocal Remover","Music & Audio","🎚️","Separate vocals, instrumentals and supported audio stems from uploaded tracks."],
+["AI Karaoke Remover","Music & Audio","🎧","Process karaoke audio, separate vocal and instrumental tracks, and clean the output."],
+["AI Voice Remover","Music & Audio","🔇","Isolate or remove speech and reduce unwanted voice or background noise in audio."],
+["AI Watermark Remover","Image Studio","🧽","Clean eligible images or videos where you own the content or have permission to edit."],
+["AI Motion Studio","Face & 3D","🏃","Animate images and characters, track motion and apply movement presets."],
+["AI Chat","Apps & Websites","🤖","Chat with an AI assistant for questions, writing, translation, coding and file understanding."],
+["AI Mini-App Builder","Apps & Websites","📱","Create app prototypes with templates, components, previews and optional API connections."],
+["AI Mini-Website Builder","Apps & Websites","🌐","Build responsive landing pages, portfolios and business websites with editable sections."],
+["TV Channels","Entertainment","📺","Browse official, licensed live TV streams by language and category."],
+["MovieHub","Entertainment","🍿","Explore a catalog of licensed movies, series, trailers, details and watchlists."]
 ];
-const grid=document.getElementById('toolsGrid'), noResults=document.getElementById('noResults');
-let activeFilter='all', activeTool='AI Image Generator', selectedFile=null;
-function renderTools(){
- const q=document.getElementById('searchInput').value.trim().toLowerCase();
- const list=toolData.filter(t=>(activeFilter==='all'||t[1]===activeFilter)&&(!q||(t[0]+' '+t[3]).toLowerCase().includes(q)));
- grid.innerHTML=list.map(t=>`<article class="tool-card" tabindex="0" role="button" data-tool="${t[0]}"><div class="tool-top"><span class="symbol">${t[2]}</span><span class="badge">${t[1]}</span></div><h3>${t[0]}</h3><p>${t[3]}</p></article>`).join('');
- noResults.hidden=list.length>0;
- grid.querySelectorAll('[data-tool]').forEach(card=>{
-  const activate=()=>selectTool(card.dataset.tool);
-  card.addEventListener('click',activate);
-  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate()}});
- });
-}
-function selectTool(name){
- const t=toolData.find(x=>x[0]===name);if(!t)return;
- activeTool=name;document.getElementById('workspaceTitle').textContent=name;
- document.getElementById('workspaceDesc').textContent=t[3]+' Connect an AI provider to enable real processing.';
- document.getElementById('prompt').placeholder=name==='AI Chat'?'Ask your AI assistant anything...':'Describe what you want to create...';
- document.getElementById('workspace').scrollIntoView({behavior:'smooth',block:'start'});
- document.querySelectorAll('.tool-card').forEach(c=>c.style.outline=c.dataset.tool===name?'1px solid var(--cyan)':'none');
-}
-document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{activeFilter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));renderTools()}));
-document.getElementById('searchBtn').addEventListener('click',()=>{activeFilter='all';document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x.dataset.filter==='all'));renderTools();document.getElementById('all-tools').scrollIntoView({behavior:'smooth'})});
-document.getElementById('searchInput').addEventListener('input',renderTools);
-document.getElementById('clearSearch').addEventListener('click',()=>{document.getElementById('searchInput').value='';activeFilter='all';document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x.dataset.filter==='all'));renderTools()});
-document.querySelectorAll('[data-open]').forEach(c=>c.addEventListener('click',()=>selectTool(c.dataset.open)));
-document.querySelectorAll('[data-category]').forEach(b=>b.addEventListener('click',()=>{activeFilter=b.dataset.category;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x.dataset.filter===activeFilter));renderTools();document.getElementById('all-tools').scrollIntoView({behavior:'smooth'})}));
-document.querySelectorAll('[data-target]').forEach(b=>b.addEventListener('click',()=>{const target=document.getElementById(b.dataset.target);if(target)target.scrollIntoView({behavior:'smooth'});document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x===b));document.getElementById('sidebar').classList.remove('open')}));
-document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('sidebar').classList.toggle('open'));
-const backdrop=document.getElementById('modalBackdrop');
-function showModal(title){document.getElementById('modalTitle').textContent=title;backdrop.classList.add('open')}
-document.getElementById('modalClose').onclick=()=>backdrop.classList.remove('open');
-document.getElementById('modalOk').onclick=()=>backdrop.classList.remove('open');
-backdrop.addEventListener('click',e=>{if(e.target===backdrop)backdrop.classList.remove('open')});
-function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2800)}
-document.getElementById('generateBtn').addEventListener('click',()=>{
- const prompt=document.getElementById('prompt').value.trim();
- if(!prompt){toast('Add a prompt or instructions first.');document.getElementById('prompt').focus();return}
- showModal(activeTool+' — backend connection required');
-});
-document.getElementById('fileInput').addEventListener('change',e=>{
- const file=e.target.files[0];if(!file)return;selectedFile=file;
- const url=URL.createObjectURL(file),preview=document.getElementById('preview');
- if(file.type.startsWith('image/'))preview.innerHTML=`<img src="${url}" alt="Uploaded reference preview">`;
- else if(file.type.startsWith('video/'))preview.innerHTML=`<video src="${url}" controls aria-label="Uploaded video preview"></video>`;
- else if(file.type.startsWith('audio/'))preview.innerHTML=`<div><div class="big">♫</div><b>${file.name}</b><br><audio src="${url}" controls></audio></div>`;
- else preview.textContent=file.name;
-});
-document.getElementById('resetBtn').onclick=()=>{document.getElementById('prompt').value='';document.getElementById('fileInput').value='';selectedFile=null;document.getElementById('preview').innerHTML='<div><div class="big">✧</div><b>Your creation will appear here</b><br><span style="font-size:12px">Select a tool and add your prompt to begin.</span></div>';toast('Workspace reset.')};
-document.getElementById('downloadBtn').onclick=()=>toast('There is no generated output to download yet.');
-document.getElementById('year').textContent=new Date().getFullYear();
-renderTools();
+let active="All Tools";
+const grid=document.getElementById("grid"),filters=document.getElementById("filters"),search=document.getElementById("search");
+categories.forEach((c,i)=>{const b=document.createElement("button");b.className="filter"+(i===0?" active":"");b.textContent=c;b.onclick=()=>{active=c;document.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));render()};filters.appendChild(b)});
+function render(){const q=search.value.toLowerCase().trim();const list=tools.filter(t=>(active==="All Tools"||t[1]===active)&&(t[0]+" "+t[3]).toLowerCase().includes(q));grid.innerHTML="";list.forEach(t=>{const b=document.createElement("button");b.className="card";b.innerHTML=`<div class="icon">${t[2]}</div><h3>${t[0]}</h3><p>${t[3]}</p><span class="open">Open tool ↗</span>`;b.onclick=()=>openTool(t);grid.appendChild(b)});document.getElementById("count").textContent=list.length+" of 31 tools";document.getElementById("empty").style.display=list.length?"none":"block"}
+search.addEventListener("input",render);
+function openTool(t){document.getElementById("modalIcon").textContent=t[2];document.getElementById("modalTitle").textContent=t[0];document.getElementById("modalDesc").textContent=t[3];document.getElementById("modal").classList.add("show");document.body.style.overflow="hidden"}
+function closeModal(){document.getElementById("modal").classList.remove("show");document.body.style.overflow=""}
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+function showToast(msg){const t=document.getElementById("toast");t.textContent=msg;t.style.display="block";setTimeout(()=>t.style.display="none",3200)}
+function runDemo(){const p=document.getElementById("prompt").value.trim();const f=document.getElementById("upload").files[0];if(!p&&!f){showToast("Add a prompt or choose a file to continue.");return}showToast("Demo workspace ready. Connect an AI API to process this request.");}
+document.getElementById("year").textContent=new Date().getFullYear();render();
 </script>
-</body>
-</html>
+</body></html>
