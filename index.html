@@ -380,4 +380,246 @@ $("#apiBtn").onclick=()=>{let endpoint=prompt("Enter your secure backend API end
 $("#themeBtn").onclick=()=>{document.body.classList.toggle("light");if(document.body.classList.contains("light")){document.body.style.filter="brightness(1.2)";toast("Brightness adjusted. Use your device display settings for a full light theme.")}else document.body.style.filter=""};
 $("#year").textContent=new Date().getFullYear();renderStats();render();renderJobs();
 </script>
+
+<script>
+/* ITFM AI interaction upgrade: real navigation, local projects, previews and API dispatch */
+(function(){
+  const $ = s => document.querySelector(s);
+  const get=(k,d=[])=>{try{return JSON.parse(localStorage.getItem(k)||JSON.stringify(d))}catch{return d}};
+  const put=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+  const oldRun=window.runTool;
+  window.runTool=function(){
+    if(current===null)return;
+    const tool=tools[current], flow=toolWorkflows[tool[0]]||{};
+    const promptText=$("#prompt")?.value?.trim()||"";
+    const file=$("#fileInput")?.files?.[0]||null;
+    const mode=flow.mode||"text";
+    const needsFile=["image","video","audio","imagevideo","videoimage","faces","faceaudio","subtitle","model"].includes(mode);
+    if(needsFile&&!file){toast("തുടരാൻ ആദ്യം ആവശ്യമായ ഫയൽ upload ചെയ്യുക.");return;}
+    if(["text","chat","textimage","textaudio"].includes(mode)&&!promptText&&!file){toast("ദയവായി prompt അല്ലെങ്കിൽ ആവശ്യമായ input നൽകുക.");$("#prompt")?.focus();return;}
+    const settings={};
+    $("#modalBody")?.querySelectorAll("select,input:not([type=file]):not([type=checkbox]),textarea").forEach((el,i)=>{
+      const label=el.closest(".field")?.querySelector("label")?.textContent||el.id||"setting_"+i;
+      settings[label]=el.value;
+    });
+    const job={id:Date.now(),name:tool[0],prompt:promptText||"Project request",time:new Date().toLocaleString(),file:file?.name||"",settings,status:"Saved locally"};
+    const jobs=get("itfmJobs");jobs.unshift(job);put("itfmJobs",jobs.slice(0,50));
+    const endpoint=localStorage.getItem("itfmEndpoint");
+    const out=$("#outputPreview");
+    if(out)out.innerHTML=`<div style="font-size:32px">⏳</div><b>${tool[0]} request prepared</b><span>${file?`Input: ${file.name} · `:""}Saved to My Creations. ${endpoint?"Sending to connected backend…":"Connect your AI backend to generate the actual result."}</span>`;
+    if(endpoint){
+      const payload={tool:tool[0],prompt:promptText,settings,fileName:file?.name||null};
+      fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)})
+      .then(async r=>{if(!r.ok)throw Error("Backend returned "+r.status);return r.json()})
+      .then(data=>{job.status="Completed";job.result=data;const a=get("itfmJobs");const ix=a.findIndex(x=>x.id===job.id);if(ix>=0){a[ix]=job;put("itfmJobs",a)}if(out)out.innerHTML=`<b>✓ Backend response received</b><pre style="white-space:pre-wrap;max-height:220px;overflow:auto;text-align:left">${JSON.stringify(data,null,2).replace(/[<>&]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;"}[c]))}</pre>`;toast("Backend response received.");})
+      .catch(err=>{if(out)out.innerHTML=`<b>Could not reach AI backend</b><span>${err.message}. Check your API endpoint and server configuration.</span>`;toast("API connection failed.");});
+    }else toast("Request saved. Real AI generation requires a connected backend/API.");
+    renderJobs();
+  };
+  // Full light/dark theme toggle
+  const style=document.createElement("style");
+  style.textContent=`body.light{--bg:#eef3fb;--panel:#fff;--panel2:#f5f8ff;--line:#d7e0ef;--text:#14213a;--muted:#586985;background:#eef3fb;color:#14213a}body.light .top,body.light aside,body.light .workspace-input,body.light .workspace-settings,body.light .workspace-output,body.light .modal,body.light .card,body.light .stat{background:#fff;color:#14213a}body.light .search input,body.light .field input,body.light .field select,body.light .field textarea{background:#f5f8ff;color:#14213a}body.light .hero{background:linear-gradient(105deg,#dceaff,#e8dcff,#d9f4ff)}body.light .hero p,body.light .workspace-title p{color:#40516e}body.light .nav button{color:#40516e}`;
+  document.head.appendChild(style);
+  $("#themeBtn")?.addEventListener("click",()=>{document.body.classList.toggle("light");localStorage.setItem("itfmTheme",document.body.classList.contains("light")?"light":"dark");});
+  if(localStorage.getItem("itfmTheme")==="light")document.body.classList.add("light");
+  // Escape closes tool panel
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#modalBack")?.classList.remove("show")});
+  // Save current workspace settings and restore them when reopening the same tool
+  const originalOpen=window.openTool;
+  window.openTool=function(i){originalOpen(i);const saved=get("itfmDrafts",{})[tools[i][0]];if(saved){Object.entries(saved).forEach(([k,v])=>{const el=[...$("#modalBody").querySelectorAll("input,textarea,select")].find(x=>(x.closest(".field")?.querySelector("label")?.textContent||x.id)===k);if(el&&el.type!=="file")el.value=v;});}};
+  // Override save draft to preserve every setting
+  document.addEventListener("click",e=>{
+    if(e.target?.id==="saveDraft"){
+      const name=tools[current]?.[0];if(!name)return;
+      const draft={};$("#modalBody").querySelectorAll("input:not([type=file]),textarea,select").forEach((el,i)=>{draft[el.closest(".field")?.querySelector("label")?.textContent||el.id||"setting_"+i]=el.value});
+      const all=get("itfmDrafts",{});all[name]=draft;put("itfmDrafts",all);
+    }
+  });
+  // Make upload previews work for video and audio too
+  document.addEventListener("change",e=>{
+    if(e.target?.id==="fileInput"){
+      const f=e.target.files?.[0];if(!f)return;
+      const preview=$("#preview");if(!preview)return;
+      if(f.type.startsWith("image/")){preview.src=URL.createObjectURL(f);preview.style.display="block";}
+      else if(f.type.startsWith("video/")){preview.outerHTML=`<video id="preview" controls style="display:block;max-width:100%;max-height:220px;margin:12px auto;border-radius:10px" src="${URL.createObjectURL(f)}"></video>`;}
+      else if(f.type.startsWith("audio/")){preview.outerHTML=`<audio id="preview" controls style="display:block;width:100%;margin:12px auto" src="${URL.createObjectURL(f)}"></audio>`;}
+    }
+  });
+  // Functional browser screen recorder controls for supported secure browser contexts
+  document.addEventListener("click",async e=>{
+    if(e.target?.id==="runTool"&&tools[current]?.[0]==="AI Screen Recorder"){
+      e.preventDefault();e.stopImmediatePropagation();
+      try{
+        const stream=await navigator.mediaDevices.getDisplayMedia({video:true,audio:true});
+        const recorder=new MediaRecorder(stream);const chunks=[];
+        recorder.ondataavailable=ev=>{if(ev.data.size)chunks.push(ev.data)};
+        recorder.onstop=()=>{const blob=new Blob(chunks,{type:recorder.mimeType||"video/webm"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="itfm-screen-recording.webm";a.click();stream.getTracks().forEach(t=>t.stop());toast("Recording downloaded.");};
+        recorder.start();$("#outputPreview").innerHTML=`<b>● Recording in progress</b><span>Use the button below to stop and download.</span><button class="btn" id="stopRecording">Stop & Download</button>`;
+        $("#stopRecording").onclick=()=>recorder.stop();
+      }catch(err){toast("Screen recording cancelled or not supported: "+err.message);}
+    }
+  },true);
+})();
+</script>
+
+
+<style>
+/* Dedicated creative workspaces */
+.studio{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(290px,.88fr);gap:14px}
+.studio-panel{background:linear-gradient(145deg,#101d34,#091426);border:1px solid #263a5d;border-radius:16px;padding:16px;min-width:0}
+.studio-panel h3{margin:0 0 13px;font-size:15px}.studio-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.studio-tab{border:1px solid #2a4168;background:#0a162b;color:#b9c9e3;padding:8px 11px;border-radius:9px}
+.studio-tab.active{background:linear-gradient(100deg,#176caa,#633cce);border-color:#6b7cff;color:white}
+.studio-field{display:grid;gap:6px;margin:12px 0}.studio-field label{font-size:12px;color:#aebfda}
+.studio-field input,.studio-field select,.studio-field textarea{width:100%;padding:11px 12px;border:1px solid #2a3c5e;background:#081226;border-radius:10px;color:white;outline:none}
+.studio-field textarea{min-height:110px;resize:vertical}
+.studio-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.studio-presets{display:flex;gap:8px;flex-wrap:wrap}
+.studio-preset{border:1px solid #31486e;border-radius:10px;padding:9px 11px;background:#0a162b;color:#c8d7ee}
+.studio-preset.active{border-color:#5e7cff;background:#24265b;color:white}
+.studio-preview{min-height:310px;border:1px dashed #3d5277;border-radius:14px;background:radial-gradient(circle at 50% 35%,#263b71,#0a1428 68%);display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;overflow:hidden}
+.studio-preview img,.studio-preview video{max-width:100%;max-height:290px;border-radius:10px}
+.studio-preview .placeholder-icon{font-size:58px;display:block;margin-bottom:10px}
+.studio-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.studio-actions button{border-radius:10px;padding:10px 14px}
+.studio-muted{color:#8296b7;font-size:11px}.studio-slider{width:100%;accent-color:#8b70ff}
+.logo-sample{width:190px;height:190px;border-radius:25px;margin:auto;display:grid;place-items:center;background:linear-gradient(135deg,#1b2d55,#10152d);border:1px solid #5265a0;box-shadow:0 15px 50px #0007}
+.logo-sample strong{font-size:34px;letter-spacing:2px;color:#fff;text-align:center;overflow-wrap:anywhere;padding:12px}
+@media(max-width:760px){.studio{grid-template-columns:1fr}.studio-preview{min-height:230px}.studio-row{grid-template-columns:1fr 1fr}}
+</style>
+<script>
+(()=>{
+const $id=id=>document.getElementById(id);
+const safe=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const dedicatedNames=["AI Image Generator","AI Video Generator","AI Music Generator","AI Logo Maker"];
+function workspace(name){
+ const isImage=name==="AI Image Generator", isVideo=name==="AI Video Generator", isMusic=name==="AI Music Generator";
+ const kind=isImage?"image":isVideo?"video":isMusic?"music":"logo";
+ const title=isImage?"Image Creation Studio":isVideo?"Video Creation Studio":isMusic?"AI Music Studio":"Brand Identity & Logo Studio";
+ const promptLabel=isImage?"Describe the image you want to create":isVideo?"Describe your video scene":isMusic?"Describe the music you want to hear":"Describe your brand and logo concept";
+ const promptHint=isImage?"A cinematic portrait of a woman in a futuristic city, dramatic lighting, ultra-detailed...":isVideo?"A sports car driving through a neon-lit city at night, cinematic tracking shot...":isMusic?"An uplifting cinematic electronic track with warm piano, strings and a powerful beat...":"A clean modern identity for a premium coffee brand...";
+ let controls="";
+ if(isImage) controls=`
+ <div class="studio-field"><label>Style preset</label><div class="studio-presets" data-group="style">
+ ${["Photorealistic","Cinematic","Anime","3D Render","Digital Art","Watercolor","Product"].map((x,i)=>`<button class="studio-preset ${i===0?"active":""}" data-value="${x}">${x}</button>`).join("")}</div></div>
+ <div class="studio-row"><div class="studio-field"><label>Aspect ratio</label><select id="ratio"><option>1:1 Square</option><option>16:9 Landscape</option><option>9:16 Portrait</option><option>4:3 Classic</option><option>3:2 Photo</option><option>2:3 Poster</option></select></div><div class="studio-field"><label>Image quality</label><select id="quality"><option>Standard</option><option>HD</option><option>Ultra HD</option></select></div></div>
+ <div class="studio-row"><div class="studio-field"><label>Number of images</label><select id="count"><option>1</option><option>2</option><option>3</option><option>4</option></select></div><div class="studio-field"><label>Lighting</label><select id="lighting"><option>Natural</option><option>Studio</option><option>Dramatic</option><option>Neon</option><option>Golden hour</option></select></div></div>
+ <div class="studio-field"><label>Negative prompt</label><input id="negative" placeholder="Things to avoid in the image..."></div>`;
+ if(isVideo) controls=`
+ <div class="studio-tabs" data-group="mode"><button class="studio-tab active" data-value="Text to Video">Text to Video</button><button class="studio-tab" data-value="Image to Video">Image to Video</button></div>
+ <div class="studio-row"><div class="studio-field"><label>Duration</label><select id="duration"><option>5 seconds</option><option>10 seconds</option><option>15 seconds</option><option>30 seconds</option></select></div><div class="studio-field"><label>Resolution</label><select id="resolution"><option>720p</option><option>1080p</option><option>4K</option></select></div></div>
+ <div class="studio-field"><label>Camera movement</label><div class="studio-presets" data-group="camera">${["Auto","Zoom In","Pan Left","Pan Right","Tracking","Drone","Static"].map((x,i)=>`<button class="studio-preset ${i===0?"active":""}" data-value="${x}">${x}</button>`).join("")}</div></div>
+ <div class="studio-row"><div class="studio-field"><label>Frame rate</label><select id="fps"><option>24 FPS</option><option>30 FPS</option><option>60 FPS</option></select></div><div class="studio-field"><label>Motion strength <span id="motionVal">50%</span></label><input class="studio-slider" id="motion" type="range" min="0" max="100" value="50"></div></div>`;
+ if(isMusic) controls=`
+ <div class="studio-row"><div class="studio-field"><label>Genre</label><select id="genre">${["Cinematic","Pop","Hip Hop","Electronic","Rock","Jazz","Classical","Lo-fi","Ambient","Devotional"].map(x=>`<option>${x}</option>`).join("")}</select></div><div class="studio-field"><label>Mood</label><select id="mood">${["Uplifting","Epic","Peaceful","Sad","Romantic","Dark","Energetic","Dreamy"].map(x=>`<option>${x}</option>`).join("")}</select></div></div>
+ <div class="studio-row"><div class="studio-field"><label>Tempo</label><select id="tempo"><option>Auto</option><option>Slow</option><option>Medium</option><option>Fast</option></select></div><div class="studio-field"><label>Track length</label><select id="length"><option>30 seconds</option><option>1 minute</option><option>2 minutes</option><option>3 minutes</option></select></div></div>
+ <div class="studio-field"><label>Vocals</label><div class="studio-presets" data-group="vocals">${["Instrumental","Male vocal","Female vocal","Duet"].map((x,i)=>`<button class="studio-preset ${i===0?"active":""}" data-value="${x}">${x}</button>`).join("")}</div></div>
+ <div class="studio-field"><label>Instruments</label><input id="instruments" placeholder="Piano, strings, drums, synth..."></div>`;
+ if(kind==="logo") controls=`
+ <div class="studio-row"><div class="studio-field"><label>Brand / Company name</label><input id="brandName" placeholder="Your brand name"></div><div class="studio-field"><label>Industry</label><select id="industry"><option>Technology</option><option>Fashion</option><option>Food & Beverage</option><option>Beauty</option><option>Education</option><option>Sports</option><option>Media</option><option>Other</option></select></div></div>
+ <div class="studio-field"><label>Tagline / slogan</label><input id="tagline" placeholder="Your brand slogan (optional)"></div>
+ <div class="studio-field"><label>Logo style</label><div class="studio-presets" data-group="logoStyle">${["Minimal","Modern","Luxury","Mascot","Vintage","3D","Wordmark","Icon"].map((x,i)=>`<button class="studio-preset ${i===0?"active":""}" data-value="${x}">${x}</button>`).join("")}</div></div>
+ <div class="studio-row"><div class="studio-field"><label>Primary color</label><input id="logoColor" type="color" value="#45d7f5"></div><div class="studio-field"><label>Background</label><select id="logoBg"><option>Dark</option><option>Light</option><option>Transparent</option></select></div></div>
+ <div class="studio-field"><label>Icon concept</label><input id="iconConcept" placeholder="e.g. abstract leaf, star, initials..."></div>`;
+ return `<div class="workspace-title"><div class="eyebrow">ITFM AI / ${kind.toUpperCase()} WORKSPACE</div><h3>${title}</h3><p>${isImage?"Fine-tune every detail of your image before creating.":isVideo?"Direct your scene with motion, camera and output controls.":isMusic?"Shape your sound with genre, mood, tempo and vocal direction.":"Build a distinct brand mark with editable identity controls."}</p></div>
+ <div class="studio"><section class="studio-panel"><h3>${isVideo?"🎬 Scene direction":isMusic?"🎵 Track direction":kind==="logo"?"✦ Brand identity":"✦ Prompt & composition"}</h3>
+ ${kind==="logo"?"":`<div class="studio-field"><label>${promptLabel}</label><textarea id="studioPrompt" placeholder="${promptHint}"></textarea></div>`}
+ ${controls}
+ ${kind!=="logo"?`<div class="studio-field"><label>Reference ${isVideo?"image (optional)":isMusic?"audio reference (optional)":"image (optional)"}</label><input id="studioUpload" type="file" accept="${isMusic?"audio/*":isVideo?"image/*,video/*":"image/*"}"><span class="studio-muted" id="uploadName">No file selected</span></div>`:""}
+ <div class="studio-actions"><button class="btn" id="studioGenerate">${isImage?"✦ Generate Images":isVideo?"▶ Generate Video":isMusic?"♫ Generate Music":"✦ Create Logo"}</button><button class="chip" id="studioReset">Reset settings</button></div>
+ <p class="studio-muted" style="margin-top:12px">Preview mode: connect an AI provider/API to enable real generation.</p>
+ </section><section class="studio-panel"><h3>◫ Live preview</h3><div class="studio-preview" id="studioPreview">${kind==="logo"?`<div><div class="logo-sample" id="logoSample"><strong id="logoSampleText">YOUR<br>BRAND</strong></div><p class="studio-muted" id="logoTagPreview">Your tagline appears here</p></div>`:`<div><span class="placeholder-icon">${isImage?"▧":isVideo?"▶":"♫"}</span><b>${isImage?"Your images will appear here":isVideo?"Your video preview will appear here":"Your generated track will appear here"}</b><p class="studio-muted">Configure your settings and start a project.</p></div>`}</div>
+ <div class="studio-actions"><button class="chip" id="studioDownload">⇩ Export preview</button><button class="chip" id="studioSave">♡ Save project</button></div><div class="notice" id="studioStatus">Ready when you are. Your settings stay in this workspace.</div></section></div>`;
+}
+const originalOpen=window.openTool;
+window.openTool=function(i){
+ const name=tools[i][0];
+ if(!dedicatedNames.includes(name)){originalOpen(i);return;}
+ current=i;uploaded=null;
+ $("#modalTitle").textContent=name;
+ $("#modalBody").innerHTML=workspace(name);
+ $("#modalBack").classList.add("show");
+ const body=$("#modalBody");
+ body.querySelectorAll("[data-group]").forEach(group=>group.addEventListener("click",e=>{
+  const b=e.target.closest("[data-value]");if(!b)return;
+  group.querySelectorAll("[data-value]").forEach(x=>x.classList.remove("active"));b.classList.add("active");
+ }));
+ const up=$id("studioUpload");if(up)up.addEventListener("change",()=>{
+  const f=up.files[0];$id("uploadName").textContent=f?f.name:"No file selected";
+  if(f&&f.type.startsWith("image/")){const url=URL.createObjectURL(f);$id("studioPreview").innerHTML=`<img src="${url}" alt="Uploaded reference preview">`;}
+  else if(f&&f.type.startsWith("video/")){const url=URL.createObjectURL(f);$id("studioPreview").innerHTML=`<video controls src="${url}"></video>`;}
+  else if(f&&f.type.startsWith("audio/")){$id("studioPreview").innerHTML=`<audio controls src="${URL.createObjectURL(f)}"></audio>`;}
+ });
+ if($id("motion"))$id("motion").oninput=()=>{$id("motionVal").textContent=$id("motion").value+"%";};
+ if(name==="AI Logo Maker"){
+  const updateLogo=()=>{const brand=$id("brandName").value.trim()||"YOUR BRAND";$id("logoSampleText").textContent=brand.toUpperCase();$id("logoSample").style.borderColor=$id("logoColor").value;$id("logoSample").style.background=$id("logoBg").value==="Light"?"#f5f7ff":$id("logoBg").value==="Transparent"?"transparent":"linear-gradient(135deg,#1b2d55,#10152d)";$id("logoSampleText").style.color=$id("logoBg").value==="Light"?"#111827":"#fff";$id("logoSampleText").style.color=$id("logoColor").value;$id("logoTagPreview").textContent=$id("tagline").value||"Your tagline appears here";};
+  ["brandName","tagline","logoColor","logoBg"].forEach(id=>$id(id).addEventListener("input",updateLogo));
+  ["brandName","tagline","logoColor","logoBg"].forEach(id=>$id(id).addEventListener("change",updateLogo));
+ }
+ $id("studioReset").onclick=()=>{body.querySelectorAll("input,textarea").forEach(el=>{if(el.type==="file")el.value="";else if(el.type==="color")el.value="#45d7f5";else el.value="";});body.querySelectorAll("select").forEach(el=>el.selectedIndex=0);body.querySelectorAll(".studio-preset").forEach((el,i)=>{const group=el.closest("[data-group]");el.classList.toggle("active",group&&group.querySelector(".studio-preset")===el);});if($id("studioPreview"))$id("studioPreview").innerHTML=name==="AI Logo Maker"?`<div><div class="logo-sample" id="logoSample"><strong id="logoSampleText">YOUR<br>BRAND</strong></div><p class="studio-muted" id="logoTagPreview">Your tagline appears here</p></div>`:`<div><span class="placeholder-icon">${name==="AI Image Generator"?"▧":name==="AI Video Generator"?"▶":"♫"}</span><b>Preview area</b></div>`;$id("studioStatus").textContent="Settings reset.";};
+ $id("studioGenerate").onclick=()=>{
+  const prompt=$id("studioPrompt")?.value||$id("brandName")?.value||"Untitled project";
+  const status=$id("studioStatus");status.textContent="Project configured and saved locally. Real AI generation requires an API connection.";
+  const jobs=JSON.parse(localStorage.getItem("itfmJobs")||"[]");jobs.unshift({name,prompt,time:new Date().toLocaleString(),file:$id("uploadName")?.textContent||"No reference"});localStorage.setItem("itfmJobs",JSON.stringify(jobs.slice(0,30)));
+  if(name==="AI Logo Maker"){const brand=$id("brandName").value||"YOUR BRAND";$id("studioPreview").innerHTML=`<div><div class="logo-sample"><strong>${safe(brand.toUpperCase())}</strong></div><p class="studio-muted">${safe($id("tagline").value)}</p></div>`;}
+  toast("Project settings saved. Connect an AI API for real generation.");
+ };
+ $id("studioSave").onclick=()=>{const jobs=JSON.parse(localStorage.getItem("itfmJobs")||"[]");jobs.unshift({name,prompt:$id("studioPrompt")?.value||$id("brandName")?.value||"Saved workspace",time:new Date().toLocaleString(),file:"Workspace"});localStorage.setItem("itfmJobs",JSON.stringify(jobs.slice(0,30)));$id("studioStatus").textContent="Project saved to this device.";toast("Workspace saved.");};
+ $id("studioDownload").onclick=()=>{const preview=$id("studioPreview");const textContent=preview.innerText||name+" preview";const blob=new Blob([textContent],{type:"text/plain"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name.toLowerCase().replaceAll(" ","-")+"-preview.txt";a.click();URL.revokeObjectURL(a.href);toast("Preview notes exported.");};
+};
+})();
+</script>
+
+
+<style>
+/* Premium upload cards for every tool */
+.upload,.studio-field:has(input[type=file]){position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:145px;padding:20px 16px!important;border:1.5px dashed #5278b7!important;border-radius:16px!important;background:linear-gradient(145deg,rgba(20,43,78,.9),rgba(8,19,38,.96))!important;text-align:center!important;transition:.2s ease;overflow:hidden}
+.upload:before,.studio-field:has(input[type=file]):before{content:"⇧";display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#16b8dc,#7958ed);color:white;font-size:25px;font-weight:700;box-shadow:0 8px 25px #2864d855}
+.upload:after,.studio-field:has(input[type=file]):after{content:"Drag & drop your file here  ·  or browse";font-size:12px;color:#b8c9e5}
+.upload:hover,.upload.dragover,.studio-field:has(input[type=file]):hover{border-color:#8c7cff!important;background:linear-gradient(145deg,rgba(31,63,112,.95),rgba(12,24,48,.98))!important;box-shadow:0 0 0 3px #6e75ff20,0 12px 35px #0004}
+.upload input[type=file],.studio-field input[type=file]{display:block;width:100%;max-width:390px;padding:9px;border:1px solid #354f78;border-radius:10px;background:#071329;color:#c9d8ee;font-size:12px;cursor:pointer}
+.upload input[type=file]::file-selector-button,.studio-field input[type=file]::file-selector-button{border:0;border-radius:8px;padding:9px 13px;margin-right:10px;background:linear-gradient(100deg,#167bb4,#694cdb);color:white;font-weight:700;cursor:pointer}
+.upload #fileName,.studio-field:has(input[type=file]) .studio-muted{font-size:11px;color:#91a8ca;overflow-wrap:anywhere}
+.upload .preview{max-height:180px;max-width:min(100%,340px);object-fit:contain;border:1px solid #38527a;background:#071329;padding:4px}
+.upload .file-preview-extra{max-width:100%;max-height:170px;border-radius:10px}
+.studio-field:has(input[type=file]){grid-column:1/-1}
+.studio-field:has(input[type=file]) label{align-self:flex-start;width:100%}
+@media(max-width:600px){.upload,.studio-field:has(input[type=file]){min-height:130px;padding:14px!important}.upload input[type=file],.studio-field input[type=file]{font-size:11px}}
+</style>
+<script>
+(()=>{
+function enhanceUploads(root=document){
+ root.querySelectorAll('input[type="file"]').forEach(input=>{
+  if(input.dataset.uploadEnhanced)return;input.dataset.uploadEnhanced="1";
+  const box=input.closest(".upload")||input.closest(".studio-field")||input.parentElement;
+  if(!box)return;
+  box.addEventListener("dragover",e=>{e.preventDefault();box.classList.add("dragover");});
+  box.addEventListener("dragleave",()=>box.classList.remove("dragover"));
+  box.addEventListener("drop",e=>{
+   e.preventDefault();box.classList.remove("dragover");
+   if(e.dataTransfer?.files?.length){try{input.files=e.dataTransfer.files;input.dispatchEvent(new Event("change",{bubbles:true}));}catch(err){}}
+  });
+  input.addEventListener("change",()=>{
+   const f=input.files&&input.files[0];if(!f)return;
+   const name=box.querySelector("#fileName")||box.querySelector(".studio-muted");
+   if(name)name.textContent=`✓ ${f.name}  ·  ${(f.size/1024/1024).toFixed(2)} MB`;
+   let old=box.querySelector(".file-preview-extra");if(old)old.remove();
+   if(f.type.startsWith("image/")){
+    const img=document.createElement("img");img.className="file-preview-extra";img.alt="Uploaded file preview";img.src=URL.createObjectURL(f);box.appendChild(img);
+   }else if(f.type.startsWith("video/")){
+    const v=document.createElement("video");v.className="file-preview-extra";v.controls=true;v.src=URL.createObjectURL(f);box.appendChild(v);
+   }else if(f.type.startsWith("audio/")){
+    const a=document.createElement("audio");a.controls=true;a.src=URL.createObjectURL(f);box.appendChild(a);
+   }
+  });
+ });
+}
+const oldOpen=window.openTool;
+if(oldOpen)window.openTool=function(i){oldOpen(i);enhanceUploads(document.querySelector("#modalBody")||document);};
+document.addEventListener("DOMContentLoaded",()=>enhanceUploads());
+const observer=new MutationObserver(()=>enhanceUploads(document));
+observer.observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
+
 </body></html>
