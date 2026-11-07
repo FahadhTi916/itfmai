@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#070d1c">
-<title>ITFM AI — All-in-One AI Creation Studio</title>
+<title>ITFM AI</title>
 <style>
 :root{--bg:#060b18;--panel:#0d1629;--panel2:#101d34;--line:#1b2b49;--text:#f3f6ff;--muted:#93a4c2;--cyan:#18d7f5;--purple:#754cff;--pink:#d64cff;--green:#39d99a}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 70% -15%,#17275b 0,transparent 38%),var(--bg);color:var(--text);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial}
@@ -14,6 +14,23 @@ button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit}.a
 @media(max-width:760px){.workspace-grid{grid-template-columns:1fr}.top{padding:0 12px;gap:10px;height:62px}.brand{font-size:19px}.brandmark{width:32px;height:32px}.topright .iconbtn{display:none}.upgrade{padding:9px;font-size:11px}.layout{grid-template-columns:1fr}aside{position:sticky;top:62px;z-index:8;border-right:0;border-bottom:1px solid var(--line);padding:7px;overflow:auto}.nav{display:flex;min-width:max-content}.nav button{padding:9px 12px;font-size:12px}.nav .section,.sidebottom{display:none}main{padding:14px}.hero{padding:25px 20px;min-height:220px}.hero:after{right:-12%;font-size:42px}.stats{grid-template-columns:repeat(4,1fr);gap:7px}.stat{padding:10px 4px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.card{padding:9px;gap:8px;min-height:84px}.tileicon{width:42px;height:42px;font-size:20px}.card h3{font-size:11px}.card p{display:none}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.search input{padding:10px 8px 10px 32px;font-size:11px}.search:before{left:10px;top:3px}.topright{gap:5px}}
 @media(max-width:390px){.grid{grid-template-columns:1fr}.hero h1{font-size:30px}.stats{grid-template-columns:repeat(2,1fr)}}
 </style>
+<style>
+.footer{margin:30px 0 0;padding:26px 16px 22px;color:#9aabc7;text-align:center;font-size:12px;border-top:1px solid #1b2b49;display:flex;flex-direction:column;align-items:center;gap:12px}
+.footer-powered{width:100%;text-align:center;font-size:14px;font-weight:700;color:#e8f2ff;letter-spacing:.2px}
+.footer-project{font-size:12px;font-weight:700;letter-spacing:1px;color:#8fa8d0}
+.footer-social{display:flex;align-items:center;justify-content:center;gap:18px;margin:3px 0}
+.footer-social a{width:38px;height:38px;display:grid;place-items:center;border:1px solid #30476d;border-radius:50%;background:#101d34;color:#c8d8f2;transition:transform .2s ease,background .2s ease,border-color .2s ease}
+.footer-social a:hover{transform:translateY(-3px);background:#1b3155;border-color:#18d7f5;color:#fff}
+.footer-social svg{width:18px;height:18px;fill:currentColor}
+.footer-copyright{font-size:11px;color:#7186a9}
+@media(max-width:480px){.footer{padding:22px 10px 18px}.footer-powered{font-size:13px}.footer-social{gap:14px}}
+</style>
+
+<style>
+#iptvApp{color:var(--text)}.iptp-head{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:8px 0 16px}.iptp-stats{display:flex;gap:10px;flex-wrap:wrap}.iptp-stat{background:#101d34;border:1px solid var(--line);border-radius:12px;padding:9px 13px;color:#9fb1cf;font-size:12px}.iptp-stat b{color:#fff;font-size:17px;display:block}.iptp-controls{display:grid;grid-template-columns:minmax(220px,2fr) repeat(3,minmax(140px,1fr));gap:10px;margin-bottom:14px}.iptp-controls input,.iptp-controls select{width:100%;min-width:0;background:#0c172a;color:#f3f6ff;border:1px solid #2a3d60;border-radius:11px;padding:12px;outline:none}.iptp-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.iptp-card{background:linear-gradient(145deg,#111d32,#0a1425);border:1px solid #1c2c49;border-radius:14px;padding:13px;min-width:0;display:flex;flex-direction:column;gap:10px}.iptp-cardtop{display:flex;gap:11px;align-items:center;min-width:0}.iptp-logo{width:54px;height:54px;flex:none;object-fit:contain;background:#fff;border-radius:10px;padding:5px}.iptp-logo-fallback{width:54px;height:54px;flex:none;border-radius:10px;display:grid;place-items:center;background:#253b70;font-size:22px}.iptp-name{font-size:13px;font-weight:750;overflow-wrap:anywhere}.iptp-meta{font-size:11px;color:#91a4c3;margin-top:4px;line-height:1.5}.iptp-tags{display:flex;gap:5px;flex-wrap:wrap}.iptp-tag{font-size:10px;color:#b6c8e6;background:#172844;border-radius:20px;padding:4px 7px}.iptp-actions{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}.iptp-play{border:0;border-radius:9px;background:linear-gradient(100deg,#147fbd,#633fe0);padding:8px 13px;font-weight:700}.iptp-status{font-size:10px;color:#9aacc7}.iptp-status.ok{color:#50dfa5}.iptp-status.bad{color:#ff8585}.iptp-pager{display:flex;align-items:center;justify-content:center;gap:12px;padding:20px}.iptp-pager button{border:1px solid var(--line);background:#111d32;border-radius:9px;padding:8px 13px}.iptp-pager button:disabled{opacity:.35;cursor:not-allowed}.iptp-notice{padding:20px;border:1px solid var(--line);background:#0d1729;border-radius:12px;color:#aebed8}.iptp-player{position:fixed;inset:0;z-index:1000;background:#020611eF;display:none;align-items:center;justify-content:center;padding:18px}.iptp-player.show{display:flex}.iptp-playerbox{width:min(900px,100%);background:#0b1528;border:1px solid #30466d;border-radius:16px;padding:16px}.iptp-playerhead{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}.iptp-player video{width:100%;max-height:68vh;background:#000;border-radius:10px}.iptp-close{background:#1b2b49;border:1px solid #385071;border-radius:8px;padding:7px 12px}.iptp-loading{padding:40px;text-align:center;color:#a9bad5}
+@media(max-width:1100px){.iptp-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.iptp-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:700px){.iptp-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.iptp-card{padding:10px}.iptp-logo,.iptp-logo-fallback{width:44px;height:44px}.iptp-controls{grid-template-columns:1fr 1fr}.iptp-controls input{grid-column:1/-1}}@media(max-width:430px){.iptp-grid{grid-template-columns:1fr}.iptp-controls{grid-template-columns:1fr}.iptp-controls input{grid-column:auto}}
+</style>
+
 </head>
 <body>
 <div class="app">
@@ -33,7 +50,25 @@ button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit}.a
 <div class="filters" id="filters"></div>
 <div class="grid" id="toolGrid"></div><div class="empty" id="empty">No tools found. Try another search.</div>
 <div class="joblist" id="jobs"></div>
-<div class="footer">© <span id="year"></span> ITFM AI · All-in-One AI Creation Studio · Built for creativity</div>
+<footer class="footer" aria-label="ITFM AI footer">
+  <div class="footer-powered">Powered by ITFM AI Admin Mehajib Sha</div>
+  <div class="footer-project">PROJECT NAME: ITFM AI</div>
+  <div class="footer-social" aria-label="Social media and website links">
+    <a href="https://youtube.com/@itfmai" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg>
+    </a>
+    <a href="https://facebook.com/itfmai" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.3V13h2.8v8h3.4Z"/></svg>
+    </a>
+    <a href="https://instagram.com/itfmai" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7Zm5 2.3a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 2.2a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6Zm5.8-3a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6Z"/></svg>
+    </a>
+    <a href="https://itfmai.in" target="_blank" rel="noopener noreferrer" aria-label="Website" title="Website">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 9h-3a15.7 15.7 0 0 0-1.3-5 8 8 0 0 1 4.3 5ZM12 4.1c.9 1.2 1.6 3.8 1.8 6.9h-3.6c.2-3.1.9-5.7 1.8-6.9ZM4.1 13h3a15.7 15.7 0 0 0 1.3 5 8 8 0 0 1-4.3-5Zm3-2h-3a8 8 0 0 1 4.3-5 15.7 15.7 0 0 0-1.3 5Zm4.9 8.9c-.9-1.2-1.6-3.8-1.8-6.9h3.6c-.2 3.1-.9 5.7-1.8 6.9Zm2.6-1.9a15.7 15.7 0 0 0 1.3-5h3a8 8 0 0 1-4.3 5Z"/></svg>
+    </a>
+  </div>
+  <div class="footer-copyright">© Copyright | 2027 | ITFM AI | All Rights Reserved.</div>
+</footer>
 </main></div></div>
 <div class="modalback" id="modalBack" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><div class="modalhead"><h2 id="modalTitle">AI Tool</h2><button class="close" id="closeModal">✕</button></div><div class="modalbody" id="modalBody"></div></div></div>
 <div class="toast" id="toast" role="status"></div>
@@ -66,7 +101,7 @@ const tools=[
 ["AI Voice Remover","Audio","🔇","Isolate or remove speech from audio."],
 ["AI Watermark Remover","Image","💧","Remove watermarks only from content you own or may edit."],
 ["AI Chat","Writing","💭","Ask questions, draft content and analyze text."],
-["AI Mini-App Builder","Developer","📱","Build small app prototypes from a description."],
+["AI Mini-App Builder","Developer","📱","Create a mini-app with uploads, voice input, live preview and download."],
 ["AI Mini-Website Builder","Developer","🌐","Create compact responsive websites."],
 ["TV Channels","Entertainment","📺","Browse and play authorized live TV streams."],
 ["MovieHub","Entertainment","🍿","Browse licensed movies, trailers and watchlists."],
@@ -146,7 +181,7 @@ const toolOptions={
 "AI Voice Remover":[["Target audio","Speech|Background voice|Noise"],["Preserve","Music|Ambience|Other speakers"],["Strength","Low|Medium|High"]],
 "AI Watermark Remover":[["Watermark type","Text|Logo|Date stamp"],["Processing area","Brush selection|Auto detect"]],
 "AI Chat":[["Assistant mode","General|Writing|Coding|Research|Creative"],["Response length","Short|Balanced|Detailed"],["Tone","Friendly|Professional|Technical"]],
-"AI Mini-App Builder":[["App type","Utility|Business|Education|Community|Personal"],["Platform","Web app|Mobile responsive"],["Features","Login|Database|Payments|Notifications|Dashboard"]],
+"AI Mini-App Builder":[],
 "AI Mini-Website Builder":[["Website type","Portfolio|Business|Landing page|Blog|Store"],["Pages","1|3|5|10"],["Style","Minimal|Modern|Corporate|Creative"],["Export","HTML|React"]],
 "TV Channels":[["Region","India|International|Custom"],["Category","News|Sports|Entertainment|Music|Kids"],["Stream URL","Enter authorized HLS/M3U8 URL"]],
 "MovieHub":[["Catalogue source","Licensed provider|Custom metadata API"],["Genre","Action|Comedy|Drama|Documentary|Animation"],["Content type","Movies|Trailers|Series"]],
@@ -218,7 +253,7 @@ const toolFeatures={
 'AI Voice Remover':'Speech isolation|Background voice reduction|Noise cleanup|Preserve ambience',
 'AI Watermark Remover':'Image watermark|Text/logo selection|Brush mask|Area cleanup|Preview|Export',
 'AI Chat':'AI assistant|Writing|Coding help|File analysis|Translation|Summaries|Chat history',
-'AI Mini-App Builder':'Prompt-to-app|UI builder|Templates|Login|Database|API integration|Preview|Export',
+'AI Mini-App Builder':'Photo upload|Video upload|All file upload|Voice input|Live preview|Download project',
 'AI Mini-Website Builder':'Prompt-to-site|Landing pages|Templates|Responsive layout|SEO|Preview|HTML export',
 'TV Channels':'Channel categories|Region filters|Search|Favorites|Authorized stream URL|Fullscreen player',
 'MovieHub':'Movie catalogue|Genre filters|Search|Details|Trailers|Watchlist|Licensed playback',
@@ -291,7 +326,7 @@ const toolWorkflows={
 'AI Voice Remover':{mode:'audio',prompt:'Upload a recording to process',action:'Process voice track',title:'Voice isolation workspace'},
 'AI Watermark Remover':{mode:'imagevideo',prompt:'Upload an image or video you own or are authorized to edit',action:'Clean watermark',title:'Watermark cleanup workspace'},
 'AI Chat':{mode:'chat',prompt:'Type a message to ITFM AI',action:'Send message',title:'AI conversation workspace'},
-'AI Mini-App Builder':{mode:'text',prompt:'Describe the app, users and required screens',action:'Build app prototype',title:'App builder workspace'},
+'AI Mini-App Builder':{mode:'text',prompt:'Add your new app content',action:'Save mini-app project',title:'Mini-app creation workspace'},
 'AI Mini-Website Builder':{mode:'text',prompt:'Describe your website, pages and brand',action:'Build website',title:'Mini website builder'},
 'TV Channels':{mode:'stream',prompt:'Paste an authorized live stream URL or choose a configured channel',action:'Open channel',title:'Live TV player'},
 'MovieHub':{mode:'catalog',prompt:'Search the connected licensed movie catalogue',action:'Search catalogue',title:'Movie discovery workspace'},
@@ -338,6 +373,45 @@ const toolWorkflows={
 };
 function selectField(label,opts){return `<div class="field"><label>${label}</label><select>${opts.split("|").map(v=>`<option>${v}</option>`).join("")}</select></div>`}
 function fieldsFor(name){
+ if(name==="AI Motion Studio"){
+  return `<div class="workspace-title"><span class="eyebrow">Motion transfer workspace</span><h3>AI Motion Studio</h3><p>Add a reference video to extract motion.</p></div>
+  <div class="notice" style="padding:20px"><div style="font-size:12px;letter-spacing:2px;color:var(--cyan);font-weight:800">MAIN FEATURE</div><h2 style="font-size:clamp(24px,4vw,38px);margin:7px 0">TURN ONE VIDEO INTO MANY</h2><p style="margin:0;color:var(--muted)">Take the motion and recast it with your characters, locations, and products, or swap specific elements while keeping the rest untouched.</p></div>
+  <div class="workspace-grid"><section class="workspace-input"><h4>① Reference video</h4>
+   <div class="field full"><label>Add a reference video to extract motion (4–30 seconds)</label><div class="upload"><input type="file" id="motionReference" accept="video/*"><div id="motionReferenceName">Choose a reference video · MP4, MOV or WebM</div><video id="motionReferencePreview" controls style="display:none;width:100%;max-height:220px;margin-top:12px;border-radius:10px"></video></div></div>
+   <h4 style="margin-top:22px">② Add your characters, products, or clothes</h4>
+   <div class="field full"><label>Upload reference images (up to 30 images)</label><div class="upload"><input type="file" id="motionAssets" accept="image/*" multiple><div id="motionAssetsNames">Choose up to 30 images</div></div><div id="motionAssetPreview" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(74px,1fr));gap:8px;margin-top:10px"></div></div>
+  </section><section class="workspace-settings"><h4>③ What should be replaced?</h4>
+   <div class="formgrid">
+    <div class="field full"><label>Motion transfer</label><select id="motionTransfer"><option>Transfer reference motion</option><option>Preserve original motion where supported</option></select></div>
+    <div class="field full"><label>Character replacement</label><select id="motionCharacter"><option>Keep original character</option><option>Replace with uploaded character</option></select></div>
+    <div class="field full"><label>Background and location</label><select id="motionLocation"><option>Keep original background</option><option>Replace with a new location</option></select></div>
+    <div class="field full"><label>Product replacement</label><select id="motionProduct"><option>Keep original product</option><option>Replace with uploaded product</option></select></div>
+    <div class="field full"><label>Clothing replacement</label><select id="motionClothing"><option>Keep original clothing</option><option>Replace with uploaded clothing</option></select></div>
+   </div>
+   <div class="notice">Preserve the reference video's motion and untouched elements wherever supported by the connected video-generation model.</div>
+  </section></div>
+  <section class="workspace-output"><h4>④ Generated video preview</h4><div class="output-placeholder" id="motionOutput"><div style="font-size:34px">🎞</div><b>Your generated video will appear here</b><span>Upload a reference video and assets to prepare your motion-transfer project.</span></div><div class="output-actions"><button class="chip" type="button" id="motionDownload" disabled>Download final video</button></div></section>
+  <div class="notice">Video generation requires a connected motion-transfer AI provider. This workspace validates your inputs and prepares the project; it does not claim to generate a video until a provider is connected.</div>`;
+ }
+ if(name==="AI Mini-Website Builder"){
+  return `<div class="workspace-title"><span class="eyebrow">Mini-website workspace</span><h3>AI Mini-Website Builder</h3><p>Build a responsive mini-website using only the text and files you provide here.</p></div>
+  <div class="notice"><b>Available features</b><div class="featurechips">${["Old Content Remove","New Content Add","Photo Upload","Video Upload","All File Upload","Voice Input","Live Preview","Download Option"].map(x=>`<span>${x}</span>`).join("")}</div></div>
+  <div class="workspace-grid"><section class="workspace-input"><h4>① Website content</h4>
+   <div class="field full"><label>New website content / text</label><textarea id="miniWebsiteContent" style="min-height:190px" placeholder="Paste or type only the content you want on your website..."></textarea></div>
+   <div class="field full"><label>Upload photos, videos, or any file formats</label><div class="upload"><input type="file" id="miniWebsiteFiles" accept="*/*" multiple><div id="miniWebsiteFileNames">Choose one or more files</div></div></div>
+   <div class="field full"><button class="chip" type="button" id="miniWebsiteVoice">🎙 Start voice input</button><span id="miniWebsiteVoiceStatus" style="margin-left:10px;color:var(--muted)">Microphone permission may be required.</span></div>
+  </section><section class="workspace-settings"><h4>② Live website preview</h4><div id="miniWebsitePreview" class="output-placeholder" style="min-height:340px;display:block;text-align:left;white-space:pre-wrap;overflow:auto"><b>Your website preview</b><p style="color:var(--muted)">Your new content and uploaded media will appear here.</p></div><div class="output-actions"><button class="chip" type="button" id="miniWebsiteDownload">Download website project (HTML)</button></div></section></div>
+  <div class="notice">Only the new text and files you add in this AI Mini-Website Builder are used. Other tools, sections, and existing project content remain unchanged.</div>`;
+ }
+ if(name==="AI Mini-App Builder"){  return `<div class="workspace-title"><span class="eyebrow">Mini-app creation workspace</span><h3>AI Mini-App Builder</h3><p>Create and preview a mini-app using only the content you provide.</p></div>
+  <div class="notice"><b>Available features</b><div class="featurechips">${["Photo Upload","Video Upload","All File Upload","Voice Input","Live Preview","Download Option"].map(x=>`<span>${x}</span>`).join("")}</div></div>
+  <div class="workspace-grid"><section class="workspace-input"><h4>① New content</h4>
+   <div class="field full"><label>New app content / instructions</label><textarea id="miniAppContent" style="min-height:170px" placeholder="Paste or type the content you want included in your mini-app..."></textarea></div>
+   <div class="field full"><label>Upload photos, videos, or any files</label><div class="upload"><input type="file" id="miniAppFiles" accept="*/*" multiple><div id="miniAppFileNames">Choose one or more files</div></div></div>
+   <div class="field full"><button class="chip" type="button" id="miniAppVoice">🎙 Start voice input</button><span id="miniAppVoiceStatus" style="margin-left:10px;color:var(--muted)">Microphone permission may be required.</span></div>
+  </section><section class="workspace-settings"><h4>② Live preview</h4><div id="miniAppPreview" class="output-placeholder" style="min-height:280px;display:block;text-align:left;white-space:pre-wrap;overflow:auto"><b>Your mini-app preview</b><p style="color:var(--muted)">Your content will appear here as you type.</p></div><div class="output-actions"><button class="chip" type="button" id="miniAppDownload">Download project (HTML)</button></div></section></div>
+  <div class="notice">Only the content entered or uploaded here is used in this mini-app workspace. Other tools and website content remain unchanged.</div>`;
+ }
  const flow=toolWorkflows[name], opts=toolOptions[name]||[];
  const acceptByMode={image:".png,.jpg,.jpeg,.webp",video:".mp4,.mov,.webm",audio:".mp3,.wav,.m4a,.ogg,.flac",textimage:".png,.jpg,.jpeg,.webp",imagevideo:".png,.jpg,.jpeg,.webp,.mp4,.mov",videoimage:".png,.jpg,.jpeg,.webp,.mp4,.mov",faces:".png,.jpg,.jpeg,.webp,.mp4,.mov",faceaudio:".png,.jpg,.jpeg,.webp,.mp4,.mov,.mp3,.wav",textaudio:".mp3,.wav,.m4a",subtitle:".srt,.vtt,.ass",model:".glb,.gltf,.obj,.fbx",stream:"",catalog:"",screen:""};
  const uploadModes=["image","video","audio","textimage","imagevideo","videoimage","faces","faceaudio","textaudio","subtitle","model"];
@@ -366,15 +440,252 @@ function fieldsFor(name){
  <div class="workspace-grid"><section class="workspace-input"><h4>① Input</h4>${inputHtml}${promptHtml}</section><section class="workspace-settings"><h4>② Tool settings</h4><div class="formgrid">${optionsHtml}</div>${advanced}<div class="notice">${modeNote}</div></section></div>
  <section class="workspace-output"><h4>③ Output & project</h4><div class="output-placeholder" id="outputPreview"><div style="font-size:34px">✧</div><b>Your result will appear here</b><span>Preview, compare, refine and export after processing is connected.</span></div><div class="output-actions"><button class="chip" type="button" id="saveDraft">Save project settings</button><button class="chip" type="button" id="resetTool">Reset</button></div></section>`;
 }
-function openTool(i){current=i;let t=tools[i];$("#modalTitle").textContent=t[0];$("#modalBody").innerHTML=fieldsFor(t[0])+`<div class="modalactions"><button class="chip" id="favoriteTool">♡ Add to Favorites</button><button class="chip" id="cancel">Close</button><button class="btn" id="runTool">${toolWorkflows[t[0]].action}</button></div>`;$("#modalBack").classList.add("show");let fi=$("#fileInput");if(fi)fi.addEventListener("change",e=>{let f=e.target.files[0];uploaded=f||null;$("#fileName").textContent=f?`${f.name} · ${(f.size/1024/1024).toFixed(2)} MB`:"Choose a file";let p=$("#preview");if(p&&f&&f.type.startsWith("image/")){p.src=URL.createObjectURL(f);p.style.display="block"}});$("#cancel").onclick=closeModal;$("#runTool").onclick=runTool;$("#saveDraft").onclick=()=>{let jobs=JSON.parse(localStorage.getItem("itfmJobs")||"[]");jobs.unshift({name:t[0],prompt:$("#prompt")?.value||"Project settings saved",time:new Date().toLocaleString(),file:uploaded?.name||"Draft"});localStorage.setItem("itfmJobs",JSON.stringify(jobs.slice(0,20)));renderJobs();toast("Project settings saved on this device.");};$("#resetTool").onclick=()=>{let body=$("#modalBody");body.querySelectorAll("input,textarea").forEach(x=>{if(x.type==="file")x.value="";else if(x.type!=="checkbox")x.value="";});body.querySelectorAll("select").forEach(x=>x.selectedIndex=0);$("#fileName")&&($("#fileName").textContent="Choose source file");$("#preview")&&($("#preview").style.display="none");toast("Tool settings reset.");};$("#favoriteTool").onclick=()=>{let a=JSON.parse(localStorage.getItem("itfmFav")||"[]");if(!a.includes(i))a.push(i);localStorage.setItem("itfmFav",JSON.stringify(a));toast("Added to Favorites");}}
+function openTool(i){current=i;let t=tools[i];$("#modalTitle").textContent=t[0];$("#modalBody").innerHTML=fieldsFor(t[0])+`<div class="modalactions"><button class="chip" id="favoriteTool">♡ Add to Favorites</button><button class="chip" id="cancel">Close</button><button class="btn" id="runTool">${toolWorkflows[t[0]].action}</button></div>`;$("#modalBack").classList.add("show");
+ if(t[0]==="AI Motion Studio"){
+  const ref=$("#motionReference"), assets=$("#motionAssets"), refName=$("#motionReferenceName"), assetNames=$("#motionAssetsNames"), videoPreview=$("#motionReferencePreview"), thumbs=$("#motionAssetPreview");
+  ref.addEventListener("change",()=>{
+   const f=ref.files[0];refName.textContent=f?`${f.name} · ${(f.size/1024/1024).toFixed(2)} MB`:"Choose a reference video";
+   if(!f){videoPreview.style.display="none";videoPreview.removeAttribute("src");return;}
+   videoPreview.src=URL.createObjectURL(f);videoPreview.style.display="block";
+   videoPreview.onloadedmetadata=()=>{if(videoPreview.duration<4||videoPreview.duration>30){toast("Reference video must be 4 to 30 seconds.");ref.value="";refName.textContent="Choose a reference video";videoPreview.style.display="none";videoPreview.removeAttribute("src");}};
+  });
+  assets.addEventListener("change",()=>{
+   const chosen=Array.from(assets.files||[]);
+   if(chosen.length>30){toast("You can upload a maximum of 30 images.");assets.value="";assetNames.textContent="Choose up to 30 images";thumbs.innerHTML="";return;}
+   assetNames.textContent=chosen.length?`${chosen.length} image(s) selected`:"Choose up to 30 images";
+   thumbs.innerHTML=chosen.map(f=>`<div title="${f.name.replaceAll('"',"&quot;")}" style="border:1px solid var(--line);border-radius:8px;overflow:hidden"><img src="${URL.createObjectURL(f)}" alt="" style="width:100%;height:76px;object-fit:cover"></div>`).join("");
+  });
+  $("#runTool").onclick=()=>{
+   const f=ref.files[0], selected=Array.from(assets.files||[]);
+   if(!f){toast("Please upload a reference video.");return;}
+   if(selected.length>30){toast("Maximum 30 reference images allowed.");return;}
+   const v=document.createElement("video");v.preload="metadata";v.onloadedmetadata=()=>{
+    if(v.duration<4||v.duration>30){toast("Reference video must be 4 to 30 seconds.");return;}
+    $("#motionOutput").innerHTML=`<video src="${URL.createObjectURL(f)}" controls style="width:100%;max-height:320px;border-radius:10px"></video><b style="display:block;margin-top:12px">Motion-transfer project ready</b><span>${f.name} · ${v.duration.toFixed(1)} seconds · ${selected.length} reference image(s)</span><p style="color:var(--muted)">Connect a compatible AI motion-transfer provider to generate the final video.</p>`;
+    toast("Inputs validated. Connect an AI provider to generate the video.");
+   };v.onerror=()=>toast("Could not read this video file.");v.src=URL.createObjectURL(f);
+  };
+  $("#motionDownload").onclick=()=>toast("Download becomes available after a video is generated by the connected provider.");
+ }
+ let fi=$("#fileInput");if(fi)fi.addEventListener("change",e=>{let f=e.target.files[0];uploaded=f||null;$("#fileName").textContent=f?`${f.name} · ${(f.size/1024/1024).toFixed(2)} MB`:"Choose a file";let p=$("#preview");if(p&&f&&f.type.startsWith("image/")){p.src=URL.createObjectURL(f);p.style.display="block"}});if(t[0]==="AI Mini-Website Builder"){
+ const content=$("#miniWebsiteContent"), preview=$("#miniWebsitePreview"), files=$("#miniWebsiteFiles");
+ const escapeHtml=value=>String(value).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#39;");
+ const refreshWebsitePreview=()=>{
+  if(!preview)return;
+  const value=content?.value||"";
+  let media="";
+  if(files?.files?.length){
+   media=Array.from(files.files).map(f=>{
+    const url=URL.createObjectURL(f);
+    if(f.type.startsWith("image/"))return `<figure style="margin:12px 0"><img src="${url}" alt="${escapeHtml(f.name)}" style="max-width:100%;max-height:220px;object-fit:contain;border-radius:10px"><figcaption>${escapeHtml(f.name)}</figcaption></figure>`;
+    if(f.type.startsWith("video/"))return `<figure style="margin:12px 0"><video src="${url}" controls style="max-width:100%;max-height:240px"></video><figcaption>${escapeHtml(f.name)}</figcaption></figure>`;
+    return `<p>📎 ${escapeHtml(f.name)} · ${(f.size/1024/1024).toFixed(2)} MB</p>`;
+   }).join("");
+  }
+  preview.innerHTML=`<div style="color:#111;background:#fff;border-radius:12px;padding:22px;min-height:290px"><h1 style="margin:0 0 14px;color:#172554">My Website</h1><div style="white-space:pre-wrap;overflow-wrap:anywhere">${escapeHtml(value)||'<span style="color:#64748b">Your new website content will appear here.</span>'}</div>${media}</div>`;
+ };
+ content?.addEventListener("input",refreshWebsitePreview);
+ files?.addEventListener("change",()=>{$("#miniWebsiteFileNames").textContent=Array.from(files.files).map(f=>`${f.name} · ${(f.size/1024/1024).toFixed(2)} MB`).join(" | ")||"Choose one or more files";refreshWebsitePreview();});
+ $("#miniWebsiteVoice").onclick=()=>{
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){$("#miniWebsiteVoiceStatus").textContent="Voice input is not supported in this browser.";return;}
+  const recognition=new SR();recognition.lang="ml-IN";recognition.interimResults=true;
+  recognition.onresult=e=>{let transcript="";for(let i=e.resultIndex;i<e.results.length;i++)transcript+=e.results[i][0].transcript;content.value=(content.value?content.value+" ":"")+transcript;refreshWebsitePreview();};
+  recognition.onerror=e=>$("#miniWebsiteVoiceStatus").textContent="Voice input error: "+e.error;
+  recognition.onend=()=>$("#miniWebsiteVoiceStatus").textContent="Voice input finished.";
+  $("#miniWebsiteVoiceStatus").textContent="Listening…";recognition.start();
+ };
+ $("#miniWebsiteDownload").onclick=async()=>{
+  const uploadedFiles=Array.from(files?.files||[]);
+  const toDataUrl=file=>new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(file);});
+  const attachments=await Promise.all(uploadedFiles.map(async f=>({name:f.name,type:f.type||"application/octet-stream",url:await toDataUrl(f)})));
+  const text=escapeHtml(content?.value||"");
+  const attachmentHtml=attachments.map(f=>{
+   const name=escapeHtml(f.name);
+   if(f.type.startsWith("image/"))return `<figure><img src="${f.url}" alt="${name}" style="max-width:100%;height:auto"><figcaption>${name}</figcaption></figure>`;
+   if(f.type.startsWith("video/"))return `<figure><video src="${f.url}" controls style="max-width:100%"></video><figcaption>${name}</figcaption></figure>`;
+   return `<p><a download="${name}" href="${f.url}">Download ${name}</a></p>`;
+  }).join("");
+  const doc=`<!doctype html><html lang="ml"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>My Mini-Website</title><style>body{font:16px/1.65 system-ui,sans-serif;max-width:960px;margin:0 auto;padding:24px;color:#172033}main{overflow-wrap:anywhere}img,video{max-width:100%;border-radius:12px}figure{margin:20px 0}figcaption{color:#64748b;font-size:13px}</style></head><body><main><h1>My Website</h1><section style="white-space:pre-wrap">${text}</section>${attachmentHtml}</main>
+<style id="moviehub-style">
+#movieHub{color:#f5f6ff;--mh-accent:#e11d48;--mh-panel:#121827;--mh-muted:#9ca8bb}
+#movieHub *{box-sizing:border-box}
+.mh-wrap{max-width:1450px;margin:0 auto;padding:6px 0 50px}
+.mh-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 20px}
+.mh-brand{font-size:22px;font-weight:900;letter-spacing:-.8px}.mh-brand span{color:#fb4568}
+.mh-actions{display:flex;gap:8px;flex-wrap:wrap}
+.mh-btn{border:1px solid #354158;background:#182238;color:#f7f8fc;border-radius:10px;padding:10px 14px;font-weight:700}
+.mh-btn.primary{background:linear-gradient(110deg,#e11d48,#9f1239);border:0}
+.mh-hero{min-height:300px;border-radius:20px;overflow:hidden;position:relative;display:flex;align-items:end;padding:30px;background:linear-gradient(90deg,rgba(4,8,18,.97),rgba(4,8,18,.65) 50%,rgba(4,8,18,.08)),url('https://images.unsplash.com/photo-1489599849927-2ee91auto=format&fit=crop&w=1600&q=85') center/cover,#1b2740;border:1px solid #34405b}
+.mh-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,8,18,.8),transparent 70%);pointer-events:none}
+.mh-hero-copy{position:relative;max-width:610px}.mh-kicker{font-size:11px;letter-spacing:2px;color:#ff8099;font-weight:800;text-transform:uppercase}
+.mh-hero h2{font-size:clamp(30px,5vw,52px);line-height:1.02;margin:10px 0}.mh-hero p{color:#d4d9e5;max-width:570px}
+.mh-rowhead{display:flex;align-items:end;justify-content:space-between;margin:30px 0 14px;gap:12px}.mh-rowhead h3{margin:0;font-size:21px}.mh-rowhead small{color:var(--mh-muted)}
+.mh-pills{display:flex;gap:8px;overflow:auto;padding:4px 0 12px;margin:14px 0}.mh-pill{white-space:nowrap;border:1px solid #344158;background:#141e31;color:#cbd5e1;border-radius:99px;padding:8px 13px}.mh-pill.active{background:#9f1239;border-color:#e11d48;color:white}
+.mh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:17px}
+.mh-card{border:0;background:transparent;color:inherit;text-align:left;padding:0;min-width:0;cursor:pointer}
+.mh-poster{aspect-ratio:2/3;border-radius:12px;overflow:hidden;background:#202b40;position:relative;border:1px solid #303b50}
+.mh-poster img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}.mh-card:hover img{transform:scale(1.045)}
+.mh-badge{position:absolute;top:8px;left:8px;background:#e11d48;color:white;border-radius:5px;padding:4px 7px;font-size:10px;font-weight:800}
+.mh-card h4{margin:9px 0 3px;font-size:14px;line-height:1.3}.mh-meta{color:#9ca8bb;font-size:12px}
+.mh-empty{padding:30px;border:1px dashed #39465e;border-radius:14px;color:#aab5c7;text-align:center}
+.mh-detail{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:22px;background:#111a2b;border:1px solid #2c3950;border-radius:17px;margin:18px 0}
+.mh-detail img{width:100%;border-radius:12px;aspect-ratio:2/3;object-fit:cover}.mh-detail h2{font-size:30px;margin:4px 0 8px}.mh-detail p{color:#c2ccda;line-height:1.65}.mh-tags{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.mh-tag{font-size:11px;border:1px solid #39465d;padding:5px 9px;border-radius:99px;color:#cbd5e1}
+.mh-cast{display:flex;gap:12px;overflow:auto;padding:6px 0 12px}.mh-actor{min-width:100px;max-width:110px;background:transparent;border:0;color:#fff;text-align:center}.mh-actor img{width:82px;height:82px;object-fit:cover;border-radius:50%;background:#26344a}.mh-actor b{display:block;font-size:12px;margin-top:6px}
+.mh-player{background:#05080e;border:1px solid #354158;border-radius:14px;padding:10px;margin:18px 0}.mh-player video{width:100%;max-height:70vh;background:#000;border-radius:8px}.mh-note{font-size:12px;color:#aab5c7;line-height:1.5}
+.mh-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;background:#111a2b;border:1px solid #334159;border-radius:14px;padding:18px;margin:18px 0}.mh-form label{display:grid;gap:6px;color:#bdc8d8;font-size:12px}.mh-form input,.mh-form select,.mh-form textarea{width:100%;background:#091222;border:1px solid #344158;color:white;border-radius:8px;padding:10px}.mh-form textarea{min-height:75px;resize:vertical}.mh-form .wide{grid-column:1/-1}
+.mh-profile{display:flex;gap:18px;align-items:center;background:#111a2b;border-radius:14px;padding:18px}.mh-profile img{width:112px;height:112px;border-radius:50%;object-fit:cover}
+@media(max-width:650px){.mh-hero{min-height:270px;padding:20px}.mh-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.mh-detail{grid-template-columns:105px 1fr;gap:13px;padding:13px}.mh-detail h2{font-size:21px}.mh-form{grid-template-columns:1fr}.mh-form .wide{grid-column:auto}.mh-topline{align-items:flex-start;flex-direction:column}}
+</style>
+
+</body></html>`;
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([doc],{type:"text/html;charset=utf-8"}));a.download="my-mini-website.html";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+ };
+ refreshWebsitePreview();
+ }
+ if(t[0]==="AI Mini-App Builder"){
+ const content=$("#miniAppContent"), preview=$("#miniAppPreview"), files=$("#miniAppFiles");
+ const refreshMiniPreview=()=>{if(preview){const value=content?.value||"";preview.innerHTML=value?`<h2 style="margin-top:0">Mini-app preview</h2><div style="white-space:pre-wrap">${value.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")}</div>`:`<b>Your mini-app preview</b><p style="color:var(--muted)">Your content will appear here as you type.</p>`;}};
+ content?.addEventListener("input",refreshMiniPreview);
+ files?.addEventListener("change",()=>{$("#miniAppFileNames").textContent=Array.from(files.files).map(f=>`${f.name} · ${(f.size/1024/1024).toFixed(2)} MB`).join(" | ")||"Choose one or more files";});
+ $("#miniAppVoice").onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$("#miniAppVoiceStatus").textContent="Voice input is not supported in this browser.";return;}const recognition=new SR();recognition.lang="ml-IN";recognition.interimResults=true;recognition.onresult=e=>{let transcript="";for(let i=e.resultIndex;i<e.results.length;i++)transcript+=e.results[i][0].transcript;content.value=(content.value?content.value+" ":"")+transcript;refreshMiniPreview();};recognition.onerror=e=>$("#miniAppVoiceStatus").textContent="Voice input error: "+e.error;recognition.onend=()=>$("#miniAppVoiceStatus").textContent="Voice input finished.";$("#miniAppVoiceStatus").textContent="Listening…";recognition.start();};
+ $("#miniAppDownload").onclick=()=>{const text=content?.value||"";const safe=text.replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;");const doc=`<!doctype html><html lang="ml"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>My Mini-App</title><body style="font:16px/1.6 system-ui;max-width:850px;margin:40px auto;padding:0 20px"><main><h1>My Mini-App</h1><section style="white-space:pre-wrap">${safe}</section></main>
+<style id="moviehub-style">
+#movieHub{color:#f5f6ff;--mh-accent:#e11d48;--mh-panel:#121827;--mh-muted:#9ca8bb}
+#movieHub *{box-sizing:border-box}
+.mh-wrap{max-width:1450px;margin:0 auto;padding:6px 0 50px}
+.mh-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 20px}
+.mh-brand{font-size:22px;font-weight:900;letter-spacing:-.8px}.mh-brand span{color:#fb4568}
+.mh-actions{display:flex;gap:8px;flex-wrap:wrap}
+.mh-btn{border:1px solid #354158;background:#182238;color:#f7f8fc;border-radius:10px;padding:10px 14px;font-weight:700}
+.mh-btn.primary{background:linear-gradient(110deg,#e11d48,#9f1239);border:0}
+.mh-hero{min-height:300px;border-radius:20px;overflow:hidden;position:relative;display:flex;align-items:end;padding:30px;background:linear-gradient(90deg,rgba(4,8,18,.97),rgba(4,8,18,.65) 50%,rgba(4,8,18,.08)),url('https://images.unsplash.com/photo-1489599849927-2ee91auto=format&fit=crop&w=1600&q=85') center/cover,#1b2740;border:1px solid #34405b}
+.mh-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,8,18,.8),transparent 70%);pointer-events:none}
+.mh-hero-copy{position:relative;max-width:610px}.mh-kicker{font-size:11px;letter-spacing:2px;color:#ff8099;font-weight:800;text-transform:uppercase}
+.mh-hero h2{font-size:clamp(30px,5vw,52px);line-height:1.02;margin:10px 0}.mh-hero p{color:#d4d9e5;max-width:570px}
+.mh-rowhead{display:flex;align-items:end;justify-content:space-between;margin:30px 0 14px;gap:12px}.mh-rowhead h3{margin:0;font-size:21px}.mh-rowhead small{color:var(--mh-muted)}
+.mh-pills{display:flex;gap:8px;overflow:auto;padding:4px 0 12px;margin:14px 0}.mh-pill{white-space:nowrap;border:1px solid #344158;background:#141e31;color:#cbd5e1;border-radius:99px;padding:8px 13px}.mh-pill.active{background:#9f1239;border-color:#e11d48;color:white}
+.mh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:17px}
+.mh-card{border:0;background:transparent;color:inherit;text-align:left;padding:0;min-width:0;cursor:pointer}
+.mh-poster{aspect-ratio:2/3;border-radius:12px;overflow:hidden;background:#202b40;position:relative;border:1px solid #303b50}
+.mh-poster img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}.mh-card:hover img{transform:scale(1.045)}
+.mh-badge{position:absolute;top:8px;left:8px;background:#e11d48;color:white;border-radius:5px;padding:4px 7px;font-size:10px;font-weight:800}
+.mh-card h4{margin:9px 0 3px;font-size:14px;line-height:1.3}.mh-meta{color:#9ca8bb;font-size:12px}
+.mh-empty{padding:30px;border:1px dashed #39465e;border-radius:14px;color:#aab5c7;text-align:center}
+.mh-detail{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:22px;background:#111a2b;border:1px solid #2c3950;border-radius:17px;margin:18px 0}
+.mh-detail img{width:100%;border-radius:12px;aspect-ratio:2/3;object-fit:cover}.mh-detail h2{font-size:30px;margin:4px 0 8px}.mh-detail p{color:#c2ccda;line-height:1.65}.mh-tags{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.mh-tag{font-size:11px;border:1px solid #39465d;padding:5px 9px;border-radius:99px;color:#cbd5e1}
+.mh-cast{display:flex;gap:12px;overflow:auto;padding:6px 0 12px}.mh-actor{min-width:100px;max-width:110px;background:transparent;border:0;color:#fff;text-align:center}.mh-actor img{width:82px;height:82px;object-fit:cover;border-radius:50%;background:#26344a}.mh-actor b{display:block;font-size:12px;margin-top:6px}
+.mh-player{background:#05080e;border:1px solid #354158;border-radius:14px;padding:10px;margin:18px 0}.mh-player video{width:100%;max-height:70vh;background:#000;border-radius:8px}.mh-note{font-size:12px;color:#aab5c7;line-height:1.5}
+.mh-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;background:#111a2b;border:1px solid #334159;border-radius:14px;padding:18px;margin:18px 0}.mh-form label{display:grid;gap:6px;color:#bdc8d8;font-size:12px}.mh-form input,.mh-form select,.mh-form textarea{width:100%;background:#091222;border:1px solid #344158;color:white;border-radius:8px;padding:10px}.mh-form textarea{min-height:75px;resize:vertical}.mh-form .wide{grid-column:1/-1}
+.mh-profile{display:flex;gap:18px;align-items:center;background:#111a2b;border-radius:14px;padding:18px}.mh-profile img{width:112px;height:112px;border-radius:50%;object-fit:cover}
+@media(max-width:650px){.mh-hero{min-height:270px;padding:20px}.mh-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.mh-detail{grid-template-columns:105px 1fr;gap:13px;padding:13px}.mh-detail h2{font-size:21px}.mh-form{grid-template-columns:1fr}.mh-form .wide{grid-column:auto}.mh-topline{align-items:flex-start;flex-direction:column}}
+</style>
+
+</body></html>`;const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([doc],{type:"text/html"}));a.download="my-mini-app.html";a.click();URL.revokeObjectURL(a.href);};
+ refreshMiniPreview();
+ }
+ $("#cancel").onclick=closeModal;$("#runTool").onclick=runTool;$("#saveDraft").onclick=()=>{let jobs=JSON.parse(localStorage.getItem("itfmJobs")||"[]");jobs.unshift({name:t[0],prompt:$("#prompt")?.value||"Project settings saved",time:new Date().toLocaleString(),file:uploaded?.name||"Draft"});localStorage.setItem("itfmJobs",JSON.stringify(jobs.slice(0,20)));renderJobs();toast("Project settings saved on this device.");};$("#resetTool").onclick=()=>{let body=$("#modalBody");body.querySelectorAll("input,textarea").forEach(x=>{if(x.type==="file")x.value="";else if(x.type!=="checkbox")x.value="";});body.querySelectorAll("select").forEach(x=>x.selectedIndex=0);$("#fileName")&&($("#fileName").textContent="Choose source file");$("#preview")&&($("#preview").style.display="none");toast("Tool settings reset.");};$("#favoriteTool").onclick=()=>{let a=JSON.parse(localStorage.getItem("itfmFav")||"[]");if(!a.includes(i))a.push(i);localStorage.setItem("itfmFav",JSON.stringify(a));toast("Added to Favorites");}}
 function closeModal(){$("#modalBack").classList.remove("show");current=null;uploaded=null}
 function runTool(){let t=tools[current],prompt=$("#prompt")?.value||"";let job={name:t[0],prompt:prompt||"No prompt entered",time:new Date().toLocaleString(),file:uploaded?.name||"No file"};let jobs=JSON.parse(localStorage.getItem("itfmJobs")||"[]");jobs.unshift(job);localStorage.setItem("itfmJobs",JSON.stringify(jobs.slice(0,20)));closeModal();renderJobs();toast("Request saved to your local project history. Connect an AI API to run real generation.");}
 function renderJobs(){let jobs=JSON.parse(localStorage.getItem("itfmJobs")||"[]");$("#jobs").innerHTML=jobs.length?`<div class="sectionhead"><h2>Recent Requests</h2><small>Saved on this device</small></div>`+jobs.slice(0,5).map(j=>`<div class="job"><span><b>${j.name}</b><br>${j.prompt.slice(0,100)}</span><span class="pill">Awaiting API</span></div>`).join(""):""}
-function setPage(p){page=p;active="All";$("#hero").classList.toggle("hidden",p!=="home"&&p!=="tools");let title={home:"🔥 Trending AI Tools",tools:"All 71 AI Tools",creations:"My Creations",favorites:"Favorites",history:"Recent History",tv:"TV Channels",movie:"MovieHub"}[p]||"AI Tools";$("#listTitle").textContent=title;let fav=JSON.parse(localStorage.getItem("itfmFav")||"[]");if(p==="favorites"){let q=$("#search").value;$("#search").value="";render();$("#toolGrid").innerHTML=fav.map(i=>`<button class="card" data-tool="${i}"><span class="tileicon">${tools[i][2]}</span><span><h3>${tools[i][0]}</h3><p>${tools[i][3]}</p></span></button>`).join("")||"<p>No favorites yet. Open a tool and add it to favorites.</p>";}else if(p==="creations"||p==="history"){render();$("#toolGrid").innerHTML=p==="creations"?"<p class='notice'>Your generated files will appear here after the AI provider is connected. Recent requests are shown below.</p>":"<p class='notice'>Your recent tool requests are stored on this device.</p>";renderJobs()}else if(p==="tv"||p==="movie"){render();$("#toolGrid").innerHTML=`<div class="notice">${p==="tv"?"TV Channels: connect an authorized live-TV provider or add licensed stream URLs in the backend.":"MovieHub: connect a licensed film catalogue and streaming provider. This starter does not host movies or TV streams."}</div>`}else render();document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===p))}
+
+/* IPTV-ORG complete channel directory */
+let iptvState={channels:[],streams:[],page:1,pageSize:48,query:"",country:"",category:"",language:"",loaded:false,loading:false};
+const IPTV_CHANNELS_URL="https://iptv-org.github.io/api/channels.json";
+const IPTV_PLAYLIST_URL="https://iptv-org.github.io/iptv/index.m3u";
+function iptvEsc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function iptvUnique(arr){return [...new Set(arr.filter(Boolean))].sort((a,b)=>a.localeCompare(b));}
+async function iptvLoad(){
+ const root=document.getElementById("toolGrid");root.innerHTML='<div id="iptvApp"><div class="iptp-loading">Loading IPTV-ORG channel catalogue and playlist…</div></div>';
+ if(iptvState.loading)return;iptvState.loading=true;
+ try{
+  const urls=[IPTV_CHANNELS_URL,IPTV_PLAYLIST_URL,"https://iptv-org.github.io/api/feeds.json","https://iptv-org.github.io/api/logos.json","https://iptv-org.github.io/api/countries.json","https://iptv-org.github.io/api/categories.json","https://iptv-org.github.io/api/languages.json"];
+  const responses=await Promise.all(urls.map(u=>fetch(u,{cache:"no-cache"})));
+  if(!responses[0].ok)throw new Error("Channel catalogue could not be loaded ("+responses[0].status+").");
+  if(!responses[1].ok)throw new Error("IPTV playlist could not be loaded ("+responses[1].status+").");
+  const [channels,m3u,feeds,logos,countries,categories,languages]=await Promise.all([responses[0].json(),responses[1].text(),responses[2].json(),responses[3].json(),responses[4].json(),responses[5].json(),responses[6].json()]);
+  const countryNames=new Map(countries.map(x=>[x.code,x.name]));
+  const categoryNames=new Map(categories.map(x=>[x.id,x.name]));
+  const languageNames=new Map(languages.map(x=>[x.code,x.name]));
+  const channelFeeds=new Map();feeds.forEach(f=>{if(!channelFeeds.has(f.channel))channelFeeds.set(f.channel,[]);channelFeeds.get(f.channel).push(...(f.languages||[]));});
+  const logoByChannel=new Map();logos.filter(x=>x.in_use).forEach(l=>{if(!logoByChannel.has(l.channel))logoByChannel.set(l.channel,l.url);});
+  const byId=new Map();let current=null;
+  for(const line of m3u.split(/\r?\n/)){
+   if(line.startsWith("#EXTINF:")){
+    const id=(line.match(/tvg-id="([^"]*)"/i)||[])[1]||"";
+    const logo=(line.match(/tvg-logo="([^"]*)"/i)||[])[1]||"";
+    const name=(line.match(/,(.*)$/)||[])[1]||"";
+    current={id,logo,name};
+   }else if(line.trim()&&!line.startsWith("#")&&current){
+    const key=current.id||current.name;
+    if(!byId.has(key))byId.set(key,[]);
+    byId.get(key).push({url:line.trim(),logo:current.logo,name:current.name});
+    current=null;
+   }
+  }
+  iptvState.channels=channels.map(c=>{
+   const matches=byId.get(c.id)||byId.get(c.name)||[];
+   const languageCodes=iptvUnique(channelFeeds.get(c.id)||[]);
+   return {...c,countryName:countryNames.get(c.country)||c.country||"",languages:languageCodes.map(code=>languageNames.get(code)||code),categories:(c.categories||[]).map(code=>categoryNames.get(code)||code),logo:logoByChannel.get(c.id)||"",stream:matches[0]?.url||"",playlistLogo:matches[0]?.logo||"",streamCount:matches.length};
+  });
+  iptvState.streams=[...byId.values()].flat();iptvState.loaded=true;
+  iptvRender();
+ }catch(e){
+  root.innerHTML=`<div class="iptp-notice"><b>IPTV data load failed.</b><br>${iptvEsc(e.message)}<br><br>Check your internet connection or try again. The directory loads the live IPTV-ORG source; it does not invent a channel count.<br><button class="btn" style="margin-top:12px" onclick="iptvLoad()">Retry</button></div>`;
+ }finally{iptvState.loading=false;}
+}
+function iptvFiltered(){
+ const s=iptvState;
+ return s.channels.filter(c=>{
+  const q=s.query.toLowerCase();
+  const text=[c.name,c.id,c.countryName,c.country,c.languages?.join(" "),c.categories?.join(" "),c.alt_names?.join(" ")].join(" ").toLowerCase();
+  return (!q||text.includes(q))&&(!s.country||c.country===s.country)&&(!s.category||(c.categories||[]).includes(s.category))&&(!s.language||(c.languages||[]).includes(s.language));
+ });
+}
+function iptvRender(){
+ const root=document.getElementById("toolGrid");if(!root)return;
+ const all=iptvFiltered(),pages=Math.max(1,Math.ceil(all.length/iptvState.pageSize));
+ iptvState.page=Math.min(iptvState.page,pages);
+ const start=(iptvState.page-1)*iptvState.pageSize,items=all.slice(start,start+iptvState.pageSize);
+ const countries=iptvUnique(iptvState.channels.map(c=>c.country)),cats=iptvUnique(iptvState.channels.flatMap(c=>c.categories||[])),langs=iptvUnique(iptvState.channels.flatMap(c=>c.languages||[]));
+ root.innerHTML=`<div id="iptvApp">
+ <div class="iptp-head"><div><div class="eyebrow">IPTV-ORG GLOBAL DIRECTORY</div><h2 style="margin:5px 0">All TV Channels</h2><div style="color:var(--muted);font-size:12px">Live catalogue · All countries · Automatically refreshed from IPTV-ORG</div></div>
+ <div class="iptp-stats"><div class="iptp-stat"><b>${iptvState.channels.length.toLocaleString()}</b>Catalogue channels</div><div class="iptp-stat"><b>${iptvState.streams.length.toLocaleString()}</b>Playlist streams</div><div class="iptp-stat"><b>${all.length.toLocaleString()}</b>Filtered results</div></div></div>
+ <div class="iptp-controls"><input id="iptvSearch" type="search" placeholder="Search channel name…" value="${iptvEsc(iptvState.query)}" aria-label="Search channels">
+ <select id="iptvCountry"><option value="">All countries</option>${countries.map(x=>`<option value="${iptvEsc(x)}" ${x===iptvState.country?"selected":""}>${iptvEsc(iptvState.channels.find(c=>c.country===x)?.countryName||x)}</option>`).join("")}</select>
+ <select id="iptvCategory"><option value="">All categories</option>${cats.map(x=>`<option value="${iptvEsc(x)}" ${x===iptvState.category?"selected":""}>${iptvEsc(x)}</option>`).join("")}</select>
+ <select id="iptvLanguage"><option value="">All languages</option>${langs.map(x=>`<option value="${iptvEsc(x)}" ${x===iptvState.language?"selected":""}>${iptvEsc(x)}</option>`).join("")}</select></div>
+ <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:0 0 12px;color:#91a4c3;font-size:11px"><span>Showing ${all.length?start+1:0}–${Math.min(start+items.length,all.length)} of ${all.length.toLocaleString()} matching channels</span><span>Source refreshes on each page load · ${iptvState.channels.filter(c=>c.stream).length.toLocaleString()} with playlist streams</span></div>
+ <div class="iptp-grid">${items.map(c=>{const logo=c.logo||c.playlistLogo;const has=!!c.stream;return `<article class="iptp-card"><div class="iptp-cardtop">${logo?`<img class="iptp-logo" loading="lazy" src="${iptvEsc(logo)}" alt="" onerror="this.outerHTML='<div class=\\'iptp-logo-fallback\\'>📺</div>'">`:'<div class="iptp-logo-fallback">📺</div>'}<div style="min-width:0"><div class="iptp-name">${iptvEsc(c.name)}</div><div class="iptp-meta">${iptvEsc(c.countryName||"Country unknown")} · ${iptvEsc((c.languages||[]).join(", ")||"Language unknown")}</div></div></div><div class="iptp-tags">${(c.categories||[]).slice(0,3).map(x=>`<span class="iptp-tag">${iptvEsc(x)}</span>`).join("")||'<span class="iptp-tag">Uncategorized</span>'}</div><div class="iptp-actions"><span class="iptp-status ${has?"ok":"bad"}">${has?"● Stream listed":"● No playlist stream"}</span><button class="iptp-play" ${has?`onclick="iptvPlay('${encodeURIComponent(c.id)}')"`:"disabled title='No stream URL in current playlist'"}>▶ Play</button></div></article>`}).join("")||'<div class="iptp-notice" style="grid-column:1/-1">No channels match these filters.</div>'}</div>
+ <div class="iptp-pager"><button ${iptvState.page<=1?"disabled":""} onclick="iptvPage(-1)">← Previous</button><span>Page ${iptvState.page} / ${pages}</span><button ${iptvState.page>=pages?"disabled":""} onclick="iptvPage(1)">Next →</button></div>
+ <div class="iptp-notice" style="font-size:11px;margin-top:8px">Stream status indicates whether a channel has a URL in the current playlist. A listed stream may still be offline, geo-restricted, or blocked by the broadcaster. Playback errors are reported in the player.</div>
+ <div class="iptp-player" id="iptvPlayer"><div class="iptp-playerbox"><div class="iptp-playerhead"><b id="iptvPlayingName">Live TV</b><button class="iptp-close" onclick="iptvStop()">✕ Close</button></div><video id="iptvVideo" controls playsinline></video><div id="iptvPlayerStatus" class="iptp-status" style="padding:8px 2px">Connecting…</div></div></div>
+ </div>`;
+ const bind=(id,key)=>document.getElementById(id).addEventListener(id==="iptvSearch"?"input":"change",e=>{iptvState[key]=e.target.value;iptvState.page=1;iptvRender();const el=document.getElementById(id);if(id==="iptvSearch"){el.focus();el.setSelectionRange(el.value.length,el.value.length);}});
+ bind("iptvSearch","query");bind("iptvCountry","country");bind("iptvCategory","category");bind("iptvLanguage","language");
+}
+function iptvPage(n){iptvState.page+=n;iptvRender();document.getElementById("iptvApp")?.scrollIntoView({behavior:"smooth",block:"start"});}
+function iptvPlay(encodedId){
+ const id=decodeURIComponent(encodedId),c=iptvState.channels.find(x=>x.id===id);if(!c?.stream)return;
+ const modal=document.getElementById("iptvPlayer"),video=document.getElementById("iptvVideo"),status=document.getElementById("iptvPlayerStatus");
+ document.getElementById("iptvPlayingName").textContent=c.name;modal.classList.add("show");status.textContent="Trying to play stream…";status.className="iptp-status";
+ video.onerror=()=>{status.textContent="Playback unavailable: the stream may be offline, geo-restricted, or unsupported by this browser.";status.className="iptp-status bad";};
+ video.onplaying=()=>{status.textContent="Stream is playing.";status.className="iptp-status ok";};
+ const playNative=()=>{video.src=c.stream;video.play().catch(()=>{status.textContent="Playback could not start. The stream may require a supported player or broadcaster headers.";status.className="iptp-status bad";});};
+ if(video.canPlayType("application/vnd.apple.mpegurl")){playNative();}
+ else{
+  const startHls=()=>{if(window.Hls&&window.Hls.isSupported()){const hls=new Hls();window._iptvHls=hls;hls.loadSource(c.stream);hls.attachMedia(video);hls.on(Hls.Events.MANIFEST_PARSED,()=>video.play().catch(()=>{}));hls.on(Hls.Events.ERROR,(_,data)=>{if(data.fatal){status.textContent="Stream unavailable or blocked (HLS playback error).";status.className="iptp-status bad";hls.destroy();}});}else{playNative();}};
+  if(window.Hls)startHls();else{const s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/hls.js@latest";s.onload=startHls;s.onerror=playNative;document.head.appendChild(s);}
+ }
+}
+function iptvStop(){if(window._iptvHls){window._iptvHls.destroy();window._iptvHls=null;}const v=document.getElementById("iptvVideo");if(v){v.pause();v.removeAttribute("src");v.load();}document.getElementById("iptvPlayer")?.classList.remove("show");}
+
+function setPage(p){page=p;active="All";$("#hero").classList.toggle("hidden",p!=="home"&&p!=="tools");let title={home:"🔥 Trending AI Tools",tools:"All 71 AI Tools",creations:"My Creations",favorites:"Favorites",history:"Recent History",tv:"TV Channels",movie:"MovieHub"}[p]||"AI Tools";$("#listTitle").textContent=title;let fav=JSON.parse(localStorage.getItem("itfmFav")||"[]");if(p==="favorites"){let q=$("#search").value;$("#search").value="";render();$("#toolGrid").innerHTML=fav.map(i=>`<button class="card" data-tool="${i}"><span class="tileicon">${tools[i][2]}</span><span><h3>${tools[i][0]}</h3><p>${tools[i][3]}</p></span></button>`).join("")||"<p>No favorites yet. Open a tool and add it to favorites.</p>";}else if(p==="creations"||p==="history"){render();$("#toolGrid").innerHTML=p==="creations"?"<p class='notice'>Your generated files will appear here after the AI provider is connected. Recent requests are shown below.</p>":"<p class='notice'>Your recent tool requests are stored on this device.</p>";renderJobs()}else if(p==="tv"){iptvLoad()}else if(p==="movie"){render();renderMovieHub()}else render();document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===p))}
 $("#toolGrid").addEventListener("click",e=>{let b=e.target.closest("[data-tool]");if(b)openTool(+b.dataset.tool)});
 $("#filters").addEventListener("click",e=>{let b=e.target.closest("[data-filter]");if(b){active=b.dataset.filter;render()}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")iptvStop()});
 document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>{if(b.dataset.category){active=b.dataset.category;setPage("tools");render()}else setPage(b.dataset.page)}));
-$("#search").addEventListener("input",()=>{if(page!=="tools")setPage("tools");render()});
+$("#search").addEventListener("input",()=>{if(page==="movie"){renderMovieHub();return;}if(page!=="tools")setPage("tools");render()});
 $("#explore").onclick=()=>{setPage("tools");window.scrollTo({top:0,behavior:"smooth"})};$("#myCreations").onclick=()=>setPage("creations");$("#historyBtn").onclick=()=>setPage("history");$("#closeModal").onclick=closeModal;$("#modalBack").addEventListener("click",e=>{if(e.target===$("#modalBack"))closeModal()});
 $("#apiBtn").onclick=()=>{let endpoint=prompt("Enter your secure backend API endpoint (example: https://yourdomain.com/api/generate). Do not enter a private API key here.");if(endpoint){localStorage.setItem("itfmEndpoint",endpoint);$("#apiState").textContent="Backend endpoint saved";toast("Endpoint saved in this browser. Add server-side authentication and connect the generation API route.")}};
 $("#themeBtn").onclick=()=>{document.body.classList.toggle("light");if(document.body.classList.contains("light")){document.body.style.filter="brightness(1.2)";toast("Brightness adjusted. Use your device display settings for a full light theme.")}else document.body.style.filter=""};
@@ -459,6 +770,71 @@ $("#year").textContent=new Date().getFullYear();renderStats();render();renderJob
       }catch(err){toast("Screen recording cancelled or not supported: "+err.message);}
     }
   },true);
+// MovieHub: isolated client-side catalogue UI. Streaming/payment require licensed backend services.
+const MH_SEED=[
+ {id:"mh1",title:"Interstellar",year:2014,language:"English",genre:"Sci-Fi",rating:"8.7",duration:"2h 49m",director:"Christopher Nolan",cast:["Matthew McConaughey","Anne Hathaway","Jessica Chastain"],overview:"A team of explorers travels beyond this galaxy to discover whether mankind has a future among the stars.",poster:"https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxaB5V.jpg",backdrop:"https://image.tmdb.org/t/p/w1280/xJHokMbljvjADYdit5fK5VHsX6y.jpg",licensed:false},
+ {id:"mh2",title:"Dune: Part Two",year:2024,language:"English",genre:"Adventure",rating:"8.5",duration:"2h 46m",director:"Denis Villeneuve",cast:["Timothée Chalamet","Zendaya","Rebecca Ferguson"],overview:"Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.",poster:"https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",backdrop:"https://image.tmdb.org/t/p/w1280/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",licensed:false},
+ {id:"mh3",title:"Drishyam",year:2013,language:"Malayalam",genre:"Thriller",rating:"8.3",duration:"2h 40m",director:"Jeethu Joseph",cast:["Mohanlal","Meena","Ansiba Hassan"],overview:"A resourceful family man goes to extraordinary lengths to protect his family after an unexpected incident.",poster:"https://image.tmdb.org/t/p/w500/3yJUlOtVa09CYJocwBU8eAryja0.jpg",backdrop:"https://image.tmdb.org/t/p/w1280/3yJUlOtVa09CYJocwBU8eAryja0.jpg",licensed:false},
+ {id:"mh4",title:"Vikram",year:2022,language:"Tamil",genre:"Action",rating:"8.3",duration:"2h 54m",director:"Lokesh Kanagaraj",cast:["Kamal Haasan","Vijay Sethupathi","Fahadh Faasil"],overview:"A special investigator uncovers a hidden network while pursuing a series of brutal crimes.",poster:"https://image.tmdb.org/t/p/w500/6eHc6d6G2k9a1rJ0Qf9v2n4x.jpg",backdrop:"https://image.tmdb.org/t/p/w1280/6eHc6d6G2k9a1rJ0Qf9v2n4x.jpg",licensed:false},
+ {id:"mh5",title:"Kumbalangi Nights",year:2019,language:"Malayalam",genre:"Drama",rating:"8.5",duration:"2h 15m",director:"Madhu C. Narayanan",cast:["Shane Nigam","Soubin Shahir","Fahadh Faasil"],overview:"Four brothers living in a coastal village navigate complicated relationships, belonging and family.",poster:"https://image.tmdb.org/t/p/w500/3X8h1YQ7vKqX3s4Z6Y3Y2x.jpg",backdrop:"https://image.tmdb.org/t/p/w1280/3X8h1YQ7vKqX3s4Z6Y3Y2x.jpg",licensed:false},
+ {id:"mh6",title:"The Dark Knight",year:2008,language:"English",genre:"Action",rating:"9.0",duration:"2h 32m",director:"Christopher Nolan",cast:["Christian Bale","Heath Ledger","Aaron Eckhart"],overview:"Batman faces a criminal mastermind who plunges Gotham into chaos and tests the limits of its hero.",poster:"https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",backdrop:"https://image.tmdb.org/t/p/w1280/hqkIcbrOHL86UncnHIs3K",licensed:false}
+];
+function mhGet(){try{return JSON.parse(localStorage.getItem("movieHubCatalog")||"null")||MH_SEED.slice()}catch(e){return MH_SEED.slice()}}
+function mhSave(a){localStorage.setItem("movieHubCatalog",JSON.stringify(a))}
+function mhEsc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function mhImg(m){return m.poster||"https://placehold.co/500x750/172238/ffffff?text=Movie"}
+function mhCard(m){return `<button class="mh-card" data-mh-detail="${mhEsc(m.id)}"><div class="mh-poster"><img loading="lazy" src="${mhEsc(mhImg(m))}" alt="${mhEsc(m.title)} poster" onerror="this.src='https://placehold.co/500x750/172238/ffffff?text=Movie'">${m.licensed?'<span class="mh-badge">PLAY</span>':''}</div><h4>${mhEsc(m.title)}</h4><div class="mh-meta">${mhEsc(m.year)} · ${mhEsc(m.language)} · ★ ${mhEsc(m.rating||"—")}</div></button>`}
+function mhSection(title,items){return `<section><div class="mh-rowhead"><h3>${title}</h3><small>${items.length} titles</small></div><div class="mh-grid">${items.map(mhCard).join("")||'<div class="mh-empty">No titles found in this section.</div>'}</div></section>`}
+function renderMovieHub(){
+ const root=$("#toolGrid");if(!root)return;
+ const all=mhGet(),q=($("#search").value||"").trim().toLowerCase();
+ const langs=["All","Malayalam","Tamil","Telugu","Hindi","Kannada","English"],genres=["All","Action","Comedy","Thriller","Horror","Romance","Drama","Sci-Fi","Adventure","Animation","Documentary","Classic"];
+ const lang=window.mhLang||"All",genre=window.mhGenre||"All";
+ const filtered=all.filter(m=>(lang==="All"||m.language===lang)&&(genre==="All"||m.genre===genre)&&(!q||[m.title,m.cast?.join(" "),m.director,m.language,m.genre,String(m.year)].join(" ").toLowerCase().includes(q)));
+ root.innerHTML=`<div id="movieHub" class="mh-wrap">
+ <div class="mh-topline"><div class="mh-brand">🍿 <span>MOVIE</span>HUB</div><div class="mh-actions"><button class="mh-btn" data-mh-action="watchlist">♡ Watchlist</button><button class="mh-btn" data-mh-action="admin">＋ Add licensed movie</button></div></div>
+ <div class="mh-hero"><div class="mh-hero-copy"><div class="mh-kicker">YOUR CINEMA, ALL IN ONE PLACE</div><h2>Stories worth<br>staying in for.</h2><p>Explore classics, new releases and cinema from around the world. Full-film playback is enabled only for titles with authorized streaming rights.</p><button class="mh-btn primary" data-mh-detail="${all[0]?.id||''}">Explore Movie Library →</button></div></div>
+ <div class="mh-pills">${langs.map(x=>`<button class="mh-pill ${lang===x?'active':''}" data-mh-lang="${x}">${x}</button>`).join("")}</div>
+ <div class="mh-pills">${genres.map(x=>`<button class="mh-pill ${genre===x?'active':''}" data-mh-genre="${x}">${x}</button>`).join("")}</div>
+ ${q||lang!=="All"||genre!=="All"?mhSection("Search results",filtered):mhSection("Recently added",all.slice().reverse())+mhSection("Trending movies",all.slice(0,4))+mhSection("Malayalam cinema",all.filter(m=>m.language==="Malayalam"))+mhSection("International collection",all.filter(m=>m.language==="English"))}
+ <div class="mh-rowhead"><h3>Actors &amp; Actresses</h3><small>Cast directory</small></div><div class="mh-pills">${[...new Set(all.flatMap(m=>m.cast||[]))].map(a=>`<button class="mh-pill" data-mh-actor="${mhEsc(a)}">${mhEsc(a)}</button>`).join("")}</div>
+ <p class="mh-note">Catalogue metadata and poster artwork are illustrative starter entries. Connect a metadata provider such as TMDB to populate verified posters, biographies, credits and release updates. No YouTube or third-party watch redirects are used.</p>
+ </div>`;
+}
+function mhDetail(id){
+ const m=mhGet().find(x=>x.id===id);if(!m)return;
+ const root=$("#toolGrid");
+ root.innerHTML=`<div id="movieHub" class="mh-wrap"><button class="mh-btn" data-mh-action="home">← Back to MovieHub</button>
+ <div class="mh-detail"><img src="${mhEsc(mhImg(m))}" alt="${mhEsc(m.title)} poster"><div><div class="mh-kicker">${mhEsc(m.language)} · ${mhEsc(m.year)}</div><h2>${mhEsc(m.title)}</h2><div class="mh-meta">★ ${mhEsc(m.rating||"Not rated")} &nbsp; · &nbsp; ${mhEsc(m.duration||"Duration unavailable")} &nbsp; · &nbsp; ${mhEsc(m.genre||"")}</div><div class="mh-tags"><span class="mh-tag">Director: ${mhEsc(m.director||"—")}</span><span class="mh-tag">${m.licensed?"Licensed playback enabled":"Catalogue only"}</span></div><p>${mhEsc(m.overview||"Description unavailable.")}</p><div class="mh-actions"><button class="mh-btn" data-mh-action="save" data-id="${mhEsc(m.id)}">♡ Add to Watchlist</button>${m.licensed&&m.videoUrl?`<button class="mh-btn primary" data-mh-action="play" data-id="${mhEsc(m.id)}">▶ Watch now</button>`:`<button class="mh-btn" disabled title="Streaming rights or video source not configured">▶ Not available to stream</button>`}</div></div></div>
+ <div class="mh-rowhead"><h3>Cast</h3></div><div class="mh-cast">${(m.cast||[]).map(a=>`<button class="mh-actor" data-mh-actor="${mhEsc(a)}"><img src="https://ui-avatars.com/api/?name=${encodeURIComponent(a)}&background=26344a&color=fff" alt=""><b>${mhEsc(a)}</b></button>`).join("")}</div>
+ <p class="mh-note">Streaming is restricted to movie files or HLS sources for which you have documented distribution rights. This page does not redirect viewers to external watch sites.</p></div>`;
+}
+function mhPlayer(id){
+ const m=mhGet().find(x=>x.id===id);if(!m||!m.licensed||!m.videoUrl){alert("This title does not have an authorized playback source configured.");return}
+ const root=$("#toolGrid");
+ root.innerHTML=`<div id="movieHub" class="mh-wrap"><button class="mh-btn" data-mh-action="detail" data-id="${mhEsc(id)}">← Movie details</button><div class="mh-rowhead"><h3>${mhEsc(m.title)}</h3><small>Authorized playback</small></div><div class="mh-player"><video id="mhVideo" controls playsinline preload="metadata" src="${mhEsc(m.videoUrl)}"></video></div><p class="mh-note">Playback runs inside MovieHub. Availability, adaptive bitrate, DRM and concurrency controls require your licensed streaming provider and server configuration.</p></div>`;
+ const v=$("#mhVideo");v.addEventListener("timeupdate",()=>{localStorage.setItem("mhResume_"+id,String(v.currentTime))});const t=Number(localStorage.getItem("mhResume_"+id)||0);if(t>0)v.addEventListener("loadedmetadata",()=>{v.currentTime=t},{once:true});
+}
+function mhAdmin(){
+ $("#toolGrid").innerHTML=`<div id="movieHub" class="mh-wrap"><button class="mh-btn" data-mh-action="home">← Back</button><div class="mh-rowhead"><h3>Add a licensed movie</h3></div><p class="mh-note">Only add a direct media URL when you control the file or have streaming/distribution rights. This local form stores metadata in this browser; it does not upload video or validate legal rights.</p>
+ <form class="mh-form" id="mhAddForm"><label>Movie title<input name="title" required></label><label>Release year<input name="year" type="number" min="1888" max="2100" required></label><label>Language<select name="language">${["Malayalam","Tamil","Telugu","Hindi","Kannada","English","Other"].map(x=>`<option>${x}</option>`).join("")}</select></label><label>Genre<input name="genre" placeholder="Action, Drama..." required></label><label>Director<input name="director"></label><label>IMDb rating<input name="rating" placeholder="e.g. 7.8"></label><label>Poster image URL<input name="poster" type="url" placeholder="https://..."></label><label>Duration<input name="duration" placeholder="2h 10m"></label><label class="wide">Description<textarea name="overview"></textarea></label><label class="wide">Cast names (comma separated)<input name="cast" placeholder="Actor One, Actor Two"></label><label class="wide">Authorized video URL (MP4 or HLS)<input name="videoUrl" type="url" placeholder="https://your-cdn.example/movie/master.m3u8"></label><label class="wide"><span><input name="licensed" type="checkbox" style="width:auto"> I confirm I have the necessary streaming and distribution rights for this title and media source.</span></label><div class="wide"><button class="mh-btn primary" type="submit">Save movie to catalogue</button></div></form></div>`;
+ $("#mhAddForm").addEventListener("submit",e=>{e.preventDefault();const f=new FormData(e.target),licensed=f.get("licensed")==="on",videoUrl=String(f.get("videoUrl")||"").trim();if(videoUrl&&!licensed){alert("Confirm distribution rights before enabling playback.");return}const item={id:"mh"+Date.now(),title:f.get("title"),year:Number(f.get("year")),language:f.get("language"),genre:f.get("genre"),director:f.get("director"),rating:f.get("rating"),duration:f.get("duration"),poster:f.get("poster"),overview:f.get("overview"),cast:String(f.get("cast")||"").split(",").map(x=>x.trim()).filter(Boolean),videoUrl,licensed:licensed&&!!videoUrl};const all=mhGet();all.push(item);mhSave(all);alert("Movie saved in this browser.");renderMovieHub()});
+}
+document.addEventListener("click",e=>{
+ const b=e.target.closest("[data-mh-detail],[data-mh-action],[data-mh-lang],[data-mh-genre],[data-mh-actor]");if(!b||page!=="movie")return;
+ if(b.dataset.mhDetail){mhDetail(b.dataset.mhDetail);return}
+ if(b.dataset.mhLang!==undefined){window.mhLang=b.dataset.mhLang;renderMovieHub();return}
+ if(b.dataset.mhGenre!==undefined){window.mhGenre=b.dataset.mhGenre;renderMovieHub();return}
+ if(b.dataset.mhActor){const name=b.dataset.mhActor;const titles=mhGet().filter(m=>(m.cast||[]).includes(name));$("#toolGrid").innerHTML=`<div id="movieHub" class="mh-wrap"><button class="mh-btn" data-mh-action="home">← Back</button><div class="mh-profile"><img src="https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=26344a&color=fff" alt=""><div><h2>${mhEsc(name)}</h2><p class="mh-note">Filmography in this MovieHub catalogue</p></div></div>${mhSection("Known titles",titles)}</div>`;return}
+ const action=b.dataset.mhAction,id=b.dataset.id;
+ if(action==="home")renderMovieHub();
+ if(action==="admin")mhAdmin();
+ if(action==="watchlist"){const ids=JSON.parse(localStorage.getItem("mhWatchlist")||"[]");const list=mhGet().filter(m=>ids.includes(m.id));$("#toolGrid").innerHTML=`<div id="movieHub" class="mh-wrap"><button class="mh-btn" data-mh-action="home">← Back</button>${mhSection("Your watchlist",list)}</div>`}
+ if(action==="save"){const ids=JSON.parse(localStorage.getItem("mhWatchlist")||"[]");if(!ids.includes(id))ids.push(id);localStorage.setItem("mhWatchlist",JSON.stringify(ids));alert("Added to your watchlist.");}
+ if(action==="play")mhPlayer(id);
+ if(action==="detail")mhDetail(id);
+});
+
 })();
 </script>
 
@@ -621,5 +997,37 @@ const observer=new MutationObserver(()=>enhanceUploads(document));
 observer.observe(document.documentElement,{childList:true,subtree:true});
 })();
 </script>
+
+
+<style id="moviehub-style">
+#movieHub{color:#f5f6ff;--mh-accent:#e11d48;--mh-panel:#121827;--mh-muted:#9ca8bb}
+#movieHub *{box-sizing:border-box}
+.mh-wrap{max-width:1450px;margin:0 auto;padding:6px 0 50px}
+.mh-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 20px}
+.mh-brand{font-size:22px;font-weight:900;letter-spacing:-.8px}.mh-brand span{color:#fb4568}
+.mh-actions{display:flex;gap:8px;flex-wrap:wrap}
+.mh-btn{border:1px solid #354158;background:#182238;color:#f7f8fc;border-radius:10px;padding:10px 14px;font-weight:700}
+.mh-btn.primary{background:linear-gradient(110deg,#e11d48,#9f1239);border:0}
+.mh-hero{min-height:300px;border-radius:20px;overflow:hidden;position:relative;display:flex;align-items:end;padding:30px;background:linear-gradient(90deg,rgba(4,8,18,.97),rgba(4,8,18,.65) 50%,rgba(4,8,18,.08)),url('https://images.unsplash.com/photo-1489599849927-2ee91auto=format&fit=crop&w=1600&q=85') center/cover,#1b2740;border:1px solid #34405b}
+.mh-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,8,18,.8),transparent 70%);pointer-events:none}
+.mh-hero-copy{position:relative;max-width:610px}.mh-kicker{font-size:11px;letter-spacing:2px;color:#ff8099;font-weight:800;text-transform:uppercase}
+.mh-hero h2{font-size:clamp(30px,5vw,52px);line-height:1.02;margin:10px 0}.mh-hero p{color:#d4d9e5;max-width:570px}
+.mh-rowhead{display:flex;align-items:end;justify-content:space-between;margin:30px 0 14px;gap:12px}.mh-rowhead h3{margin:0;font-size:21px}.mh-rowhead small{color:var(--mh-muted)}
+.mh-pills{display:flex;gap:8px;overflow:auto;padding:4px 0 12px;margin:14px 0}.mh-pill{white-space:nowrap;border:1px solid #344158;background:#141e31;color:#cbd5e1;border-radius:99px;padding:8px 13px}.mh-pill.active{background:#9f1239;border-color:#e11d48;color:white}
+.mh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:17px}
+.mh-card{border:0;background:transparent;color:inherit;text-align:left;padding:0;min-width:0;cursor:pointer}
+.mh-poster{aspect-ratio:2/3;border-radius:12px;overflow:hidden;background:#202b40;position:relative;border:1px solid #303b50}
+.mh-poster img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}.mh-card:hover img{transform:scale(1.045)}
+.mh-badge{position:absolute;top:8px;left:8px;background:#e11d48;color:white;border-radius:5px;padding:4px 7px;font-size:10px;font-weight:800}
+.mh-card h4{margin:9px 0 3px;font-size:14px;line-height:1.3}.mh-meta{color:#9ca8bb;font-size:12px}
+.mh-empty{padding:30px;border:1px dashed #39465e;border-radius:14px;color:#aab5c7;text-align:center}
+.mh-detail{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:22px;background:#111a2b;border:1px solid #2c3950;border-radius:17px;margin:18px 0}
+.mh-detail img{width:100%;border-radius:12px;aspect-ratio:2/3;object-fit:cover}.mh-detail h2{font-size:30px;margin:4px 0 8px}.mh-detail p{color:#c2ccda;line-height:1.65}.mh-tags{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.mh-tag{font-size:11px;border:1px solid #39465d;padding:5px 9px;border-radius:99px;color:#cbd5e1}
+.mh-cast{display:flex;gap:12px;overflow:auto;padding:6px 0 12px}.mh-actor{min-width:100px;max-width:110px;background:transparent;border:0;color:#fff;text-align:center}.mh-actor img{width:82px;height:82px;object-fit:cover;border-radius:50%;background:#26344a}.mh-actor b{display:block;font-size:12px;margin-top:6px}
+.mh-player{background:#05080e;border:1px solid #354158;border-radius:14px;padding:10px;margin:18px 0}.mh-player video{width:100%;max-height:70vh;background:#000;border-radius:8px}.mh-note{font-size:12px;color:#aab5c7;line-height:1.5}
+.mh-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;background:#111a2b;border:1px solid #334159;border-radius:14px;padding:18px;margin:18px 0}.mh-form label{display:grid;gap:6px;color:#bdc8d8;font-size:12px}.mh-form input,.mh-form select,.mh-form textarea{width:100%;background:#091222;border:1px solid #344158;color:white;border-radius:8px;padding:10px}.mh-form textarea{min-height:75px;resize:vertical}.mh-form .wide{grid-column:1/-1}
+.mh-profile{display:flex;gap:18px;align-items:center;background:#111a2b;border-radius:14px;padding:18px}.mh-profile img{width:112px;height:112px;border-radius:50%;object-fit:cover}
+@media(max-width:650px){.mh-hero{min-height:270px;padding:20px}.mh-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.mh-detail{grid-template-columns:105px 1fr;gap:13px;padding:13px}.mh-detail h2{font-size:21px}.mh-form{grid-template-columns:1fr}.mh-form .wide{grid-column:auto}.mh-topline{align-items:flex-start;flex-direction:column}}
+</style>
 
 </body></html>
